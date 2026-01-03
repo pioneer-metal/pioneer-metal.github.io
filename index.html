@@ -62,7 +62,6 @@
             background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
         }
 
-        /* 语言切换器样式优化 */
         .lang-select {
             appearance: none;
             background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -97,6 +96,8 @@
             background: rgba(239, 68, 68, 0.05);
             transform: translateY(-5px);
         }
+
+        [dir="rtl"] .text-left-rtl { text-align: right; }
     </style>
 </head>
 <body class="bg-white text-slate-900">
@@ -118,7 +119,6 @@
                     <a href="news.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-news">News</a>
                     <a href="contact.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-contact">Contact</a>
                     
-                    <!-- 带有动态国旗的语言切换器 -->
                     <div class="relative flex items-center border-l pl-6 border-slate-200 ml-4 group">
                         <div id="currentFlag" class="flex items-center mr-2">
                             <span class="fi fi-us rounded-sm shadow-sm transition-opacity duration-300"></span>
@@ -163,10 +163,10 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-            <div class="max-w-3xl">
+            <div class="max-w-4xl text-left-rtl">
                 <h2 class="text-red-500 font-black tracking-[0.4em] uppercase mb-4 text-xs" data-i18n="hero-tag">Industrial Excellence Since 2006</h2>
-                <h1 class="text-4xl md:text-7xl font-black leading-none mb-6 tracking-tighter" data-i18n="hero-title">
-                    PRECISION <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">STEEL PROFILES</span>
+                <h1 class="text-4xl md:text-7xl font-black leading-none mb-6 tracking-tighter uppercase" data-i18n="hero-title">
+                    Precision Steel Profiles
                 </h1>
                 <p class="text-base text-slate-300 mb-8 max-w-xl leading-relaxed font-light" data-i18n="hero-desc">
                     Global leader in manufacturing cold-rolled steel solutions for window systems and industrial infrastructure.
@@ -187,12 +187,13 @@
         </div>
     </section>
 
-    <!-- Strategic Business Cooperation 板块 (带 About 锚点) -->
+    <!-- Strategic Business Cooperation 板块 -->
     <section id="about" class="bg-[#0a0a0a] py-32 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-20">
+            <div class="mb-20 text-left-rtl">
                 <h2 class="text-red-500 font-black tracking-[0.4em] uppercase mb-4 text-xs" data-i18n="coop-subtitle">Partnership & Growth</h2>
-                <h3 class="text-4xl md:text-6xl font-black tracking-tighter mb-6" data-i18n="coop-title">STRATEGIC BUSINESS<br>COOPERATION</h3>
+                <!-- 放大标题，单行显示 -->
+                <h3 class="text-4xl md:text-7xl font-black tracking-tighter mb-8 uppercase whitespace-nowrap overflow-hidden text-ellipsis" data-i18n="coop-title">Strategic Business Cooperation</h3>
                 <div class="w-20 h-1 bg-red-600"></div>
             </div>
 
@@ -244,125 +245,96 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-8">
                 <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left">
-                    &copy; 2024 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved
+                    &copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved
                 </div>
                 <div class="flex items-center space-x-6">
-                    <a href="https://facebook.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Facebook">
-                        <i class="fab fa-facebook-f text-lg"></i>
-                    </a>
-                    <a href="https://twitter.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Twitter X">
-                        <i class="fab fa-x-twitter text-lg"></i>
-                    </a>
-                    <a href="https://instagram.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Instagram">
-                        <i class="fab fa-instagram text-lg"></i>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="LinkedIn">
-                        <i class="fab fa-linkedin-in text-lg"></i>
-                    </a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-facebook-f text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-x-twitter text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-instagram text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-linkedin-in text-lg"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // 国际化文本配置
         const i18n = {
             en: { 
                 "nav-home": "Home", "nav-about": "About Us", "nav-products": "Products", "nav-news": "News", "nav-contact": "Contact", 
-                "hero-tag": "Industrial Excellence Since 2006", "hero-title": "PRECISION <br>STEEL PROFILES", "hero-desc": "Global leader in manufacturing cold-rolled steel solutions for window systems and industrial infrastructure.", "btn-view": "VIEW PRODUCTS",
-                "coop-subtitle": "Partnership & Growth", "coop-title": "STRATEGIC BUSINESS<br>COOPERATION",
+                "hero-tag": "Industrial Excellence Since 2006", "hero-title": "Precision Steel Profiles", "hero-desc": "Global leader in manufacturing cold-rolled steel solutions for window systems and industrial infrastructure.", "btn-view": "VIEW PRODUCTS",
+                "coop-subtitle": "Partnership & Growth", "coop-title": "Strategic Business Cooperation",
                 "pillar-1-title": "Lijialong Sealing Strip", "pillar-1-desc": "Specialized manufacturer of high-resilience weather strips for advanced sealing solutions.",
                 "pillar-2-title": "OEM & Custom", "pillar-2-desc": "OEM customers assist us in achieving success, improving product quality, and achieving a win-win situation.",
                 "pillar-3-title": "Melan Trade", "pillar-3-desc": "Professional import & export services ensuring efficient global logistics and commerce."
             },
             es: { 
                 "nav-home": "Inicio", "nav-about": "Sobre Nosotros", "nav-products": "Productos", "nav-news": "Noticias", "nav-contact": "Contacto", 
-                "hero-tag": "Excelencia Industrial desde 2006", "hero-title": "PERFILES DE <br>ACERO DE PRECISIÓN", "hero-desc": "Líder mundial en fabricación de soluciones de acero para ventanas e industria.", "btn-view": "VER PRODUCTOS",
-                "coop-subtitle": "Alianzas y Crecimiento", "coop-title": "COOPERACIÓN<br>ESTRATÉGICA",
+                "hero-tag": "Excelencia Industrial desde 2006", "hero-title": "Perfiles de Acero de Precisión", "hero-desc": "Líder mundial en fabricación de soluciones de acero para ventanas e industria.", "btn-view": "VER PRODUCTOS",
+                "coop-subtitle": "Alianzas y Crecimiento", "coop-title": "Cooperación Comercial Estratégica",
                 "pillar-1-title": "Tira de Sellado Lijialong", "pillar-1-desc": "Fabricante especializado en burletes de alta resiliencia para sellado avanzado.",
-                "pillar-2-title": "OEM y Personalizado", "pillar-2-desc": "Los clientes OEM nos ayudan a lograr el éxito, mejorar la calidad del producto y lograr una situación en la que todos ganan.",
+                "pillar-2-title": "OEM y Personalizado", "pillar-2-desc": "Los clientes OEM nos ayudan a lograr el éxito, mejorar la calidad del producto y lograr una situación de beneficio mutuo.",
                 "pillar-3-title": "Melan Trade", "pillar-3-desc": "Servicios profesionales de importación y exportación para una logística eficiente."
             },
             pt: { 
                 "nav-home": "Início", "nav-about": "Sobre Nós", "nav-products": "Produtos", "nav-news": "Notícias", "nav-contact": "Contato", 
-                "hero-tag": "Excelência Industrial desde 2006", "hero-title": "PERFIS DE <br>AÇO DE PRECISÃO", "hero-desc": "Líder mundial na fabricação de soluções em aço para janelas e infraestrutura.", "btn-view": "VER PRODUTOS",
-                "coop-subtitle": "Parceria e Crescimento", "coop-title": "COOPERAÇÃO<br>ESTRATÉGICA",
+                "hero-tag": "Excelência Industrial desde 2006", "hero-title": "Perfis de Aço de Precisão", "hero-desc": "Líder mundial na fabricação de soluções em aço para janelas e infraestrutura.", "btn-view": "VER PRODUTOS",
+                "coop-subtitle": "Parceria e Crescimento", "coop-title": "Cooperação Empresarial Estratégica",
                 "pillar-1-title": "Lijialong Sealing Strip", "pillar-1-desc": "Fabricante especializado de tiras de vedação de alta resiliência.",
-                "pillar-2-title": "OEM e Customizado", "pillar-2-desc": "Os clientes OEM ajudam-nos a alcançar o sucesso, melhorar a qualidade dos produtos e alcançar uma situação de benefício mútuo.",
+                "pillar-2-title": "OEM e Customizado", "pillar-2-desc": "Os clientes OEM ajudam-nos a alcançar o sucesso, melhorar a qualidade dos produtos e alcançar uma situação de ganho mútuo.",
                 "pillar-3-title": "Melan Trade", "pillar-3-desc": "Serviços profissionais de exportação garantindo logística global eficiente."
             },
             ru: { 
                 "nav-home": "Главная", "nav-about": "О нас", "nav-products": "Изделия", "nav-news": "Новости", "nav-contact": "Контакт", 
-                "hero-tag": "Промышленное превосходство с 2006 года", "hero-title": "ПРЕЦИЗИОННЫЕ <br>СТАЛЬНЫЕ ПРОФИЛИ", "hero-desc": "Мировой лидер в производстве стальных решений для оконных систем.", "btn-view": "ПРОДУКЦИЯ",
-                "coop-subtitle": "Партнерство и Рост", "coop-title": "СТРАТЕГИЧЕСКОЕ<br>СОТРУДНИЧЕСТВО",
+                "hero-tag": "Промышленное превосходство с 2006 года", "hero-title": "Стальные Профили Высокой Точности", "hero-desc": "Мировой лидер в производстве стальных решений для оконных систем.", "btn-view": "ПРОДУКЦИЯ",
+                "coop-subtitle": "Партнерство и Рост", "coop-title": "Стратегическое Деловое Сотрудничество",
                 "pillar-1-title": "Уплотнительная лента Lijialong", "pillar-1-desc": "Специализированный производитель уплотнителей для передовых решений герметизации.",
                 "pillar-2-title": "OEM и Заказ", "pillar-2-desc": "OEM-клиенты помогают нам добиваться успеха, повышать качество продукции и достигать взаимовыгодной ситуации.",
                 "pillar-3-title": "Melan Trade", "pillar-3-desc": "Профессиональные импортно-экспортные услуги для глобальной логистики."
             },
             ja: { 
                 "nav-home": "ホーム", "nav-about": "会社概要", "nav-products": "製品", "nav-news": "ニュース", "nav-contact": "お問い合わせ", 
-                "hero-tag": "2006年創業的信頼", "hero-title": "精密な <br>スチールプロファイル", "hero-desc": "窓システムおよび产业インフラ向けの冷間圧延鋼ソリューションのリーダー。", "btn-view": "製品一覧",
+                "hero-tag": "2006年創業的信頼", "hero-title": "精密スチールプロファイル", "hero-desc": "窓システムおよび産業インフラ向けの冷間圧延鋼ソリューションのリーダー。", "btn-view": "製品一覧",
                 "coop-subtitle": "パートナーシップと成長", "coop-title": "戦略的ビジネス提携",
-                "pillar-1-title": "Lijialong シーリングストリップ", "pillar-1-desc": "高度なシーリングソリューション向けの高品質ウェザーストリップ制造。",
+                "pillar-1-title": "Lijialong シーリングストリップ", "pillar-1-desc": "高度なシーリングソリューション向けの高品質ウェザーストリップ製造。",
                 "pillar-2-title": "OEM・カスタム", "pillar-2-desc": "OEMのお客様は、私たちが成功を収め、製品の品質を向上させ、ウィンウィンの状況を実現するのを支援してくださいます。",
                 "pillar-3-title": "Melan Trade", "pillar-3-desc": "効率的なグローバル物流と貿易を保証する専門的な輸出入サービス。"
             },
             ko: { 
                 "nav-home": "홈", "nav-about": "회사 소개", "nav-products": "제품", "nav-news": "소식", "nav-contact": "문의", 
-                "hero-tag": "2006년부터 시작된 기술력", "hero-title": "정밀 <br>스틸 프로파일", "hero-desc": "창호 시스템 및 산업 인프라를 위한 냉간 압연 강철 솔루션의 글로벌 리더.", "btn-view": "제품 보기",
+                "hero-tag": "2006년부터 시작된 기술력", "hero-title": "정밀 스틸 프로파일", "hero-desc": "창호 시스템 및 산업 인프라를 위한 냉간 압연 강철 솔루션의 글로벌 리더.", "btn-view": "제품 보기",
                 "coop-subtitle": "파트너십과 성장", "coop-title": "전략적 비즈니스 협력",
                 "pillar-1-title": "Lijialong 실링 스트립", "pillar-1-desc": "고급 실링 솔루션을 위한 고탄성 웨더스트립 전문 제조업체.",
                 "pillar-2-title": "OEM 및 맞춤 제작", "pillar-2-desc": "OEM 고객은 우리가 성공을 거두고 제품 품질을 개선하며 윈윈 상황을 달성할 수 있도록 지원합니다.",
-                "pillar-3-title": "Melan Trade", "Korean pillar-3-desc": "효율적인 글로벌 물류 및 무역을 보장하는 전문 수출입 서비스."
+                "pillar-3-title": "Melan Trade", "pillar-3-desc": "효율적인 글로벌 물류 및 무역을 보장하는 전문 수출입 서비스."
             },
             ar: { 
                 "nav-home": "الرئيسية", "nav-about": "من نحن", "nav-products": "المنتجات", "nav-news": "الأخبار", "nav-contact": "اتصل بنا", 
-                "hero-tag": "التميز الصناعي منذ 2006", "hero-title": "مقاطع فولاذية <br>عالية الدقة", "hero-desc": "الرائد العالمي in تصنيع حلول الصلب المدرفل على البارد لأنظمة النوافذ.", "btn-view": "عرض المنتجات",
-                "coop-subtitle": "الشراكة والنمو", "coop-title": "تعاون تجاري<br>استراتيجي",
+                "hero-tag": "التميز الصناعي منذ 2006", "hero-title": "مقاطع فولاذية عالية الدقة", "hero-desc": "الرائد العالمي في تصنيع حلول الصلب المدرفل على البارد لأنظمة النوافذ.", "btn-view": "عرض المنتجات",
+                "coop-subtitle": "الشراكة والنمو", "coop-title": "التعاون التجاري الاستراتيجي",
                 "pillar-1-title": "Lijialong شريط إحكام", "pillar-1-desc": "مصنع متخصص لشرائط منع التسرب عالية المرونة للحلول المتقدمة.",
                 "pillar-2-title": "OEM والتخصيص", "pillar-2-desc": "يساعدنا عملاء OEM على تحقيق النجاح وتحسين جودة المنتج وتحقيق وضع مربح للجانبين.",
                 "pillar-3-title": "Melan Trade", "pillar-3-desc": "خدمات استيراد وتصدير احترافية لضمان الخدمات اللوجستية العالمية."
             }
         };
 
-        // 语言对应的国旗代码 (flag-icons 库标准)
-        const flags = { 
-            en: 'us', // English -> USA
-            es: 'es', // Spanish -> Spain
-            pt: 'pt', // Portuguese -> Portugal
-            ru: 'ru', // Russian -> Russia
-            ja: 'jp', // Japanese -> Japan
-            ko: 'kr', // Korean -> Korea
-            ar: 'sa'  // Arabic -> Saudi Arabia
-        };
+        const flags = { en: 'us', es: 'es', pt: 'pt', ru: 'ru', ja: 'jp', ko: 'kr', ar: 'sa' };
 
-        /**
-         * 切换语言并更新国旗图标
-         */
         function changeLanguage(lang) {
-            // 设置页面方向（阿拉伯语从右向左）
             document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
             document.documentElement.lang = lang;
-            
-            // 更新导航栏显示的国旗
             const currentFlag = document.getElementById('currentFlag');
             if(currentFlag) {
                 currentFlag.innerHTML = `<span class="fi fi-${flags[lang]} rounded-sm shadow-sm transition-opacity duration-300"></span>`;
             }
-            
-            // 更新带有 data-i18n 属性的所有文本
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (i18n[lang] && i18n[lang][key]) {
                     element.innerHTML = i18n[lang][key];
                 }
             });
-            
-            // 存储用户偏好
             localStorage.setItem('preferred-lang', lang);
         }
 
-        // 轮播逻辑
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
         const dots = document.querySelectorAll('.dot');
@@ -378,7 +350,6 @@
             goToSlide(currentSlide);
         }, 5000);
 
-        // 初始化
         window.onload = () => {
             const savedLang = localStorage.getItem('preferred-lang') || 'en';
             const select = document.querySelector('select');

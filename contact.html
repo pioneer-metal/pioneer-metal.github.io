@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+            if (data.country_code == 'CN') {
+                window.location.href = "/not-found";
+            }
+        })
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | PIONEER METAL</title>
@@ -10,11 +20,16 @@
     <!-- 国旗图标库 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
     
+    <!-- Leaflet 地图库 -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap');
         
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         
+        /* 针对不同语言的字体优化 */
         :lang(ar) { font-family: 'Noto Sans Arabic', sans-serif; }
         :lang(ja) { font-family: 'Noto Sans JP', sans-serif; }
         :lang(ko) { font-family: 'Noto Sans KR', sans-serif; }
@@ -33,13 +48,45 @@
             padding-right: 1.2rem;
         }
 
-        .contact-input {
-            transition: all 0.3s border-color ease;
-            border-bottom: 2px solid #e2e8f0;
+        .contact-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .contact-input:focus {
-            outline: none;
-            border-bottom-color: #ef4444;
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 地图黑白工业滤镜 */
+        #map {
+            height: 100%;
+            width: 100%;
+            filter: grayscale(1) invert(0.9) contrast(1.2);
+            transition: filter 0.5s;
+        }
+        #map:hover {
+            filter: grayscale(0.5) invert(0) contrast(1);
+        }
+        
+        .leaflet-popup-content-wrapper {
+            background: #000;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .leaflet-popup-tip { background: #000; }
+
+        /* 阿拉伯语 RTL 修正 */
+        [dir="rtl"] .lang-select {
+            background-position: left 0.2rem center;
+            padding-right: 0.5rem;
+            padding-left: 1.2rem;
+        }
+
+        /* RTL 文字对齐 */
+        [dir="rtl"] .text-right-rtl {
+            text-align: right;
         }
     </style>
 </head>
@@ -58,7 +105,7 @@
                 <div class="hidden md:flex items-center space-x-8 font-bold text-[11px] uppercase tracking-[0.2em]">
                     <a href="index.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-home">Home</a>
                     <a href="products.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-products">Products</a>
-                    <a href="index.html#about" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-about">About Us</a>
+                    <a href="about.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-about">About Us</a>
                     <a href="news.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-news">News</a>
                     <a href="contact.html" class="text-red-600 transition" data-i18n="nav-contact">Contact</a>
                     
@@ -91,102 +138,83 @@
     <!-- 联系页面头部 -->
     <main class="pt-40 pb-24">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 
-                <!-- 左侧：文字与表单 -->
-                <div>
-                    <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 text-red-600" data-i18n="contact-h">Get In Touch</h1>
-                    <p class="text-slate-500 text-lg mb-12 font-light leading-relaxed" data-i18n="contact-p">
-                        Ready to elevate your project with precision hot-rolled steel? Our technical team is standing by to provide a customized solution for your specific requirements.
+                <!-- 左侧：文字说明 -->
+                <div class="text-right-rtl">
+                    <!-- 标签变黑 -->
+                    <h2 class="text-black font-black tracking-[0.3em] uppercase mb-4 text-xs" data-i18n="contact-tag">Direct Communication</h2>
+                    <!-- 标题变红 -->
+                    <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 leading-none text-red-600" data-i18n="contact-h">Get In <br>Touch Directly</h1>
+                    <p class="text-slate-500 text-lg mb-12 font-light leading-relaxed max-w-lg" data-i18n="contact-p">
+                        Ready to elevate your project with precision hot-rolled steel? Skip the forms and reach out to our technical team directly via WhatsApp or Email for an instant quote.
                     </p>
-
-                    <form action="#" class="space-y-10">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            <div class="flex flex-col">
-                                <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2" data-i18n="f-name">Full Name</label>
-                                <input type="text" class="contact-input bg-transparent py-3" placeholder="John Doe">
-                            </div>
-                            <div class="flex flex-col">
-                                <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2" data-i18n="f-email">Email Address</label>
-                                <input type="email" class="contact-input bg-transparent py-3" placeholder="john@example.com">
-                            </div>
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2" data-i18n="f-msg">Your Message</label>
-                            <textarea rows="4" class="contact-input bg-transparent py-3 resize-none" placeholder="Tell us about your project..."></textarea>
-                        </div>
-                        <button class="bg-black text-white px-12 py-5 rounded-full font-black text-xs tracking-[0.2em] hover:bg-red-600 transition shadow-2xl flex items-center gap-4 uppercase">
-                            Send Inquiry <i class="fas fa-paper-plane text-[10px]"></i>
-                        </button>
-                    </form>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://wa.me/8613656714278" target="_blank" class="bg-black text-white px-8 py-4 rounded-full font-black text-[10px] tracking-[0.2em] hover:bg-red-600 transition-all flex items-center gap-3 uppercase">
+                            <i class="fab fa-whatsapp text-sm"></i> WhatsApp Us
+                        </a>
+                        <a href="mailto:pioneermetal@163.com" class="border border-slate-200 text-slate-900 px-8 py-4 rounded-full font-black text-[10px] tracking-[0.2em] hover:bg-slate-50 transition-all flex items-center gap-3 uppercase">
+                            <i class="far fa-envelope text-sm"></i> Send Email
+                        </a>
+                    </div>
                 </div>
 
-                <!-- 右侧：联系方式磁贴 -->
-                <div class="space-y-8">
-                    <div class="bg-slate-50 p-10 rounded-[2rem] border border-slate-100 group hover:bg-white hover:shadow-xl transition-all duration-500">
+                <!-- 右侧：联系方式 -->
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="contact-card bg-slate-50 p-10 rounded-[2rem] border border-slate-100 group hover:bg-white hover:shadow-2xl transition-all duration-500">
                         <div class="flex items-start gap-6">
-                            <div class="w-12 h-12 bg-red-600 text-white rounded-xl flex items-center justify-center text-xl shadow-lg shadow-red-100">
+                            <div class="w-14 h-14 bg-red-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-red-100">
                                 <i class="fab fa-whatsapp"></i>
                             </div>
-                            <div>
-                                <h4 class="text-[10px] font-black uppercase tracking-widest text-red-600 mb-2">Instant Chat</h4>
+                            <div class="text-right-rtl">
+                                <h4 class="text-[10px] font-black uppercase tracking-widest text-red-600 mb-2" data-i18n="card-wa-tag">Instant Chat</h4>
                                 <p class="text-2xl font-black text-slate-900">+86 136 5671 4278</p>
-                                <p class="text-slate-400 text-sm mt-2 font-light">Available on WhatsApp & WeChat</p>
+                                <p class="text-slate-400 text-sm mt-2 font-light" data-i18n="card-wa-desc">Direct line for technical support & pricing</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-slate-50 p-10 rounded-[2rem] border border-slate-100 group hover:bg-white hover:shadow-xl transition-all duration-500">
+                    <div class="contact-card bg-slate-50 p-10 rounded-[2rem] border border-slate-100 group hover:bg-white hover:shadow-2xl transition-all duration-500">
                         <div class="flex items-start gap-6">
-                            <div class="w-12 h-12 bg-black text-white rounded-xl flex items-center justify-center text-xl">
+                            <div class="w-14 h-14 bg-black text-white rounded-2xl flex items-center justify-center text-2xl">
                                 <i class="far fa-envelope"></i>
                             </div>
-                            <div>
-                                <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Email Inquiry</h4>
+                            <div class="text-right-rtl">
+                                <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2" data-i18n="card-mail-tag">Email Inquiry</h4>
                                 <p class="text-2xl font-black text-slate-900">pioneermetal@163.com</p>
-                                <p class="text-slate-400 text-sm mt-2 font-light">Fast response within 24 hours</p>
+                                <p class="text-slate-400 text-sm mt-2 font-light" data-i18n="card-mail-desc">Official quotes and documentation</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-slate-50 p-10 rounded-[2rem] border border-slate-100 group hover:bg-white hover:shadow-xl transition-all duration-500">
+                    <div class="contact-card bg-slate-50 p-10 rounded-[2rem] border border-slate-100 group hover:bg-white hover:shadow-2xl transition-all duration-500">
                         <div class="flex items-start gap-6">
-                            <div class="w-12 h-12 bg-slate-200 text-slate-700 rounded-xl flex items-center justify-center text-xl">
+                            <div class="w-14 h-14 bg-slate-200 text-slate-700 rounded-2xl flex items-center justify-center text-2xl">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <div>
-                                <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Factory Location</h4>
-                                <p class="text-lg font-bold text-slate-900 leading-tight">Dongjie, National Highway 106,<br>Xinzhen, Wen'an County, Langfang,<br>Hebei Province, China</p>
+                            <div class="text-right-rtl">
+                                <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2" data-i18n="card-loc-tag">Factory Location</h4>
+                                <p class="text-lg font-bold text-slate-900 leading-tight" data-i18n="card-loc-addr">Dongjie, National Highway 106,<br>Xinzhen, Wen'an County, Langfang,<br>Hebei Province, China</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>
 
-    <!-- 地图占位区域 -->
-    <section class="h-[500px] w-full bg-slate-100 relative grayscale hover:grayscale-0 transition duration-1000 overflow-hidden">
-        <div class="absolute inset-0 opacity-20">
-            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <path d="M0 20 L100 20 M0 50 L100 50 M0 80 L100 80 M20 0 L20 100 M50 0 L50 100 M80 0 L80 100" stroke="#000" stroke-width="0.1" fill="none" />
-            </svg>
-        </div>
-        
-        <div class="absolute inset-0 flex items-center justify-center">
-            <div class="text-center relative">
-                <div class="relative mb-6 mx-auto w-24 h-24 flex items-center justify-center">
-                    <div class="absolute inset-0 bg-red-600/10 rounded-full animate-ping"></div>
-                    <div class="absolute inset-4 bg-red-600/20 rounded-full animate-pulse"></div>
-                    <div class="w-6 h-6 bg-red-600 rounded-full shadow-xl border-4 border-white z-10"></div>
+    <!-- 地图 -->
+    <section class="h-[600px] w-full bg-slate-900 relative">
+        <div id="map"></div>
+        <div class="absolute bottom-10 left-10 z-[1000] pointer-events-none">
+            <div class="bg-black text-white p-6 rounded shadow-2xl border border-white/10 backdrop-blur-md">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
+                    <span class="text-[10px] font-bold tracking-[0.2em] uppercase">Pioneer Metal Global Hub</span>
                 </div>
-                
-                <h3 class="text-xl font-black text-slate-900 uppercase tracking-tighter mb-2">PIONEER METAL BASE</h3>
-                <p class="font-black uppercase tracking-[0.3em] text-[10px] text-red-600 mb-4">Wen'an, Langfang, China</p>
-                <div class="inline-block px-4 py-2 border border-slate-200 rounded text-[9px] font-bold uppercase tracking-widest text-slate-400">
-                    Industrial Hub - North China Region
-                </div>
+                <h3 class="text-lg font-black tracking-tighter">NORTH CHINA REGION</h3>
+                <p class="text-[10px] text-slate-400 mt-1">LAT: 38.86 | LONG: 116.48</p>
             </div>
         </div>
     </section>
@@ -199,18 +227,10 @@
                     &copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved
                 </div>
                 <div class="flex items-center space-x-6">
-                    <a href="https://facebook.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Facebook">
-                        <i class="fab fa-facebook-f text-lg"></i>
-                    </a>
-                    <a href="https://twitter.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Twitter X">
-                        <i class="fab fa-x-twitter text-lg"></i>
-                    </a>
-                    <a href="https://instagram.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Instagram">
-                        <i class="fab fa-instagram text-lg"></i>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="LinkedIn">
-                        <i class="fab fa-linkedin-in text-lg"></i>
-                    </a>
+                    <a href="https://facebook.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-facebook-f text-lg"></i></a>
+                    <a href="https://twitter.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-x-twitter text-lg"></i></a>
+                    <a href="https://instagram.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-instagram text-lg"></i></a>
+                    <a href="https://linkedin.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-linkedin-in text-lg"></i></a>
                 </div>
             </div>
         </div>
@@ -220,13 +240,59 @@
         const i18n = {
             en: { 
                 "nav-home": "Home", "nav-products": "Products", "nav-about": "About Us", "nav-news": "News", "nav-contact": "Contact",
-                "contact-h": "Get In Touch", "contact-p": "Ready to elevate your project with precision hot-rolled steel?",
-                "f-name": "Full Name", "f-email": "Email Address", "f-msg": "Your Message"
+                "contact-tag": "Direct Communication", "contact-h": "Get In <br>Touch Directly", 
+                "contact-p": "Ready to elevate your project with precision hot-rolled steel? Skip the forms and reach out to our technical team directly via WhatsApp or Email for an instant quote.",
+                "card-wa-tag": "Instant Chat", "card-wa-desc": "Direct line for technical support & pricing",
+                "card-mail-tag": "Email Inquiry", "card-mail-desc": "Official quotes and documentation",
+                "card-loc-tag": "Factory Location", "card-loc-addr": "Dongjie, National Highway 106,<br>Xinzhen, Wen'an County, Langfang,<br>Hebei Province, China"
             },
             es: { 
                 "nav-home": "Inicio", "nav-products": "Productos", "nav-about": "Sobre Nosotros", "nav-news": "Noticias", "nav-contact": "Contacto",
-                "contact-h": "Contáctenos", "contact-p": "¿Listo para elevar su proyecto con acero laminado en caliente de precisión?",
-                "f-name": "Nombre Completo", "f-email": "Correo Electrónico", "f-msg": "Su Mensaje"
+                "contact-tag": "Comunicación Directa", "contact-h": "Contáctenos <br>Directamente", 
+                "contact-p": "¿Listo para elevar su proyecto con acero laminado en caliente de precisión? Evite formularios y contacte directamente vía WhatsApp o Email.",
+                "card-wa-tag": "Chat Instantáneo", "card-wa-desc": "Línea directa para soporte técnico y precios",
+                "card-mail-tag": "Consulta por Correo", "card-mail-desc": "Cotizaciones oficiales y documentación",
+                "card-loc-tag": "Ubicación de Fábrica", "card-loc-addr": "Dongjie, Carretera Nacional 106,<br>Xinzhen, Condado de Wen'an, Langfang,<br>Provincia de Hebei, China"
+            },
+            pt: { 
+                "nav-home": "Início", "nav-products": "Produtos", "nav-about": "Sobre Nós", "nav-news": "Notícias", "nav-contact": "Contato",
+                "contact-tag": "Comunicação Direta", "contact-h": "Entre em <br>Contato", 
+                "contact-p": "Pronto para elevar seu projeto com aço laminado a quente de precisão? Fale diretamente com nossa equipe técnica via WhatsApp ou E-mail.",
+                "card-wa-tag": "Chat Instantâneo", "card-wa-desc": "Linha direta para suporte técnico e preços",
+                "card-mail-tag": "Consulta por E-mail", "card-mail-desc": "Cotações oficiais e documentação",
+                "card-loc-tag": "Localização da Fábrica", "card-loc-addr": "Dongjie, Rodovia Nacional 106,<br>Xinzhen, Condado de Wen'an, Langfang,<br>Província de Hebei, China"
+            },
+            ru: { 
+                "nav-home": "Главная", "nav-products": "Продукция", "nav-about": "О нас", "nav-news": "Новости", "nav-contact": "Контакты",
+                "contact-tag": "Прямая связь", "contact-h": "Свяжитесь <br>с нами", 
+                "contact-p": "Готовы улучшить свой проект с помощью прецизионной стали? Свяжитесь с нашей командой напрямую через WhatsApp или Email.",
+                "card-wa-tag": "Быстрый чат", "card-wa-desc": "Прямая линия для техподдержки и цен",
+                "card-mail-tag": "Email запрос", "card-mail-desc": "Официальные предложения и документы",
+                "card-loc-tag": "Адрес фабрики", "card-loc-addr": "Дунцзе, Национальное шоссе 106,<br>Синьчжэнь, уезд Вэньань, Ланфан,<br>провинция Хэбэй, Китай"
+            },
+            ja: { 
+                "nav-home": "ホーム", "nav-products": "製品", "nav-about": "私たちについて", "nav-news": "ニュース", "nav-contact": "お問い合わせ",
+                "contact-tag": "直接コミュニケーション", "contact-h": "直接お問い<br>合わせください", 
+                "contact-p": "精密熱延鋼板でお客様のプロジェクトを向上させませんか？フォームを省略し、WhatsAppまたはメールで直接お問い合わせください。",
+                "card-wa-tag": "即時チャット", "card-wa-desc": "テクニカルサポートと価格の直通ライン",
+                "card-mail-tag": "メールでのお問い合わせ", "card-mail-desc": "公式見積書および書類",
+                "card-loc-tag": "工場所在地", "card-loc-addr": "中国河北省廊坊市文安県<br>新鎮国道106号線東街"
+            },
+            ko: { 
+                "nav-home": "홈", "nav-products": "제품", "nav-about": "회사 소개", "nav-news": "뉴스", "nav-contact": "문의하기",
+                "contact-tag": "직접 소통", "contact-h": "직접 <br>문의하기", 
+                "contact-p": "정밀 열연강판으로 프로젝트의 품질을 높이십시오. 복잡한 절차 없이 WhatsApp 또는 이메일로 직접 문의해 주시기 바랍니다.",
+                "card-wa-tag": "실시간 채팅", "card-wa-desc": "기술 지원 및 견적 직통 번호",
+                "card-mail-tag": "이메일 문의", "card-mail-desc": "공식 견적 및 문서 지원",
+                "card-loc-tag": "공장 위치", "card-loc-addr": "중국 허베이성 랑방시 원안현<br>신전 국도 106호선 동지에"
+            },
+            ar: { 
+                "nav-home": "الرئيسية", "nav-products": "المنتجات", "nav-about": "من نحن", "nav-news": "الأخبار", "nav-contact": "اتصل بنا",
+                "contact-tag": "تواصل مباشر", "contact-h": "تواصل معنا <br>مباشرة", 
+                "contact-p": "هل أنت جاهز للارتقاء بمشروعك؟ تواصل مع فريقنا الفني مباشرة عبر واتساب أو البريد الإلكتروني للحصول على عرض سعر فوري.",
+                "card-wa-tag": "دردشة فورية", "card-wa-desc": "خط مباشر للدعم الفني والأسعار",
+                "card-mail-tag": "استفسار بريدي", "card-mail-desc": "عروض الأسعار والوثائق الرسمية",
+                "card-loc-tag": "موقع المصنع", "card-loc-addr": "دونغجيه، الطريق الوطني 106،<br>شينتشن، مقاطعة وينان، لانغفانغ،<br>مقاطعة خبي، الصين"
             }
         };
 
@@ -237,7 +303,7 @@
             document.documentElement.lang = lang;
             const currentFlag = document.getElementById('currentFlag');
             if(currentFlag) {
-                currentFlag.innerHTML = `<span class="fi fi-${flags[lang]} rounded-sm shadow-sm"></span>`;
+                currentFlag.innerHTML = `<span class="fi fi-${flags[lang]} rounded-sm shadow-sm transition-all"></span>`;
             }
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
@@ -248,11 +314,24 @@
             localStorage.setItem('preferred-lang', lang);
         }
 
+        function initMap() {
+            const map = L.map('map', { center: [38.86, 116.48], zoom: 12, scrollWheelZoom: false, zoomControl: false });
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+            const redIcon = L.divIcon({
+                className: 'custom-div-icon',
+                html: "<div style='background-color:#dc2626; width:16px; height:16px; border:3px solid white; border-radius:50%; shadow: 0 0 15px rgba(220,38,38,0.5);'></div>",
+                iconSize: [16, 16], iconAnchor: [8, 8]
+            });
+            L.marker([38.86, 116.48], {icon: redIcon}).addTo(map).bindPopup("PIONEER METAL FACTORY");
+            L.control.zoom({ position: 'bottomright' }).addTo(map);
+        }
+
         window.onload = () => {
             const savedLang = localStorage.getItem('preferred-lang') || 'en';
             const select = document.querySelector('select');
             if(select) select.value = savedLang;
             changeLanguage(savedLang);
+            initMap();
         };
     </script>
 </body>

@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+            if (data.country_code == 'CN') {
+                window.location.href = "/not-found";
+            }
+        })
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products | PIONEER METAL</title>
@@ -64,6 +74,14 @@
         .btn-hover-effect:hover::after {
             left: 100%;
         }
+
+        /* 针对 RTL 的对齐 */
+        [dir="rtl"] .text-center-rtl { text-align: center; }
+        [dir="rtl"] .lang-select {
+            background-position: left 0.2rem center;
+            padding-right: 0.5rem;
+            padding-left: 1.2rem;
+        }
     </style>
 </head>
 <body class="bg-white text-slate-900">
@@ -80,14 +98,14 @@
                 
                 <div class="hidden md:flex items-center space-x-8 font-bold text-[11px] uppercase tracking-[0.2em]">
                     <a href="index.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-home">Home</a>
-                    <a href="index.html#about" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-about">About Us</a>
+                    <a href="about.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-about">About Us</a>
                     <a href="products.html" class="text-red-600 transition" data-i18n="nav-products">Products</a>
                     <a href="news.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-news">News</a>
                     <a href="contact.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-contact">Contact</a>
                     
                     <div class="relative flex items-center border-l pl-6 border-slate-200 ml-4 group">
                         <div id="currentFlag" class="flex items-center mr-2">
-                            <span class="fi fi-us rounded-sm shadow-sm"></span>
+                            <span class="fi fi-us rounded-sm shadow-sm transition-opacity duration-300"></span>
                         </div>
                         <select onchange="changeLanguage(this.value)" class="lang-select bg-transparent text-[11px] font-black focus:outline-none cursor-pointer text-slate-700 uppercase">
                             <option value="en">English</option>
@@ -112,10 +130,10 @@
     </nav>
 
     <!-- 主体内容 -->
-    <main class="pt-32 pb-24">
+    <main class="pt-40 pb-24">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <!-- 字体大小已从 text-5xl md:text-7xl 缩小为 text-4xl md:text-5xl -->
-            <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-6" data-i18n="products-title">Industrial Steel Solutions</h1>
+            <!-- 字体微缩至 6xl，颜色改为红色 -->
+            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 leading-none whitespace-nowrap overflow-hidden text-ellipsis text-red-600" data-i18n="products-title">Industrial Steel Solutions</h1>
             <p class="text-slate-500 max-w-2xl mx-auto text-lg font-light leading-relaxed" data-i18n="products-desc">
                 Pioneer Metal provides premium hot-rolled steel profiles with high precision and durability for global construction standards.
             </p>
@@ -123,53 +141,53 @@
             <!-- 产品展示区域 -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-20">
                 
-                <!-- 产品 01: 门窗钢衬 -->
+                <!-- 产品 01 -->
                 <div class="product-card bg-white border border-slate-100 rounded-3xl overflow-hidden flex flex-col shadow-sm">
                     <div class="relative group overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800" alt="Steel Reinforcement" class="product-image transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span class="text-white font-bold tracking-widest text-xs border border-white px-4 py-2 uppercase">Galvanized Steel</span>
+                            <span class="text-white font-bold tracking-widest text-xs border border-white px-4 py-2 uppercase" data-i18n="p1-tag">Galvanized Steel</span>
                         </div>
                     </div>
-                    <div class="p-8 flex flex-col flex-grow">
+                    <div class="p-8 flex flex-col flex-grow text-center-rtl">
                         <h3 class="text-2xl font-black mb-3 uppercase tracking-tight text-slate-900" data-i18n="p1-name">Steel Reinforcement</h3>
                         <p class="text-slate-500 text-sm mb-8 leading-relaxed" data-i18n="p1-desc">High-strength galvanized steel profiles for UPVC/Aluminum window and door systems. Ensuring structural integrity.</p>
                         <a href="#" class="btn-hover-effect mt-auto bg-red-600 text-white py-4 rounded-xl font-black text-xs tracking-widest hover:bg-black transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-100 uppercase">
-                            <i class="fas fa-file-download"></i> DOWNLOAD E-CATALOG
+                            <i class="fas fa-file-download"></i> <span data-i18n="btn-catalog">DOWNLOAD E-CATALOG</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- 产品 02: 轻钢龙骨 -->
+                <!-- 产品 02 -->
                 <div class="product-card bg-white border border-slate-100 rounded-3xl overflow-hidden flex flex-col shadow-sm">
                     <div class="relative group overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800" alt="Light Gauge Steel" class="product-image transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span class="text-white font-bold tracking-widest text-xs border border-white px-4 py-2 uppercase">Framing System</span>
+                            <span class="text-white font-bold tracking-widest text-xs border border-white px-4 py-2 uppercase" data-i18n="p2-tag">Framing System</span>
                         </div>
                     </div>
-                    <div class="p-8 flex flex-col flex-grow">
+                    <div class="p-8 flex flex-col flex-grow text-center-rtl">
                         <h3 class="text-2xl font-black mb-3 uppercase tracking-tight text-slate-900" data-i18n="p2-name">Drywall & Ceiling</h3>
                         <p class="text-slate-500 text-sm mb-8 leading-relaxed" data-i18n="p2-desc">Lightweight steel framing systems for partition walls and architectural suspended ceilings. Fast installation.</p>
                         <a href="#" class="btn-hover-effect mt-auto bg-red-600 text-white py-4 rounded-xl font-black text-xs tracking-widest hover:bg-black transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-100 uppercase">
-                            <i class="fas fa-file-download"></i> DOWNLOAD E-CATALOG
+                            <i class="fas fa-file-download"></i> <span data-i18n="btn-catalog">DOWNLOAD E-CATALOG</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- 产品 03: 定制加工 -->
+                <!-- 产品 03 -->
                 <div class="product-card bg-white border border-slate-100 rounded-3xl overflow-hidden flex flex-col shadow-sm">
                     <div class="relative group overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&q=80&w=800" alt="Custom Metal Fabrication" class="product-image transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span class="text-white font-bold tracking-widest text-xs border border-white px-4 py-2 uppercase">Bespoke Design</span>
+                            <span class="text-white font-bold tracking-widest text-xs border border-white px-4 py-2 uppercase" data-i18n="p3-tag">Bespoke Design</span>
                         </div>
                     </div>
-                    <div class="p-8 flex flex-col flex-grow">
+                    <div class="p-8 flex flex-col flex-grow text-center-rtl">
                         <h3 class="text-2xl font-black mb-3 uppercase tracking-tight text-slate-900" data-i18n="p3-name">Custom Fabrication</h3>
                         <p class="text-slate-500 text-sm mb-8 leading-relaxed" data-i18n="p3-desc">Specialized hot-rolling, punching, and CNC services tailored to your specific technical drawings and engineering needs.</p>
                         <a href="https://wa.me/8613656714278" target="_blank" class="btn-hover-effect mt-auto bg-red-600 text-white py-4 rounded-xl font-black text-xs tracking-widest hover:bg-black transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-100 uppercase">
-                            <i class="fab fa-whatsapp"></i> INQUIRY NOW
+                            <i class="fab fa-whatsapp"></i> <span data-i18n="btn-inquiry">INQUIRY NOW</span>
                         </a>
                     </div>
                 </div>
@@ -181,23 +199,15 @@
     <!-- 页脚 -->
     <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-center-rtl">
                 <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left">
                     &copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved
                 </div>
                 <div class="flex items-center space-x-6">
-                    <a href="https://facebook.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Facebook">
-                        <i class="fab fa-facebook-f text-lg"></i>
-                    </a>
-                    <a href="https://twitter.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Twitter X">
-                        <i class="fab fa-x-twitter text-lg"></i>
-                    </a>
-                    <a href="https://instagram.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Instagram">
-                        <i class="fab fa-instagram text-lg"></i>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="LinkedIn">
-                        <i class="fab fa-linkedin-in text-lg"></i>
-                    </a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-facebook-f text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-x-twitter text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-instagram text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-linkedin-in text-lg"></i></a>
                 </div>
             </div>
         </div>
@@ -206,18 +216,67 @@
     <script>
         const i18n = {
             en: { 
-                "nav-home": "Home", "nav-products": "Products", "nav-about": "About Us", "nav-news": "News", "nav-contact": "Contact", 
-                "products-title": "Industrial Steel Solutions", "products-desc": "Pioneer Metal provides premium hot-rolled steel profiles with high precision and durability.",
-                "p1-name": "Steel Reinforcement", "p1-desc": "High-strength galvanized steel profiles for window systems. Ensuring structural integrity.",
-                "p2-name": "Drywall & Ceiling", "p2-desc": "Lightweight steel framing systems for partition walls and architectural suspended ceilings.",
-                "p3-name": "Custom Fabrication", "p3-desc": "Specialized hot-rolling and CNC services tailored to your specific technical drawings."
+                "nav-home": "Home", "nav-about": "About Us", "nav-products": "Products", "nav-news": "News", "nav-contact": "Contact", 
+                "products-title": "Industrial Steel Solutions", 
+                "products-desc": "Pioneer Metal provides premium hot-rolled steel profiles with high precision and durability for global construction standards.",
+                "p1-tag": "Galvanized Steel", "p1-name": "Steel Reinforcement", "p1-desc": "High-strength galvanized steel profiles for UPVC/Aluminum window and door systems. Ensuring structural integrity.",
+                "p2-tag": "Framing System", "p2-name": "Drywall & Ceiling", "p2-desc": "Lightweight steel framing systems for partition walls and architectural suspended ceilings. Fast installation.",
+                "p3-tag": "Bespoke Design", "p3-name": "Custom Fabrication", "p3-desc": "Specialized hot-rolling, punching, and CNC services tailored to your specific technical drawings.",
+                "btn-catalog": "DOWNLOAD E-CATALOG", "btn-inquiry": "INQUIRY NOW"
             },
             es: { 
-                "nav-home": "Inicio", "nav-products": "Productos", "nav-about": "Sobre Nosotros", "nav-news": "Noticias", "nav-contact": "Contacto",
-                "products-title": "Soluciones de Acero Industrial", "products-desc": "Pioneer Metal ofrece perfiles de acero laminados en caliente con alta precisión y durabilidad.",
-                "p1-name": "Refuerzo de Acero", "p1-desc": "Perfiles de acero galvanizado para sistemas de ventanas. Asegurando la integridad.",
-                "p2-name": "Pared Seca y Techo", "p2-desc": "Sistemas de estructuras de acero ligero para tabiques y techos suspendidos.",
-                "p3-name": "Fabricación Personalizada", "p3-desc": "Servicios especializados de laminación en caliente adaptados a sus planos técnicos."
+                "nav-home": "Inicio", "nav-about": "Sobre Nosotros", "nav-products": "Productos", "nav-news": "Noticias", "nav-contact": "Contacto",
+                "products-title": "Soluciones de Acero Industrial", 
+                "products-desc": "Pioneer Metal ofrece perfiles de acero laminados en caliente con alta precisión y durabilidad para estándares globales.",
+                "p1-tag": "Acero Galvanizado", "p1-name": "Refuerzo de Acero", "p1-desc": "Perfiles de acero galvanizado de alta resistencia para sistemas de ventanas y puertas de UPVC/Aluminio.",
+                "p2-tag": "Sistema de Estructura", "p2-name": "Pared Seca y Techo", "p2-desc": "Sistemas de estructuras de acero ligero para tabiques y techos suspendidos arquitectónicos.",
+                "p3-tag": "Diseño a Medida", "p3-name": "Fabricación Personalizada", "p3-desc": "Servicios especializados de laminación, punzonado y CNC adaptados a sus planos técnicos.",
+                "btn-catalog": "DESCARGAR CATÁLOGO", "btn-inquiry": "CONSULTAR AHORA"
+            },
+            pt: { 
+                "nav-home": "Início", "nav-about": "Sobre Nós", "nav-products": "Produtos", "nav-news": "Notícias", "nav-contact": "Contato",
+                "products-title": "Soluções de Aço Industrial", 
+                "products-desc": "A Pioneer Metal fornece perfis de aço laminados a quente de alta precisão e durabilidade para construção civil.",
+                "p1-tag": "Aço Galvanizado", "p1-name": "Reforço de Aço", "p1-desc": "Perfis de aço galvanizado para sistemas de esquadrias de PVC/Alumínio, garantindo integridade estrutural.",
+                "p2-tag": "Sistema de Estrutura", "p2-name": "Drywall e Forρο", "p2-desc": "Sistemas de estruturas leves em aço para paredes divisórias e forros suspensos arquitetônicos.",
+                "p3-tag": "Design Sob Medida", "p3-name": "Fabricação Customizada", "p3-desc": "Serviços de laminação e usinagem CNC adaptados aos seus desenhos técnicos e necessidades.",
+                "btn-catalog": "BAIXAR CATÁLOGO", "btn-inquiry": "SOLICITAR COTAÇÃO"
+            },
+            ru: { 
+                "nav-home": "Главная", "nav-about": "О нас", "nav-products": "Продукция", "nav-news": "Новости", "nav-contact": "Контакты",
+                "products-title": "Промышленные Стальные Решения", 
+                "products-desc": "Pioneer Metal производит высокоточные стальные профили для глобальных строительных стандартов.",
+                "p1-tag": "Оцинкованная Сталь", "p1-name": "Стальное Армирование", "p1-desc": "Оцинкованные профили для оконных и дверных систем из ПВХ и алюминия.",
+                "p2-tag": "Каркасная Система", "p2-name": "Гипсокартон и Потолки", "p2-desc": "Легкие стальные каркасные системы для перегородок и подвесных потолков.",
+                "p3-tag": "Индивидуальный Дизайн", "p3-name": "Индивидуальный Заказ", "p3-desc": "Специализированная горячая прокатка и ЧПУ-обработка по вашим чертежам.",
+                "btn-catalog": "СКАЧАТЬ КАТАЛОГ", "btn-inquiry": "УЗНАТЬ ЦЕНУ"
+            },
+            ja: { 
+                "nav-home": "ホーム", "nav-about": "私たちについて", "nav-products": "製品", "nav-news": "ニュース", "nav-contact": "お問い合わせ",
+                "products-title": "産業用鋼材ソリューション", 
+                "products-desc": "パイオニアメタルは、世界の建設基準に合わせた高精度で耐久性のある熱延鋼製プロファイルを提供します。",
+                "p1-tag": "亜鉛メッキ鋼", "p1-name": "窓・ドア用補强材", "p1-desc": "UPVC/アルミニウム窓システム用の高强度亜鉛メッキ鋼プロファイル。构造の安定性を确保します。",
+                "p2-tag": "下地システム", "p2-name": "内装用軽天材", "p2-desc": "间仕切り壁や建筑用吊り天井用の軽量鉄骨下地システム。迅速な施工が可能です。",
+                "p3-tag": "オーダーメイド", "p3-name": "カスタム制造", "p3-desc": "お客様の设计図に基づいた特殊热延加工、パンチング、CNC加工サービスを提供します。",
+                "btn-catalog": "カタログをダウンロード", "btn-inquiry": "今すぐお問い合わせ"
+            },
+            ko: { 
+                "nav-home": "홈", "nav-about": "회사 소개", "nav-products": "제품", "nav-news": "뉴스", "nav-contact": "문의하기",
+                "products-title": "산업용 철강 솔루션", 
+                "products-desc": "파이오니아 메탈은 글로벌 건설 표준에 부합하는 고정밀 및 고내구성 열연 강철 프로파일을 제공합니다.",
+                "p1-tag": "아연 도금 강판", "p1-name": "강철 보강재", "p1-desc": "UPVC 및 알루미늄 창호 시스템을 위한 고강도 아연 도금 강철 프로파일입니다.",
+                "p2-tag": "프레이밍 시스템", "p2-name": "건축용 경량 철골", "p2-desc": "칸막이벽 및 천장용 경량 스틸 프레이밍 시스템으로 빠른 설치를 지원합니다.",
+                "p3-tag": "맞춤형 디자인", "p3-name": "맞춤형 제작", "p3-desc": "특정 기술 도면 및 엔지니어링 요구 사항에 맞춘 특수 압연 및 CNC 가공 서비스입니다.",
+                "btn-catalog": "카탈로그 다운로드", "btn-inquiry": "지금 문의하기"
+            },
+            ar: { 
+                "nav-home": "الرئيسية", "nav-about": "من نحن", "nav-products": "المنتجات", "nav-news": "الأخبار", "nav-contact": "اتصل بنا",
+                "products-title": "حلول الصلب الصناعية", 
+                "products-desc": "توفر شركة بايونير ميتال قطاعات فولاذية مدرفلة على الساخن بدقة عالية ومتانة فائقة للمعايير العالمية.",
+                "p1-tag": "فولاذ مجلفن", "p1-name": "تدعيم الصلب", "p1-desc": "قطاعات فولاذية مجلفنة عالية القوة لأنظمة نوافذ وأبواب الألومنيوم والـ PVC.",
+                "p2-tag": "نظام التأطير", "p2-name": "الأسقف والقواطع", "p2-desc": "أنظمة تأطير فولاذية خفيفة الوزن للجدران الفاصلة والأسقف المعلقة المعمارية.",
+                "p3-tag": "تصميم مخصص", "p3-name": "التصنيع المخصص", "p3-desc": "خدمات الدرفلة والتثقيب وCNC المتخصصة المصممة وفقاً للرسومات الفنية الخاصة بك.",
+                "btn-catalog": "تحميل الكتالوج", "btn-inquiry": "استفسر الآن"
             }
         };
 
@@ -228,7 +287,7 @@
             document.documentElement.lang = lang;
             const currentFlag = document.getElementById('currentFlag');
             if(currentFlag) {
-                currentFlag.innerHTML = `<span class="fi fi-${flags[lang]} rounded-sm shadow-sm"></span>`;
+                currentFlag.innerHTML = `<span class="fi fi-${flags[lang]} rounded-sm shadow-sm transition-opacity duration-300"></span>`;
             }
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');

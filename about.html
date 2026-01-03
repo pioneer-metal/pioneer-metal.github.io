@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+            if (data.country_code == 'CN') {
+                window.location.href = "/not-found";
+            }
+        })
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | PIONEER METAL</title>
@@ -33,11 +43,29 @@
             padding-right: 1.2rem;
         }
 
-        .photo-frame {
+        /* 轮播图样式 */
+        .carousel-container {
+            position: relative;
+            width: 100%;
             overflow: hidden;
             border-radius: 1rem;
-            background: #f1f5f9;
         }
+        .carousel-slide {
+            display: none;
+            animation: fadeEffect 1s;
+        }
+        @keyframes fadeEffect {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+        
+        /* 阿拉伯语适配 */
+        [dir="rtl"] .lang-select {
+            background-position: left 0.2rem center;
+            padding-right: 0.5rem;
+            padding-left: 1.2rem;
+        }
+        [dir="rtl"] .text-left-rtl { text-align: right; }
     </style>
 </head>
 <body class="bg-white text-slate-900">
@@ -85,25 +113,47 @@
         </div>
     </nav>
 
-    <!-- 顶部团队照片区 -->
+    <!-- 顶部内容 -->
     <header class="pt-32 pb-16 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="mb-12 max-w-4xl">
+            <div class="mb-10 max-w-full text-left-rtl">
                 <h2 class="text-red-600 font-black tracking-[0.3em] uppercase mb-4 text-xs" data-i18n="about-tag">About Pioneer Metal</h2>
-                <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 leading-none" data-i18n="about-header">Our Team <br>& Passion</h1>
-                <!-- 字体缩小：从 text-lg md:text-xl 调整为 text-sm md:text-base -->
-                <p class="text-slate-500 text-sm md:text-base font-light leading-relaxed mb-8" data-i18n="about-intro">
+                <!-- 字体放大，移除换行，保持同一行，添加溢出保护 -->
+                <h1 class="text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 leading-none whitespace-nowrap overflow-hidden text-ellipsis" data-i18n="about-header">Our Team & Passion</h1>
+                <p class="text-slate-500 text-sm md:text-base font-light leading-relaxed mb-8 max-w-3xl" data-i18n="about-intro">
                     Pioneer Metal Product Factory is a leading supplier of high-quality metal sections, serving a wide range of industries across the China. With years of expertise, we specialize in manufacturing reinforcement steel of uPvc window and door, offering Drywall Steel Sections and others.
                 </p>
             </div>
             
-            <div class="photo-frame aspect-[21/9] w-full shadow-2xl group overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1522071823991-b9671f9d7f1f?auto=format&fit=crop&q=80&w=2000" alt="Team Photo" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105">
+            <!-- 三图轮播组件 -->
+            <div class="carousel-container aspect-[21/9] shadow-2xl bg-slate-100">
+                <div class="carousel-slide h-full">
+                    <img src="https://images.unsplash.com/photo-1522071823991-b9671f9d7f1f?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Team 1">
+                </div>
+                <div class="carousel-slide h-full">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Team 2">
+                </div>
+                <div class="carousel-slide h-full">
+                    <img src="https://images.unsplash.com/photo-1600880212319-7524feb2716a?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Team 3">
+                </div>
+
+                <button onclick="plusSlides(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/90 text-black w-10 h-10 rounded-full flex items-center justify-center transition-all backdrop-blur-sm shadow-lg">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button onclick="plusSlides(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/90 text-black w-10 h-10 rounded-full flex items-center justify-center transition-all backdrop-blur-sm shadow-lg">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
+                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"></span>
+                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"></span>
+                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"></span>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- 简介文字区 -->
+    <!-- 简介 -->
     <section class="py-20 bg-slate-50">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <p class="text-xl md:text-2xl font-light text-slate-600 leading-relaxed italic" data-i18n="about-quote">
@@ -112,29 +162,29 @@
         </div>
     </section>
 
-    <!-- 中间车间照片区 -->
+    <!-- 实力展示 -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="space-y-6">
+                <div class="space-y-6 text-left-rtl">
                     <h3 class="text-3xl font-black uppercase italic tracking-tighter" data-i18n="story-t">Manufacturing <span class="text-red-600">Power</span></h3>
                     <p class="text-slate-500 text-sm md:text-base leading-relaxed font-light" data-i18n="story-d1">
-                        Our factory is equipped with advanced automated production lines. Each process, from raw material selection to cold rolling and finishing, is monitored by experienced engineers to ensure the highest quality consistency.
+                        Our factory is equipped with advanced automated production lines. Each process, from raw material selection to cold rolling and finishing, is monitored by experienced engineers.
                     </p>
                     <div class="flex gap-12 pt-4">
                         <div>
                             <div class="text-3xl font-black text-slate-900">18+</div>
-                            <div class="text-[10px] font-black text-red-600 uppercase tracking-widest mt-1">Years Experience</div>
+                            <div class="text-[10px] font-black text-red-600 uppercase tracking-widest mt-1" data-i18n="stat-exp">Years Experience</div>
                         </div>
                         <div>
                             <div class="text-3xl font-black text-slate-900">9000t</div>
-                            <div class="text-[10px] font-black text-red-600 uppercase tracking-widest mt-1">Annual Tons</div>
+                            <div class="text-[10px] font-black text-red-600 uppercase tracking-widest mt-1" data-i18n="stat-tons">Annual Tons</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="photo-frame aspect-square lg:aspect-video shadow-xl">
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200" alt="Workshop Photo" class="w-full h-full object-cover">
+                <div class="rounded-2xl overflow-hidden aspect-square lg:aspect-video shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200" alt="Workshop" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
@@ -143,45 +193,112 @@
     <!-- 页脚 -->
     <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <!-- 版权文字靠左 -->
-                <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-left-rtl">
+                <div class="text-[10px] font-bold uppercase tracking-[0.3em]">
                     &copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved
                 </div>
-                <!-- 社交图标 -->
                 <div class="flex items-center space-x-6">
-                    <a href="https://facebook.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Facebook">
-                        <i class="fab fa-facebook-f text-lg"></i>
-                    </a>
-                    <a href="https://twitter.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Twitter X">
-                        <i class="fab fa-x-twitter text-lg"></i>
-                    </a>
-                    <a href="https://instagram.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Instagram">
-                        <i class="fab fa-instagram text-lg"></i>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="LinkedIn">
-                        <i class="fab fa-linkedin-in text-lg"></i>
-                    </a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-facebook-f text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-x-twitter text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-instagram text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-linkedin-in text-lg"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
+        // 轮播逻辑
+        let slideIndex = 1;
+        let slideTimer;
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("carousel-slide");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" bg-red-600", " bg-white/30");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " bg-red-600";
+            
+            clearTimeout(slideTimer);
+            slideTimer = setTimeout(() => plusSlides(1), 5000); 
+        }
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // 语言翻译数据
         const i18n = {
             en: { 
                 "nav-home": "Home", "nav-about": "About Us", "nav-products": "Products", "nav-news": "News", "nav-contact": "Contact",
                 "about-tag": "About Pioneer Metal", "about-header": "Our Team & Passion",
-                "about-intro": "Pioneer Metal Product Factory is a leading supplier of high-quality metal sections, serving a wide range of industries across the China. With years of expertise, we specialize in manufacturing reinforcement steel of uPvc window and door, offering Drywall Steel Sections and others.",
-                "about-quote": "\"Precision is not just a standard, it's our promise. Since 2006, we have been dedicated to providing the most reliable steel profile solutions to partners worldwide.\"",
-                "story-t": "Manufacturing Power", "story-d1": "Our factory is equipped with advanced automated production lines, ensuring the highest quality consistency for every steel profile."
+                "about-intro": "Pioneer Metal Product Factory is a leading supplier of high-quality metal sections, serving a wide range of industries across the China.",
+                "about-quote": "\"Precision is not just a standard, it's our promise. Since 2006, we have been dedicated to providing the most reliable steel profile solutions.\"",
+                "story-t": "Manufacturing <span class='text-red-600'>Power</span>",
+                "story-d1": "Our factory is equipped with advanced automated production lines. Each process is monitored by experienced engineers.",
+                "stat-exp": "Years Experience", "stat-tons": "Annual Tons"
             },
             es: { 
                 "nav-home": "Inicio", "nav-about": "Sobre Nosotros", "nav-products": "Productos", "nav-news": "Noticias", "nav-contact": "Contacto",
                 "about-tag": "Sobre Pioneer Metal", "about-header": "Nuestro Equipo y Pasión",
-                "about-intro": "Pioneer Metal Product Factory es un proveedor líder de secciones metálicas de alta calidad, que sirve a una amplia gama de industrias en toda China. Con años de experiencia, nos especializamos en la fabricación de acero de refuerzo para ventanas y puertas de uPvc.",
-                "about-quote": "\"La precisión no es solo un estándar, es nuestra promesa. Desde 2006, nos dedicamos a brindar las soluciones de perfiles de acero más confiables.\"",
-                "story-t": "Poder de Fabricación", "story-d1": "Nuestra fábrica está equipada con líneas de producción automatizadas avanzadas."
+                "about-intro": "Pioneer Metal es un proveedor líder de secciones metálicas de alta calidad en China.",
+                "about-quote": "\"La precisión no es solo un estándar, es nuestra promesa. Desde 2006, ofrecemos las soluciones de acero más confiables.\"",
+                "story-t": "Poder de <span class='text-red-600'>Fabricación</span>",
+                "story-d1": "Nuestra fábrica cuenta con líneas de producción automatizadas y supervisadas por ingenieros expertos.",
+                "stat-exp": "Años de Experiencia", "stat-tons": "Toneladas Anuales"
+            },
+            pt: { 
+                "nav-home": "Início", "nav-about": "Sobre Nós", "nav-products": "Produtos", "nav-news": "Notícias", "nav-contact": "Contato",
+                "about-tag": "Sobre a Pioneer Metal", "about-header": "Nossa Equipe e Paixão",
+                "about-intro": "A Pioneer Metal é uma fornecedora líder de seções metálicas de alta qualidade na China.",
+                "about-quote": "\"Precisão não é apenas um padrão, é nossa promessa. Desde 2006, fornecemos as soluções de aço mais confiáveis.\"",
+                "story-t": "Poder de <span class='text-red-600'>Fabricação</span>",
+                "story-d1": "Nossa fábrica é equipada com linhas de produção automatizadas monitoradas por engenheiros experientes.",
+                "stat-exp": "Anos de Experiência", "stat-tons": "Toneladas Anuais"
+            },
+            ru: { 
+                "nav-home": "Главная", "nav-about": "О нас", "nav-products": "Продукция", "nav-news": "Новости", "nav-contact": "Контакты",
+                "about-tag": "О Pioneer Metal", "about-header": "Наша Команда и Страсть",
+                "about-intro": "Pioneer Metal — ведущий поставщик высококачественных металлических профилей в Китае.",
+                "about-quote": "\"Точность — это не просто стандарт, это наше обещание. С 2006 года мы предлагаем надежные решения из стали.\"",
+                "story-t": "Мощность <span class='text-red-600'>Производства</span>",
+                "story-d1": "Наш завод оснащен современными автоматизированными линиями под контролем опытных инженеров.",
+                "stat-exp": "Лет Опыта", "stat-tons": "Тонн в Год"
+            },
+            ja: { 
+                "nav-home": "ホーム", "nav-about": "私たちについて", "nav-products": "製品", "nav-news": "ニュース", "nav-contact": "お問い合わせ",
+                "about-tag": "パイオニアメタルについて", "about-header": "チームと情熱",
+                "about-intro": "パイオニアメタルは、中国全土の幅広い産業に高品質の金属セクションを提供するリーディングサプライヤーです。",
+                "about-quote": "「精度は単なる基準ではなく、私たちの約束です。2006年以来、世界中のパートナーに信頼性の高い鋼材ソリューションを提供してきました。」",
+                "story-t": "製造の <span class='text-red-600'>力</span>",
+                "story-d1": "当社の工場は高度な自動生产ラインを備えており、熟練したエンジニアが各工程を監視しています。",
+                "stat-exp": "年間の経験", "stat-tons": "年間生产量"
+            },
+            ko: { 
+                "nav-home": "홈", "nav-about": "회사 소개", "nav-products": "제품", "nav-news": "뉴스", "nav-contact": "문의하기",
+                "about-tag": "파이오니아 메탈 소개", "about-header": "팀과 열정",
+                "about-intro": "파이오니아 메탈은 중국 전역의 다양한 산업 분야에 고품질 금속 섹션을 공급하는 선도적인 기업입니다.",
+                "about-quote": "「정밀함은 단순한 기준이 아니라 우리의 약속입니다. 2006년부터 전 세계 파트너에게 가장 신뢰할 수 있는 철강 솔루션을 제공해 왔습니다.」",
+                "story-t": "제조 <span class='text-red-600'>능력</span>",
+                "story-d1": "당사 공장은 첨단 자동화 생산 라인을 갖추고 있으며 모든 공정은 숙련된 엔지니어가 모니터링합니다.",
+                "stat-exp": "년의 경험", "stat-tons": "연간 생산량"
+            },
+            ar: { 
+                "nav-home": "الرئيسية", "nav-about": "من نحن", "nav-products": "المنتجات", "nav-news": "الأخبار", "nav-contact": "اتصل بنا",
+                "about-tag": "حول بايونير ميتال", "about-header": "فريقنا وشغفنا",
+                "about-intro": "مصنع بايونير ميتال هو مورد رائد للمقاطع المعدنية عالية الجودة، يخدم مجموعة واسعة من الصناعات في الصين.",
+                "about-quote": "\"الدقة ليست مجرد معيار، بل هي وعدنا. منذ عام 2006، كرسنا أنفسنا لتقديم حلول قطاعات الصلب الأكثر موثوقية.\"",
+                "story-t": "قوة <span class='text-red-600'>التصنيع</span>",
+                "story-d1": "مصنعنا مجهز بخطوط إنتاج آلية متطورة. تتم مراقبة كل عملية من قبل مهندسين ذوي خبرة.",
+                "stat-exp": "عاماً من الخبرة", "stat-tons": "طن سنوياً"
             }
         };
 
@@ -208,6 +325,7 @@
             const select = document.querySelector('select');
             if(select) select.value = savedLang;
             changeLanguage(savedLang);
+            showSlides(slideIndex); 
         };
     </script>
 </body>
