@@ -6,18 +6,24 @@
     <title>Products | PIONEER METAL</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- 国旗图标库 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap');
         
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        
         :lang(ar) { font-family: 'Noto Sans Arabic', sans-serif; }
         :lang(ja) { font-family: 'Noto Sans JP', sans-serif; }
         :lang(ko) { font-family: 'Noto Sans KR', sans-serif; }
 
-        .nav-blur { backdrop-filter: blur(12px); background-color: rgba(255, 255, 255, 0.95); }
+        .nav-blur { 
+            backdrop-filter: blur(12px); 
+            background-color: rgba(255, 255, 255, 0.95); 
+        }
+
         .lang-select {
             appearance: none;
             background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -26,26 +32,61 @@
             background-size: 0.8em;
             padding-right: 1.2rem;
         }
+
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .product-image {
+            height: 320px;
+            object-fit: cover;
+            width: 100%;
+            background-color: #f1f5f9; 
+        }
+        
+        .btn-hover-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-hover-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        .btn-hover-effect:hover::after {
+            left: 100%;
+        }
     </style>
 </head>
 <body class="bg-white text-slate-900">
 
+    <!-- 导航栏 -->
     <nav class="fixed w-full z-50 nav-blur border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center">
-                    <a href="index.html" class="text-3xl font-black text-black tracking-tighter italic">PIONEER<span class="text-red-600">.</span></a>
+                    <a href="index.html" class="flex items-center">
+                        <span class="text-3xl font-black text-black tracking-tighter italic">PIONEER<span class="text-red-600">.</span></span>
+                    </a>
                 </div>
                 
                 <div class="hidden md:flex items-center space-x-8 font-bold text-[11px] uppercase tracking-[0.2em]">
                     <a href="index.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-home">Home</a>
+                    <a href="index.html#about" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-about">About Us</a>
                     <a href="products.html" class="text-red-600 transition" data-i18n="nav-products">Products</a>
-                    <a href="cooperation.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-cooperation">Cooperation</a>
                     <a href="news.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-news">News</a>
                     <a href="contact.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-contact">Contact</a>
                     
-                    <div class="relative flex items-center border-l pl-6 border-slate-200 ml-4">
-                        <div id="currentFlag" class="mr-2">
+                    <div class="relative flex items-center border-l pl-6 border-slate-200 ml-4 group">
+                        <div id="currentFlag" class="flex items-center mr-2">
                             <span class="fi fi-us rounded-sm shadow-sm"></span>
                         </div>
                         <select onchange="changeLanguage(this.value)" class="lang-select bg-transparent text-[11px] font-black focus:outline-none cursor-pointer text-slate-700 uppercase">
@@ -59,29 +100,104 @@
                         </select>
                     </div>
                 </div>
+
                 <div class="flex items-center space-x-4">
-                    <a href="https://wa.me/8613656714278" target="_blank" class="bg-red-600 text-white px-5 py-2 rounded font-black text-[10px] tracking-widest">INQUIRY</a>
+                    <a href="https://wa.me/8613656714278" target="_blank" class="bg-red-600 text-white px-5 py-2 rounded font-black text-[10px] tracking-widest hover:bg-black transition shadow-lg shadow-red-200 flex items-center gap-2">
+                        <i class="fab fa-whatsapp text-xs"></i> INQUIRY
+                    </a>
                     <button class="md:hidden text-black text-xl"><i class="fas fa-bars"></i></button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="pt-32 pb-20">
+    <!-- 主体内容 -->
+    <main class="pt-32 pb-24">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <h1 class="text-4xl font-black uppercase tracking-tighter mb-4" data-i18n="products-title">Our Products</h1>
-            <p class="text-slate-500 max-w-2xl mx-auto" data-i18n="products-desc">Explore our range of precision steel profiles engineered for excellence.</p>
+            <!-- 字体大小已从 text-5xl md:text-7xl 缩小为 text-4xl md:text-5xl -->
+            <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-6" data-i18n="products-title">Industrial Steel Solutions</h1>
+            <p class="text-slate-500 max-w-2xl mx-auto text-lg font-light leading-relaxed" data-i18n="products-desc">
+                Pioneer Metal provides premium hot-rolled steel profiles with high precision and durability for global construction standards.
+            </p>
+            
+            <!-- 产品展示区域 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-20">
+                
+                <!-- 产品 01: 门窗钢衬 -->
+                <div class="product-card bg-white border border-slate-100 rounded-3xl overflow-hidden flex flex-col shadow-sm">
+                    <div class="relative group overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800" alt="Steel Reinforcement" class="product-image transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-white font-bold tracking-widest text-xs border border-white px-4 py-2 uppercase">Galvanized Steel</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-black mb-3 uppercase tracking-tight text-slate-900" data-i18n="p1-name">Steel Reinforcement</h3>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed" data-i18n="p1-desc">High-strength galvanized steel profiles for UPVC/Aluminum window and door systems. Ensuring structural integrity.</p>
+                        <a href="#" class="btn-hover-effect mt-auto bg-red-600 text-white py-4 rounded-xl font-black text-xs tracking-widest hover:bg-black transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-100 uppercase">
+                            <i class="fas fa-file-download"></i> DOWNLOAD E-CATALOG
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 产品 02: 轻钢龙骨 -->
+                <div class="product-card bg-white border border-slate-100 rounded-3xl overflow-hidden flex flex-col shadow-sm">
+                    <div class="relative group overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800" alt="Light Gauge Steel" class="product-image transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-white font-bold tracking-widest text-xs border border-white px-4 py-2 uppercase">Framing System</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-black mb-3 uppercase tracking-tight text-slate-900" data-i18n="p2-name">Drywall & Ceiling</h3>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed" data-i18n="p2-desc">Lightweight steel framing systems for partition walls and architectural suspended ceilings. Fast installation.</p>
+                        <a href="#" class="btn-hover-effect mt-auto bg-red-600 text-white py-4 rounded-xl font-black text-xs tracking-widest hover:bg-black transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-100 uppercase">
+                            <i class="fas fa-file-download"></i> DOWNLOAD E-CATALOG
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 产品 03: 定制加工 -->
+                <div class="product-card bg-white border border-slate-100 rounded-3xl overflow-hidden flex flex-col shadow-sm">
+                    <div class="relative group overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&q=80&w=800" alt="Custom Metal Fabrication" class="product-image transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-white font-bold tracking-widest text-xs border border-white px-4 py-2 uppercase">Bespoke Design</span>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-black mb-3 uppercase tracking-tight text-slate-900" data-i18n="p3-name">Custom Fabrication</h3>
+                        <p class="text-slate-500 text-sm mb-8 leading-relaxed" data-i18n="p3-desc">Specialized hot-rolling, punching, and CNC services tailored to your specific technical drawings and engineering needs.</p>
+                        <a href="https://wa.me/8613656714278" target="_blank" class="btn-hover-effect mt-auto bg-red-600 text-white py-4 rounded-xl font-black text-xs tracking-widest hover:bg-black transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-100 uppercase">
+                            <i class="fab fa-whatsapp"></i> INQUIRY NOW
+                        </a>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </main>
 
+    <!-- 页脚 -->
     <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="text-[10px] font-bold uppercase tracking-[0.3em]">&copy; 2025 PIONEER METAL PRODUCTS FACTORY.</div>
-                <div class="flex items-center space-x-8">
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-110"><i class="fab fa-x-twitter text-xl"></i></a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-110"><i class="fab fa-instagram text-xl"></i></a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-110"><i class="fab fa-linkedin-in text-xl"></i></a>
+                <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left">
+                    &copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="https://facebook.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Facebook">
+                        <i class="fab fa-facebook-f text-lg"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Twitter X">
+                        <i class="fab fa-x-twitter text-lg"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Instagram">
+                        <i class="fab fa-instagram text-lg"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="LinkedIn">
+                        <i class="fab fa-linkedin-in text-lg"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -89,26 +205,40 @@
 
     <script>
         const i18n = {
-            en: { "nav-home": "Home", "nav-products": "Products", "nav-cooperation": "Cooperation", "nav-news": "News", "nav-contact": "Contact", "products-title": "Our Products", "products-desc": "Explore our range of precision steel profiles." },
-            es: { "nav-home": "Inicio", "nav-products": "Productos", "nav-cooperation": "Cooperación", "nav-news": "Noticias", "nav-contact": "Contacto", "products-title": "Nuestros Productos", "products-desc": "Explore nuestra gama de perfiles de acero." },
-            pt: { "nav-home": "Início", "nav-products": "Produtos", "nav-cooperation": "Cooperação", "nav-news": "Notícias", "nav-contact": "Contato", "products-title": "Nossos Produtos", "products-desc": "Explore nossa gama de perfis de aço." },
-            ru: { "nav-home": "Главная", "nav-products": "Изделия", "nav-cooperation": "Партнерство", "nav-news": "Новости", "nav-contact": "Контакт", "products-title": "Наша продукция", "products-desc": "Ознакомьтесь с нашим ассортиментом стальных профилей." },
-            ja: { "nav-home": "ホーム", "nav-products": "製品", "nav-cooperation": "提携", "nav-news": "ニュース", "nav-contact": "お問い合わせ", "products-title": "製品紹介", "products-desc": "精密スチールプロファイルのラインナップをご覧ください。" },
-            ko: { "nav-home": "홈", "nav-products": "제품", "nav-cooperation": "협력", "nav-news": "소식", "nav-contact": "문의", "products-title": "제품 정보", "products-desc": "정밀 스틸 프로파일 제품군을 살펴보세요." },
-            ar: { "nav-home": "الرئيسية", "nav-products": "المنتجات", "nav-cooperation": "التعاون", "nav-news": "الأخبار", "nav-contact": "اتصل بنا", "products-title": "منتجاتنا", "products-desc": "استكشف مجموعتنا من المقاطع الفولاذية الدقيقة." }
+            en: { 
+                "nav-home": "Home", "nav-products": "Products", "nav-about": "About Us", "nav-news": "News", "nav-contact": "Contact", 
+                "products-title": "Industrial Steel Solutions", "products-desc": "Pioneer Metal provides premium hot-rolled steel profiles with high precision and durability.",
+                "p1-name": "Steel Reinforcement", "p1-desc": "High-strength galvanized steel profiles for window systems. Ensuring structural integrity.",
+                "p2-name": "Drywall & Ceiling", "p2-desc": "Lightweight steel framing systems for partition walls and architectural suspended ceilings.",
+                "p3-name": "Custom Fabrication", "p3-desc": "Specialized hot-rolling and CNC services tailored to your specific technical drawings."
+            },
+            es: { 
+                "nav-home": "Inicio", "nav-products": "Productos", "nav-about": "Sobre Nosotros", "nav-news": "Noticias", "nav-contact": "Contacto",
+                "products-title": "Soluciones de Acero Industrial", "products-desc": "Pioneer Metal ofrece perfiles de acero laminados en caliente con alta precisión y durabilidad.",
+                "p1-name": "Refuerzo de Acero", "p1-desc": "Perfiles de acero galvanizado para sistemas de ventanas. Asegurando la integridad.",
+                "p2-name": "Pared Seca y Techo", "p2-desc": "Sistemas de estructuras de acero ligero para tabiques y techos suspendidos.",
+                "p3-name": "Fabricación Personalizada", "p3-desc": "Servicios especializados de laminación en caliente adaptados a sus planos técnicos."
+            }
         };
+
         const flags = { en: 'us', es: 'es', pt: 'pt', ru: 'ru', ja: 'jp', ko: 'kr', ar: 'sa' };
+
         function changeLanguage(lang) {
             document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
             document.documentElement.lang = lang;
             const currentFlag = document.getElementById('currentFlag');
-            if(currentFlag) currentFlag.innerHTML = `<span class="fi fi-${flags[lang]} rounded-sm shadow-sm"></span>`;
+            if(currentFlag) {
+                currentFlag.innerHTML = `<span class="fi fi-${flags[lang]} rounded-sm shadow-sm"></span>`;
+            }
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
-                if (i18n[lang][key]) element.innerHTML = i18n[lang][key];
+                if (i18n[lang] && i18n[lang][key]) {
+                    element.innerHTML = i18n[lang][key];
+                }
             });
             localStorage.setItem('preferred-lang', lang);
         }
+
         window.onload = () => {
             const savedLang = localStorage.getItem('preferred-lang') || 'en';
             const select = document.querySelector('select');

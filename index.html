@@ -16,7 +16,7 @@
     <title>PIONEER METAL | Leading Manufacturer of Steel Profiles</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <!-- 国旗图标库 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
     
@@ -113,8 +113,8 @@
                 
                 <div class="hidden md:flex items-center space-x-8 font-bold text-[11px] uppercase tracking-[0.2em]">
                     <a href="index.html" class="text-red-600 transition" data-i18n="nav-home">Home</a>
+                    <a href="about.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-about">About Us</a>
                     <a href="products.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-products">Products</a>
-                    <a href="cooperation.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-cooperation">Cooperation</a>
                     <a href="news.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-news">News</a>
                     <a href="contact.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-contact">Contact</a>
                     
@@ -187,8 +187,8 @@
         </div>
     </section>
 
-    <!-- Strategic Business Cooperation 板块 -->
-    <section class="bg-[#0a0a0a] py-32 text-white">
+    <!-- Strategic Business Cooperation 板块 (带 About 锚点) -->
+    <section id="about" class="bg-[#0a0a0a] py-32 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-20">
                 <h2 class="text-red-500 font-black tracking-[0.4em] uppercase mb-4 text-xs" data-i18n="coop-subtitle">Partnership & Growth</h2>
@@ -246,15 +246,18 @@
                 <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left">
                     &copy; 2024 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved
                 </div>
-                <div class="flex items-center space-x-8">
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-110" title="Twitter X">
-                        <i class="fab fa-x-twitter text-xl"></i>
+                <div class="flex items-center space-x-6">
+                    <a href="https://facebook.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Facebook">
+                        <i class="fab fa-facebook-f text-lg"></i>
                     </a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-110" title="Instagram">
-                        <i class="fab fa-instagram text-xl"></i>
+                    <a href="https://twitter.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Twitter X">
+                        <i class="fab fa-x-twitter text-lg"></i>
                     </a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-110" title="LinkedIn">
-                        <i class="fab fa-linkedin-in text-xl"></i>
+                    <a href="https://instagram.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Instagram">
+                        <i class="fab fa-instagram text-lg"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="LinkedIn">
+                        <i class="fab fa-linkedin-in text-lg"></i>
                     </a>
                 </div>
             </div>
@@ -265,7 +268,7 @@
         // 国际化文本配置
         const i18n = {
             en: { 
-                "nav-home": "Home", "nav-products": "Products", "nav-cooperation": "Cooperation", "nav-news": "News", "nav-contact": "Contact", 
+                "nav-home": "Home", "nav-about": "About Us", "nav-products": "Products", "nav-news": "News", "nav-contact": "Contact", 
                 "hero-tag": "Industrial Excellence Since 2006", "hero-title": "PRECISION <br>STEEL PROFILES", "hero-desc": "Global leader in manufacturing cold-rolled steel solutions for window systems and industrial infrastructure.", "btn-view": "VIEW PRODUCTS",
                 "coop-subtitle": "Partnership & Growth", "coop-title": "STRATEGIC BUSINESS<br>COOPERATION",
                 "pillar-1-title": "Lijialong Sealing Strip", "pillar-1-desc": "Specialized manufacturer of high-resilience weather strips for advanced sealing solutions.",
@@ -273,7 +276,7 @@
                 "pillar-3-title": "Melan Trade", "pillar-3-desc": "Professional import & export services ensuring efficient global logistics and commerce."
             },
             es: { 
-                "nav-home": "Inicio", "nav-products": "Productos", "nav-cooperation": "Cooperación", "nav-news": "Noticias", "nav-contact": "Contacto", 
+                "nav-home": "Inicio", "nav-about": "Sobre Nosotros", "nav-products": "Productos", "nav-news": "Noticias", "nav-contact": "Contacto", 
                 "hero-tag": "Excelencia Industrial desde 2006", "hero-title": "PERFILES DE <br>ACERO DE PRECISIÓN", "hero-desc": "Líder mundial en fabricación de soluciones de acero para ventanas e industria.", "btn-view": "VER PRODUCTOS",
                 "coop-subtitle": "Alianzas y Crecimiento", "coop-title": "COOPERACIÓN<br>ESTRATÉGICA",
                 "pillar-1-title": "Tira de Sellado Lijialong", "pillar-1-desc": "Fabricante especializado en burletes de alta resiliencia para sellado avanzado.",
@@ -281,7 +284,7 @@
                 "pillar-3-title": "Melan Trade", "pillar-3-desc": "Servicios profesionales de importación y exportación para una logística eficiente."
             },
             pt: { 
-                "nav-home": "Início", "nav-products": "Produtos", "nav-cooperation": "Cooperação", "nav-news": "Notícias", "nav-contact": "Contato", 
+                "nav-home": "Início", "nav-about": "Sobre Nós", "nav-products": "Produtos", "nav-news": "Notícias", "nav-contact": "Contato", 
                 "hero-tag": "Excelência Industrial desde 2006", "hero-title": "PERFIS DE <br>AÇO DE PRECISÃO", "hero-desc": "Líder mundial na fabricação de soluções em aço para janelas e infraestrutura.", "btn-view": "VER PRODUTOS",
                 "coop-subtitle": "Parceria e Crescimento", "coop-title": "COOPERAÇÃO<br>ESTRATÉGICA",
                 "pillar-1-title": "Lijialong Sealing Strip", "pillar-1-desc": "Fabricante especializado de tiras de vedação de alta resiliência.",
@@ -289,7 +292,7 @@
                 "pillar-3-title": "Melan Trade", "pillar-3-desc": "Serviços profissionais de exportação garantindo logística global eficiente."
             },
             ru: { 
-                "nav-home": "Главная", "nav-products": "Изделия", "nav-cooperation": "Партнерство", "nav-news": "Новости", "nav-contact": "Контакт", 
+                "nav-home": "Главная", "nav-about": "О нас", "nav-products": "Изделия", "nav-news": "Новости", "nav-contact": "Контакт", 
                 "hero-tag": "Промышленное превосходство с 2006 года", "hero-title": "ПРЕЦИЗИОННЫЕ <br>СТАЛЬНЫЕ ПРОФИЛИ", "hero-desc": "Мировой лидер в производстве стальных решений для оконных систем.", "btn-view": "ПРОДУКЦИЯ",
                 "coop-subtitle": "Партнерство и Рост", "coop-title": "СТРАТЕГИЧЕСКОЕ<br>СОТРУДНИЧЕСТВО",
                 "pillar-1-title": "Уплотнительная лента Lijialong", "pillar-1-desc": "Специализированный производитель уплотнителей для передовых решений герметизации.",
@@ -297,23 +300,23 @@
                 "pillar-3-title": "Melan Trade", "pillar-3-desc": "Профессиональные импортно-экспортные услуги для глобальной логистики."
             },
             ja: { 
-                "nav-home": "ホーム", "nav-products": "製品", "nav-cooperation": "提携", "nav-news": "ニュース", "nav-contact": "お問い合わせ", 
-                "hero-tag": "2006年創業の信頼", "hero-title": "精密な <br>スチールプロファイル", "hero-desc": "窓システムおよび産業インフラ向けの冷間圧延鋼ソリューションのリーダー。", "btn-view": "製品一覧",
+                "nav-home": "ホーム", "nav-about": "会社概要", "nav-products": "製品", "nav-news": "ニュース", "nav-contact": "お問い合わせ", 
+                "hero-tag": "2006年創業的信頼", "hero-title": "精密な <br>スチールプロファイル", "hero-desc": "窓システムおよび产业インフラ向けの冷間圧延鋼ソリューションのリーダー。", "btn-view": "製品一覧",
                 "coop-subtitle": "パートナーシップと成長", "coop-title": "戦略的ビジネス提携",
                 "pillar-1-title": "Lijialong シーリングストリップ", "pillar-1-desc": "高度なシーリングソリューション向けの高品質ウェザーストリップ制造。",
                 "pillar-2-title": "OEM・カスタム", "pillar-2-desc": "OEMのお客様は、私たちが成功を収め、製品の品質を向上させ、ウィンウィンの状況を実現するのを支援してくださいます。",
                 "pillar-3-title": "Melan Trade", "pillar-3-desc": "効率的なグローバル物流と貿易を保証する専門的な輸出入サービス。"
             },
             ko: { 
-                "nav-home": "홈", "nav-products": "제품", "nav-cooperation": "협력", "nav-news": "소식", "nav-contact": "문의", 
+                "nav-home": "홈", "nav-about": "회사 소개", "nav-products": "제품", "nav-news": "소식", "nav-contact": "문의", 
                 "hero-tag": "2006년부터 시작된 기술력", "hero-title": "정밀 <br>스틸 프로파일", "hero-desc": "창호 시스템 및 산업 인프라를 위한 냉간 압연 강철 솔루션의 글로벌 리더.", "btn-view": "제품 보기",
                 "coop-subtitle": "파트너십과 성장", "coop-title": "전략적 비즈니스 협력",
                 "pillar-1-title": "Lijialong 실링 스트립", "pillar-1-desc": "고급 실링 솔루션을 위한 고탄성 웨더스트립 전문 제조업체.",
                 "pillar-2-title": "OEM 및 맞춤 제작", "pillar-2-desc": "OEM 고객은 우리가 성공을 거두고 제품 품질을 개선하며 윈윈 상황을 달성할 수 있도록 지원합니다.",
-                "pillar-3-title": "Melan Trade", "pillar-3-desc": "효율적인 글로벌 물류 및 무역을 보장하는 전문 수출입 서비스."
+                "pillar-3-title": "Melan Trade", "Korean pillar-3-desc": "효율적인 글로벌 물류 및 무역을 보장하는 전문 수출입 서비스."
             },
             ar: { 
-                "nav-home": "الرئيسية", "nav-products": "المنتجات", "nav-cooperation": "التعاون", "nav-news": "الأخبار", "nav-contact": "اتصل بنا", 
+                "nav-home": "الرئيسية", "nav-about": "من نحن", "nav-products": "المنتجات", "nav-news": "الأخبار", "nav-contact": "اتصل بنا", 
                 "hero-tag": "التميز الصناعي منذ 2006", "hero-title": "مقاطع فولاذية <br>عالية الدقة", "hero-desc": "الرائد العالمي in تصنيع حلول الصلب المدرفل على البارد لأنظمة النوافذ.", "btn-view": "عرض المنتجات",
                 "coop-subtitle": "الشراكة والنمو", "coop-title": "تعاون تجاري<br>استراتيجي",
                 "pillar-1-title": "Lijialong شريط إحكام", "pillar-1-desc": "مصنع متخصص لشرائط منع التسرب عالية المرونة للحلول المتقدمة.",

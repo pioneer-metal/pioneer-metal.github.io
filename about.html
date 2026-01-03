@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News & Insights | PIONEER METAL</title>
+    <title>About Us | PIONEER METAL</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -19,7 +19,6 @@
         :lang(ja) { font-family: 'Noto Sans JP', sans-serif; }
         :lang(ko) { font-family: 'Noto Sans KR', sans-serif; }
 
-        /* 导航栏背景与首页保持一致：高斯模糊 + 半透明白色 */
         .nav-blur { 
             backdrop-filter: blur(12px); 
             background-color: rgba(255, 255, 255, 0.95); 
@@ -34,16 +33,14 @@
             padding-right: 1.2rem;
         }
 
-        .news-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .news-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+        .photo-frame {
+            overflow: hidden;
+            border-radius: 1rem;
+            background: #f1f5f9;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-white text-slate-900">
 
     <!-- 导航栏 -->
     <nav class="fixed w-full z-50 nav-blur border-b border-slate-200">
@@ -57,14 +54,14 @@
                 
                 <div class="hidden md:flex items-center space-x-8 font-bold text-[11px] uppercase tracking-[0.2em]">
                     <a href="index.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-home">Home</a>
-                    <a href="index.html#about" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-about">About Us</a>
+                    <a href="about.html" class="text-red-600 transition" data-i18n="nav-about">About Us</a>
                     <a href="products.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-products">Products</a>
-                    <a href="news.html" class="text-red-600 transition" data-i18n="nav-news">News</a>
+                    <a href="news.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-news">News</a>
                     <a href="contact.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-contact">Contact</a>
                     
                     <div class="relative flex items-center border-l pl-6 border-slate-200 ml-4 group">
                         <div id="currentFlag" class="flex items-center mr-2">
-                            <span class="fi fi-us rounded-sm shadow-sm transition-opacity duration-300"></span>
+                            <span class="fi fi-us rounded-sm shadow-sm"></span>
                         </div>
                         <select onchange="changeLanguage(this.value)" class="lang-select bg-transparent text-[11px] font-black focus:outline-none cursor-pointer text-slate-700 uppercase">
                             <option value="en">English</option>
@@ -88,66 +85,70 @@
         </div>
     </nav>
 
-    <!-- 顶部标题区 -->
-    <header class="pt-40 pb-16 bg-white">
+    <!-- 顶部团队照片区 -->
+    <header class="pt-32 pb-16 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-            <h1 class="text-2xl md:text-4xl font-black uppercase tracking-tighter mb-4" data-i18n="news-header">Latest <span class="text-red-600">Insights</span></h1>
-            <p class="text-slate-400 text-sm md:text-base font-medium tracking-wide max-w-2xl" data-i18n="news-subheader">Stay updated with Pioneer Metal's industrial advancements and global exhibition highlights.</p>
+            <div class="mb-12 max-w-4xl">
+                <h2 class="text-red-600 font-black tracking-[0.3em] uppercase mb-4 text-xs" data-i18n="about-tag">About Pioneer Metal</h2>
+                <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 leading-none" data-i18n="about-header">Our Team <br>& Passion</h1>
+                <!-- 字体缩小：从 text-lg md:text-xl 调整为 text-sm md:text-base -->
+                <p class="text-slate-500 text-sm md:text-base font-light leading-relaxed mb-8" data-i18n="about-intro">
+                    Pioneer Metal Product Factory is a leading supplier of high-quality metal sections, serving a wide range of industries across the China. With years of expertise, we specialize in manufacturing reinforcement steel of uPvc window and door, offering Drywall Steel Sections and others.
+                </p>
+            </div>
+            
+            <div class="photo-frame aspect-[21/9] w-full shadow-2xl group overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1522071823991-b9671f9d7f1f?auto=format&fit=crop&q=80&w=2000" alt="Team Photo" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105">
+            </div>
         </div>
     </header>
 
-    <!-- 新闻流 -->
-    <main class="py-20">
+    <!-- 简介文字区 -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-xl md:text-2xl font-light text-slate-600 leading-relaxed italic" data-i18n="about-quote">
+                "Precision is not just a standard, it's our promise. Since 2006, we have been dedicated to providing the most reliable steel profile solutions to partners worldwide."
+            </p>
+        </div>
+    </section>
+
+    <!-- 中间车间照片区 -->
+    <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 gap-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-6">
+                    <h3 class="text-3xl font-black uppercase italic tracking-tighter" data-i18n="story-t">Manufacturing <span class="text-red-600">Power</span></h3>
+                    <p class="text-slate-500 text-sm md:text-base leading-relaxed font-light" data-i18n="story-d1">
+                        Our factory is equipped with advanced automated production lines. Each process, from raw material selection to cold rolling and finishing, is monitored by experienced engineers to ensure the highest quality consistency.
+                    </p>
+                    <div class="flex gap-12 pt-4">
+                        <div>
+                            <div class="text-3xl font-black text-slate-900">18+</div>
+                            <div class="text-[10px] font-black text-red-600 uppercase tracking-widest mt-1">Years Experience</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-black text-slate-900">9000t</div>
+                            <div class="text-[10px] font-black text-red-600 uppercase tracking-widest mt-1">Annual Tons</div>
+                        </div>
+                    </div>
+                </div>
                 
-                <!-- 新闻项 01：FENSTERBAU FRONTALE GERMANY -->
-                <article class="news-card bg-white rounded-[2rem] overflow-hidden flex flex-col md:flex-row border border-slate-100 shadow-sm">
-                    <div class="md:w-1/2 relative h-80 md:h-auto overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" alt="German Exhibition" class="w-full h-full object-cover">
-                        <div class="absolute top-6 left-6 bg-red-600 text-white text-[10px] font-black px-4 py-2 rounded-full tracking-widest uppercase shadow-xl" data-i18n="tag-event">Global Event</div>
-                    </div>
-                    <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center">
-                        <time class="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-4" data-i18n="news1-date">MAR 24-27, 2026</time>
-                        <h2 class="text-3xl md:text-4xl font-black mb-6 uppercase tracking-tight leading-none text-red-600" data-i18n="news1-t">FENSTERBAU FRONTALE GERMANY</h2>
-                        <p class="text-slate-500 text-sm md:text-base leading-relaxed mb-8 font-light" data-i18n="news1-d">
-                            Join Pioneer Metal at FENSTERBAU FRONTALE in Nuremberg, Germany. Explore our cutting-edge steel profile solutions for modern window and facade systems.
-                        </p>
-                        <a href="contact.html" class="inline-flex items-center gap-3 text-black text-[11px] font-black uppercase tracking-widest hover:text-red-600 transition">
-                            Schedule a Meeting <i class="fas fa-chevron-right text-[10px]"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- 新闻项 02：FESQUA BRAZIL 2026 -->
-                <article class="news-card bg-white rounded-[2rem] overflow-hidden flex flex-col md:flex-row border border-slate-100 shadow-sm">
-                    <div class="md:w-1/2 relative h-80 md:h-auto overflow-hidden order-1 md:order-2">
-                        <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?auto=format&fit=crop&q=80&w=1200" alt="Brazil Exhibition" class="w-full h-full object-cover">
-                        <div class="absolute top-6 right-6 bg-black text-white text-[10px] font-black px-4 py-2 rounded-full tracking-widest uppercase shadow-xl" data-i18n="tag-event">Global Event</div>
-                    </div>
-                    <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center order-2 md:order-1">
-                        <time class="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-4" data-i18n="news2-date">SEP 9-12, 2026</time>
-                        <h2 class="text-3xl md:text-4xl font-black mb-6 uppercase tracking-tight leading-none text-red-600" data-i18n="news2-t">FESQUA BRAZIL 2026</h2>
-                        <p class="text-slate-500 text-sm md:text-base leading-relaxed mb-8 font-light" data-i18n="news2-d">
-                            Expanding our reach in South America! Pioneer Metal will showcase high-performance cold-rolled steel technologies at FESQUA, São Paulo.
-                        </p>
-                        <a href="contact.html" class="inline-flex items-center gap-3 text-black text-[11px] font-black uppercase tracking-widest hover:text-red-600 transition">
-                            Visit Our Booth <i class="fas fa-chevron-right text-[10px]"></i>
-                        </a>
-                    </div>
-                </article>
-
+                <div class="photo-frame aspect-square lg:aspect-video shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200" alt="Workshop Photo" class="w-full h-full object-cover">
+                </div>
             </div>
         </div>
-    </main>
+    </section>
 
     <!-- 页脚 -->
     <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <!-- 版权文字靠左 -->
                 <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left">
                     &copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved
                 </div>
+                <!-- 社交图标 -->
                 <div class="flex items-center space-x-6">
                     <a href="https://facebook.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Facebook">
                         <i class="fab fa-facebook-f text-lg"></i>
@@ -170,25 +171,17 @@
         const i18n = {
             en: { 
                 "nav-home": "Home", "nav-about": "About Us", "nav-products": "Products", "nav-news": "News", "nav-contact": "Contact",
-                "news-header": "Latest Insights", "news-subheader": "Stay updated with Pioneer Metal's industrial advancements and global exhibition highlights.",
-                "tag-event": "Global Event", "tag-tech": "Tech Advance",
-                "news1-date": "MAR 24-27, 2026",
-                "news1-t": "FENSTERBAU FRONTALE GERMANY", 
-                "news1-d": "Join Pioneer Metal at FENSTERBAU FRONTALE in Nuremberg, Germany. Explore our cutting-edge steel profile solutions for modern window and facade systems.",
-                "news2-date": "SEP 9-12, 2026",
-                "news2-t": "FESQUA BRAZIL 2026", 
-                "news2-d": "Expanding our reach in South America! Pioneer Metal will showcase high-performance cold-rolled steel technologies at FESQUA, São Paulo."
+                "about-tag": "About Pioneer Metal", "about-header": "Our Team & Passion",
+                "about-intro": "Pioneer Metal Product Factory is a leading supplier of high-quality metal sections, serving a wide range of industries across the China. With years of expertise, we specialize in manufacturing reinforcement steel of uPvc window and door, offering Drywall Steel Sections and others.",
+                "about-quote": "\"Precision is not just a standard, it's our promise. Since 2006, we have been dedicated to providing the most reliable steel profile solutions to partners worldwide.\"",
+                "story-t": "Manufacturing Power", "story-d1": "Our factory is equipped with advanced automated production lines, ensuring the highest quality consistency for every steel profile."
             },
             es: { 
                 "nav-home": "Inicio", "nav-about": "Sobre Nosotros", "nav-products": "Productos", "nav-news": "Noticias", "nav-contact": "Contacto",
-                "news-header": "Últimas Noticias", "news-subheader": "Manténgase al día con los avances industriales y los eventos globales de Pioneer Metal.",
-                "tag-event": "Evento Global", "tag-tech": "Avance Técnico",
-                "news1-date": "24-27 MAR, 2026",
-                "news1-t": "FENSTERBAU FRONTALE ALEMANIA", 
-                "news1-d": "Únase a Pioneer Metal en FENSTERBAU FRONTALE en Nuremberg, Alemania. Explore nuestras soluciones de perfiles de acero para sistemas de ventanas modernos.",
-                "news2-date": "9-12 SEP, 2026",
-                "news2-t": "FESQUA BRASIL 2026", 
-                "news2-d": "¡Expandiendo nuestro alcance en América del Sur! Pioneer Metal exhibirá tecnologías de acero laminado en frío de alto rendimiento en FESQUA, São Paulo."
+                "about-tag": "Sobre Pioneer Metal", "about-header": "Nuestro Equipo y Pasión",
+                "about-intro": "Pioneer Metal Product Factory es un proveedor líder de secciones metálicas de alta calidad, que sirve a una amplia gama de industrias en toda China. Con años de experiencia, nos especializamos en la fabricación de acero de refuerzo para ventanas y puertas de uPvc.",
+                "about-quote": "\"La precisión no es solo un estándar, es nuestra promesa. Desde 2006, nos dedicamos a brindar las soluciones de perfiles de acero más confiables.\"",
+                "story-t": "Poder de Fabricación", "story-d1": "Nuestra fábrica está equipada con líneas de producción automatizadas avanzadas."
             }
         };
 

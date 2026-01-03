@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products | PIONEER METAL</title>
+    <title>Contact Us | PIONEER METAL</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- 国旗图标库 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap');
         
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        
         :lang(ar) { font-family: 'Noto Sans Arabic', sans-serif; }
         :lang(ja) { font-family: 'Noto Sans JP', sans-serif; }
         :lang(ko) { font-family: 'Noto Sans KR', sans-serif; }
 
-        .nav-blur { backdrop-filter: blur(12px); background-color: rgba(255, 255, 255, 0.95); }
+        .nav-blur { 
+            backdrop-filter: blur(12px); 
+            background-color: rgba(255, 255, 255, 0.95); 
+        }
+
         .lang-select {
             appearance: none;
             background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -26,26 +32,38 @@
             background-size: 0.8em;
             padding-right: 1.2rem;
         }
+
+        .contact-input {
+            transition: all 0.3s border-color ease;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .contact-input:focus {
+            outline: none;
+            border-bottom-color: #ef4444;
+        }
     </style>
 </head>
 <body class="bg-white text-slate-900">
 
+    <!-- 导航栏 -->
     <nav class="fixed w-full z-50 nav-blur border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center">
-                    <a href="index.html" class="text-3xl font-black text-black tracking-tighter italic">PIONEER<span class="text-red-600">.</span></a>
+                    <a href="index.html" class="flex items-center">
+                        <span class="text-3xl font-black text-black tracking-tighter italic">PIONEER<span class="text-red-600">.</span></span>
+                    </a>
                 </div>
                 
                 <div class="hidden md:flex items-center space-x-8 font-bold text-[11px] uppercase tracking-[0.2em]">
                     <a href="index.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-home">Home</a>
-                    <a href="products.html" class="text-red-600 transition" data-i18n="nav-products">Products</a>
-                    <a href="cooperation.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-cooperation">Cooperation</a>
+                    <a href="products.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-products">Products</a>
+                    <a href="index.html#about" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-about">About Us</a>
                     <a href="news.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-news">News</a>
-                    <a href="contact.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-contact">Contact</a>
+                    <a href="contact.html" class="text-red-600 transition" data-i18n="nav-contact">Contact</a>
                     
-                    <div class="relative flex items-center border-l pl-6 border-slate-200 ml-4">
-                        <div id="currentFlag" class="mr-2">
+                    <div class="relative flex items-center border-l pl-6 border-slate-200 ml-4 group">
+                        <div id="currentFlag" class="flex items-center mr-2">
                             <span class="fi fi-us rounded-sm shadow-sm"></span>
                         </div>
                         <select onchange="changeLanguage(this.value)" class="lang-select bg-transparent text-[11px] font-black focus:outline-none cursor-pointer text-slate-700 uppercase">
@@ -59,29 +77,140 @@
                         </select>
                     </div>
                 </div>
+
                 <div class="flex items-center space-x-4">
-                    <a href="https://wa.me/8613656714278" target="_blank" class="bg-red-600 text-white px-5 py-2 rounded font-black text-[10px] tracking-widest">INQUIRY</a>
+                    <a href="https://wa.me/8613656714278" target="_blank" class="bg-red-600 text-white px-5 py-2 rounded font-black text-[10px] tracking-widest hover:bg-black transition shadow-lg shadow-red-200 flex items-center gap-2">
+                        <i class="fab fa-whatsapp text-xs"></i> INQUIRY
+                    </a>
                     <button class="md:hidden text-black text-xl"><i class="fas fa-bars"></i></button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="pt-32 pb-20">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h1 class="text-4xl font-black uppercase tracking-tighter mb-4" data-i18n="products-title">Our Products</h1>
-            <p class="text-slate-500 max-w-2xl mx-auto" data-i18n="products-desc">Explore our range of precision steel profiles engineered for excellence.</p>
+    <!-- 联系页面头部 -->
+    <main class="pt-40 pb-24">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                
+                <!-- 左侧：文字与表单 -->
+                <div>
+                    <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 text-red-600" data-i18n="contact-h">Get In Touch</h1>
+                    <p class="text-slate-500 text-lg mb-12 font-light leading-relaxed" data-i18n="contact-p">
+                        Ready to elevate your project with precision hot-rolled steel? Our technical team is standing by to provide a customized solution for your specific requirements.
+                    </p>
+
+                    <form action="#" class="space-y-10">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            <div class="flex flex-col">
+                                <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2" data-i18n="f-name">Full Name</label>
+                                <input type="text" class="contact-input bg-transparent py-3" placeholder="John Doe">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2" data-i18n="f-email">Email Address</label>
+                                <input type="email" class="contact-input bg-transparent py-3" placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2" data-i18n="f-msg">Your Message</label>
+                            <textarea rows="4" class="contact-input bg-transparent py-3 resize-none" placeholder="Tell us about your project..."></textarea>
+                        </div>
+                        <button class="bg-black text-white px-12 py-5 rounded-full font-black text-xs tracking-[0.2em] hover:bg-red-600 transition shadow-2xl flex items-center gap-4 uppercase">
+                            Send Inquiry <i class="fas fa-paper-plane text-[10px]"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- 右侧：联系方式磁贴 -->
+                <div class="space-y-8">
+                    <div class="bg-slate-50 p-10 rounded-[2rem] border border-slate-100 group hover:bg-white hover:shadow-xl transition-all duration-500">
+                        <div class="flex items-start gap-6">
+                            <div class="w-12 h-12 bg-red-600 text-white rounded-xl flex items-center justify-center text-xl shadow-lg shadow-red-100">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-[10px] font-black uppercase tracking-widest text-red-600 mb-2">Instant Chat</h4>
+                                <p class="text-2xl font-black text-slate-900">+86 136 5671 4278</p>
+                                <p class="text-slate-400 text-sm mt-2 font-light">Available on WhatsApp & WeChat</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 p-10 rounded-[2rem] border border-slate-100 group hover:bg-white hover:shadow-xl transition-all duration-500">
+                        <div class="flex items-start gap-6">
+                            <div class="w-12 h-12 bg-black text-white rounded-xl flex items-center justify-center text-xl">
+                                <i class="far fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Email Inquiry</h4>
+                                <p class="text-2xl font-black text-slate-900">pioneermetal@163.com</p>
+                                <p class="text-slate-400 text-sm mt-2 font-light">Fast response within 24 hours</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 p-10 rounded-[2rem] border border-slate-100 group hover:bg-white hover:shadow-xl transition-all duration-500">
+                        <div class="flex items-start gap-6">
+                            <div class="w-12 h-12 bg-slate-200 text-slate-700 rounded-xl flex items-center justify-center text-xl">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Factory Location</h4>
+                                <p class="text-lg font-bold text-slate-900 leading-tight">Dongjie, National Highway 106,<br>Xinzhen, Wen'an County, Langfang,<br>Hebei Province, China</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </main>
 
+    <!-- 地图占位区域 -->
+    <section class="h-[500px] w-full bg-slate-100 relative grayscale hover:grayscale-0 transition duration-1000 overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 20 L100 20 M0 50 L100 50 M0 80 L100 80 M20 0 L20 100 M50 0 L50 100 M80 0 L80 100" stroke="#000" stroke-width="0.1" fill="none" />
+            </svg>
+        </div>
+        
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center relative">
+                <div class="relative mb-6 mx-auto w-24 h-24 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-red-600/10 rounded-full animate-ping"></div>
+                    <div class="absolute inset-4 bg-red-600/20 rounded-full animate-pulse"></div>
+                    <div class="w-6 h-6 bg-red-600 rounded-full shadow-xl border-4 border-white z-10"></div>
+                </div>
+                
+                <h3 class="text-xl font-black text-slate-900 uppercase tracking-tighter mb-2">PIONEER METAL BASE</h3>
+                <p class="font-black uppercase tracking-[0.3em] text-[10px] text-red-600 mb-4">Wen'an, Langfang, China</p>
+                <div class="inline-block px-4 py-2 border border-slate-200 rounded text-[9px] font-bold uppercase tracking-widest text-slate-400">
+                    Industrial Hub - North China Region
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
     <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="text-[10px] font-bold uppercase tracking-[0.3em]">&copy; 2025 PIONEER METAL PRODUCTS FACTORY.</div>
-                <div class="flex items-center space-x-8">
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-110"><i class="fab fa-x-twitter text-xl"></i></a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-110"><i class="fab fa-instagram text-xl"></i></a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-110"><i class="fab fa-linkedin-in text-xl"></i></a>
+                <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left">
+                    &copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="https://facebook.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Facebook">
+                        <i class="fab fa-facebook-f text-lg"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Twitter X">
+                        <i class="fab fa-x-twitter text-lg"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="Instagram">
+                        <i class="fab fa-instagram text-lg"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="hover:text-white transition-all transform hover:scale-125" title="LinkedIn">
+                        <i class="fab fa-linkedin-in text-lg"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -89,26 +218,36 @@
 
     <script>
         const i18n = {
-            en: { "nav-home": "Home", "nav-products": "Products", "nav-cooperation": "Cooperation", "nav-news": "News", "nav-contact": "Contact", "products-title": "Our Products", "products-desc": "Explore our range of precision steel profiles." },
-            es: { "nav-home": "Inicio", "nav-products": "Productos", "nav-cooperation": "Cooperación", "nav-news": "Noticias", "nav-contact": "Contacto", "products-title": "Nuestros Productos", "products-desc": "Explore nuestra gama de perfiles de acero." },
-            pt: { "nav-home": "Início", "nav-products": "Produtos", "nav-cooperation": "Cooperação", "nav-news": "Notícias", "nav-contact": "Contato", "products-title": "Nossos Produtos", "products-desc": "Explore nossa gama de perfis de aço." },
-            ru: { "nav-home": "Главная", "nav-products": "Изделия", "nav-cooperation": "Партнерство", "nav-news": "Новости", "nav-contact": "Контакт", "products-title": "Наша продукция", "products-desc": "Ознакомьтесь с нашим ассортиментом стальных профилей." },
-            ja: { "nav-home": "ホーム", "nav-products": "製品", "nav-cooperation": "提携", "nav-news": "ニュース", "nav-contact": "お問い合わせ", "products-title": "製品紹介", "products-desc": "精密スチールプロファイルのラインナップをご覧ください。" },
-            ko: { "nav-home": "홈", "nav-products": "제품", "nav-cooperation": "협력", "nav-news": "소식", "nav-contact": "문의", "products-title": "제품 정보", "products-desc": "정밀 스틸 프로파일 제품군을 살펴보세요." },
-            ar: { "nav-home": "الرئيسية", "nav-products": "المنتجات", "nav-cooperation": "التعاون", "nav-news": "الأخبار", "nav-contact": "اتصل بنا", "products-title": "منتجاتنا", "products-desc": "استكشف مجموعتنا من المقاطع الفولاذية الدقيقة." }
+            en: { 
+                "nav-home": "Home", "nav-products": "Products", "nav-about": "About Us", "nav-news": "News", "nav-contact": "Contact",
+                "contact-h": "Get In Touch", "contact-p": "Ready to elevate your project with precision hot-rolled steel?",
+                "f-name": "Full Name", "f-email": "Email Address", "f-msg": "Your Message"
+            },
+            es: { 
+                "nav-home": "Inicio", "nav-products": "Productos", "nav-about": "Sobre Nosotros", "nav-news": "Noticias", "nav-contact": "Contacto",
+                "contact-h": "Contáctenos", "contact-p": "¿Listo para elevar su proyecto con acero laminado en caliente de precisión?",
+                "f-name": "Nombre Completo", "f-email": "Correo Electrónico", "f-msg": "Su Mensaje"
+            }
         };
+
         const flags = { en: 'us', es: 'es', pt: 'pt', ru: 'ru', ja: 'jp', ko: 'kr', ar: 'sa' };
+
         function changeLanguage(lang) {
             document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
             document.documentElement.lang = lang;
             const currentFlag = document.getElementById('currentFlag');
-            if(currentFlag) currentFlag.innerHTML = `<span class="fi fi-${flags[lang]} rounded-sm shadow-sm"></span>`;
+            if(currentFlag) {
+                currentFlag.innerHTML = `<span class="fi fi-${flags[lang]} rounded-sm shadow-sm"></span>`;
+            }
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
-                if (i18n[lang][key]) element.innerHTML = i18n[lang][key];
+                if (i18n[lang] && i18n[lang][key]) {
+                    element.innerHTML = i18n[lang][key];
+                }
             });
             localStorage.setItem('preferred-lang', lang);
         }
+
         window.onload = () => {
             const savedLang = localStorage.getItem('preferred-lang') || 'en';
             const select = document.querySelector('select');
