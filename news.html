@@ -17,7 +17,6 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <!-- 国旗图标库 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
     
     <style>
@@ -29,44 +28,17 @@
         :lang(ja) { font-family: 'Noto Sans JP', sans-serif; }
         :lang(ko) { font-family: 'Noto Sans KR', sans-serif; }
 
-        .nav-blur { 
-            backdrop-filter: blur(12px); 
-            background-color: rgba(255, 255, 255, 0.95); 
-        }
+        .nav-blur { backdrop-filter: blur(12px); background-color: rgba(255, 255, 255, 0.95); }
+        .lang-select { appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 0.2rem center; background-size: 0.8em; padding-right: 1.2rem; }
+        [dir="rtl"] .lang-select { background-position: left 0.2rem center; padding-right: 0.5rem; padding-left: 1.2rem; }
 
-        .lang-select {
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 0.2rem center;
-            background-size: 0.8em;
-            padding-right: 1.2rem;
-        }
-
-        .news-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .news-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
-        }
-        
-        /* 阿拉伯语适配 */
-        [dir="rtl"] .lang-select {
-            background-position: left 0.2rem center;
-            padding-right: 0.5rem;
-            padding-left: 1.2rem;
-        }
-
-        /* 针对 RTL 的文字对齐 */
-        [dir="rtl"] .text-left-rtl {
-            text-align: right;
-        }
+        .news-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .news-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05); }
     </style>
+    <script src="main.js" defer></script>
 </head>
 <body class="bg-slate-50 text-slate-900">
 
-    <!-- 导航栏 -->
     <nav class="fixed w-full z-50 nav-blur border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
@@ -76,16 +48,16 @@
                     </a>
                 </div>
                 
-                <div class="hidden md:flex items-center space-x-8 font-bold text-[11px] uppercase tracking-[0.2em]">
+                <div class="hidden md:flex items-center space-x-8 rtl:space-x-reverse font-bold text-[11px] uppercase tracking-[0.2em]">
                     <a href="index.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-home">Home</a>
                     <a href="about.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-about">About Us</a>
                     <a href="products.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-products">Products</a>
                     <a href="news.html" class="text-red-600 transition" data-i18n="nav-news">News</a>
                     <a href="contact.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-contact">Contact</a>
                     
-                    <div class="relative flex items-center border-l pl-6 border-slate-200 ml-4 group">
-                        <div id="currentFlag" class="flex items-center mr-2">
-                            <span class="fi fi-us rounded-sm shadow-sm transition-opacity duration-300"></span>
+                    <div class="relative flex items-center border-l rtl:border-r rtl:border-l-0 ps-6 rtl:pe-6 border-slate-200 ms-4 rtl:me-4 group">
+                        <div id="currentFlag" class="flex items-center me-2 rtl:ms-2">
+                            <span class="fi fi-us rounded-sm shadow-sm"></span>
                         </div>
                         <select onchange="changeLanguage(this.value)" class="lang-select bg-transparent text-[11px] font-black focus:outline-none cursor-pointer text-slate-700 uppercase">
                             <option value="en">English</option>
@@ -99,61 +71,65 @@
                     </div>
                 </div>
 
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-4 rtl:space-x-reverse">
                     <a href="https://wa.me/8613656714278" target="_blank" class="bg-red-600 text-white px-5 py-2 rounded font-black text-[10px] tracking-widest hover:bg-black transition shadow-lg shadow-red-200 flex items-center gap-2">
                         <i class="fab fa-whatsapp text-xs"></i> INQUIRY
                     </a>
-                    <button class="md:hidden text-black text-xl"><i class="fas fa-bars"></i></button>
+                    <button class="md:hidden text-black text-xl p-2" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
                 </div>
             </div>
         </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex-col space-y-4">
+            <a href="index.html" class="block text-sm font-bold text-slate-600 hover:text-red-600" data-i18n="nav-home">Home</a>
+            <a href="about.html" class="block text-sm font-bold text-slate-600 hover:text-red-600" data-i18n="nav-about">About Us</a>
+            <a href="products.html" class="block text-sm font-bold text-slate-600 hover:text-red-600" data-i18n="nav-products">Products</a>
+            <a href="news.html" class="block text-sm font-bold text-red-600" data-i18n="nav-news">News</a>
+            <a href="contact.html" class="block text-sm font-bold text-slate-600 hover:text-red-600" data-i18n="nav-contact">Contact</a>
+        </div>
     </nav>
 
-    <!-- 顶部标题区 -->
     <header class="pt-40 pb-16 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-            <h1 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-6 leading-none text-left-rtl" data-i18n="news-header">Latest <span class="text-red-600">Insights</span></h1>
-            <p class="text-slate-400 text-sm md:text-base font-medium tracking-wide max-w-2xl text-left-rtl" data-i18n="news-subheader">Stay updated with Pioneer Metal's industrial advancements and global exhibition highlights.</p>
+            <h1 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-6 leading-none rtl:text-right" data-i18n="news-header">Latest <span class="text-red-600">Insights</span></h1>
+            <p class="text-slate-400 text-sm md:text-base font-medium tracking-wide max-w-2xl rtl:text-right rtl:ml-auto rtl:mr-0" data-i18n="news-subheader">Stay updated with Pioneer Metal's industrial advancements...</p>
         </div>
     </header>
 
-    <!-- 新闻流 -->
     <main class="py-20">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-1 gap-16">
                 
-                <!-- 新闻项 01 -->
                 <article class="news-card bg-white rounded-[2rem] overflow-hidden flex flex-col md:flex-row border border-slate-100 shadow-sm">
                     <div class="md:w-1/2 relative h-80 md:h-auto overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" alt="German Exhibition" class="w-full h-full object-cover">
-                        <div class="absolute top-6 left-6 bg-red-600 text-white text-[10px] font-black px-4 py-2 rounded-full tracking-widest uppercase shadow-xl" data-i18n="tag-event">Global Event</div>
+                        <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/News_01.jpg" alt="German Exhibition" class="w-full h-full object-cover">
+                        <div class="absolute top-6 left-6 rtl:left-auto rtl:right-6 bg-red-600 text-white text-[10px] font-black px-4 py-2 rounded-full tracking-widest uppercase shadow-xl" data-i18n="tag-event">Global Event</div>
                     </div>
-                    <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center text-left-rtl">
+                    <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center rtl:text-right">
                         <time class="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-4" data-i18n="news1-date">MAR 24-27, 2026</time>
                         <h2 class="text-3xl md:text-4xl font-black mb-6 uppercase tracking-tight leading-none text-red-600" data-i18n="news1-t">FENSTERBAU FRONTALE GERMANY</h2>
                         <p class="text-slate-500 text-sm md:text-base leading-relaxed mb-8 font-light" data-i18n="news1-d">
-                            Join Pioneer Metal at FENSTERBAU FRONTALE in Nuremberg, Germany. Explore our cutting-edge steel profile solutions for modern window and facade systems.
+                            Join Pioneer Metal at FENSTERBAU FRONTALE in Nuremberg...
                         </p>
-                        <a href="contact.html" class="inline-flex items-center gap-3 text-black text-[11px] font-black uppercase tracking-widest hover:text-red-600 transition">
-                            <span data-i18n="btn-schedule">Schedule a Meeting</span> <i class="fas fa-chevron-right text-[10px]"></i>
+                        <a href="contact.html" class="inline-flex items-center gap-3 rtl:flex-row-reverse text-black text-[11px] font-black uppercase tracking-widest hover:text-red-600 transition">
+                            <span data-i18n="btn-schedule">Schedule a Meeting</span> <i class="fas fa-chevron-right rtl:hidden text-[10px]"></i><i class="fas fa-chevron-left hidden rtl:block text-[10px]"></i>
                         </a>
                     </div>
                 </article>
 
-                <!-- 新闻项 02 -->
                 <article class="news-card bg-white rounded-[2rem] overflow-hidden flex flex-col md:flex-row border border-slate-100 shadow-sm">
                     <div class="md:w-1/2 relative h-80 md:h-auto overflow-hidden order-1 md:order-2">
-                        <img src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?auto=format&fit=crop&q=80&w=1200" alt="Brazil Exhibition" class="w-full h-full object-cover">
-                        <div class="absolute top-6 right-6 bg-black text-white text-[10px] font-black px-4 py-2 rounded-full tracking-widest uppercase shadow-xl" data-i18n="tag-event">Global Event</div>
+                        <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/News_02.jpg" alt="Brazil Exhibition" class="w-full h-full object-cover">
+                        <div class="absolute top-6 right-6 rtl:right-auto rtl:left-6 bg-black text-white text-[10px] font-black px-4 py-2 rounded-full tracking-widest uppercase shadow-xl" data-i18n="tag-event">Global Event</div>
                     </div>
-                    <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center order-2 md:order-1 text-left-rtl">
+                    <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center order-2 md:order-1 rtl:text-right">
                         <time class="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-4" data-i18n="news2-date">SEP 9-12, 2026</time>
                         <h2 class="text-3xl md:text-4xl font-black mb-6 uppercase tracking-tight leading-none text-red-600" data-i18n="news2-t">FESQUA BRAZIL 2026</h2>
                         <p class="text-slate-500 text-sm md:text-base leading-relaxed mb-8 font-light" data-i18n="news2-d">
-                            Expanding our reach in South America! Pioneer Metal will showcase high-performance cold-rolled steel technologies at FESQUA, São Paulo.
+                            Expanding our reach in South America! Pioneer Metal will showcase...
                         </p>
-                        <a href="contact.html" class="inline-flex items-center gap-3 text-black text-[11px] font-black uppercase tracking-widest hover:text-red-600 transition">
-                            <span data-i18n="btn-visit">Visit Our Booth</span> <i class="fas fa-chevron-right text-[10px]"></i>
+                        <a href="contact.html" class="inline-flex items-center gap-3 rtl:flex-row-reverse text-black text-[11px] font-black uppercase tracking-widest hover:text-red-600 transition">
+                            <span data-i18n="btn-visit">Visit Our Booth</span> <i class="fas fa-chevron-right rtl:hidden text-[10px]"></i><i class="fas fa-chevron-left hidden rtl:block text-[10px]"></i>
                         </a>
                     </div>
                 </article>
@@ -162,11 +138,10 @@
         </div>
     </main>
 
-    <!-- 页脚 -->
     <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 rtl:text-right">
+                <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left rtl:md:text-right" data-i18n="footer-rights">
                     &copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved
                 </div>
                 <div class="flex items-center space-x-6">
@@ -178,105 +153,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        const i18n = {
-            en: { 
-                "nav-home": "Home", "nav-about": "About Us", "nav-products": "Products", "nav-news": "News", "nav-contact": "Contact",
-                "news-header": "Latest <span class='text-red-600'>Insights</span>", 
-                "news-subheader": "Stay updated with Pioneer Metal's industrial advancements and global exhibition highlights.",
-                "tag-event": "Global Event", "btn-schedule": "Schedule a Meeting", "btn-visit": "Visit Our Booth",
-                "news1-date": "MAR 24-27, 2026", "news1-t": "FENSTERBAU FRONTALE GERMANY", 
-                "news1-d": "Join Pioneer Metal at FENSTERBAU FRONTALE in Nuremberg, Germany. Explore our cutting-edge steel profile solutions for modern window and facade systems.",
-                "news2-date": "SEP 9-12, 2026", "news2-t": "FESQUA BRAZIL 2026", 
-                "news2-d": "Expanding our reach in South America! Pioneer Metal will showcase high-performance cold-rolled steel technologies at FESQUA, São Paulo."
-            },
-            es: { 
-                "nav-home": "Inicio", "nav-about": "Sobre Nosotros", "nav-products": "Productos", "nav-news": "Noticias", "nav-contact": "Contacto",
-                "news-header": "Últimas <span class='text-red-600'>Noticias</span>", 
-                "news-subheader": "Manténgase al día con los avances industriales y los eventos globales de Pioneer Metal.",
-                "tag-event": "Evento Global", "btn-schedule": "Programar Reunión", "btn-visit": "Visitar Stand",
-                "news1-date": "24-27 MAR, 2026", "news1-t": "FENSTERBAU FRONTALE ALEMANIA", 
-                "news1-d": "Únase a Pioneer Metal en FENSTERBAU FRONTALE en Nuremberg, Alemania. Explore nuestras soluciones de perfiles de acero.",
-                "news2-date": "9-12 SEP, 2026", "news2-t": "FESQUA BRASIL 2026", 
-                "news2-d": "¡Expandiendo nuestro alcance en América del Sur! Pioneer Metal exhibirá tecnologías en FESQUA, São Paulo."
-            },
-            pt: { 
-                "nav-home": "Início", "nav-about": "Sobre Nós", "nav-products": "Produtos", "nav-news": "Notícias", "nav-contact": "Contato",
-                "news-header": "Últimas <span class='text-red-600'>Notícias</span>", 
-                "news-subheader": "Fique atualizado com os avanços industriais e destaques de feiras globais.",
-                "tag-event": "Evento Global", "btn-schedule": "Agendar Reunião", "btn-visit": "Visitar Estande",
-                "news1-date": "24-27 MAR, 2026", "news1-t": "FENSTERBAU FRONTALE ALEMANHA", 
-                "news1-d": "Junte-se à Pioneer Metal na FENSTERBAU FRONTALE em Nuremberg, Alemanha. Conheça nossos perfis de aço.",
-                "news2-date": "9-12 SET, 2026", "news2-t": "FESQUA BRASIL 2026", 
-                "news2-d": "Expandindo nossa presença na América do Sul! Pioneer Metal apresentará tecnologias em FESQUA, São Paulo."
-            },
-            ru: { 
-                "nav-home": "Главная", "nav-about": "О нас", "nav-products": "Продукция", "nav-news": "Новости", "nav-contact": "Контакты",
-                "news-header": "Новости и <span class='text-red-600'>Обзоры</span>", 
-                "news-subheader": "Следите за промышленными достижениями и мировыми выставками Pioneer Metal.",
-                "tag-event": "Мировое событие", "btn-schedule": "Назначить встречу", "btn-visit": "Посетить стенд",
-                "news1-date": "24-27 МАР, 2026", "news1-t": "FENSTERBAU FRONTALE ГЕРМАНИЯ", 
-                "news1-d": "Присоединяйтесь к нам в Нюрнберге, Германия, чтобы увидеть лучшие стальные профили для оконных систем.",
-                "news2-date": "9-12 СЕН, 2026", "news2-t": "FESQUA БРАЗИЛИЯ 2026", 
-                "news2-d": "Расширяем присутствие в Южной Америке! Технологии холоднокатаной стали на выставке FESQUA."
-            },
-            ja: { 
-                "nav-home": "ホーム", "nav-about": "私たちについて", "nav-products": "製品", "nav-news": "ニュース", "nav-contact": "お問い合わせ",
-                "news-header": "最新の <span class='text-red-600'>動向</span>", 
-                "news-subheader": "パイオニアメタルの産業進歩とグローバルな展示会のハイライトをご覧ください。",
-                "tag-event": "グローバルイベント", "btn-schedule": "会議を予約する", "btn-visit": "ブースを訪問する",
-                "news1-date": "2026年3月24-27日", "news1-t": "FENSTERBAU FRONTALE ドイツ", 
-                "news1-d": "ドイツ・ニュルンベルクで開催される展示会に参加。最新の鋼製プロファイルソリューションを展示します。",
-                "news2-date": "2026年9月9-12日", "news2-t": "FESQUA ブラジル 2026", 
-                "news2-d": "南米市場への拡大。サンパウロのFESQUAで高性能冷延鋼板技術を披露します。"
-            },
-            ko: { 
-                "nav-home": "홈", "nav-about": "회사 소개", "nav-products": "제품", "nav-news": "뉴스", "nav-contact": "문의하기",
-                "news-header": "최신 <span class='text-red-600'>인사이트</span>", 
-                "news-subheader": "파이오니아 메탈의 산업 발전과 글로벌 전시회 소식을 확인하세요.",
-                "tag-event": "글로벌 이벤트", "btn-schedule": "상담 예약하기", "btn-visit": "부스 방문하기",
-                "news1-date": "2026년 3월 24-27일", "news1-t": "FENSTERBAU FRONTALE 독일", 
-                "news1-d": "독일 뉘른베르크 전시회에 참여하십시오. 현대적인 윈도우 시스템을 위한 솔루션을 만나보세요.",
-                "news2-date": "2026년 9월 9-12일", "news2-t": "FESQUA 브라질 2026", 
-                "news2-d": "남미 시장 공략! 상파울루 FESQUA에서 고성능 냉연 강판 기술을 선보입니다."
-            },
-            ar: { 
-                "nav-home": "الرئيسية", "nav-about": "من نحن", "nav-products": "المنتجات", "nav-news": "الأخبار", "nav-contact": "اتصل بنا",
-                "news-header": "أحدث <span class='text-red-600'>الأخبار</span>", 
-                "news-subheader": "ابق على اطلاع بآخر التطورات الصناعية وأبرز المعارض العالمية لشركة بايونير ميتال.",
-                "tag-event": "حدث عالمي", "btn-schedule": "حدد موعداً", "btn-visit": "زوروا جناحنا",
-                "news1-date": "24-27 مارس 2026", "news1-t": "معرض فينشترباو - ألمانيا", 
-                "news1-d": "انضم إلينا في نورمبرغ، ألمانيا. استكشف حلول قطاعات الصلب المتطورة لأنظمة النوافذ الحديثة.",
-                "news2-date": "9-12 سبتمبر 2026", "news2-t": "معرض فيسكوا - البرازيل", 
-                "news2-d": "نوسع انتشارنا في أمريكا الجنوبية! عرض تقنيات الصلب المدلفن على البارد في ساو باولو."
-            }
-        };
-
-        const flags = { en: 'us', es: 'es', pt: 'pt', ru: 'ru', ja: 'jp', ko: 'kr', ar: 'sa' };
-
-        function changeLanguage(lang) {
-            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-            document.documentElement.lang = lang;
-            const currentFlag = document.getElementById('currentFlag');
-            if(currentFlag) {
-                currentFlag.innerHTML = `<span class="fi fi-${flags[lang]} rounded-sm shadow-sm transition-opacity duration-300"></span>`;
-            }
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (i18n[lang] && i18n[lang][key]) {
-                    element.innerHTML = i18n[lang][key];
-                }
-            });
-            localStorage.setItem('preferred-lang', lang);
-        }
-
-        window.onload = () => {
-            const savedLang = localStorage.getItem('preferred-lang') || 'en';
-            const select = document.querySelector('select');
-            if(select) select.value = savedLang;
-            changeLanguage(savedLang);
-        };
-    </script>
 </body>
 </html>

@@ -17,92 +17,43 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <!-- 国旗图标库 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap');
         
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
 
-        /* 针对不同语言的字体适配 */
+        /* Font Adaptations */
         :lang(ar) { font-family: 'Noto Sans Arabic', sans-serif; }
         :lang(ja) { font-family: 'Noto Sans JP', sans-serif; }
         :lang(ko) { font-family: 'Noto Sans KR', sans-serif; }
 
-        .nav-blur {
-            backdrop-filter: blur(12px);
-            background-color: rgba(255, 255, 255, 0.95);
-        }
+        .nav-blur { backdrop-filter: blur(12px); background-color: rgba(255, 255, 255, 0.95); }
 
-        .carousel-container {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .carousel-slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 1.2s ease-in-out;
-            background-size: cover;
-            background-position: center;
-        }
-
+        .carousel-container { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+        .carousel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease-in-out; background-size: cover; background-position: center; }
         .carousel-slide.active { opacity: 1; }
+        .slide-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)); }
 
-        .slide-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
-        }
+        .lang-select { appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 0.2rem center; background-size: 0.8em; padding-right: 1.2rem; }
+        
+        [dir="rtl"] .lang-select { background-position: left 0.2rem center; padding-right: 0.5rem; padding-left: 1.2rem; }
 
-        .lang-select {
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 0.2rem center;
-            background-size: 0.8em;
-            padding-right: 1.2rem;
-        }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s; }
+        .dot.active { background: #ef4444; transform: scale(1.4); box-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
 
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .dot.active {
-            background: #ef4444;
-            transform: scale(1.4);
-            box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
-        }
+        .coop-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.4s ease; }
+        .coop-card:hover { border-color: #ef4444; background: rgba(239, 68, 68, 0.05); transform: translateY(-5px); }
 
-        .coop-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s ease;
-        }
-        .coop-card:hover {
-            border-color: #ef4444;
-            background: rgba(239, 68, 68, 0.05);
-            transform: translateY(-5px);
-        }
-
-        [dir="rtl"] .text-left-rtl { text-align: right; }
+        /* RTL Logic handled by Tailwind logical properties (ps, pe, ms, me) or standard direction */
     </style>
+    <!-- Link to Centralized JS -->
+    <script src="main.js" defer></script>
 </head>
 <body class="bg-white text-slate-900">
 
-    <!-- 导航栏 -->
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 nav-blur border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
@@ -112,15 +63,16 @@
                     </a>
                 </div>
                 
-                <div class="hidden md:flex items-center space-x-8 font-bold text-[11px] uppercase tracking-[0.2em]">
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8 rtl:space-x-reverse font-bold text-[11px] uppercase tracking-[0.2em]">
                     <a href="index.html" class="text-red-600 transition" data-i18n="nav-home">Home</a>
                     <a href="about.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-about">About Us</a>
                     <a href="products.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-products">Products</a>
                     <a href="news.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-news">News</a>
                     <a href="contact.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-contact">Contact</a>
                     
-                    <div class="relative flex items-center border-l pl-6 border-slate-200 ml-4 group">
-                        <div id="currentFlag" class="flex items-center mr-2">
+                    <div class="relative flex items-center border-l rtl:border-r rtl:border-l-0 ps-6 rtl:pe-6 border-slate-200 ms-4 rtl:me-4 group">
+                        <div id="currentFlag" class="flex items-center me-2 rtl:ms-2">
                             <span class="fi fi-us rounded-sm shadow-sm transition-opacity duration-300"></span>
                         </div>
                         <select onchange="changeLanguage(this.value)" class="lang-select bg-transparent text-[11px] font-black focus:outline-none cursor-pointer text-slate-700 uppercase">
@@ -135,17 +87,37 @@
                     </div>
                 </div>
 
-                <div class="flex items-center space-x-4">
+                <!-- Mobile & Action -->
+                <div class="flex items-center space-x-4 rtl:space-x-reverse">
                     <a href="https://wa.me/8613656714278" target="_blank" class="bg-red-600 text-white px-5 py-2 rounded font-black text-[10px] tracking-widest hover:bg-black transition shadow-lg shadow-red-200 flex items-center gap-2">
                         <i class="fab fa-whatsapp text-xs"></i> INQUIRY
                     </a>
-                    <button class="md:hidden text-black text-xl"><i class="fas fa-bars"></i></button>
+                    <button class="md:hidden text-black text-xl p-2" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex-col space-y-4">
+            <a href="index.html" class="block text-sm font-bold text-red-600" data-i18n="nav-home">Home</a>
+            <a href="about.html" class="block text-sm font-bold text-slate-600 hover:text-red-600" data-i18n="nav-about">About Us</a>
+            <a href="products.html" class="block text-sm font-bold text-slate-600 hover:text-red-600" data-i18n="nav-products">Products</a>
+            <a href="news.html" class="block text-sm font-bold text-slate-600 hover:text-red-600" data-i18n="nav-news">News</a>
+            <a href="contact.html" class="block text-sm font-bold text-slate-600 hover:text-red-600" data-i18n="nav-contact">Contact</a>
+            
+            <div class="pt-4 border-t border-slate-100">
+                <p class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">Language</p>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="changeLanguage('en')" class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">EN</button>
+                    <button onclick="changeLanguage('es')" class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">ES</button>
+                    <button onclick="changeLanguage('ar')" class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">AR</button>
+                    <!-- Add others as needed -->
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- 首页轮播区域 -->
+    <!-- Hero Carousel -->
     <section id="home" class="h-[60vh] flex items-center text-white relative overflow-hidden pt-20">
         <div class="carousel-container" id="carousel">
             <div class="carousel-slide active" style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_01.jpg');">
@@ -163,7 +135,7 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-            <div class="max-w-4xl text-left-rtl">
+            <div class="max-w-4xl rtl:text-right">
                 <h2 class="text-red-500 font-black tracking-[0.4em] uppercase mb-4 text-xs" data-i18n="hero-tag">Industrial Excellence Since 2006</h2>
                 <h1 class="text-4xl md:text-7xl font-black leading-none mb-6 tracking-tighter uppercase" data-i18n="hero-title">
                     Precision Steel Profiles
@@ -171,7 +143,7 @@
                 <p class="text-base text-slate-300 mb-8 max-w-xl leading-relaxed font-light" data-i18n="hero-desc">
                     Global leader in manufacturing cold-rolled steel solutions for window systems and industrial infrastructure.
                 </p>
-                <div class="flex flex-wrap gap-4">
+                <div class="flex flex-wrap gap-4 rtl:justify-start">
                     <a href="products.html" class="bg-red-600 text-white px-8 py-3 rounded font-bold hover:bg-white hover:text-black transition-all transform hover:scale-105 text-sm" data-i18n="btn-view">
                         VIEW PRODUCTS
                     </a>
@@ -179,7 +151,7 @@
             </div>
         </div>
 
-        <div class="absolute right-10 bottom-10 z-20 flex space-x-3">
+        <div class="absolute right-10 rtl:right-auto rtl:left-10 bottom-10 z-20 flex space-x-3">
             <div class="dot active" onclick="goToSlide(0)"></div>
             <div class="dot" onclick="goToSlide(1)"></div>
             <div class="dot" onclick="goToSlide(2)"></div>
@@ -187,14 +159,13 @@
         </div>
     </section>
 
-    <!-- Strategic Business Cooperation 板块 -->
+    <!-- Strategic Business Cooperation -->
     <section id="about" class="bg-[#0a0a0a] py-32 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-20 text-left-rtl">
+            <div class="mb-20 rtl:text-right">
                 <h2 class="text-red-500 font-black tracking-[0.4em] uppercase mb-4 text-xs" data-i18n="coop-subtitle">Partnership & Growth</h2>
-                <!-- 放大标题，单行显示 -->
                 <h3 class="text-4xl md:text-7xl font-black tracking-tighter mb-8 uppercase whitespace-nowrap overflow-hidden text-ellipsis" data-i18n="coop-title">Strategic Business Cooperation</h3>
-                <div class="w-20 h-1 bg-red-600"></div>
+                <div class="w-20 h-1 bg-red-600 rtl:ml-auto rtl:mr-0"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
@@ -240,11 +211,11 @@
         </div>
     </section>
 
-    <!-- 页脚 -->
+    <!-- Footer -->
     <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left">
+                <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left rtl:md:text-right" data-i18n="footer-rights">
                     &copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved
                 </div>
                 <div class="flex items-center space-x-6">
@@ -258,83 +229,7 @@
     </footer>
 
     <script>
-        const i18n = {
-            en: { 
-                "nav-home": "Home", "nav-about": "About Us", "nav-products": "Products", "nav-news": "News", "nav-contact": "Contact", 
-                "hero-tag": "Industrial Excellence Since 2006", "hero-title": "Precision Steel Profiles", "hero-desc": "Global leader in manufacturing cold-rolled steel solutions for window systems and industrial infrastructure.", "btn-view": "VIEW PRODUCTS",
-                "coop-subtitle": "Partnership & Growth", "coop-title": "Strategic Business Cooperation",
-                "pillar-1-title": "Lijialong Sealing Strip", "pillar-1-desc": "Specialized manufacturer of high-resilience weather strips for advanced sealing solutions.",
-                "pillar-2-title": "OEM & Custom", "pillar-2-desc": "OEM customers assist us in achieving success, improving product quality, and achieving a win-win situation.",
-                "pillar-3-title": "Melan Trade", "pillar-3-desc": "Professional import & export services ensuring efficient global logistics and commerce."
-            },
-            es: { 
-                "nav-home": "Inicio", "nav-about": "Sobre Nosotros", "nav-products": "Productos", "nav-news": "Noticias", "nav-contact": "Contacto", 
-                "hero-tag": "Excelencia Industrial desde 2006", "hero-title": "Perfiles de Acero de Precisión", "hero-desc": "Líder mundial en fabricación de soluciones de acero para ventanas e industria.", "btn-view": "VER PRODUCTOS",
-                "coop-subtitle": "Alianzas y Crecimiento", "coop-title": "Cooperación Comercial Estratégica",
-                "pillar-1-title": "Tira de Sellado Lijialong", "pillar-1-desc": "Fabricante especializado en burletes de alta resiliencia para sellado avanzado.",
-                "pillar-2-title": "OEM y Personalizado", "pillar-2-desc": "Los clientes OEM nos ayudan a lograr el éxito, mejorar la calidad del producto y lograr una situación de beneficio mutuo.",
-                "pillar-3-title": "Melan Trade", "pillar-3-desc": "Servicios profesionales de importación y exportación para una logística eficiente."
-            },
-            pt: { 
-                "nav-home": "Início", "nav-about": "Sobre Nós", "nav-products": "Produtos", "nav-news": "Notícias", "nav-contact": "Contato", 
-                "hero-tag": "Excelência Industrial desde 2006", "hero-title": "Perfis de Aço de Precisão", "hero-desc": "Líder mundial na fabricação de soluções em aço para janelas e infraestrutura.", "btn-view": "VER PRODUTOS",
-                "coop-subtitle": "Parceria e Crescimento", "coop-title": "Cooperação Empresarial Estratégica",
-                "pillar-1-title": "Lijialong Sealing Strip", "pillar-1-desc": "Fabricante especializado de tiras de vedação de alta resiliência.",
-                "pillar-2-title": "OEM e Customizado", "pillar-2-desc": "Os clientes OEM ajudam-nos a alcançar o sucesso, melhorar a qualidade dos produtos e alcançar uma situação de ganho mútuo.",
-                "pillar-3-title": "Melan Trade", "pillar-3-desc": "Serviços profissionais de exportação garantindo logística global eficiente."
-            },
-            ru: { 
-                "nav-home": "Главная", "nav-about": "О нас", "nav-products": "Изделия", "nav-news": "Новости", "nav-contact": "Контакт", 
-                "hero-tag": "Промышленное превосходство с 2006 года", "hero-title": "Стальные Профили Высокой Точности", "hero-desc": "Мировой лидер в производстве стальных решений для оконных систем.", "btn-view": "ПРОДУКЦИЯ",
-                "coop-subtitle": "Партнерство и Рост", "coop-title": "Стратегическое Деловое Сотрудничество",
-                "pillar-1-title": "Уплотнительная лента Lijialong", "pillar-1-desc": "Специализированный производитель уплотнителей для передовых решений герметизации.",
-                "pillar-2-title": "OEM и Заказ", "pillar-2-desc": "OEM-клиенты помогают нам добиваться успеха, повышать качество продукции и достигать взаимовыгодной ситуации.",
-                "pillar-3-title": "Melan Trade", "pillar-3-desc": "Профессиональные импортно-экспортные услуги для глобальной логистики."
-            },
-            ja: { 
-                "nav-home": "ホーム", "nav-about": "会社概要", "nav-products": "製品", "nav-news": "ニュース", "nav-contact": "お問い合わせ", 
-                "hero-tag": "2006年創業的信頼", "hero-title": "精密スチールプロファイル", "hero-desc": "窓システムおよび産業インフラ向けの冷間圧延鋼ソリューションのリーダー。", "btn-view": "製品一覧",
-                "coop-subtitle": "パートナーシップと成長", "coop-title": "戦略的ビジネス提携",
-                "pillar-1-title": "Lijialong シーリングストリップ", "pillar-1-desc": "高度なシーリングソリューション向けの高品質ウェザーストリップ製造。",
-                "pillar-2-title": "OEM・カスタム", "pillar-2-desc": "OEMのお客様は、私たちが成功を収め、製品の品質を向上させ、ウィンウィンの状況を実現するのを支援してくださいます。",
-                "pillar-3-title": "Melan Trade", "pillar-3-desc": "効率的なグローバル物流と貿易を保証する専門的な輸出入サービス。"
-            },
-            ko: { 
-                "nav-home": "홈", "nav-about": "회사 소개", "nav-products": "제품", "nav-news": "소식", "nav-contact": "문의", 
-                "hero-tag": "2006년부터 시작된 기술력", "hero-title": "정밀 스틸 프로파일", "hero-desc": "창호 시스템 및 산업 인프라를 위한 냉간 압연 강철 솔루션의 글로벌 리더.", "btn-view": "제품 보기",
-                "coop-subtitle": "파트너십과 성장", "coop-title": "전략적 비즈니스 협력",
-                "pillar-1-title": "Lijialong 실링 스트립", "pillar-1-desc": "고급 실링 솔루션을 위한 고탄성 웨더스트립 전문 제조업체.",
-                "pillar-2-title": "OEM 및 맞춤 제작", "pillar-2-desc": "OEM 고객은 우리가 성공을 거두고 제품 품질을 개선하며 윈윈 상황을 달성할 수 있도록 지원합니다.",
-                "pillar-3-title": "Melan Trade", "pillar-3-desc": "효율적인 글로벌 물류 및 무역을 보장하는 전문 수출입 서비스."
-            },
-            ar: { 
-                "nav-home": "الرئيسية", "nav-about": "من نحن", "nav-products": "المنتجات", "nav-news": "الأخبار", "nav-contact": "اتصل بنا", 
-                "hero-tag": "التميز الصناعي منذ 2006", "hero-title": "مقاطع فولاذية عالية الدقة", "hero-desc": "الرائد العالمي في تصنيع حلول الصلب المدرفل على البارد لأنظمة النوافذ.", "btn-view": "عرض المنتجات",
-                "coop-subtitle": "الشراكة والنمو", "coop-title": "التعاون التجاري الاستراتيجي",
-                "pillar-1-title": "Lijialong شريط إحكام", "pillar-1-desc": "مصنع متخصص لشرائط منع التسرب عالية المرونة للحلول المتقدمة.",
-                "pillar-2-title": "OEM والتخصيص", "pillar-2-desc": "يساعدنا عملاء OEM على تحقيق النجاح وتحسين جودة المنتج وتحقيق وضع مربح للجانبين.",
-                "pillar-3-title": "Melan Trade", "pillar-3-desc": "خدمات استيراد وتصدير احترافية لضمان الخدمات اللوجستية العالمية."
-            }
-        };
-
-        const flags = { en: 'us', es: 'es', pt: 'pt', ru: 'ru', ja: 'jp', ko: 'kr', ar: 'sa' };
-
-        function changeLanguage(lang) {
-            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-            document.documentElement.lang = lang;
-            const currentFlag = document.getElementById('currentFlag');
-            if(currentFlag) {
-                currentFlag.innerHTML = `<span class="fi fi-${flags[lang]} rounded-sm shadow-sm transition-opacity duration-300"></span>`;
-            }
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (i18n[lang] && i18n[lang][key]) {
-                    element.innerHTML = i18n[lang][key];
-                }
-            });
-            localStorage.setItem('preferred-lang', lang);
-        }
-
+        // Page Specific Carousel Logic
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
         const dots = document.querySelectorAll('.dot');
@@ -349,13 +244,6 @@
             currentSlide = (currentSlide + 1) % slides.length;
             goToSlide(currentSlide);
         }, 5000);
-
-        window.onload = () => {
-            const savedLang = localStorage.getItem('preferred-lang') || 'en';
-            const select = document.querySelector('select');
-            if(select) select.value = savedLang;
-            changeLanguage(savedLang);
-        };
     </script>
 </body>
 </html>
