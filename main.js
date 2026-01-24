@@ -9,14 +9,14 @@ const i18nData = {
         // Navigation
         "nav-home": "Home", "nav-about": "About Us", "nav-products": "Products", "nav-news": "News", "nav-contact": "Contact",
         "footer-rights": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved",
-        
+
         // Home Page
         "hero-tag": "Industrial Excellence Since 2006", "hero-title": "Precision Steel Profiles", "hero-desc": "Global leader in manufacturing cold-rolled steel solutions for window systems and industrial infrastructure.", "btn-view": "VIEW PRODUCTS",
         "coop-subtitle": "Partnership & Growth", "coop-title": "Strategic Business Cooperation",
         "pillar-1-title": "Lijialong Sealing Strip", "pillar-1-desc": "Specialized manufacturer of high-resilience weather strips for advanced sealing solutions.",
         "pillar-2-title": "OEM & Custom", "pillar-2-desc": "OEM customers assist us in achieving success, improving product quality, and achieving a win-win situation.",
         "pillar-3-title": "Melan Trade", "pillar-3-desc": "Professional import & export services ensuring efficient global logistics and commerce.",
-        
+
         // About Page
         "about-tag": "About Pioneer Metal", "about-header": "Our Team & Passion",
         "about-intro": "Pioneer Metal Product Factory is a leading supplier of high-quality metal sections, serving a wide range of industries across the China. With years of expertise, we specialize in manufacturing reinforcement steel of uPvc window and door, offering Drywall Steel Sections and others.",
@@ -47,7 +47,13 @@ const i18nData = {
         "contact-p": "Ready to elevate your project with precision hot-rolled steel? Skip the forms and reach out to our technical team directly via WhatsApp or Email for an instant quote.",
         "card-wa-tag": "Instant Chat", "card-wa-desc": "Direct line for technical support & pricing",
         "card-mail-tag": "Email Inquiry", "card-mail-desc": "Official quotes and documentation",
-        "card-loc-tag": "Factory Location", "card-loc-addr": "Dongjie, National Highway 106,<br>Xinzhen, Wen'an County, Langfang,<br>Hebei Province, China"
+        "card-loc-tag": "Factory Location", "card-loc-addr": "Dongjie, National Highway 106,<br>Xinzhen, Wen'an County, Langfang,<br>Hebei Province, China",
+        "stat-countries-t": "Countries", "stat-countries-d": "Pioneer Metal, travelled 30+ countries",
+        "stat-nations-t": "Nations", "stat-nations-d": "Pioneer Metal, export to 24+ nations",
+        "stat-customers-t": "Customer", "stat-customers-d": "Pioneer Metal, 280+ customer all over the world.",
+        "stat-tons-d": "Pioneer Metal, global supply capacity.",
+        "form-title": "Send a Message", "form-name": "Full Name", "form-email": "Email Address", "form-msg": "Message", "form-btn": "SEND INQUIRY",
+        "contact-phone": "Phone Support", "contact-email": "Email Inquiries"
     },
     es: {
         "nav-home": "Inicio", "nav-about": "Sobre Nosotros", "nav-products": "Productos", "nav-news": "Noticias", "nav-contact": "Contacto",
@@ -75,7 +81,13 @@ const i18nData = {
         "contact-tag": "Comunicación Directa", "contact-h": "Contáctenos <br>Directamente", "contact-p": "¿Listo para elevar su proyecto con acero laminado en caliente de precisión? Evite formularios y contacte directamente vía WhatsApp o Email.",
         "card-wa-tag": "Chat Instantáneo", "card-wa-desc": "Línea directa para soporte técnico y precios",
         "card-mail-tag": "Consulta por Correo", "card-mail-desc": "Cotizaciones oficiales y documentación",
-        "card-loc-tag": "Ubicación de Fábrica", "card-loc-addr": "Dongjie, Carretera Nacional 106,<br>Xinzhen, Condado de Wen'an, Langfang,<br>Provincia de Hebei, China"
+        "card-loc-tag": "Ubicación de Fábrica", "card-loc-addr": "Dongjie, Carretera Nacional 106,<br>Xinzhen, Condado de Wen'an, Langfang,<br>Provincia de Hebei, China",
+        "stat-countries-t": "Países", "stat-countries-d": "Pioneer Metal, presente en más de 30 países",
+        "stat-nations-t": "Naciones", "stat-nations-d": "Pioneer Metal, exporta a más de 24 naciones",
+        "stat-customers-t": "Clientes", "stat-customers-d": "Pioneer Metal, más de 280 clientes en todo el mundo",
+        "stat-tons-d": "Pioneer Metal, capacidad de suministro global",
+        "form-title": "Enviar un Mensaje", "form-name": "Nombre Completo", "form-email": "Correo Electrónico", "form-msg": "Mensaje", "form-btn": "ENVIAR CONSULTA",
+        "contact-phone": "Soporte Telefónico", "contact-email": "Consultas por Email"
     },
     pt: {
         "nav-home": "Início", "nav-about": "Sobre Nós", "nav-products": "Produtos", "nav-news": "Notícias", "nav-contact": "Contato",
@@ -127,7 +139,11 @@ const i18nData = {
         "contact-tag": "Прямая связь", "contact-h": "Свяжитесь <br>с нами", "contact-p": "Готовы улучшить свой проект с помощью прецизионной стали? Свяжитесь с нашей командой напрямую через WhatsApp или Email.",
         "card-wa-tag": "Быстрый чат", "card-wa-desc": "Прямая линия для техподдержки и цен",
         "card-mail-tag": "Email запрос", "card-mail-desc": "Официальные предложения и документы",
-        "card-loc-tag": "Адрес фабрики", "card-loc-addr": "Дунцзе, Национальное шоссе 106,<br>Синьчжэнь, уезд Вэньань, Ланфан,<br>провинция Хэбэй, Китай"
+        "card-loc-tag": "Адрес фабрики", "card-loc-addr": "Дунцзе, Национальное шоссе 106,<br>Синьчжэнь, уезд Вэньань, Ланфан,<br>провинция Хэбэй, Китай",
+        "stat-countries-t": "Стран", "stat-countries-d": "Pioneer Metal, поставки в 30+ стран",
+        "stat-nations-t": "Наций", "stat-nations-d": "Pioneer Metal, экспорт в 24+ нации",
+        "stat-customers-t": "Клиентов", "stat-customers-d": "Pioneer Metal, 280+ клиентов по всему миру",
+        "stat-tons-d": "Pioneer Metal, глобальные мощности поставок"
     },
     ja: {
         "nav-home": "ホーム", "nav-about": "会社概要", "nav-products": "製品", "nav-news": "ニュース", "nav-contact": "お問い合わせ",
@@ -153,7 +169,11 @@ const i18nData = {
         "contact-tag": "直接コミュニケーション", "contact-h": "直接お問い<br>合わせください", "contact-p": "精密熱延鋼板でお客様のプロジェクトを向上させませんか？フォームを省略し、WhatsAppまたはメールで直接お問い合わせください。",
         "card-wa-tag": "即時チャット", "card-wa-desc": "テクニカルサポートと価格の直通ライン",
         "card-mail-tag": "メールでのお問い合わせ", "card-mail-desc": "公式見積書および書類",
-        "card-loc-tag": "工場所在地", "card-loc-addr": "中国河北省廊坊市文安県<br>新鎮国道106号線東街"
+        "card-loc-tag": "工場所在地", "card-loc-addr": "中国河北省廊坊市文安県<br>新鎮国道106号線東街",
+        "stat-countries-t": "国", "stat-countries-d": "パイオニアメタルは30カ国以上で実績があります",
+        "stat-nations-t": "国家", "stat-nations-d": "パイオニアメタルは24カ国以上に輸出しています",
+        "stat-customers-t": "顧客", "stat-customers-d": "世界中に280社以上の顧客がいます",
+        "stat-tons-d": "パイオニアメタルのグローバル供給能力"
     },
     ko: {
         "nav-home": "홈", "nav-about": "회사 소개", "nav-products": "제품", "nav-news": "소식", "nav-contact": "문의",
@@ -179,7 +199,11 @@ const i18nData = {
         "contact-tag": "직접 소통", "contact-h": "직접 <br>문의하기", "contact-p": "정밀 열연강판으로 프로젝트의 품질을 높이십시오. 복잡한 절차 없이 WhatsApp 또는 이메일로 직접 문의해 주시기 바랍니다.",
         "card-wa-tag": "실시간 채팅", "card-wa-desc": "기술 지원 및 견적 직통 번호",
         "card-mail-tag": "이메일 문의", "card-mail-desc": "공식 견적 및 문서 지원",
-        "card-loc-tag": "공장 위치", "card-loc-addr": "중국 허베이성 랑방시 원안현<br>신전 국도 106호선 동지에"
+        "card-loc-tag": "공장 위치", "card-loc-addr": "중국 허베이성 랑방시 원안현<br>신전 국도 106호선 동지에",
+        "stat-countries-t": "국가", "stat-countries-d": "파이오니아 메탈, 30개국 이상 진출",
+        "stat-nations-t": "나라", "stat-nations-d": "파이오니아 메탈, 24개국 이상 수출",
+        "stat-customers-t": "고객", "stat-customers-d": "전 세계 280개 이상의 고객사",
+        "stat-tons-d": "파이오니아 메탈, 글로벌 공급 능력"
     },
     ar: {
         "nav-home": "الرئيسية", "nav-about": "من نحن", "nav-products": "المنتجات", "nav-news": "الأخبار", "nav-contact": "اتصل بنا",
@@ -205,11 +229,130 @@ const i18nData = {
         "contact-tag": "تواصل مباشر", "contact-h": "تواصل معنا <br>مباشرة", "contact-p": "هل أنت جاهز للارتقاء بمشروعك؟ تواصل مع فريقنا الفني مباشرة عبر واتساب أو البريد الإلكتروني للحصول على عرض سعر فوري.",
         "card-wa-tag": "دردشة فورية", "card-wa-desc": "خط مباشر للدعم الفني والأسعار",
         "card-mail-tag": "استفسار بريدي", "card-mail-desc": "عروض الأسعار والوثائق الرسمية",
-        "card-loc-tag": "موقع المصنع", "card-loc-addr": "دونغجيه، الطريق الوطني 106،<br>شينتشن، مقاطعة وينان، لانغفانغ،<br>مقاطعة خبي، الصين"
+        "card-loc-tag": "موقع المصنع", "card-loc-addr": "دونغجيه، الطريق الوطني 106،<br>شينتشن، مقاطعة وينان، لانغفانغ،<br>مقاطعة خبي، الصين",
+        "stat-countries-t": "دولة", "stat-countries-d": "بايونير ميتال، سافرت إلى أكثر من 30 دولة",
+        "stat-nations-t": "أمة", "stat-nations-d": "بايونير ميتال، تصدر إلى أكثر من 24 دولة",
+        "stat-customers-t": "عميل", "stat-customers-d": "بايونير ميتال، أكثر من 280 عميل حول العالم",
+        "stat-tons-d": "بايونير ميتال، قدرة توريد عالمية"
+    },
+    fr: {
+        "nav-home": "Accueil", "nav-about": "À Propos", "nav-products": "Produits", "nav-news": "Actualités", "nav-contact": "Contact",
+        "footer-rights": "&copy; 2025 USINE DE PRODUITS MÉTALLIQUES PIONEER. | Tous droits réservés",
+        "hero-tag": "Excellence Industrielle depuis 2006", "hero-title": "Profilés Acier de Précision", "hero-desc": "Leader mondial dans la fabrication de solutions en acier laminé à froid pour systèmes de fenêtres et infrastructures.", "btn-view": "VOIR PRODUITS",
+        "coop-subtitle": "Partenariat & Croissance", "coop-title": "Coopération Stratégique",
+        "pillar-1-title": "Joint d'Étanchéité Lijialong", "pillar-1-desc": "Fabricant spécialisé de joints d'étanchéité haute résilience.",
+        "pillar-2-title": "OEM & Sur Mesure", "pillar-2-desc": "Les clients OEM nous aident à réussir, à améliorer la qualité des produits et à atteindre une situation gagnant-gagnant.",
+        "pillar-3-title": "Commerce Melan", "pillar-3-desc": "Services professionnels d'import-export assurant une logistique mondiale efficace.",
+        "about-tag": "À Propos de Pioneer Metal", "about-header": "Notre Équipe & Passion",
+        "about-intro": "Pioneer Metal est un fournisseur leader de profilés métalliques de haute qualité en Chine.",
+        "about-quote": "\"La précision n'est pas juste une norme, c'est notre promesse. Depuis 2006, nous offrons les solutions les plus fiables.\"",
+        "story-t": "Puissance de <span class='text-red-600'>Fabrication</span>",
+        "story-d1": "Notre usine est équipée de lignes de production automatisées surveillées par des ingénieurs expérimentés.",
+        "stat-exp": "Ans d'Expérience", "stat-tons": "Tonnes Annuelles",
+        "products-title": "Solutions Acier Industrielles",
+        "products-desc": "Pioneer Metal fournit des profilés en acier laminés à chaud de haute précision et durabilité pour les normes mondiales.",
+        "p1-tag": "Acier Galvanisé", "p1-name": "Renfort Acier", "p1-desc": "Profilés en acier galvanisé haute résistance pour fenêtres et portes UPVC/Aluminium.",
+        "p2-tag": "Système de Cadre", "p2-name": "Cloison & Plafond", "p2-desc": "Systèmes de cadres légers en acier pour cloisons et plafonds suspendus.",
+        "p3-tag": "Design Sur Mesure", "p3-name": "Fabrication Personnalisée", "p3-desc": "Services spécialisés de laminage, poinçonnage et CNC adaptés à vos plans.",
+        "btn-catalog": "TÉLÉCHARGER CATALOGUE", "btn-inquiry": "DEMANDER PRIX",
+        "news-header": "Dernières <span class='text-red-600'>Infos</span>", "news-subheader": "Restez informé des avancées industrielles et des expositions mondiales de Pioneer Metal.",
+        "tag-event": "Événement Mondial", "btn-schedule": "Planifier Réunion", "btn-visit": "Visiter Stand",
+        "news1-date": "24-27 MARS 2026", "news1-t": "FENSTERBAU FRONTALE ALLEMAGNE",
+        "news1-d": "Rejoignez Pioneer Metal à Nuremberg. Découvrez nos solutions de profilés en acier pour systèmes de fenêtres modernes.",
+        "news2-date": "9-12 SEP 2026", "news2-t": "FESQUA BRÉSIL 2026",
+        "news2-d": "Expansion en Amérique du Sud ! Pioneer Metal présentera ses technologies à FESQUA, São Paulo.",
+        "contact-tag": "Communication Directe", "contact-h": "Contactez-nous <br>Directement",
+        "contact-p": "Prêt à élever votre projet ? Contactez notre équipe technique directement via WhatsApp ou Email.",
+        "card-wa-tag": "Chat Instantané", "card-wa-desc": "Ligne directe pour support et prix",
+        "card-mail-tag": "Demande par Email", "card-mail-desc": "Devis officiels et documentation",
+        "card-loc-tag": "Localisation Usine", "card-loc-addr": "Dongjie, Route Nationale 106,<br>Xinzhen, Comté de Wen'an, Langfang,<br>Hebei, Chine",
+        "stat-countries-t": "Pays", "stat-countries-d": "Pioneer Metal, présent dans plus de 30 pays",
+        "stat-nations-t": "Nations", "stat-nations-d": "Pioneer Metal, exporte vers plus de 24 nations",
+        "stat-customers-t": "Clients", "stat-customers-d": "Pioneer Metal, plus de 280 clients dans le monde",
+        "stat-tons-d": "Pioneer Metal, capacité d'approvisionnement mondiale",
+        "form-title": "Envoyer un Message", "form-name": "Nom Complet", "form-email": "Adresse Email", "form-msg": "Message", "form-btn": "ENVOYER DEMANDE",
+        "contact-phone": "Support Téléphonique", "contact-email": "Demandes par Email"
+    },
+    sq: {
+        "nav-home": "Ballina", "nav-about": "Rreth Nesh", "nav-products": "Produktet", "nav-news": "Lajme", "nav-contact": "Kontakt",
+        "footer-rights": "&copy; 2025 FABRIKA E PRODUKTEVE METALTIKE PIONEER. | Të gjitha të drejtat e rezervuara",
+        "hero-tag": "Përsosmëri Industriale që nga 2006", "hero-title": "Profile Çeliku me Precizion", "hero-desc": "Lider global në prodhimin e zgjidhjeve të çelikut të mbështjellë në të ftohtë për dritare dhe infrastrukturë.", "btn-view": "SHIKO PRODUKTET",
+        "coop-subtitle": "Partneritet & Rritje", "coop-title": "Bashkëpunim Strategjik Biznesi",
+        "pillar-1-title": "Shirit Izolues Lijialong", "pillar-1-desc": "Prodhues i specializuar i shiritave të motit me rezistencë të lartë.",
+        "pillar-2-title": "OEM & Me Porosi", "pillar-2-desc": "Klientët OEM na ndihmojnë të arrijmë sukses, të përmirësojmë cilësinë dhe të arrijmë një situatë të favorshme.",
+        "pillar-3-title": "Tregtia Melan", "pillar-3-desc": "Shërbime profesionale import-eksport për logjistikë efikase globale.",
+        "about-tag": "Rreth Pioneer Metal", "about-header": "Ekipi & Pasioni Ynë",
+        "about-intro": "Pioneer Metal është furnizues kryesor i seksioneve metalike cilësore në Kinë.",
+        "about-quote": "\"Precizioni nuk është thjesht standard, është premtimi ynë. Që nga 2006, ofrojmë zgjidhjet më të besueshme.\"",
+        "story-t": "Fuqia e <span class='text-red-600'>Prodhimit</span>",
+        "story-d1": "Fabrika jonë është e pajisur me linja prodhimi të automatizuara të mbikëqyrura nga inxhinierë me përvojë.",
+        "stat-exp": "Vite Përvojë", "stat-tons": "Ton në Vit",
+        "products-title": "Zgjidhje Industriale Çeliku",
+        "products-desc": "Pioneer Metal ofron profile çeliku të mbështjellë në të nxehtë me precizion të lartë.",
+        "p1-tag": "Çelik i Galvanizuar", "p1-name": "Përforcim Çeliku", "p1-desc": "Profile çeliku të galvanizuar me forcë të lartë për sisteme dritaresh UPVC/Alumin.",
+        "p2-tag": "Sistemi i Kornizës", "p2-name": "Mur i Thatë & Tavan", "p2-desc": "Sisteme kornizash çeliku të lehtë për mure ndarëse dhe tavane të varura.",
+        "p3-tag": "Dizajn i Posaçëm", "p3-name": "Prodhim me Porosi", "p3-desc": "Shërbime të specializuara të mbështjelljes, shpimit dhe CNC sipas vizatimeve tuaja.",
+        "btn-catalog": "SHKARKO KATALOGUN", "btn-inquiry": "PYET TANI",
+        "news-header": "Të Fundit <span class='text-red-600'>Lajme</span>", "news-subheader": "Qëndroni të informuar me përparimet industriale të Pioneer Metal.",
+        "tag-event": "Ngjarje Globale", "btn-schedule": "Cakto Takim", "btn-visit": "Vizito Stendën",
+        "news1-date": "24-27 MAR, 2026", "news1-t": "FENSTERBAU FRONTALE GJERMANI",
+        "news1-d": "Bëhuni pjesë me Pioneer Metal në Cyrih. Eksploroni zgjidhjet tona të profileve të çelikut.",
+        "news2-date": "9-12 SHT, 2026", "news2-t": "FESQUA BRAZIL 2026",
+        "news2-d": "Po zgjerohemi në Amerikën e Jugut! Pioneer Metal do të prezantojë teknologji të reja në São Paulo.",
+        "contact-tag": "Komunikim i Drejtpërdrejtë", "contact-h": "Na Kontaktoni <br>Direkt",
+        "contact-p": "Gati për të përmirësuar projektin tuaj? Kontaktoni ekipin tonë teknik direkt përmes WhatsApp ose Email.",
+        "card-wa-tag": "Bisedë e Shpejtë", "card-wa-desc": "Linjë direkte për mbështetje teknike",
+        "card-mail-tag": "Kërkesë me Email", "card-mail-desc": "Oferta zyrtare dhe dokumentacion",
+        "card-loc-tag": "Vendndodhja e Fabrikës", "card-loc-addr": "Dongjie, Rruga Nacionale 106,<br>Xinzhen, Wen'an, Langfang,<br>Hebei, Kinë",
+        "stat-countries-t": "Shtete", "stat-countries-d": "Pioneer Metal, prezent në mbi 30 shtete",
+        "stat-nations-t": "Kombe", "stat-nations-d": "Pioneer Metal, eksporton në mbi 24 kombe",
+        "stat-customers-t": "Klientë", "stat-customers-d": "Pioneer Metal, mbi 280 klientë në mbarë botën",
+        "stat-tons-d": "Pioneer Metal, kapacitet global furnizimi",
+        "form-title": "Dërgo një Mesazh", "form-name": "Emri i Plotë", "form-email": "Adresa Email", "form-msg": "Mesazhi", "form-btn": "DËRGO KËRKESËN",
+        "contact-phone": "Mbështetje Telefonike", "contact-email": "Kërkesa me Email"
+    },
+    sr: {
+        "nav-home": "Početna", "nav-about": "O Nama", "nav-products": "Proizvodi", "nav-news": "Vesti", "nav-contact": "Kontakt",
+        "footer-rights": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY. | Sva prava zadržana",
+        "hero-tag": "Industrijska Izvrsnost od 2006", "hero-title": "Precizni Čelični Profili", "hero-desc": "Globalni lider u proizvodnji hladno valjanih čeličnih rešenja za sisteme prozora i infrastrukturu.", "btn-view": "POGLEDAJ PROIZVODE",
+        "coop-subtitle": "Partnerstvo i Rast", "coop-title": "Strateška Poslovna Saradnja",
+        "pillar-1-title": "Lijialong Zaptivna Traka", "pillar-1-desc": "Specijalizovani proizvođač gumenih traka visoke otpornosti.",
+        "pillar-2-title": "OEM i Po Meri", "pillar-2-desc": "OEM kupci nam pomažu da postignemo uspeh, poboljšamo kvalitet proizvoda i postignemo obostranu korist.",
+        "pillar-3-title": "Melan Trade", "pillar-3-desc": "Profesionalne usluge uvoza i izvoza za efikasnu globalnu logistiku.",
+        "about-tag": "O Pioneer Metal-u", "about-header": "Naš Tim i Strast",
+        "about-intro": "Pioneer Metal je vodeći dobavljač visokokvalitetnih metalnih profila u Kini.",
+        "about-quote": "\"Preciznost nije samo standard, to je naše obećanje. Od 2006. pružamo najpouzdanija rešenja.\"",
+        "story-t": "Moć <span class='text-red-600'>Proizvodnje</span>",
+        "story-d1": "Naša fabrika je opremljena naprednim automatizovanim proizvodnim linijama koje nadgledaju iskusni inženjeri.",
+        "stat-exp": "Godina Iskustva", "stat-tons": "Tona Godišnje",
+        "products-title": "Industrijska Čelična Rešenja",
+        "products-desc": "Pioneer Metal pruža vrhunske toplo valjane čelične profile visoke preciznosti.",
+        "p1-tag": "Pocinkovani Čelik", "p1-name": "Čelično Ojačanje", "p1-desc": "Visokočvrsti pocinkovani čelični profili za UPVC/Aluminijumske sisteme prozora.",
+        "p2-tag": "Sistem Okvira", "p2-name": "Gipsani Zidovi & Plafoni", "p2-desc": "Laki čelični sistemi okvira za pregradne zidove i spuštene plafone.",
+        "p3-tag": "Dizajn po Meri", "p3-name": "Proizvodnja po Meri", "p3-desc": "Specijalizovane usluge valjanja, probijanja i CNC obrade prilagođene vašim crtežima.",
+        "btn-catalog": "PREUZMI KATALOG", "btn-inquiry": "UPIT SADA",
+        "news-header": "Najnovije <span class='text-red-600'>Vesti</span>", "news-subheader": "Budite u toku sa industrijskim napretkom kompanije Pioneer Metal.",
+        "tag-event": "Globalni Događaj", "btn-schedule": "Zakaži Sastanak", "btn-visit": "Poseti Štand",
+        "news1-date": "24-27 MAR, 2026", "news1-t": "FENSTERBAU FRONTALE NEMAČKA",
+        "news1-d": "Pridružite se Pioneer Metal-u u Nirnbergu. Istražite naša rešenja čeličnih profila.",
+        "news2-date": "9-12 SEP, 2026", "news2-t": "FESQUA BRAZIL 2026",
+        "news2-d": "Širimo se u Južnu Ameriku! Pioneer Metal će predstaviti tehnologije u Sao Paulu.",
+        "contact-tag": "Direktna Komunikacija", "contact-h": "Kontaktirajte nas <br>Direktno",
+        "contact-p": "Spremni da unapredite svoj projekat? Kontaktirajte naš tim direktno putem WhatsApp-a ili Email-a.",
+        "card-wa-tag": "Brzi Chat", "card-wa-desc": "Direktna linija za tehničku podršku",
+        "card-mail-tag": "Email Upit", "card-mail-desc": "Zvanične ponude i dokumentacija",
+        "card-loc-tag": "Lokacija Fabrike", "card-loc-addr": "Dongjie, Nacionalni put 106,<br>Xinzhen, Okrug Wen'an, Langfang,<br>Hebei, Kina",
+        "stat-countries-t": "Zemalja", "stat-countries-d": "Pioneer Metal, prisutan u više od 30 zemalja",
+        "stat-nations-t": "Nacija", "stat-nations-d": "Pioneer Metal, izvozi u više od 24 nacije",
+        "stat-customers-t": "Klijenata", "stat-customers-d": "Pioneer Metal, više od 280 klijenata širom sveta",
+        "stat-tons-d": "Pioneer Metal, globalni kapacitet snabdevanja",
+        "form-title": "Pošaljite Poruku", "form-name": "Ime i Prezime", "form-email": "Email Adresa", "form-msg": "Poruka", "form-btn": "POŠALJITE UPIT",
+        "contact-phone": "Telefonska Podrška", "contact-email": "Upiti putem Email-a"
     }
 };
 
-const flags = { en: 'us', es: 'es', pt: 'pt', ru: 'ru', ja: 'jp', ko: 'kr', ar: 'sa' };
+const flags = { en: 'us', es: 'es', pt: 'pt', ru: 'ru', ja: 'jp', ko: 'kr', ar: 'sa', fr: 'fr', sq: 'al', sr: 'rs' };
+const langLabels = { en: 'English', es: 'Español', pt: 'Português', ru: 'Русский', ja: '日本語', ko: '한국어', ar: 'العربية', fr: 'Français', sq: 'Shqip', sr: 'Srpski' };
 
 // --- 2. Shared Functions ---
 
@@ -220,27 +363,65 @@ const flags = { en: 'us', es: 'es', pt: 'pt', ru: 'ru', ja: 'jp', ko: 'kr', ar: 
 function changeLanguage(lang) {
     document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
-    
-    // Update Flag
+
+    // Update Shared Dropdown UI (Navbar)
     const currentFlag = document.getElementById('currentFlag');
-    if(currentFlag) {
+    const label = document.getElementById('currentLangLabel');
+
+    if (currentFlag) {
         currentFlag.innerHTML = `<span class="fi fi-${flags[lang]} rounded-sm shadow-sm transition-opacity duration-300"></span>`;
     }
-    
+    if (label) {
+        label.innerText = langLabels[lang];
+    }
+
     // Update Text Content
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (i18nData[lang] && i18nData[lang][key]) {
             element.innerHTML = i18nData[lang][key];
+        } else {
+            // Fallback to English if translation missing
+            if (i18nData['en'] && i18nData['en'][key]) {
+                element.innerHTML = i18nData['en'][key];
+            }
         }
     });
 
-    // Update Select Dropdown (in case changed programmatically)
+    // Update Select Dropdown (legacy or mobile if any)
     const select = document.querySelector('.lang-select');
     if (select) select.value = lang;
 
     // Save Preference
     localStorage.setItem('preferred-lang', lang);
+
+    // Close dropdown if open
+    closeLangDropdown();
+}
+
+/**
+ * Toggles the dropdown menu visibility (Shared Navbar)
+ */
+function toggleLangDropdown(e) {
+    if (e) e.stopPropagation();
+    const dropdown = document.getElementById('langDropdown');
+    const chevron = document.getElementById('langChevron');
+    if (dropdown) {
+        dropdown.classList.toggle('active');
+        if (chevron) {
+            chevron.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    }
+}
+
+/**
+ * Closes the dropdown menu (Shared Navbar)
+ */
+function closeLangDropdown() {
+    const dropdown = document.getElementById('langDropdown');
+    const chevron = document.getElementById('langChevron');
+    if (dropdown) dropdown.classList.remove('active');
+    if (chevron) chevron.style.transform = 'rotate(0deg)';
 }
 
 /**
@@ -266,4 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileBtn) {
         mobileBtn.addEventListener('click', toggleMobileMenu);
     }
+
+    // 3. Bind Global Click to close dropdowns
+    document.body.addEventListener('click', closeLangDropdown);
 });

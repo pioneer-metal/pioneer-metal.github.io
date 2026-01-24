@@ -1,132 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script>
         fetch('https://ipapi.co/json/')
-        .then(response => response.json())
-        .then(data => {
-            if (data.country_code == 'CN') {
-                window.location.href = "/not-found";
-            }
-        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.country_code == 'CN') {
+                    window.location.href = "/not-found";
+                }
+            })
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | PIONEER METAL</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
-    
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap');
-        
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        
-        :lang(ar) { font-family: 'Noto Sans Arabic', sans-serif; }
-        :lang(ja) { font-family: 'Noto Sans JP', sans-serif; }
-        :lang(ko) { font-family: 'Noto Sans KR', sans-serif; }
 
-        .nav-blur { backdrop-filter: blur(12px); background-color: rgba(255, 255, 255, 0.95); }
-        .lang-select { appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 0.2rem center; background-size: 0.8em; padding-right: 1.2rem; }
-        [dir="rtl"] .lang-select { background-position: left 0.2rem center; padding-right: 0.5rem; padding-left: 1.2rem; }
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
 
-        .carousel-container { position: relative; width: 100%; overflow: hidden; border-radius: 1rem; }
-        .carousel-slide { display: none; animation: fadeEffect 1s; }
-        @keyframes fadeEffect { from { opacity: 0.4; } to { opacity: 1; } }
+    <style>
+        /* About Page Specific Styles */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        .carousel-slide {
+            display: none;
+            opacity: 1;
+            animation: fadeEffect 1s forwards;
+        }
+
+        @keyframes fadeEffect {
+            from {
+                opacity: 0.4;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
     </style>
     <script src="main.js" defer></script>
 </head>
+
 <body class="bg-white text-slate-900">
 
-    <nav class="fixed w-full z-50 nav-blur border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center">
-                    <a href="index.html" class="flex items-center">
-                        <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png" alt="PIONEER METAL" class="h-7 w-auto object-contain">
-                    </a>
-                </div>
-                
-                <div class="hidden md:flex items-center space-x-8 rtl:space-x-reverse font-bold text-[11px] uppercase tracking-[0.2em]">
-                    <a href="index.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-home">Home</a>
-                    <a href="about.html" class="text-red-600 transition" data-i18n="nav-about">About Us</a>
-                    <a href="products.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-products">Products</a>
-                    <a href="news.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-news">News</a>
-                    <a href="contact.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-contact">Contact</a>
-                    
-                    <div class="relative flex items-center border-l rtl:border-r rtl:border-l-0 ps-6 rtl:pe-6 border-slate-200 ms-4 rtl:me-4 group">
-                        <div id="currentFlag" class="flex items-center me-2 rtl:ms-2">
-                            <span class="fi fi-us rounded-sm shadow-sm"></span>
-                        </div>
-                        <select onchange="changeLanguage(this.value)" class="lang-select bg-transparent text-[11px] font-black focus:outline-none cursor-pointer text-slate-700 uppercase">
-                            <option value="en">English</option>
-                            <option value="es">Español</option>
-                            <option value="pt">Português</option>
-                            <option value="ru">Русский</option>
-                            <option value="ja">日本語</option>
-                            <option value="ko">한국어</option>
-                            <option value="ar">العربية</option>
-                        </select>
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-20">
+            <a href="index.html" class="flex items-center group">
+                <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
+                    alt="Pioneer Metal Logo" class="h-12 w-auto transition-transform group-hover:scale-105">
+            </a>
+
+            <div
+                class="hidden md:flex items-center space-x-10 text-sm font-bold uppercase tracking-wider text-gray-600">
+                <a href="index.html" class="nav-link hover:text-red-600 transition-colors" data-i18n="nav-home">Home</a>
+                <a href="about.html" class="nav-link text-red-600" data-i18n="nav-about">About</a>
+                <a href="products.html" class="nav-link hover:text-red-600 transition-colors"
+                    data-i18n="nav-products">Products</a>
+                <a href="news.html" class="nav-link hover:text-red-600 transition-colors" data-i18n="nav-news">News</a>
+                <a href="contact.html" class="nav-link hover:text-red-600 transition-colors"
+                    data-i18n="nav-contact">Contact</a>
+            </div>
+
+            <!-- Language Selector (Custom) -->
+            <div class="relative hidden md:block">
+                <button onclick="toggleLangDropdown(event)"
+                    class="flex items-center space-x-3 bg-gray-50 hover:bg-gray-100 px-4 py-2.5 rounded-full border border-gray-200 transition-all cursor-pointer">
+                    <div id="currentFlag" class="flex items-center">
+                        <span class="fi fi-us rounded-sm"></span>
+                    </div>
+                    <span id="currentLangLabel" class="text-xs font-bold uppercase tracking-tighter">English</span>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300"
+                        id="langChevron"></i>
+                </button>
+
+                <div id="langDropdown" class="lang-dropdown overflow-hidden">
+                    <div class="py-1 max-h-[400px] overflow-y-auto">
+                        <button onclick="changeLanguage('en')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-us"></span><span>ENGLISH</span>
+                        </button>
+                        <button onclick="changeLanguage('es')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-es"></span><span>ESPAÑOL</span>
+                        </button>
+                        <button onclick="changeLanguage('pt')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-pt"></span><span>PORTUGUÊS</span>
+                        </button>
+                        <button onclick="changeLanguage('ru')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-ru"></span><span>РУССКИЙ</span>
+                        </button>
+                        <button onclick="changeLanguage('ja')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-jp"></span><span>日本語</span>
+                        </button>
+                        <button onclick="changeLanguage('ko')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-kr"></span><span>한국어</span>
+                        </button>
+                        <button onclick="changeLanguage('ar')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-sa"></span><span>العربية</span>
+                        </button>
+                        <button onclick="changeLanguage('fr')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-fr"></span><span>FRANÇAIS</span>
+                        </button>
+                        <button onclick="changeLanguage('sq')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-al"></span><span>SHQIP</span>
+                        </button>
+                        <button onclick="changeLanguage('sr')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-rs"></span><span>SRPSKI</span>
+                        </button>
                     </div>
                 </div>
-
-                <div class="flex items-center space-x-4 rtl:space-x-reverse">
-                    <a href="https://wa.me/8613656714278" target="_blank" class="bg-red-600 text-white px-5 py-2 rounded font-black text-[10px] tracking-widest hover:bg-black transition shadow-lg shadow-red-200 flex items-center gap-2">
-                        <i class="fab fa-whatsapp text-xs"></i> INQUIRY
-                    </a>
-                    <button class="md:hidden text-black text-xl p-2" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
-                </div>
             </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-black text-xl p-2" onclick="toggleMobileMenu()"><i
+                    class="fas fa-bars"></i></button>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex-col space-y-4">
-            <a href="index.html" class="block text-sm font-bold text-slate-600 hover:text-red-600" data-i18n="nav-home">Home</a>
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex-col space-y-4">
+            <a href="index.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
+                data-i18n="nav-home">Home</a>
             <a href="about.html" class="block text-sm font-bold text-red-600" data-i18n="nav-about">About Us</a>
-            <a href="products.html" class="block text-sm font-bold text-slate-600 hover:text-red-600" data-i18n="nav-products">Products</a>
-            <a href="news.html" class="block text-sm font-bold text-slate-600 hover:text-red-600" data-i18n="nav-news">News</a>
-            <a href="contact.html" class="block text-sm font-bold text-slate-600 hover:text-red-600" data-i18n="nav-contact">Contact</a>
+            <a href="products.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
+                data-i18n="nav-products">Products</a>
+            <a href="news.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
+                data-i18n="nav-news">News</a>
+            <a href="contact.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
+                data-i18n="nav-contact">Contact</a>
+
+            <div class="pt-4 border-t border-slate-100">
+                <p class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">Language</p>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="changeLanguage('en')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">EN</button>
+                    <button onclick="changeLanguage('es')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">ES</button>
+                    <button onclick="changeLanguage('ar')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">AR</button>
+                    <button onclick="changeLanguage('fr')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">FR</button>
+                    <button onclick="changeLanguage('sq')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">SQ</button>
+                    <button onclick="changeLanguage('sr')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">SR</button>
+                </div>
+            </div>
         </div>
     </nav>
 
     <header class="pt-32 pb-16 bg-white">
         <div class="max-w-7xl mx-auto px-4">
             <div class="mb-10 max-w-full rtl:text-right">
-                <h2 class="text-red-600 font-black tracking-[0.3em] uppercase mb-4 text-xs" data-i18n="about-tag">About Pioneer Metal</h2>
-                <h1 class="text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 leading-none whitespace-nowrap overflow-hidden text-ellipsis" data-i18n="about-header">Our Team & Passion</h1>
-                <p class="text-slate-500 text-sm md:text-base font-light leading-relaxed mb-8 max-w-3xl rtl:ml-auto rtl:mr-0" data-i18n="about-intro">
+                <h2 class="text-red-600 font-black tracking-[0.3em] uppercase mb-4 text-xs" data-i18n="about-tag">About
+                    Pioneer Metal</h2>
+                <h1 class="text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 leading-none whitespace-nowrap overflow-hidden text-ellipsis"
+                    data-i18n="about-header">Our Team & Passion</h1>
+                <p class="text-slate-500 text-sm md:text-base font-light leading-relaxed mb-8 max-w-3xl rtl:ml-auto rtl:mr-0"
+                    data-i18n="about-intro">
                     Pioneer Metal Product Factory is a leading supplier of high-quality metal sections...
                 </p>
             </div>
-            
+
             <div class="carousel-container aspect-[21/9] shadow-2xl bg-slate-100">
                 <div class="carousel-slide h-full">
-                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_01.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Team 1">
+                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_01.jpg"
+                        class="w-full h-full object-cover transition-all duration-700" alt="Team 1">
                 </div>
                 <div class="carousel-slide h-full">
-                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_02.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Team 2">
+                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_02.jpg"
+                        class="w-full h-full object-cover transition-all duration-700" alt="Team 2">
                 </div>
                 <div class="carousel-slide h-full">
-                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_03.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Team 3">
+                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_03.jpg"
+                        class="w-full h-full object-cover transition-all duration-700" alt="Team 3">
                 </div>
                 <div class="carousel-slide h-full">
-                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_04.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Team 4">
+                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_04.jpg"
+                        class="w-full h-full object-cover transition-all duration-700" alt="Team 4">
                 </div>
 
-                <button onclick="plusSlides(-1)" class="absolute left-4 rtl:right-4 rtl:left-auto top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/90 text-black w-10 h-10 rounded-full flex items-center justify-center transition-all backdrop-blur-sm shadow-lg z-10">
+                <button onclick="plusSlides(-1)"
+                    class="absolute left-4 rtl:right-4 rtl:left-auto top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/90 text-black w-10 h-10 rounded-full flex items-center justify-center transition-all backdrop-blur-sm shadow-lg z-10">
                     <i class="fas fa-chevron-left rtl:hidden"></i><i class="fas fa-chevron-right hidden rtl:block"></i>
                 </button>
-                <button onclick="plusSlides(1)" class="absolute right-4 rtl:left-4 rtl:right-auto top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/90 text-black w-10 h-10 rounded-full flex items-center justify-center transition-all backdrop-blur-sm shadow-lg z-10">
+                <button onclick="plusSlides(1)"
+                    class="absolute right-4 rtl:left-4 rtl:right-auto top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/90 text-black w-10 h-10 rounded-full flex items-center justify-center transition-all backdrop-blur-sm shadow-lg z-10">
                     <i class="fas fa-chevron-right rtl:hidden"></i><i class="fas fa-chevron-left hidden rtl:block"></i>
                 </button>
 
                 <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
-                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"></span>
-                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"></span>
-                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"></span>
-                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"></span>
+                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"
+                        onclick="currentSlide(1)"></span>
+                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"
+                        onclick="currentSlide(2)"></span>
+                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"
+                        onclick="currentSlide(3)"></span>
+                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"
+                        onclick="currentSlide(4)"></span>
                 </div>
             </div>
         </div>
@@ -144,24 +240,29 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="space-y-6 rtl:text-right">
-                    <h3 class="text-3xl font-black uppercase italic tracking-tighter" data-i18n="story-t">Manufacturing <span class="text-red-600">Power</span></h3>
+                    <h3 class="text-3xl font-black uppercase italic tracking-tighter" data-i18n="story-t">Manufacturing
+                        <span class="text-red-600">Power</span>
+                    </h3>
                     <p class="text-slate-500 text-sm md:text-base leading-relaxed font-light" data-i18n="story-d1">
                         Our factory is equipped with advanced automated production lines.
                     </p>
                     <div class="flex gap-12 pt-4 rtl:justify-end">
                         <div>
                             <div class="text-3xl font-black text-slate-900">18+</div>
-                            <div class="text-[10px] font-black text-red-600 uppercase tracking-widest mt-1" data-i18n="stat-exp">Years Experience</div>
+                            <div class="text-[10px] font-black text-red-600 uppercase tracking-widest mt-1"
+                                data-i18n="stat-exp">Years Experience</div>
                         </div>
                         <div>
                             <div class="text-3xl font-black text-slate-900">9000t</div>
-                            <div class="text-[10px] font-black text-red-600 uppercase tracking-widest mt-1" data-i18n="stat-tons">Annual Tons</div>
+                            <div class="text-[10px] font-black text-red-600 uppercase tracking-widest mt-1"
+                                data-i18n="stat-tons">Annual Tons</div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="rounded-2xl overflow-hidden aspect-square lg:aspect-video shadow-xl">
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200" alt="Workshop" class="w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200"
+                        alt="Workshop" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
@@ -174,10 +275,14 @@
                     &copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved
                 </div>
                 <div class="flex items-center space-x-6">
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-facebook-f text-lg"></i></a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-x-twitter text-lg"></i></a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-instagram text-lg"></i></a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-linkedin-in text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
+                            class="fab fa-facebook-f text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
+                            class="fab fa-x-twitter text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
+                            class="fab fa-instagram text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
+                            class="fab fa-linkedin-in text-lg"></i></a>
                 </div>
             </div>
         </div>
@@ -191,24 +296,30 @@
             let i;
             let slides = document.getElementsByClassName("carousel-slide");
             let dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {slideIndex = 1}    
-            if (n < 1) {slideIndex = slides.length}
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
             for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
+                slides[i].style.display = "none";
             }
             for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" bg-red-600", " bg-white/30");
+                dots[i].classList.remove("bg-red-600");
+                dots[i].classList.add("bg-white/30");
             }
-            slides[slideIndex-1].style.display = "block";  
-            dots[slideIndex-1].className += " bg-red-600";
-            
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].classList.remove("bg-white/30");
+            dots[slideIndex - 1].classList.add("bg-red-600");
+
             // Fix: Clear timeout to prevent double jumps when clicking
-            if(slideTimer) clearTimeout(slideTimer);
-            slideTimer = setTimeout(() => plusSlides(1), 5000); 
+            if (slideTimer) clearTimeout(slideTimer);
+            slideTimer = setTimeout(() => plusSlides(1), 5000);
         }
 
         function plusSlides(n) {
             showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -216,4 +327,5 @@
         });
     </script>
 </body>
+
 </html>
