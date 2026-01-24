@@ -209,20 +209,20 @@
                         <div class="space-y-2">
                             <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1"
                                 data-i18n="form-name">Full Name</label>
-                            <input type="text" placeholder="John Doe"
+                            <input type="text" id="formName" placeholder="John Doe"
                                 class="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-600 outline-none transition-all">
                         </div>
                         <div class="space-y-2">
                             <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1"
                                 data-i18n="form-email">Email Address</label>
-                            <input type="email" placeholder="john@example.com"
+                            <input type="email" id="formEmail" placeholder="john@example.com"
                                 class="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-600 outline-none transition-all">
                         </div>
                     </div>
                     <div class="space-y-2">
                         <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1"
                             data-i18n="form-msg">Message</label>
-                        <textarea rows="4"
+                        <textarea id="formMsg" rows="4"
                             class="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-600 outline-none transition-all resize-none"></textarea>
                     </div>
                     <button
@@ -319,25 +319,30 @@
         // Form Handling
         document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
+
+            const name = document.getElementById('formName').value;
+            const email = document.getElementById('formEmail').value;
+            const msg = document.getElementById('formMsg').value;
+
+            // Construct mailto link
+            const subject = encodeURIComponent(`Inquiry from ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
+            const mailtoUrl = `mailto:sales@pioneer-metal.com?subject=${subject}&body=${body}`;
+
+            // Redirect to mail app
+            window.location.href = mailtoUrl;
+
+            // Optional: Show success state visually
             const btn = this.querySelector('button');
             const originalContent = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> <span>REDIRECTING...</span>';
+            btn.classList.replace('bg-red-600', 'bg-green-600');
 
-            // Loading state
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>SENDING...</span>';
-
-            // Simulate API call
             setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check"></i> <span>MESSAGE SENT!</span>';
-                btn.classList.replace('bg-red-600', 'bg-green-600');
+                btn.innerHTML = originalContent;
+                btn.classList.replace('bg-green-600', 'bg-red-600');
                 this.reset();
-
-                setTimeout(() => {
-                    btn.disabled = false;
-                    btn.innerHTML = originalContent;
-                    btn.classList.replace('bg-green-600', 'bg-red-600');
-                }, 3000);
-            }, 1000);
+            }, 3000);
         });
     </script>
 </body>
