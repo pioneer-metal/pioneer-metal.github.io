@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script>
         fetch('https://ipapi.co/json/')
-        .then(response => response.json())
-        .then(data => {
-            if (data.country_code == 'CN') {
-                window.location.href = "/not-found";
-            }
-        })
-        
+            .then(response => response.json())
+            .then(data => {
+                if (data.country_code == 'CN') {
+                    window.location.href = "/not-found";
+                }
+            })
+
         function checkLocation() {
             const providers = [
                 'https://ipapi.co/json/',
@@ -18,21 +19,20 @@
 
             const fetchLocation = (url) => {
                 fetch(url)
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
-                .then(data => {
-                    const code = data.country_code || data.country;
-                    if (code === 'CN') {
-                        window.location.href = "/not-found";
-                    }
-                })
-                .catch(err => {
-                    console.warn(`定位获取失败 (${url}):`, err);
-                    // 如果第一个失败且还有备选，则尝试备选
-                    if (url === providers[0]) fetchLocation(providers[1]);
-                });
+                    .then(response => {
+                        if (!response.ok) throw new Error('Network response was not ok');
+                        return response.json();
+                    })
+                    .then(data => {
+                        const code = data.country_code || data.country;
+                        if (code === 'CN') {
+                            window.location.href = "/not-found";
+                        }
+                    })
+                    .catch(err => {
+                        console.warn(`定位获取失败 (${url}):`, err);
+                        if (url === providers[0]) fetchLocation(providers[1]);
+                    });
             };
 
             fetchLocation(providers[0]);
@@ -43,127 +43,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | PIONEER METAL</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <!-- 国旗图标库 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
-    
+
     <!-- Leaflet 地图库 -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap');
-        
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        
-        :lang(ar) { font-family: 'Noto Sans Arabic', sans-serif; }
-        :lang(ja) { font-family: 'Noto Sans JP', sans-serif; }
-        :lang(ko) { font-family: 'Noto Sans KR', sans-serif; }
 
-        .nav-link { position: relative; }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #dc2626;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after { width: 100%; }
-        #map { height: 450px; border-radius: 1.5rem; z-index: 10; border: 1px solid #f3f4f6; }
-        
-        /* 自定义下拉菜单动画与样式 */
-        .lang-dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            margin-top: 0.75rem;
-            background: white;
-            border: 1px solid #f3f4f6;
-            border-radius: 1rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            min-width: 160px;
-            z-index: 100;
-        }
-        .lang-dropdown.active {
-            display: block;
-            animation: slideIn 0.2s ease-out;
-        }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
 </head>
-<body class="bg-gray-50 text-gray-900 overflow-x-hidden" onclick="closeLangDropdown()">
 
-    <!-- 导航栏 -->
+<body class="bg-gray-50 text-gray-900 overflow-x-hidden">
+
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-20">
             <a href="index.html" class="flex items-center space-x-2 group">
-                <div class="w-10 h-10 bg-red-600 rounded flex items-center justify-center transition-transform group-hover:rotate-12">
+                <div
+                    class="w-10 h-10 bg-red-600 rounded flex items-center justify-center transition-transform group-hover:rotate-12">
                     <span class="text-white font-black text-xl italic">P</span>
                 </div>
                 <div class="flex flex-col leading-none">
-                    <span class="text-xl font-black tracking-tighter text-gray-900">PIONEER <span class="text-red-600 font-bold italic">METAL</span></span>
-                    <span class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold">Excellence in Steel</span>
+                    <span class="text-xl font-black tracking-tighter text-gray-900">PIONEER <span
+                            class="text-red-600 font-bold italic">METAL</span></span>
+                    <span class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold">Excellence in
+                        Steel</span>
                 </div>
             </a>
 
-            <!-- 桌面菜单 -->
-            <div class="hidden md:flex items-center space-x-10 text-sm font-bold uppercase tracking-wider text-gray-600">
+            <!-- Desktop Menu -->
+            <div
+                class="hidden md:flex items-center space-x-10 text-sm font-bold uppercase tracking-wider text-gray-600">
                 <a href="index.html" class="nav-link hover:text-red-600 transition-colors" data-i18n="nav-home">Home</a>
-                <a href="about.html" class="nav-link hover:text-red-600 transition-colors" data-i18n="nav-about">About</a>
-                <a href="products.html" class="nav-link hover:text-red-600 transition-colors" data-i18n="nav-products">Products</a>
+                <a href="about.html" class="nav-link hover:text-red-600 transition-colors"
+                    data-i18n="nav-about">About</a>
+                <a href="products.html" class="nav-link hover:text-red-600 transition-colors"
+                    data-i18n="nav-products">Products</a>
                 <a href="news.html" class="nav-link hover:text-red-600 transition-colors" data-i18n="nav-news">News</a>
                 <a href="contact.html" class="nav-link text-red-600" data-i18n="nav-contact">Contact</a>
             </div>
 
-            <!-- 语言选择器 (自定义) -->
-            <div class="relative">
-                <button onclick="toggleLangDropdown(event)" class="flex items-center space-x-3 bg-gray-50 hover:bg-gray-100 px-4 py-2.5 rounded-full border border-gray-200 transition-all cursor-pointer">
+            <!-- Language Selector (Custom) -->
+            <div class="relative hidden md:block">
+                <button onclick="toggleLangDropdown(event)"
+                    class="flex items-center space-x-3 bg-gray-50 hover:bg-gray-100 px-4 py-2.5 rounded-full border border-gray-200 transition-all cursor-pointer">
                     <div id="currentFlag" class="flex items-center">
                         <span class="fi fi-us rounded-sm"></span>
                     </div>
                     <span id="currentLangLabel" class="text-xs font-bold uppercase tracking-tighter">English</span>
-                    <i class="fa-solid fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300" id="langChevron"></i>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300"
+                        id="langChevron"></i>
                 </button>
-                
+
                 <div id="langDropdown" class="lang-dropdown overflow-hidden">
                     <div class="py-1 max-h-[400px] overflow-y-auto">
-                        <button onclick="changeLanguage('en')" class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                        <button onclick="changeLanguage('en')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
                             <span class="fi fi-us"></span><span>ENGLISH</span>
                         </button>
-                        <button onclick="changeLanguage('es')" class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                        <button onclick="changeLanguage('es')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
                             <span class="fi fi-es"></span><span>ESPAÑOL</span>
                         </button>
-                        <button onclick="changeLanguage('pt')" class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                        <button onclick="changeLanguage('pt')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
                             <span class="fi fi-pt"></span><span>PORTUGUÊS</span>
                         </button>
-                        <button onclick="changeLanguage('ru')" class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                        <button onclick="changeLanguage('ru')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
                             <span class="fi fi-ru"></span><span>РУССКИЙ</span>
                         </button>
-                        <button onclick="changeLanguage('ja')" class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                        <button onclick="changeLanguage('ja')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
                             <span class="fi fi-jp"></span><span>日本語</span>
                         </button>
-                        <button onclick="changeLanguage('ko')" class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                        <button onclick="changeLanguage('ko')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
                             <span class="fi fi-kr"></span><span>한국어</span>
                         </button>
-                        <button onclick="changeLanguage('ar')" class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                        <button onclick="changeLanguage('ar')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
                             <span class="fi fi-sa"></span><span>العربية</span>
                         </button>
-                        <button onclick="changeLanguage('sq')" class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                        <button onclick="changeLanguage('fr')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-fr"></span><span>FRANÇAIS</span>
+                        </button>
+                        <button onclick="changeLanguage('sq')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
                             <span class="fi fi-al"></span><span>SHQIP</span>
                         </button>
-                        <button onclick="changeLanguage('sr')" class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                        <button onclick="changeLanguage('sr')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
                             <span class="fi fi-rs"></span><span>SRPSKI</span>
                         </button>
                     </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-black text-xl p-2" onclick="toggleMobileMenu()"><i
+                    class="fas fa-bars"></i></button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex-col space-y-4">
+            <a href="index.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
+                data-i18n="nav-home">Home</a>
+            <a href="about.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
+                data-i18n="nav-about">About Us</a>
+            <a href="products.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
+                data-i18n="nav-products">Products</a>
+            <a href="news.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
+                data-i18n="nav-news">News</a>
+            <a href="contact.html" class="block text-sm font-bold text-red-600" data-i18n="nav-contact">Contact</a>
+
+            <div class="pt-4 border-t border-slate-100">
+                <p class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">Language</p>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="changeLanguage('en')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">EN</button>
+                    <button onclick="changeLanguage('es')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">ES</button>
+                    <button onclick="changeLanguage('ar')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">AR</button>
+                    <button onclick="changeLanguage('fr')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">FR</button>
+                    <button onclick="changeLanguage('sq')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">SQ</button>
+                    <button onclick="changeLanguage('sr')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">SR</button>
                 </div>
             </div>
         </div>
@@ -172,9 +185,11 @@
     <!-- 头部区域 -->
     <header class="pt-36 pb-20 bg-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <span class="text-red-600 font-bold text-sm uppercase tracking-widest mb-4 block" data-i18n="nav-contact">Contact</span>
-            <h1 class="text-5xl md:text-6xl font-black mb-6 tracking-tight" data-i18n="contact-h1">Let's Connect</h1>
-            <p class="text-gray-500 max-w-2xl text-lg leading-relaxed" data-i18n="contact-p">Partner with us for world-class steel solutions. Our team is ready to support your engineering requirements globally.</p>
+            <span class="text-red-600 font-bold text-sm uppercase tracking-widest mb-4 block"
+                data-i18n="nav-contact">Contact</span>
+            <h1 class="text-5xl md:text-6xl font-black mb-6 tracking-tight" data-i18n="contact-h">Let's Connect</h1>
+            <p class="text-gray-500 max-w-2xl text-lg leading-relaxed" data-i18n="contact-p">Partner with us for
+                world-class steel solutions. Our team is ready to support your engineering requirements globally.</p>
         </div>
     </header>
 
@@ -182,28 +197,39 @@
     <main class="max-w-7xl mx-auto px-6 lg:px-12 py-12">
         <div class="grid lg:grid-cols-2 gap-16 items-start">
             <!-- 联系表单 -->
-            <div class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl shadow-gray-200/50 border border-gray-100 relative overflow-hidden group">
-                <div class="absolute top-0 right-0 w-40 h-40 bg-red-50 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-110"></div>
-                
+            <div
+                class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl shadow-gray-200/50 border border-gray-100 relative overflow-hidden group">
+                <div
+                    class="absolute top-0 right-0 w-40 h-40 bg-red-50 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-110">
+                </div>
+
                 <h2 class="text-2xl font-bold mb-10 relative" data-i18n="form-title">Send a Message</h2>
                 <form class="space-y-8 relative" onsubmit="return false;">
                     <div class="grid md:grid-cols-2 gap-8">
                         <div class="space-y-2">
-                            <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1" data-i18n="form-name">Full Name</label>
-                            <input type="text" placeholder="John Doe" class="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-600 outline-none transition-all">
+                            <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1"
+                                data-i18n="form-name">Full Name</label>
+                            <input type="text" placeholder="John Doe"
+                                class="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-600 outline-none transition-all">
                         </div>
                         <div class="space-y-2">
-                            <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1" data-i18n="form-email">Email Address</label>
-                            <input type="email" placeholder="john@example.com" class="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-600 outline-none transition-all">
+                            <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1"
+                                data-i18n="form-email">Email Address</label>
+                            <input type="email" placeholder="john@example.com"
+                                class="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-600 outline-none transition-all">
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1">Message</label>
-                        <textarea rows="4" class="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-600 outline-none transition-all resize-none"></textarea>
+                        <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1"
+                            data-i18n="form-msg">Message</label>
+                        <textarea rows="4"
+                            class="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-600 outline-none transition-all resize-none"></textarea>
                     </div>
-                    <button class="w-full bg-red-600 text-white font-black py-5 rounded-2xl hover:bg-red-700 hover:shadow-lg hover:shadow-red-600/30 transition-all flex items-center justify-center space-x-4 group">
+                    <button
+                        class="w-full bg-red-600 text-white font-black py-5 rounded-2xl hover:bg-red-700 hover:shadow-lg hover:shadow-red-600/30 transition-all flex items-center justify-center space-x-4 group">
                         <span data-i18n="form-btn">SEND INQUIRY</span>
-                        <i class="fa-solid fa-paper-plane text-sm transition-transform group-hover:translate-x-2 group-hover:-translate-y-1"></i>
+                        <i
+                            class="fa-solid fa-paper-plane text-sm transition-transform group-hover:translate-x-2 group-hover:-translate-y-1"></i>
                     </button>
                 </form>
             </div>
@@ -211,13 +237,21 @@
             <!-- 联系详情与地图 -->
             <div class="space-y-10">
                 <div class="grid sm:grid-cols-2 gap-6">
-                    <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="w-14 h-14 bg-red-600/10 rounded-2xl flex items-center justify-center mb-6 text-red-600"><i class="fa-solid fa-phone text-xl"></i></div>
+                    <div
+                        class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                        <div
+                            class="w-14 h-14 bg-red-600/10 rounded-2xl flex items-center justify-center mb-6 text-red-600">
+                            <i class="fa-solid fa-phone text-xl"></i>
+                        </div>
                         <h3 class="font-bold text-lg mb-2" data-i18n="contact-phone">Phone Support</h3>
                         <p class="text-gray-500 text-sm font-medium tracking-tight">+86 317 1234 5678</p>
                     </div>
-                    <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="w-14 h-14 bg-red-600/10 rounded-2xl flex items-center justify-center mb-6 text-red-600"><i class="fa-solid fa-envelope text-xl"></i></div>
+                    <div
+                        class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                        <div
+                            class="w-14 h-14 bg-red-600/10 rounded-2xl flex items-center justify-center mb-6 text-red-600">
+                            <i class="fa-solid fa-envelope text-xl"></i>
+                        </div>
                         <h3 class="font-bold text-lg mb-2" data-i18n="contact-email">Email Inquiries</h3>
                         <p class="text-gray-500 text-sm font-medium tracking-tight">sales@pioneer-metal.com</p>
                     </div>
@@ -227,99 +261,61 @@
         </div>
     </main>
 
+    <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left"
+                    data-i18n="footer-rights">
+                    &copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
+                            class="fab fa-facebook-f text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
+                            class="fab fa-x-twitter text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
+                            class="fab fa-instagram text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
+                            class="fab fa-linkedin-in text-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // 国际化数据
-        const i18n = {
-            en: { "nav-home": "Home", "nav-about": "About", "nav-products": "Products", "nav-news": "News", "nav-contact": "Contact", "contact-h1": "Let's Connect", "form-btn": "SEND INQUIRY", "contact-phone": "Phone Support", "contact-email": "Email Inquiries", "form-title": "Send a Message", "form-name": "Full Name", "form-email": "Email Address" },
-            es: { "nav-home": "Inicio", "nav-about": "Nosotros", "nav-products": "Productos", "nav-news": "Noticias", "nav-contact": "Contacto", "contact-h1": "Conectemos", "form-btn": "ENVIAR CONSULTA", "contact-phone": "Soporte Telefónico", "contact-email": "Consultas por Email" },
-            pt: { "nav-home": "Início", "nav-about": "Sobre", "nav-products": "Produtos", "nav-news": "Notícias", "nav-contact": "Contato", "contact-h1": "Vamos Conversar", "form-btn": "ENVIAR PEDIDO" },
-            ru: { "nav-home": "Главная", "nav-about": "О нас", "nav-products": "Продукция", "nav-news": "Новости", "nav-contact": "Контакт", "contact-h1": "Свяжитесь с нами", "form-btn": "ОТПРАВИТЬ ЗАПРОС" },
-            ja: { "nav-home": "ホーム", "nav-about": "会社概要", "nav-products": "製品", "nav-news": "ニュース", "nav-contact": "お問い合わせ", "contact-h1": "お問い合わせ", "form-btn": "問い合わせる" },
-            ko: { "nav-home": "홈", "nav-about": "회사 소개", "nav-products": "제품", "nav-news": "뉴스", "nav-contact": "문의하기", "contact-h1": "문의하기", "form-btn": "문의하기" },
-            ar: { "nav-home": "الرئيسية", "nav-about": "من نحن", "nav-products": "منتجاتنا", "nav-news": "الأخبار", "nav-contact": "اتصل بنا", "contact-h1": "تواصل معنا", "form-btn": "إرسال الاستفسار" },
-            sq: { "nav-home": "Ballina", "nav-about": "Rreth nesh", "nav-products": "Produktet", "nav-news": "Lajme", "nav-contact": "Kontakt", "contact-h1": "Le të lidhemi", "form-btn": "DËRGONI KËRKESËN" },
-            sr: { "nav-home": "Početna", "nav-about": "O nama", "nav-products": "Proizvodi", "nav-news": "Vesti", "nav-contact": "Kontakt", "contact-h1": "Povežimo se", "form-btn": "POŠALJITE UPIT" }
-        };
-
-        const flags = { en: 'us', es: 'es', pt: 'pt', ru: 'ru', ja: 'jp', ko: 'kr', ar: 'sa', sq: 'al', sr: 'rs' };
-        const langLabels = { en: 'English', es: 'Español', pt: 'Português', ru: 'Русский', ja: '日本語', ko: '한국어', ar: 'العربية', sq: 'Shqip', sr: 'Srpski' };
-
-        // 切换下拉菜单状态
-        function toggleLangDropdown(e) {
-            e.stopPropagation();
-            const dropdown = document.getElementById('langDropdown');
-            const chevron = document.getElementById('langChevron');
-            dropdown.classList.toggle('active');
-            if (chevron) {
-                chevron.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
-            }
-        }
-
-        // 关闭下拉菜单
-        function closeLangDropdown() {
-            const dropdown = document.getElementById('langDropdown');
-            const chevron = document.getElementById('langChevron');
-            if (dropdown) dropdown.classList.remove('active');
-            if (chevron) chevron.style.transform = 'rotate(0deg)';
-        }
-
-        // 核心语言切换功能
-        function changeLanguage(lang) {
-            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-            document.documentElement.lang = lang;
-            
-            const currentFlag = document.getElementById('currentFlag');
-            const label = document.getElementById('currentLangLabel');
-            
-            if (currentFlag) currentFlag.innerHTML = `<span class="fi fi-${flags[lang]} rounded-sm"></span>`;
-            if (label) label.innerText = langLabels[lang];
-            
-            // 翻译页面元素
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (i18n[lang] && i18n[lang][key]) {
-                    element.innerHTML = i18n[lang][key];
-                }
-            });
-            
-            localStorage.setItem('preferred-lang', lang);
-            closeLangDropdown();
-        }
-
         // 初始化地图
         function initMap() {
             const mapContainer = document.getElementById('map');
             if (!mapContainer) return;
-            
-            const map = L.map('map', { 
-                center: [38.86, 116.48], 
-                zoom: 13, 
-                scrollWheelZoom: false, 
-                zoomControl: false 
+
+            const map = L.map('map', {
+                center: [38.86, 116.48],
+                zoom: 13,
+                scrollWheelZoom: false,
+                zoomControl: false
             });
-            
+
             L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
                 attribution: '&copy; CartoDB'
             }).addTo(map);
-            
+
             const customIcon = L.divIcon({
                 className: 'custom-marker',
                 html: '<div class="w-4 h-4 bg-red-600 rounded-full border-2 border-white shadow-lg shadow-red-600/50"></div>',
                 iconSize: [16, 16]
             });
-            
+
             L.marker([38.86, 116.48], { icon: customIcon }).addTo(map)
-             .bindPopup("<b class='font-bold text-red-600'>PIONEER METAL</b><br><span class='text-xs'>Headquarters & Factory</span>")
-             .openPopup();
-            
+                .bindPopup("<b class='font-bold text-red-600'>PIONEER METAL</b><br><span class='text-xs'>Headquarters & Factory</span>")
+                .openPopup();
+
             L.control.zoom({ position: 'bottomright' }).addTo(map);
         }
 
-        window.onload = () => {
-            const savedLang = localStorage.getItem('preferred-lang') || 'en';
-            changeLanguage(savedLang);
+        window.addEventListener('load', () => {
             initMap();
-        };
+        });
     </script>
 </body>
+
 </html>

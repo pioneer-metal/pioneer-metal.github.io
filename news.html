@@ -1,135 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script>
         fetch('https://ipapi.co/json/')
-        .then(response => response.json())
-        .then(data => {
-            if (data.country_code == 'CN') {
-                window.location.href = "/not-found";
-            }
-        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.country_code == 'CN') {
+                    window.location.href = "/not-found";
+                }
+            })
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News & Insights | PIONEER METAL</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap');
-        
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        
-        :lang(ar) { font-family: 'Noto Sans Arabic', sans-serif; }
-        :lang(ja) { font-family: 'Noto Sans JP', sans-serif; }
-        :lang(ko) { font-family: 'Noto Sans KR', sans-serif; }
-
-        .nav-blur { backdrop-filter: blur(12px); background-color: rgba(255, 255, 255, 0.95); }
-        .lang-select { appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 0.2rem center; background-size: 0.8em; padding-right: 1.2rem; }
-        [dir="rtl"] .lang-select { background-position: left 0.2rem center; padding-right: 0.5rem; padding-left: 1.2rem; }
-
-        .news-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .news-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05); }
-    </style>
+    <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
 </head>
+
 <body class="bg-slate-50 text-slate-900">
 
-    <nav class="fixed w-full z-50 nav-blur border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center">
-                    <a href="index.html" class="flex items-center">
-                        <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png" alt="PIONEER METAL" class="h-7 w-auto object-contain">
-                    </a>
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-20">
+            <a href="index.html" class="flex items-center space-x-2 group">
+                <div
+                    class="w-10 h-10 bg-red-600 rounded flex items-center justify-center transition-transform group-hover:rotate-12">
+                    <span class="text-white font-black text-xl italic">P</span>
                 </div>
-                
-                <div class="hidden md:flex items-center space-x-8 rtl:space-x-reverse font-bold text-[11px] uppercase tracking-[0.2em]">
-                    <a href="index.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-home">Home</a>
-                    <a href="about.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-about">About Us</a>
-                    <a href="products.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-products">Products</a>
-                    <a href="news.html" class="text-red-600 transition" data-i18n="nav-news">News</a>
-                    <a href="contact.html" class="text-slate-500 hover:text-red-600 transition" data-i18n="nav-contact">Contact</a>
-                    
-                    <div class="relative flex items-center border-l rtl:border-r rtl:border-l-0 ps-6 rtl:pe-6 border-slate-200 ms-4 rtl:me-4 group">
-                        <div id="currentFlag" class="flex items-center me-2 rtl:ms-2">
-                            <span class="fi fi-us rounded-sm shadow-sm"></span>
-                        </div>
-                        <select onchange="changeLanguage(this.value)" class="lang-select bg-transparent text-[11px] font-black focus:outline-none cursor-pointer text-slate-700 uppercase">
-                            <option value="en">English</option>
-                            <option value="es">Español</option>
-                            <option value="pt">Português</option>
-                            <option value="ru">Русский</option>
-                            <option value="ja">日本語</option>
-                            <option value="ko">한국어</option>
-                            <option value="ar">العربية</option>
-                        </select>
+                <div class="flex flex-col leading-none">
+                    <span class="text-xl font-black tracking-tighter text-gray-900">PIONEER <span
+                            class="text-red-600 font-bold italic">METAL</span></span>
+                    <span class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold">Excellence in
+                        Steel</span>
+                </div>
+            </a>
+
+            <div
+                class="hidden md:flex items-center space-x-10 text-sm font-bold uppercase tracking-wider text-gray-600">
+                <a href="index.html" class="nav-link hover:text-red-600 transition-colors" data-i18n="nav-home">Home</a>
+                <a href="about.html" class="nav-link hover:text-red-600 transition-colors"
+                    data-i18n="nav-about">About</a>
+                <a href="products.html" class="nav-link hover:text-red-600 transition-colors"
+                    data-i18n="nav-products">Products</a>
+                <a href="news.html" class="nav-link text-red-600" data-i18n="nav-news">News</a>
+                <a href="contact.html" class="nav-link hover:text-red-600 transition-colors"
+                    data-i18n="nav-contact">Contact</a>
+            </div>
+
+            <div class="relative hidden md:block">
+                <button onclick="toggleLangDropdown(event)"
+                    class="flex items-center space-x-3 bg-gray-50 hover:bg-gray-100 px-4 py-2.5 rounded-full border border-gray-200 transition-all cursor-pointer">
+                    <div id="currentFlag" class="flex items-center">
+                        <span class="fi fi-us rounded-sm"></span>
+                    </div>
+                    <span id="currentLangLabel" class="text-xs font-bold uppercase tracking-tighter">English</span>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300"
+                        id="langChevron"></i>
+                </button>
+
+                <div id="langDropdown" class="lang-dropdown overflow-hidden">
+                    <div class="py-1 max-h-[400px] overflow-y-auto">
+                        <button onclick="changeLanguage('en')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-us"></span><span>ENGLISH</span>
+                        </button>
+                        <button onclick="changeLanguage('es')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-es"></span><span>ESPAÑOL</span>
+                        </button>
+                        <button onclick="changeLanguage('pt')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-pt"></span><span>PORTUGUÊS</span>
+                        </button>
+                        <button onclick="changeLanguage('ru')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-ru"></span><span>РУССКИЙ</span>
+                        </button>
+                        <button onclick="changeLanguage('ja')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-jp"></span><span>日本語</span>
+                        </button>
+                        <button onclick="changeLanguage('ko')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-kr"></span><span>한국어</span>
+                        </button>
+                        <button onclick="changeLanguage('ar')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-sa"></span><span>العربية</span>
+                        </button>
+                        <button onclick="changeLanguage('fr')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-fr"></span><span>FRANÇAIS</span>
+                        </button>
+                        <button onclick="changeLanguage('sq')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-al"></span><span>SHQIP</span>
+                        </button>
+                        <button onclick="changeLanguage('sr')"
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
+                            <span class="fi fi-rs"></span><span>SRPSKI</span>
+                        </button>
                     </div>
                 </div>
-
-                <div class="flex items-center space-x-4 rtl:space-x-reverse">
-                    <a href="https://wa.me/8613656714278" target="_blank" class="bg-red-600 text-white px-5 py-2 rounded font-black text-[10px] tracking-widest hover:bg-black transition shadow-lg shadow-red-200 flex items-center gap-2">
-                        <i class="fab fa-whatsapp text-xs"></i> INQUIRY
-                    </a>
-                    <button class="md:hidden text-black text-xl p-2" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
-                </div>
             </div>
+
+            <button class="md:hidden text-black text-xl p-2" onclick="toggleMobileMenu()"><i
+                    class="fas fa-bars"></i></button>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex-col space-y-4">
-            <a href="index.html" class="block text-sm font-bold text-slate-600 hover:text-red-600" data-i18n="nav-home">Home</a>
-            <a href="about.html" class="block text-sm font-bold text-slate-600 hover:text-red-600" data-i18n="nav-about">About Us</a>
-            <a href="products.html" class="block text-sm font-bold text-slate-600 hover:text-red-600" data-i18n="nav-products">Products</a>
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex-col space-y-4">
+            <a href="index.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
+                data-i18n="nav-home">Home</a>
+            <a href="about.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
+                data-i18n="nav-about">About Us</a>
+            <a href="products.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
+                data-i18n="nav-products">Products</a>
             <a href="news.html" class="block text-sm font-bold text-red-600" data-i18n="nav-news">News</a>
-            <a href="contact.html" class="block text-sm font-bold text-slate-600 hover:text-red-600" data-i18n="nav-contact">Contact</a>
+            <a href="contact.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
+                data-i18n="nav-contact">Contact</a>
+
+            <div class="pt-4 border-t border-slate-100">
+                <p class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">Language</p>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="changeLanguage('en')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">EN</button>
+                    <button onclick="changeLanguage('es')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">ES</button>
+                    <button onclick="changeLanguage('ar')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">AR</button>
+                    <button onclick="changeLanguage('fr')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">FR</button>
+                    <button onclick="changeLanguage('sq')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">SQ</button>
+                    <button onclick="changeLanguage('sr')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">SR</button>
+                </div>
+            </div>
         </div>
     </nav>
 
     <header class="pt-40 pb-16 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-            <h1 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-6 leading-none rtl:text-right" data-i18n="news-header">Latest <span class="text-red-600">Insights</span></h1>
-            <p class="text-slate-400 text-sm md:text-base font-medium tracking-wide max-w-2xl rtl:text-right rtl:ml-auto rtl:mr-0" data-i18n="news-subheader">Stay updated with Pioneer Metal's industrial advancements...</p>
+            <h1 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-6 leading-none"
+                data-i18n="news-header">Latest <span class="text-red-600">Insights</span></h1>
+            <p class="text-slate-400 text-sm md:text-base font-medium tracking-wide max-w-2xl"
+                data-i18n="news-subheader">Stay updated with Pioneer Metal's industrial advancements and global
+                exhibition highlights.</p>
         </div>
     </header>
 
     <main class="py-20">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-1 gap-16">
-                
-                <article class="news-card bg-white rounded-[2rem] overflow-hidden flex flex-col md:flex-row border border-slate-100 shadow-sm">
+
+                <article
+                    class="news-card bg-white rounded-[2rem] overflow-hidden flex flex-col md:flex-row border border-slate-100 shadow-sm">
                     <div class="md:w-1/2 relative h-80 md:h-auto overflow-hidden">
-                        <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/News_01.jpg" alt="German Exhibition" class="w-full h-full object-cover">
-                        <div class="absolute top-6 left-6 rtl:left-auto rtl:right-6 bg-red-600 text-white text-[10px] font-black px-4 py-2 rounded-full tracking-widest uppercase shadow-xl" data-i18n="tag-event">Global Event</div>
+                        <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/News_01.jpg"
+                            alt="German Exhibition" class="w-full h-full object-cover">
+                        <div class="absolute top-6 left-6 bg-red-600 text-white text-[10px] font-black px-4 py-2 rounded-full tracking-widest uppercase shadow-xl"
+                            data-i18n="tag-event">Global Event</div>
                     </div>
-                    <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center rtl:text-right">
-                        <time class="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-4" data-i18n="news1-date">MAR 24-27, 2026</time>
-                        <h2 class="text-3xl md:text-4xl font-black mb-6 uppercase tracking-tight leading-none text-red-600" data-i18n="news1-t">FENSTERBAU FRONTALE GERMANY</h2>
-                        <p class="text-slate-500 text-sm md:text-base leading-relaxed mb-8 font-light" data-i18n="news1-d">
-                            Join Pioneer Metal at FENSTERBAU FRONTALE in Nuremberg...
+                    <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center">
+                        <time class="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-4"
+                            data-i18n="news1-date">MAR 24-27, 2026</time>
+                        <h2 class="text-3xl md:text-4xl font-black mb-6 uppercase tracking-tight leading-none text-red-600"
+                            data-i18n="news1-t">FENSTERBAU FRONTALE GERMANY</h2>
+                        <p class="text-slate-500 text-sm md:text-base leading-relaxed mb-8 font-light"
+                            data-i18n="news1-d">
+                            Join Pioneer Metal at FENSTERBAU FRONTALE in Nuremberg, Germany. Explore our cutting-edge
+                            steel profile solutions for modern window and facade systems.
                         </p>
-                        <a href="contact.html" class="inline-flex items-center gap-3 rtl:flex-row-reverse text-black text-[11px] font-black uppercase tracking-widest hover:text-red-600 transition">
-                            <span data-i18n="btn-schedule">Schedule a Meeting</span> <i class="fas fa-chevron-right rtl:hidden text-[10px]"></i><i class="fas fa-chevron-left hidden rtl:block text-[10px]"></i>
+                        <a href="contact.html"
+                            class="inline-flex items-center gap-3 text-black text-[11px] font-black uppercase tracking-widest hover:text-red-600 transition">
+                            <span data-i18n="btn-schedule">Schedule a Meeting</span> <i
+                                class="fas fa-chevron-right text-[10px]"></i>
                         </a>
                     </div>
                 </article>
 
-                <article class="news-card bg-white rounded-[2rem] overflow-hidden flex flex-col md:flex-row border border-slate-100 shadow-sm">
+                <article
+                    class="news-card bg-white rounded-[2rem] overflow-hidden flex flex-col md:flex-row border border-slate-100 shadow-sm">
                     <div class="md:w-1/2 relative h-80 md:h-auto overflow-hidden order-1 md:order-2">
-                        <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/News_02.jpg" alt="Brazil Exhibition" class="w-full h-full object-cover">
-                        <div class="absolute top-6 right-6 rtl:right-auto rtl:left-6 bg-black text-white text-[10px] font-black px-4 py-2 rounded-full tracking-widest uppercase shadow-xl" data-i18n="tag-event">Global Event</div>
+                        <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/News_02.jpg"
+                            alt="Brazil Exhibition" class="w-full h-full object-cover">
+                        <div class="absolute top-6 right-6 bg-black text-white text-[10px] font-black px-4 py-2 rounded-full tracking-widest uppercase shadow-xl"
+                            data-i18n="tag-event">Global Event</div>
                     </div>
-                    <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center order-2 md:order-1 rtl:text-right">
-                        <time class="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-4" data-i18n="news2-date">SEP 9-12, 2026</time>
-                        <h2 class="text-3xl md:text-4xl font-black mb-6 uppercase tracking-tight leading-none text-red-600" data-i18n="news2-t">FESQUA BRAZIL 2026</h2>
-                        <p class="text-slate-500 text-sm md:text-base leading-relaxed mb-8 font-light" data-i18n="news2-d">
-                            Expanding our reach in South America! Pioneer Metal will showcase...
+                    <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center order-2 md:order-1">
+                        <time class="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-4"
+                            data-i18n="news2-date">SEP 9-12, 2026</time>
+                        <h2 class="text-3xl md:text-4xl font-black mb-6 uppercase tracking-tight leading-none text-red-600"
+                            data-i18n="news2-t">FESQUA BRAZIL 2026</h2>
+                        <p class="text-slate-500 text-sm md:text-base leading-relaxed mb-8 font-light"
+                            data-i18n="news2-d">
+                            Expanding our reach in South America! Pioneer Metal will showcase high-performance
+                            cold-rolled steel technologies at FESQUA, São Paulo.
                         </p>
-                        <a href="contact.html" class="inline-flex items-center gap-3 rtl:flex-row-reverse text-black text-[11px] font-black uppercase tracking-widest hover:text-red-600 transition">
-                            <span data-i18n="btn-visit">Visit Our Booth</span> <i class="fas fa-chevron-right rtl:hidden text-[10px]"></i><i class="fas fa-chevron-left hidden rtl:block text-[10px]"></i>
+                        <a href="contact.html"
+                            class="inline-flex items-center gap-3 text-black text-[11px] font-black uppercase tracking-widest hover:text-red-600 transition">
+                            <span data-i18n="btn-visit">Visit Our Booth</span> <i
+                                class="fas fa-chevron-right text-[10px]"></i>
                         </a>
                     </div>
                 </article>
@@ -140,18 +217,24 @@
 
     <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8 rtl:text-right">
-                <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left rtl:md:text-right" data-i18n="footer-rights">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left"
+                    data-i18n="footer-rights">
                     &copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved
                 </div>
                 <div class="flex items-center space-x-6">
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-facebook-f text-lg"></i></a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-x-twitter text-lg"></i></a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-instagram text-lg"></i></a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i class="fab fa-linkedin-in text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
+                            class="fab fa-facebook-f text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
+                            class="fab fa-x-twitter text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
+                            class="fab fa-instagram text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
+                            class="fab fa-linkedin-in text-lg"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 </body>
+
 </html>

@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+}
+
+:lang(ar) {
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+:lang(ja) {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+:lang(ko) {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* Navigation Styles */
+.nav-blur {
+    backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #dc2626;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Language Dropdown */
+.lang-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.75rem;
+    background: white;
+    border: 1px solid #f3f4f6;
+    border-radius: 1rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    min-width: 160px;
+    z-index: 100;
+}
+
+.lang-dropdown.active {
+    display: block;
+    animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Map specific from Contact page (moved to shared allows usage elsewhere if needed, but primarily for Contact) */
+#map {
+    height: 450px;
+    border-radius: 1.5rem;
+    z-index: 10;
+    border: 1px solid #f3f4f6;
+}
+
+/* Carousel (from Index/About) */
+.carousel-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* For About page the container is relative and styled differently, handled in page specific or overridden */
+
+.carousel-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dot.active {
+    background: #ef4444;
+    transform: scale(1.4);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+/* Products Specific */
+.product-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.product-image {
+    height: 320px;
+    object-fit: cover;
+    width: 100%;
+    background-color: #f1f5f9;
+}
+
+.btn-hover-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hover-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn-hover-effect:hover::after {
+    left: 100%;
+}
+
+/* News Specific */
+.news-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.news-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+/* Coop Card (Index) */
+.coop-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+}
+
+.coop-card:hover {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.05);
+    transform: translateY(-5px);
+}
