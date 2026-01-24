@@ -204,7 +204,7 @@
                 </div>
 
                 <h2 class="text-2xl font-bold mb-10 relative" data-i18n="form-title">Send a Message</h2>
-                <form class="space-y-8 relative" onsubmit="return false;">
+                <form id="contactForm" class="space-y-8 relative">
                     <div class="grid md:grid-cols-2 gap-8">
                         <div class="space-y-2">
                             <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1"
@@ -314,6 +314,30 @@
 
         window.addEventListener('load', () => {
             initMap();
+        });
+
+        // Form Handling
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const originalContent = btn.innerHTML;
+
+            // Loading state
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>SENDING...</span>';
+
+            // Simulate API call
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> <span>MESSAGE SENT!</span>';
+                btn.classList.replace('bg-red-600', 'bg-green-600');
+                this.reset();
+
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = originalContent;
+                    btn.classList.replace('bg-green-600', 'bg-red-600');
+                }, 3000);
+            }, 1000);
         });
     </script>
 </body>

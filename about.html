@@ -197,23 +197,19 @@
             <div class="carousel-container aspect-[21/9] shadow-2xl bg-slate-100">
                 <div class="carousel-slide h-full">
                     <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_01.jpg"
-                        class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                        alt="Team 1">
+                        class="w-full h-full object-cover transition-all duration-700" alt="Team 1">
                 </div>
                 <div class="carousel-slide h-full">
                     <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_02.jpg"
-                        class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                        alt="Team 2">
+                        class="w-full h-full object-cover transition-all duration-700" alt="Team 2">
                 </div>
                 <div class="carousel-slide h-full">
                     <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_03.jpg"
-                        class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                        alt="Team 3">
+                        class="w-full h-full object-cover transition-all duration-700" alt="Team 3">
                 </div>
                 <div class="carousel-slide h-full">
                     <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_04.jpg"
-                        class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                        alt="Team 4">
+                        class="w-full h-full object-cover transition-all duration-700" alt="Team 4">
                 </div>
 
                 <button onclick="plusSlides(-1)"
@@ -226,10 +222,14 @@
                 </button>
 
                 <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
-                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"></span>
-                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"></span>
-                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"></span>
-                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"></span>
+                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"
+                        onclick="currentSlide(1)"></span>
+                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"
+                        onclick="currentSlide(2)"></span>
+                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"
+                        onclick="currentSlide(3)"></span>
+                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"
+                        onclick="currentSlide(4)"></span>
                 </div>
             </div>
         </div>
@@ -309,10 +309,12 @@
                 slides[i].style.display = "none";
             }
             for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" bg-red-600", " bg-white/30");
+                dots[i].classList.remove("bg-red-600");
+                dots[i].classList.add("bg-white/30");
             }
             slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " bg-red-600";
+            dots[slideIndex - 1].classList.remove("bg-white/30");
+            dots[slideIndex - 1].classList.add("bg-red-600");
 
             // Fix: Clear timeout to prevent double jumps when clicking
             if (slideTimer) clearTimeout(slideTimer);
@@ -321,6 +323,10 @@
 
         function plusSlides(n) {
             showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
