@@ -407,9 +407,6 @@ function changeLanguage(lang) {
 
     // Close dropdown if open
     closeLangDropdown();
-
-    // Remove i18n loading class to show translated text
-    document.documentElement.classList.remove('i18n-loading');
 }
 
 /**
@@ -450,9 +447,36 @@ function toggleMobileMenu() {
 
 // --- 3. Initialization ---
 
+// 1. Instant Translation via Observer (Prevents Text Flash before DOMContentLoaded)
+const savedLang = localStorage.getItem('preferred-lang') || 'en';
+if (savedLang !== 'en') {
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            mutation.addedNodes.forEach(node => {
+                if (node.nodeType === 1) { // Element Node
+                    if (node.hasAttribute('data-i18n')) {
+                        const key = node.getAttribute('data-i18n');
+                        if (i18nData[savedLang] && i18nData[savedLang][key]) {
+                            node.innerHTML = i18nData[savedLang][key];
+                        }
+                    }
+                    if (node.querySelectorAll) {
+                        node.querySelectorAll('[data-i18n]').forEach(child => {
+                            const key = child.getAttribute('data-i18n');
+                            if (i18nData[savedLang] && i18nData[savedLang][key]) {
+                                child.innerHTML = i18nData[savedLang][key];
+                            }
+                        });
+                    }
+                }
+            });
+        });
+    });
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Load Language
-    const savedLang = localStorage.getItem('preferred-lang') || 'en';
+    // 2. Load Language (Fallback sweep)
     changeLanguage(savedLang);
 
     // 2. Bind Mobile Menu Button (if not already bound inline)
