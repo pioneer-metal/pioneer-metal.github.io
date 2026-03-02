@@ -16,18 +16,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | PIONEER METAL</title>
 
+    <script>
+            (function () {
+                var lang = localStorage.getItem('preferred-lang') || 'en';
+                document.documentElement.lang = lang;
+                document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+                document.documentElement.classList.add('i18n-loading');
+            })();
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap');
-
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -80,7 +85,7 @@
 
             <!-- Language Selector (Custom) -->
             <div class="relative hidden md:block">
-                <button onclick="toggleLangDropdown(event)"
+                <button onclick="toggleLangDropdown(event)" aria-label="Select Language"
                     class="flex items-center space-x-3 bg-gray-50 hover:bg-gray-100 px-4 py-2.5 rounded-full border border-gray-200 transition-all cursor-pointer">
                     <div id="currentFlag" class="flex items-center">
                         <span class="fi fi-us rounded-sm"></span>
@@ -89,56 +94,48 @@
                     <i class="fa-solid fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300"
                         id="langChevron"></i>
                 </button>
-
-                <div id="langDropdown" class="lang-dropdown overflow-hidden">
+                <div id="langDropdown"
+                    class="lang-dropdown overflow-hidden absolute right-0 mt-2 bg-white shadow-xl rounded-xl hidden">
                     <div class="py-1 max-h-[400px] overflow-y-auto">
                         <button onclick="changeLanguage('en')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-us"></span><span>ENGLISH</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-us"></span><span>ENGLISH</span></button>
                         <button onclick="changeLanguage('es')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-es"></span><span>ESPAÑOL</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-es"></span><span>ESPAÑOL</span></button>
                         <button onclick="changeLanguage('pt')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-pt"></span><span>PORTUGUÊS</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-pt"></span><span>PORTUGUÊS</span></button>
                         <button onclick="changeLanguage('ru')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-ru"></span><span>РУССКИЙ</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-ru"></span><span>РУССКИЙ</span></button>
                         <button onclick="changeLanguage('ja')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-jp"></span><span>日本語</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-jp"></span><span>日本語</span></button>
                         <button onclick="changeLanguage('ko')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-kr"></span><span>한국어</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-kr"></span><span>한국어</span></button>
                         <button onclick="changeLanguage('ar')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-sa"></span><span>العربية</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-sa"></span><span>العربية</span></button>
                         <button onclick="changeLanguage('fr')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-fr"></span><span>FRANÇAIS</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-fr"></span><span>FRANÇAIS</span></button>
                         <button onclick="changeLanguage('sq')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-al"></span><span>SHQIP</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-al"></span><span>SHQIP</span></button>
                         <button onclick="changeLanguage('sr')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-rs"></span><span>SRPSKI</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-rs"></span><span>SRPSKI</span></button>
                     </div>
                 </div>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button class="md:hidden text-black text-xl p-2" onclick="toggleMobileMenu()"><i
-                    class="fas fa-bars"></i></button>
+            <button class="md:hidden text-black text-xl p-2" aria-label="Toggle Mobile Menu"
+                onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
 
         <!-- Mobile Menu -->
@@ -146,7 +143,7 @@
             class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex-col space-y-4">
             <a href="index.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
                 data-i18n="nav-home">Home</a>
-            <a href="about.html" class="block text-sm font-bold text-red-600" data-i18n="nav-about">About Us</a>
+            <a href="about.html" class="block text-sm font-bold text-red-600" data-i18n="nav-about">About</a>
             <a href="products.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
                 data-i18n="nav-products">Products</a>
             <a href="news.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
@@ -161,6 +158,14 @@
                         class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">EN</button>
                     <button onclick="changeLanguage('es')"
                         class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">ES</button>
+                    <button onclick="changeLanguage('pt')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">PT</button>
+                    <button onclick="changeLanguage('ru')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">RU</button>
+                    <button onclick="changeLanguage('ja')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">JA</button>
+                    <button onclick="changeLanguage('ko')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">KO</button>
                     <button onclick="changeLanguage('ar')"
                         class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">AR</button>
                     <button onclick="changeLanguage('fr')"
@@ -270,26 +275,42 @@
 
     <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8 rtl:text-right">
-                <div class="text-[10px] font-bold uppercase tracking-[0.3em] flex-1" data-i18n="footer-rights">
-                    &copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 rtl:text-right">
+                <!-- Left Side: Copyright & Socials -->
+                <div class="flex flex-col items-center md:items-start space-y-6 flex-1 w-full">
+                    <!-- Text Group -->
+                    <div
+                        class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed">
+                        <div data-i18n="footer-company">&copy; 2025 PIONEER METAL PRODUCTS FACTORY.</div>
+                        <div data-i18n="footer-rights" class="opacity-60">All Rights Reserved</div>
+                    </div>
+
+                    <!-- Social Links moved under copyright -->
+                    <div class="flex items-center space-x-6 rtl:space-x-reverse">
+                        <a href="javascript:void(0)" aria-label="Facebook"
+                            class="hover:text-white transition-all transform hover:scale-125">
+                            <i class="fab fa-facebook-f text-lg"></i>
+                        </a>
+                        <a href="javascript:void(0)" aria-label="X (Twitter)"
+                            class="hover:text-white transition-all transform hover:scale-125">
+                            <i class="fab fa-x-twitter text-lg"></i>
+                        </a>
+                        <a href="javascript:void(0)" aria-label="Instagram"
+                            class="hover:text-white transition-all transform hover:scale-125">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="javascript:void(0)" aria-label="LinkedIn"
+                            class="hover:text-white transition-all transform hover:scale-125">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Visit Count Widget -->
-                <div class="opacity-90 hover:opacity-100 transition-all scale-[1.25] origin-center px-4">
+                <!-- Visit Count Widget (Right Side) -->
+                <div
+                    class="opacity-90 hover:opacity-100 transition-opacity flex-shrink-0 min-w-[250px] w-full md:w-auto flex justify-center md:justify-end">
                     <script type='text/javascript' id='mapmyvisitors'
                         src='https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=txzLrV8mr-0rE56zE39AOX9VT4za8nU7p7K3HwY0eS0'></script>
-                </div>
-
-                <div class="flex items-center space-x-6 flex-1 rtl:justify-start justify-end">
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
-                            class="fab fa-facebook-f text-lg"></i></a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
-                            class="fab fa-x-twitter text-lg"></i></a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
-                            class="fab fa-instagram text-lg"></i></a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
-                            class="fab fa-linkedin-in text-lg"></i></a>
                 </div>
             </div>
         </div>
