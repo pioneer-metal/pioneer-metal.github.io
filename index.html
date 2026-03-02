@@ -48,7 +48,7 @@
 
             <!-- Language Selector -->
             <div class="relative hidden md:block">
-                <button onclick="toggleLangDropdown(event)"
+                <button onclick="toggleLangDropdown(event)" aria-label="Select Language"
                     class="flex items-center space-x-3 bg-gray-50 hover:bg-gray-100 px-4 py-2.5 rounded-full border border-gray-200 transition-all cursor-pointer">
                     <div id="currentFlag" class="flex items-center">
                         <span class="fi fi-us rounded-sm"></span>
@@ -57,54 +57,47 @@
                     <i class="fa-solid fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300"
                         id="langChevron"></i>
                 </button>
-                <div id="langDropdown" class="lang-dropdown overflow-hidden">
+                <div id="langDropdown"
+                    class="lang-dropdown overflow-hidden absolute right-0 mt-2 bg-white shadow-xl rounded-xl hidden">
                     <div class="py-1 max-h-[400px] overflow-y-auto">
                         <button onclick="changeLanguage('en')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-us"></span><span>ENGLISH</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-us"></span><span>ENGLISH</span></button>
                         <button onclick="changeLanguage('es')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-es"></span><span>ESPAÑOL</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-es"></span><span>ESPAÑOL</span></button>
                         <button onclick="changeLanguage('pt')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-pt"></span><span>PORTUGUÊS</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-pt"></span><span>PORTUGUÊS</span></button>
                         <button onclick="changeLanguage('ru')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-ru"></span><span>РУССКИЙ</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-ru"></span><span>РУССКИЙ</span></button>
                         <button onclick="changeLanguage('ja')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-jp"></span><span>日本語</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-jp"></span><span>日本語</span></button>
                         <button onclick="changeLanguage('ko')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-kr"></span><span>한국어</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-kr"></span><span>한국어</span></button>
                         <button onclick="changeLanguage('ar')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-sa"></span><span>العربية</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-sa"></span><span>العربية</span></button>
                         <button onclick="changeLanguage('fr')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-fr"></span><span>FRANÇAIS</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-fr"></span><span>FRANÇAIS</span></button>
                         <button onclick="changeLanguage('sq')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-al"></span><span>SHQIP</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-al"></span><span>SHQIP</span></button>
                         <button onclick="changeLanguage('sr')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors">
-                            <span class="fi fi-rs"></span><span>SRPSKI</span>
-                        </button>
+                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
+                                class="fi fi-rs"></span><span>SRPSKI</span></button>
                     </div>
                 </div>
             </div>
 
-            <button class="md:hidden text-black text-xl p-2" onclick="toggleMobileMenu()"><i
-                    class="fas fa-bars"></i></button>
+            <button class="md:hidden text-black text-xl p-2" aria-label="Toggle Mobile Menu"
+                onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
 
         <!-- Mobile Menu -->
@@ -122,11 +115,20 @@
 
             <div class="pt-4 border-t border-slate-100">
                 <p class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">Language</p>
+                <!-- Added missing languages to keep consistency with desktop menu -->
                 <div class="flex flex-wrap gap-2">
                     <button onclick="changeLanguage('en')"
                         class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">EN</button>
                     <button onclick="changeLanguage('es')"
                         class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">ES</button>
+                    <button onclick="changeLanguage('pt')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">PT</button>
+                    <button onclick="changeLanguage('ru')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">RU</button>
+                    <button onclick="changeLanguage('ja')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">JA</button>
+                    <button onclick="changeLanguage('ko')"
+                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">KO</button>
                     <button onclick="changeLanguage('ar')"
                         class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">AR</button>
                     <button onclick="changeLanguage('fr')"
@@ -145,19 +147,19 @@
         <div class="carousel-container" id="carousel">
             <div class="carousel-slide active"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_01.jpg');">
-                <div class="slide-overlay"></div>
+                <div class="slide-overlay absolute inset-0 bg-black/40"></div>
             </div>
-            <div class="carousel-slide"
+            <div class="carousel-slide hidden"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_02.jpg');">
-                <div class="slide-overlay"></div>
+                <div class="slide-overlay absolute inset-0 bg-black/40"></div>
             </div>
-            <div class="carousel-slide"
+            <div class="carousel-slide hidden"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_03.jpg');">
-                <div class="slide-overlay"></div>
+                <div class="slide-overlay absolute inset-0 bg-black/40"></div>
             </div>
-            <div class="carousel-slide"
+            <div class="carousel-slide hidden"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_04.jpg');">
-                <div class="slide-overlay"></div>
+                <div class="slide-overlay absolute inset-0 bg-black/40"></div>
             </div>
         </div>
 
@@ -179,10 +181,14 @@
         </div>
 
         <div class="absolute right-10 bottom-10 z-20 flex space-x-3">
-            <div class="dot active" onclick="goToSlide(0)"></div>
-            <div class="dot" onclick="goToSlide(1)"></div>
-            <div class="dot" onclick="goToSlide(2)"></div>
-            <div class="dot" onclick="goToSlide(3)"></div>
+            <div class="dot active w-3 h-3 bg-white/50 rounded-full cursor-pointer hover:bg-white"
+                onclick="goToSlide(0)"></div>
+            <div class="dot w-3 h-3 bg-white/50 rounded-full cursor-pointer hover:bg-white" onclick="goToSlide(1)">
+            </div>
+            <div class="dot w-3 h-3 bg-white/50 rounded-full cursor-pointer hover:bg-white" onclick="goToSlide(2)">
+            </div>
+            <div class="dot w-3 h-3 bg-white/50 rounded-full cursor-pointer hover:bg-white" onclick="goToSlide(3)">
+            </div>
         </div>
     </section>
 
@@ -198,19 +204,19 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-                <div class="coop-card p-10 rounded-2xl">
+                <div class="coop-card p-10 rounded-2xl bg-[#111]">
                     <div class="text-red-600 text-4xl mb-6"><i class="fas fa-shield-alt"></i></div>
                     <h4 class="text-xl font-bold mb-4" data-i18n="pillar-1-title">Lijialong Sealing Strip</h4>
                     <p class="text-slate-400 text-sm leading-relaxed" data-i18n="pillar-1-desc">Specialized manufacturer
                         of high-resilience weather strips for advanced sealing solutions.</p>
                 </div>
-                <div class="coop-card p-10 rounded-2xl border-red-600/30 bg-red-600/5">
+                <div class="coop-card p-10 rounded-2xl border border-red-600/30 bg-red-600/5">
                     <div class="text-red-600 text-4xl mb-6"><i class="fas fa-cogs"></i></div>
                     <h4 class="text-xl font-bold mb-4" data-i18n="pillar-2-title">OEM & Custom</h4>
                     <p class="text-slate-400 text-sm leading-relaxed" data-i18n="pillar-2-desc">OEM customers assist us
                         in achieving success, improving product quality, and achieving a win-win situation.</p>
                 </div>
-                <div class="coop-card p-10 rounded-2xl">
+                <div class="coop-card p-10 rounded-2xl bg-[#111]">
                     <div class="text-red-600 text-4xl mb-6"><i class="fas fa-globe-americas"></i></div>
                     <h4 class="text-xl font-bold mb-4" data-i18n="pillar-3-title">Melan Trade</h4>
                     <p class="text-slate-400 text-sm leading-relaxed" data-i18n="pillar-3-desc">Professional import &
@@ -258,20 +264,27 @@
                 <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left flex-1"
                     data-i18n="footer-rights">&copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved</div>
 
-                <!-- Visit Count Widget -->
-                <div class="opacity-90 hover:opacity-100 transition-all scale-[1.25] origin-center px-4">
+                <!-- Visit Count Widget FIX: Added flex-shrink-0 to prevent it from being compressed -->
+                <!-- Removed 'scale-[1.25]' which created a visual sizing disconnect causing alignment bugs -->
+                <div
+                    class="opacity-90 hover:opacity-100 transition-opacity flex-shrink-0 px-4 min-w-[250px] flex justify-center">
                     <script type='text/javascript' id='mapmyvisitors'
                         src='https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=txzLrV8mr-0rE56zE39AOX9VT4za8nU7p7K3HwY0eS0'></script>
                 </div>
 
-                <div class="flex items-center space-x-6 flex-1 justify-end">
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
+                <div class="flex items-center justify-center md:justify-end space-x-6 flex-1">
+                    <!-- Changed href="#" to javascript:void(0) to prevent page jumping -->
+                    <a href="javascript:void(0)" aria-label="Facebook"
+                        class="hover:text-white transition-all transform hover:scale-125"><i
                             class="fab fa-facebook-f text-lg"></i></a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
+                    <a href="javascript:void(0)" aria-label="X (Twitter)"
+                        class="hover:text-white transition-all transform hover:scale-125"><i
                             class="fab fa-x-twitter text-lg"></i></a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
+                    <a href="javascript:void(0)" aria-label="Instagram"
+                        class="hover:text-white transition-all transform hover:scale-125"><i
                             class="fab fa-instagram text-lg"></i></a>
-                    <a href="#" class="hover:text-white transition-all transform hover:scale-125"><i
+                    <a href="javascript:void(0)" aria-label="LinkedIn"
+                        class="hover:text-white transition-all transform hover:scale-125"><i
                             class="fab fa-linkedin-in text-lg"></i></a>
                 </div>
             </div>
@@ -283,11 +296,23 @@
         const slides = document.querySelectorAll('.carousel-slide');
         const dots = document.querySelectorAll('.dot');
         function goToSlide(index) {
+            if (slides.length === 0) return; // Safeguard
             currentSlide = index;
-            slides.forEach((s, i) => s.classList.toggle('active', i === index));
+            slides.forEach((s, i) => {
+                if (i === index) {
+                    s.classList.add('active');
+                    s.classList.remove('hidden');
+                } else {
+                    s.classList.remove('active');
+                    s.classList.add('hidden');
+                }
+            });
             dots.forEach((d, i) => d.classList.toggle('active', i === index));
+            dots.forEach((d, i) => d.classList.toggle('bg-white', i === index));
+            dots.forEach((d, i) => d.classList.toggle('bg-white/50', i !== index));
         }
         setInterval(() => {
+            if (slides.length === 0) return;
             currentSlide = (currentSlide + 1) % slides.length;
             goToSlide(currentSlide);
         }, 5000);
