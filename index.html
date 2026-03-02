@@ -16,9 +16,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PIONEER METAL | Leading Manufacturer of Steel Profiles</title>
 
+    <script>
+            // Set language synchronously to prevent text-flash jumping
+            (function () {
+                var lang = localStorage.getItem('preferred-lang') || 'en';
+                document.documentElement.lang = lang;
+                document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+            })();
+    </script>
+    <style>
+        /* Prevent layout shift from translations and Tailwind loading */
+        body {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        body.ready {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.25s ease;
+        }
+    </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
 </head>

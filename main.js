@@ -460,4 +460,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Bind Global Click to close dropdowns
     document.body.addEventListener('click', closeLangDropdown);
+
+    // 4. Reveal body smoothly to prevent layout shift
+    requestAnimationFrame(() => {
+        document.body.classList.add('ready');
+    });
 });
