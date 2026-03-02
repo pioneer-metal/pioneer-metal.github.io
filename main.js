@@ -8,7 +8,8 @@ const i18nData = {
     en: {
         // Navigation
         "nav-home": "Home", "nav-about": "About Us", "nav-products": "Products", "nav-news": "News", "nav-contact": "Contact",
-        "footer-rights": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved",
+        "footer-company": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY.",
+        "footer-rights": "All Rights Reserved",
 
         // Home Page
         "hero-tag": "Industrial Excellence Since 2006", "hero-title": "Precision Steel Profiles", "hero-desc": "Global leader in manufacturing cold-rolled steel solutions for window systems and industrial infrastructure.", "btn-view": "VIEW PRODUCTS",
@@ -57,7 +58,8 @@ const i18nData = {
     },
     es: {
         "nav-home": "Inicio", "nav-about": "Sobre Nosotros", "nav-products": "Productos", "nav-news": "Noticias", "nav-contact": "Contacto",
-        "footer-rights": "&copy; 2025 FÁBRICA DE PRODUCTOS METÁLICOS PIONEER. | Todos los derechos reservados",
+        "footer-company": "&copy; 2025 FÁBRICA DE PRODUCTOS METÁLICOS PIONEER.",
+        "footer-rights": "Todos los derechos reservados",
         "hero-tag": "Excelencia Industrial desde 2006", "hero-title": "Perfiles de Acero de Precisión", "hero-desc": "Líder mundial en fabricación de soluciones de acero para ventanas e industria.", "btn-view": "VER PRODUCTOS",
         "coop-subtitle": "Alianzas y Crecimiento", "coop-title": "Cooperación Comercial Estratégica",
         "pillar-1-title": "Tira de Sellado Lijialong", "pillar-1-desc": "Fabricante especializado en burletes de alta resiliencia para sellado avanzado.",
@@ -91,7 +93,8 @@ const i18nData = {
     },
     pt: {
         "nav-home": "Início", "nav-about": "Sobre Nós", "nav-products": "Produtos", "nav-news": "Notícias", "nav-contact": "Contato",
-        "footer-rights": "&copy; 2025 FÁBRICA DE PRODUTOS METÁLICOS PIONEER. | Todos os direitos reservados",
+        "footer-company": "&copy; 2025 FÁBRICA DE PRODUTOS METÁLICOS PIONEER.",
+        "footer-rights": "Todos os direitos reservados",
         "hero-tag": "Excelência Industrial desde 2006", "hero-title": "Perfis de Aço de Precisão", "hero-desc": "Líder mundial na fabricação de soluções em aço para janelas e infraestrutura.", "btn-view": "VER PRODUTOS",
         "coop-subtitle": "Parceria e Crescimento", "coop-title": "Cooperação Empresarial Estratégica",
         "pillar-1-title": "Lijialong Sealing Strip", "pillar-1-desc": "Fabricante especializado de tiras de vedação de alta resiliência.",
@@ -117,7 +120,8 @@ const i18nData = {
     },
     ru: {
         "nav-home": "Главная", "nav-about": "О нас", "nav-products": "Изделия", "nav-news": "Новости", "nav-contact": "Контакт",
-        "footer-rights": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY. | Все права защищены",
+        "footer-company": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY.",
+        "footer-rights": "Все права защищены",
         "hero-tag": "Промышленное превосходство с 2006 года", "hero-title": "Стальные Профили Высокой Точности", "hero-desc": "Мировой лидер в производстве стальных решений для оконных систем.", "btn-view": "ПРОДУКЦИЯ",
         "coop-subtitle": "Партнерство и Рост", "coop-title": "Стратегическое Деловое Сотрудничество",
         "pillar-1-title": "Уплотнительная лента Lijialong", "pillar-1-desc": "Специализированный производитель уплотнителей для передовых решений герметизации.",
@@ -147,7 +151,8 @@ const i18nData = {
     },
     ja: {
         "nav-home": "ホーム", "nav-about": "会社概要", "nav-products": "製品", "nav-news": "ニュース", "nav-contact": "お問い合わせ",
-        "footer-rights": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY. | 無断転載を禁じます",
+        "footer-company": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY.",
+        "footer-rights": "無断転載を禁じます",
         "hero-tag": "2006年創業的信頼", "hero-title": "精密スチールプロファイル", "hero-desc": "窓システムおよび産業インフラ向けの冷間圧延鋼ソリューションのリーダー。", "btn-view": "製品一覧",
         "coop-subtitle": "パートナーシップと成長", "coop-title": "戦略的ビジネス提携",
         "pillar-1-title": "Lijialong シーリングストリップ", "pillar-1-desc": "高度なシーリングソリューション向けの高品質ウェザーストリップ製造。",
@@ -177,7 +182,8 @@ const i18nData = {
     },
     ko: {
         "nav-home": "홈", "nav-about": "회사 소개", "nav-products": "제품", "nav-news": "소식", "nav-contact": "문의",
-        "footer-rights": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY. | 판권 소유",
+        "footer-company": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY.",
+        "footer-rights": "판권 소유",
         "hero-tag": "2006년부터 시작된 기술력", "hero-title": "정밀 스틸 프로파일", "hero-desc": "창호 시스템 및 산업 인프라를 위한 냉간 압연 강철 솔루션의 글로벌 리더.", "btn-view": "제품 보기",
         "coop-subtitle": "파트너십과 성장", "coop-title": "전략적 비즈니스 협력",
         "pillar-1-title": "Lijialong 실링 스트립", "pillar-1-desc": "고급 실링 솔루션을 위한 고탄성 웨더스트립 전문 제조업체.",
@@ -207,7 +213,8 @@ const i18nData = {
     },
     ar: {
         "nav-home": "الرئيسية", "nav-about": "من نحن", "nav-products": "المنتجات", "nav-news": "الأخبار", "nav-contact": "اتصل بنا",
-        "footer-rights": "&copy; 2025 مصنع بايونير للمنتجات المعدنية. | كل الحقوق محفوظة",
+        "footer-company": "&copy; 2025 مصنع بايونير للمنتجات المعدنية.",
+        "footer-rights": "كل الحقوق محفوظة",
         "hero-tag": "التميز الصناعي منذ 2006", "hero-title": "مقاطع فولاذية عالية الدقة", "hero-desc": "الرائد العالمي في تصنيع حلول الصلب المدرفل على البارد لأنظمة النوافذ.", "btn-view": "عرض المنتجات",
         "coop-subtitle": "الشراكة والنمو", "coop-title": "التعاون التجاري الاستراتيجي",
         "pillar-1-title": "Lijialong شريط إحكام", "pillar-1-desc": "مصنع متخصص لشرائط منع التسرب عالية المرونة للحلول المتقدمة.",
@@ -237,7 +244,8 @@ const i18nData = {
     },
     fr: {
         "nav-home": "Accueil", "nav-about": "À Propos", "nav-products": "Produits", "nav-news": "Actualités", "nav-contact": "Contact",
-        "footer-rights": "&copy; 2025 USINE DE PRODUITS MÉTALLIQUES PIONEER. | Tous droits réservés",
+        "footer-company": "&copy; 2025 USINE DE PRODUITS MÉTALLIQUES PIONEER.",
+        "footer-rights": "Tous droits réservés",
         "hero-tag": "Excellence Industrielle depuis 2006", "hero-title": "Profilés Acier de Précision", "hero-desc": "Leader mondial dans la fabrication de solutions en acier laminé à froid pour systèmes de fenêtres et infrastructures.", "btn-view": "VOIR PRODUITS",
         "coop-subtitle": "Partenariat & Croissance", "coop-title": "Coopération Stratégique",
         "pillar-1-title": "Joint d'Étanchéité Lijialong", "pillar-1-desc": "Fabricant spécialisé de joints d'étanchéité haute résilience.",
@@ -275,7 +283,8 @@ const i18nData = {
     },
     sq: {
         "nav-home": "Ballina", "nav-about": "Rreth Nesh", "nav-products": "Produktet", "nav-news": "Lajme", "nav-contact": "Kontakt",
-        "footer-rights": "&copy; 2025 FABRIKA E PRODUKTEVE METALTIKE PIONEER. | Të gjitha të drejtat e rezervuara",
+        "footer-company": "&copy; 2025 FABRIKA E PRODUKTEVE METALTIKE PIONEER.",
+        "footer-rights": "Të gjitha të drejtat e rezervuara",
         "hero-tag": "Përsosmëri Industriale që nga 2006", "hero-title": "Profile Çeliku me Precizion", "hero-desc": "Lider global në prodhimin e zgjidhjeve të çelikut të mbështjellë në të ftohtë për dritare dhe infrastrukturë.", "btn-view": "SHIKO PRODUKTET",
         "coop-subtitle": "Partneritet & Rritje", "coop-title": "Bashkëpunim Strategjik Biznesi",
         "pillar-1-title": "Shirit Izolues Lijialong", "pillar-1-desc": "Prodhues i specializuar i shiritave të motit me rezistencë të lartë.",
@@ -313,7 +322,8 @@ const i18nData = {
     },
     sr: {
         "nav-home": "Početna", "nav-about": "O Nama", "nav-products": "Proizvodi", "nav-news": "Vesti", "nav-contact": "Kontakt",
-        "footer-rights": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY. | Sva prava zadržana",
+        "footer-company": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY.",
+        "footer-rights": "Sva prava zadržana",
         "hero-tag": "Industrijska Izvrsnost od 2006", "hero-title": "Precizni Čelični Profili", "hero-desc": "Globalni lider u proizvodnji hladno valjanih čeličnih rešenja za sisteme prozora i infrastrukturu.", "btn-view": "POGLEDAJ PROIZVODE",
         "coop-subtitle": "Partnerstvo i Rast", "coop-title": "Strateška Poslovna Saradnja",
         "pillar-1-title": "Lijialong Zaptivna Traka", "pillar-1-desc": "Specijalizovani proizvođač gumenih traka visoke otpornosti.",

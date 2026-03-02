@@ -260,32 +260,41 @@
     <!-- Footer -->
     <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left flex-1"
-                    data-i18n="footer-rights">&copy; 2025 PIONEER METAL PRODUCTS FACTORY. | All Rights Reserved</div>
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 rtl:text-right">
+                <!-- Left Side: Copyright & Socials -->
+                <div class="flex flex-col items-center md:items-start space-y-6">
+                    <!-- Text Group -->
+                    <div
+                        class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed">
+                        <div data-i18n="footer-company">&copy; 2025 PIONEER METAL PRODUCTS FACTORY.</div>
+                        <div data-i18n="footer-rights" class="opacity-60">All Rights Reserved</div>
+                    </div>
 
-                <!-- Visit Count Widget FIX: Added flex-shrink-0 to prevent it from being compressed -->
-                <!-- Removed 'scale-[1.25]' which created a visual sizing disconnect causing alignment bugs -->
-                <div
-                    class="opacity-90 hover:opacity-100 transition-opacity flex-shrink-0 px-4 min-w-[250px] flex justify-center">
-                    <script type='text/javascript' id='mapmyvisitors'
-                        src='https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=txzLrV8mr-0rE56zE39AOX9VT4za8nU7p7K3HwY0eS0'></script>
+                    <!-- Social Links moved under copyright -->
+                    <div class="flex items-center space-x-6 rtl:space-x-reverse">
+                        <a href="javascript:void(0)" aria-label="Facebook"
+                            class="hover:text-white transition-all transform hover:scale-125">
+                            <i class="fab fa-facebook-f text-lg"></i>
+                        </a>
+                        <a href="javascript:void(0)" aria-label="X (Twitter)"
+                            class="hover:text-white transition-all transform hover:scale-125">
+                            <i class="fab fa-x-twitter text-lg"></i>
+                        </a>
+                        <a href="javascript:void(0)" aria-label="Instagram"
+                            class="hover:text-white transition-all transform hover:scale-125">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="javascript:void(0)" aria-label="LinkedIn"
+                            class="hover:text-white transition-all transform hover:scale-125">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="flex items-center justify-center md:justify-end space-x-6 flex-1">
-                    <!-- Changed href="#" to javascript:void(0) to prevent page jumping -->
-                    <a href="javascript:void(0)" aria-label="Facebook"
-                        class="hover:text-white transition-all transform hover:scale-125"><i
-                            class="fab fa-facebook-f text-lg"></i></a>
-                    <a href="javascript:void(0)" aria-label="X (Twitter)"
-                        class="hover:text-white transition-all transform hover:scale-125"><i
-                            class="fab fa-x-twitter text-lg"></i></a>
-                    <a href="javascript:void(0)" aria-label="Instagram"
-                        class="hover:text-white transition-all transform hover:scale-125"><i
-                            class="fab fa-instagram text-lg"></i></a>
-                    <a href="javascript:void(0)" aria-label="LinkedIn"
-                        class="hover:text-white transition-all transform hover:scale-125"><i
-                            class="fab fa-linkedin-in text-lg"></i></a>
+                <!-- Visit Count Widget (Right Side) -->
+                <div class="opacity-90 hover:opacity-100 transition-opacity flex-shrink-0">
+                    <script type='text/javascript' id='mapmyvisitors'
+                        src='https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=txzLrV8mr-0rE56zE39AOX9VT4za8nU7p7K3HwY0eS0'></script>
                 </div>
             </div>
         </div>
