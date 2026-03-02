@@ -7,7 +7,7 @@
 const i18nData = {
     en: {
         // Navigation
-        "nav-home": "Home", "nav-about": "About Us", "nav-products": "Products", "nav-news": "News", "nav-contact": "Contact",
+        "nav-home": "Home", "nav-about": "About", "nav-products": "Products", "nav-news": "News", "nav-contact": "Contact",
         "footer-company": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY.",
         "footer-rights": "All Rights Reserved",
 
