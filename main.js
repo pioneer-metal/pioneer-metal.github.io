@@ -407,6 +407,9 @@ function changeLanguage(lang) {
 
     // Close dropdown if open
     closeLangDropdown();
+
+    // Remove i18n loading class to show translated text
+    document.documentElement.classList.remove('i18n-loading');
 }
 
 /**

@@ -184,3 +184,8 @@ body {
     background: rgba(239, 68, 68, 0.05);
     transform: translateY(-5px);
 }
+
+/* Prevent text flash during i18n initialization */
+html.i18n-loading [data-i18n] {
+    color: transparent !important;
+}
