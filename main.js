@@ -566,11 +566,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Load Language (Fallback sweep)
     changeLanguage(savedLang);
 
-    // 2. Bind Mobile Menu Button (if not already bound inline)
-    const mobileBtn = document.querySelector('button.md\\:hidden');
-    if (mobileBtn) {
-        mobileBtn.addEventListener('click', toggleMobileMenu);
-    }
 
     // 3. Bind Global Click to close dropdowns
     document.body.addEventListener('click', closeLangDropdown);
