@@ -59,39 +59,6 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
-    <script>
-        function changeLanguage(lang, flagCode) {
-            localStorage.setItem('preferred-lang', lang);
-            document.documentElement.lang = lang;
-            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-
-            // Update flag
-            const flagSpan = document.querySelector('#currentFlag span');
-
-            if (flagSpan) {
-                flagSpan.className = `fi fi-$ {
-                    flagCode
-                }
-
-                rounded-sm`;
-            }
-
-            // Update main label
-            const labelSpan = document.getElementById('currentLangLabel');
-
-            if (labelSpan) {
-                labelSpan.innerText = lang.toUpperCase();
-            }
-
-            // Additional custom JS reload functionality if needed
-            if (typeof window.applyTranslations === 'function') {
-                window.applyTranslations(lang);
-            }
-
-            toggleLangDropdown(new Event('click'));
-        }
-
-    </script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -229,7 +196,9 @@
                     <div class="relative hidden md:block">
                         <button onclick="toggleLangDropdown(event)" aria-label="Select Language"
                             class="hover:bg-red-700 transition-all flex items-center gap-3 hover:shadow-red-500/20 hover:-translate-y-0.5 group text-white bg-red-600 rounded-full px-6 py-3 shadow-xl">
-                            <span class="fi fi-us rounded-sm" id="currentFlag"></span>
+                            <div id="currentFlag" class="flex items-center">
+                                <span class="fi fi-us rounded-sm shadow-sm transition-opacity duration-300"></span>
+                            </div>
                             <span class="text-xs font-bold uppercase tracking-widest" id="currentLangLabel">EN</span>
                             <i class="fa-solid fa-chevron-down text-[10px] text-white/80 group-hover:translate-x-1 transition-transform"
                                 id="langChevron"></i>
@@ -381,8 +350,6 @@
 
         <!-- Story / Intro Section Grid (SpartanRef Style) -->
         <section class="border-y grid grid-cols-1 md:grid-cols-4 border-white/10 relative z-20 bg-neutral-950">
-            <!-- Red Separator -->
-            <div class="w-full h-1 bg-red-600 absolute top-0 left-0"></div>
             <!-- Box 1 -->
             <div
                 class="flex flex-col group text-center bg-zinc-950 border-white/10 md:border-r border-b md:border-b-0 p-12 items-center justify-center transition-colors hover:bg-zinc-900/50">
@@ -476,83 +443,91 @@
 
                     <!-- Card 1 -->
                     <div
-                        class="glass-card-dark p-10 flex flex-col justify-between rounded-none group min-h-[360px] cursor-pointer bg-neutral-900/30 overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                        class="glass-card-dark p-10 rounded-none group min-h-[360px] cursor-pointer bg-neutral-900/30 overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 hover:-translate-y-2">
                         <div class="card-corner-glow"></div>
-                        <div class="card-content flex flex-col h-full relative z-10">
+                        <div
+                            class="card-content flex flex-col h-full justify-center items-center text-center relative z-10">
                             <div
-                                class="text-red-500 text-4xl mb-10 group-hover:scale-110 group-hover:translate-x-2 transition-transform duration-500">
+                                class="text-red-500 text-[4rem] mb-6 group-hover:scale-110 group-hover:text-white transition-all duration-500 drop-shadow-sm">
                                 <i class="fas fa-shield-alt"></i>
                             </div>
-                            <div class="mt-auto">
-                                <h4
-                                    class="text-2xl font-black mb-4 tracking-tight uppercase font-oswald text-white group-hover:text-red-500 transition-colors">
-                                    Lijialong<br>Sealing Strip</h4>
-                                <p
-                                    class="text-white/50 text-sm leading-relaxed font-light group-hover:text-white/80 transition-colors">
-                                    Specialized manufacturer of high-resilience weather strips for advanced sealing
-                                    solutions.
-                                </p>
-                            </div>
+                            <h4
+                                class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-white group-hover:text-red-500 transition-colors leading-none">
+                                Lijialong<br>Sealing Strip</h4>
+                            <p
+                                class="text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-white/90 transition-colors">
+                                Specialized manufacturer of high-resilience weather strips for advanced sealing
+                                solutions.
+                            </p>
                         </div>
                     </div>
 
                     <!-- Card 2 -->
                     <div
-                        class="glass-card-dark p-10 flex flex-col justify-between rounded-none group min-h-[360px] cursor-pointer bg-red-950/20 overflow-hidden border-red-900/30 hover:border-red-500/30 transition-all duration-700 shadow-[0_0_30px_rgba(219,32,21,0.05)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(219,32,21,0.15)]">
+                        class="glass-card-dark p-10 rounded-none group min-h-[360px] cursor-pointer bg-neutral-900/30 overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 hover:-translate-y-2">
                         <div class="card-corner-glow"></div>
-                        <div class="card-content flex flex-col h-full relative z-10">
+                        <div
+                            class="card-content flex flex-col h-full justify-center items-center text-center relative z-10">
                             <div
-                                class="text-red-500 text-4xl mb-10 group-hover:scale-110 group-hover:translate-x-2 transition-transform duration-500">
+                                class="text-red-500 text-[4rem] mb-6 group-hover:scale-110 group-hover:text-white transition-all duration-500 drop-shadow-sm">
                                 <i class="fas fa-cogs"></i>
                             </div>
-                            <div class="mt-auto">
-                                <h4
-                                    class="text-2xl font-black mb-4 tracking-tight uppercase font-oswald text-white group-hover:text-red-500 transition-colors">
-                                    OEM &<br>Custom</h4>
-                                <p
-                                    class="text-white/60 text-sm leading-relaxed font-light group-hover:text-white/90 transition-colors">
-                                    OEM
-                                    customers assist us in achieving success, improving product quality, and achieving a
-                                    win-win situation.
-                                </p>
-                            </div>
+                            <h4
+                                class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-white group-hover:text-red-500 transition-colors leading-none">
+                                OEM &<br>Custom</h4>
+                            <p
+                                class="text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-white/90 transition-colors">
+                                OEM customers assist us in achieving success, improving product quality, and achieving a
+                                win-win situation.
+                            </p>
                         </div>
                     </div>
 
                     <!-- Card 3 -->
                     <div
-                        class="glass-card-dark p-10 flex flex-col justify-between rounded-none group min-h-[360px] cursor-pointer bg-neutral-900/30 overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                        class="glass-card-dark p-10 rounded-none group min-h-[360px] cursor-pointer bg-neutral-900/30 overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 hover:-translate-y-2">
                         <div class="card-corner-glow"></div>
-                        <div class="card-content flex flex-col h-full relative z-10">
+                        <div
+                            class="card-content flex flex-col h-full justify-center items-center text-center relative z-10">
                             <div
-                                class="text-red-500 text-4xl mb-10 group-hover:scale-110 group-hover:translate-x-2 transition-transform duration-500">
+                                class="text-red-500 text-[4rem] mb-6 group-hover:scale-110 group-hover:text-white transition-all duration-500 drop-shadow-sm">
                                 <i class="fas fa-globe-americas"></i>
                             </div>
-                            <div class="mt-auto">
-                                <h4
-                                    class="text-2xl font-black mb-4 tracking-tight uppercase font-oswald text-white group-hover:text-red-500 transition-colors">
-                                    Melan<br>Trade</h4>
-                                <p
-                                    class="text-white/50 text-sm leading-relaxed font-light group-hover:text-white/80 transition-colors">
-                                    Professional import & export services ensuring efficient global logistics and
-                                    commerce.
-                                </p>
-                            </div>
+                            <h4
+                                class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-white group-hover:text-red-500 transition-colors leading-none">
+                                Melan<br>Trade</h4>
+                            <p
+                                class="text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-white/90 transition-colors">
+                                Professional import & export services ensuring efficient global logistics and commerce.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 02: Global Scale Stats -->
-        <section class="md:px-12 text-white bg-[#0a0a0a] pt-24 pb-32 px-6 relative z-10 border-t border-white/5">
-            <!-- Red Separator -->
-            <div class="w-full h-1 bg-red-600 absolute top-0 left-0 opacity-50"></div>
-
-            <!-- Red Banner Spartan Style -->
-            <div
-                class="w-full max-w-[1600px] h-3 bg-gradient-to-r from-red-600 via-red-800 to-black mx-auto block mb-12">
+        <!-- Spartan Marquee Banner -->
+        <div class="overflow-hidden border-y border-white/5 bg-red-600 relative z-20 py-3">
+            <div class="relative flex whitespace-nowrap">
+                <div class="flex items-center gap-8 animate-marquee">
+                    <span class="text-2xl font-oswald font-bold uppercase italic tracking-tight text-white px-4">
+                        UNBREAKABLE DISCIPLINE • FORGE YOUR LEGACY • ELITE ENDURANCE • NO SURRENDER •
+                    </span>
+                    <span class="text-2xl font-oswald font-bold uppercase italic tracking-tight text-white px-4">
+                        UNBREAKABLE DISCIPLINE • FORGE YOUR LEGACY • ELITE ENDURANCE • NO SURRENDER •
+                    </span>
+                    <span class="text-2xl font-oswald font-bold uppercase italic tracking-tight text-white px-4">
+                        UNBREAKABLE DISCIPLINE • FORGE YOUR LEGACY • ELITE ENDURANCE • NO SURRENDER •
+                    </span>
+                    <span class="text-2xl font-oswald font-bold uppercase italic tracking-tight text-white px-4">
+                        UNBREAKABLE DISCIPLINE • FORGE YOUR LEGACY • ELITE ENDURANCE • NO SURRENDER •
+                    </span>
+                </div>
             </div>
+        </div>
+
+        <!-- 02: Global Scale Stats -->
+        <section class="md:px-12 text-white bg-[#0a0a0a] pt-24 pb-32 px-6 relative z-10">
 
             <div class="max-w-[1600px] mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 fade-in-group">
@@ -667,8 +642,6 @@
         <!-- Product Preview or "03 Photos" Gallery (SpartanRef Style) -->
         <!-- Added back to show full layout like the Spartan template -->
         <section class="border-t border-white/5 relative z-10 bg-neutral-950">
-            <!-- Red Separator -->
-            <div class="w-full h-1 bg-red-600 absolute top-0 left-0 opacity-30"></div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 <div class="aspect-square relative overflow-hidden group">

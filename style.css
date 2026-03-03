@@ -301,6 +301,22 @@ body {
     transition-delay: 400ms;
 }
 
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-marquee {
+    animation: marquee 20s linear infinite;
+    display: flex;
+    width: max-content;
+}
+
 /* Form specifically */
 .input-field {
     width: 100%;
