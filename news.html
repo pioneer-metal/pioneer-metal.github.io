@@ -14,7 +14,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News & Insights | PIONEER METAL</title>
+    <title>News | PIONEER METAL</title>
 
     <script>
             (function () {
@@ -24,7 +24,7 @@
                 document.documentElement.classList.add('i18n-loading');
             })();
     </script>
-        <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -58,9 +58,9 @@
     <script src="main.js" defer></script>
 </head>
 
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-[#F2F2F7] text-slate-900">
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <nav class="fixed w-full z-50 bg-white/90 nav-blur border-b border-gray-100 shadow-sm transition-all">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-20">
             <a href="index.html" class="flex items-center group">
                 <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
@@ -79,6 +79,7 @@
                     data-i18n="nav-contact">Contact</a>
             </div>
 
+            <!-- Language Selector -->
             <div class="relative hidden md:block">
                 <button onclick="toggleLangDropdown(event)" aria-label="Select Language"
                     class="flex items-center space-x-3 bg-gray-50 hover:bg-gray-100 px-4 py-2.5 rounded-full border border-gray-200 transition-all cursor-pointer">
@@ -126,12 +127,14 @@
                 </div>
             </div>
 
+            <!-- Mobile Menu Button -->
             <button class="md:hidden text-black text-xl p-2" aria-label="Toggle Mobile Menu"
                 onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
 
+        <!-- Mobile Menu -->
         <div id="mobile-menu"
             class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex-col space-y-4">
             <a href="index.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
@@ -172,69 +175,107 @@
         </div>
     </nav>
 
-    <header class="pt-40 pb-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <h1 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-6 leading-none"
-                data-i18n="news-header">Latest <span class="text-red-600">Insights</span></h1>
-            <p class="text-slate-400 text-sm md:text-base font-medium tracking-wide max-w-2xl"
+    <header class="pt-40 pb-16 bg-[#F2F2F7] border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-[#DB2015] font-bold tracking-[0.2em] uppercase mb-4 text-sm mt-4 fade-in-up"
+                data-i18n="news-tag">Our Updates</p>
+            <h1 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-6 leading-none fade-in-up delay-100 text-gray-900"
+                data-i18n="news-header">Latest Insights</h1>
+            <p class="text-gray-500 mx-auto text-lg md:text-xl font-light leading-relaxed max-w-2xl fade-in-up delay-200"
                 data-i18n="news-subheader">Stay updated with Pioneer Metal's industrial advancements and global
                 exhibition highlights.</p>
         </div>
     </header>
 
-    <main class="py-20">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 gap-16">
+    <main class="py-24 bg-[#F2F2F7] fade-in-section relative z-30 min-h-screen">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 gap-16 fade-in-group">
 
+                <!-- News 1 with new glass-card / gitmichaelqiu style -->
                 <article
-                    class="news-card bg-white rounded-[2rem] overflow-hidden flex flex-col md:flex-row border border-slate-100 shadow-sm">
-                    <div class="md:w-1/2 relative h-80 md:h-auto overflow-hidden">
+                    class="glass-card rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row group border-none shadow-xl cursor-pointer">
+                    <div class="card-corner-glow"></div>
+                    <div class="md:w-[45%] relative h-[400px] md:h-auto overflow-hidden card-content">
                         <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/News_01.jpg"
-                            alt="German Exhibition" class="w-full h-full object-cover">
-                        <div class="absolute top-6 left-6 bg-red-600 text-white text-[10px] font-black px-4 py-2 rounded-full tracking-widest uppercase shadow-xl"
+                            alt="German Exhibition"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-500">
+                        </div>
+                        <div class="absolute top-6 left-6 bg-white/20 backdrop-blur-md text-white text-xs font-bold border border-white/20 px-6 py-2 rounded-full tracking-widest uppercase shadow-xl"
                             data-i18n="tag-event">Global Event</div>
                     </div>
-                    <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center">
-                        <time class="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-4"
-                            data-i18n="news1-date">MAR 24-27, 2026</time>
-                        <h2 class="text-3xl md:text-4xl font-black mb-6 uppercase tracking-tight leading-none text-red-600"
-                            data-i18n="news1-t">FENSTERBAU FRONTALE GERMANY</h2>
-                        <p class="text-slate-500 text-sm md:text-base leading-relaxed mb-8 font-light"
-                            data-i18n="news1-d">
+                    <div class="md:w-[55%] p-10 md:p-16 flex flex-col justify-center card-content bg-white/70">
+                        <div class="flex items-center gap-4 mb-6">
+                            <span
+                                class="font-black text-4xl text-gray-200 group-hover:text-[#DB2015] transition-colors">01</span>
+                            <time class="text-gray-500 text-xs font-bold uppercase tracking-widest"
+                                data-i18n="news1-date">MAR 24-27, 2026</time>
+                        </div>
+
+                        <h2 class="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tighter leading-[1] text-gray-900 group-hover:text-[#DB2015] transition-colors duration-300"
+                            data-i18n="news1-t">FENSTERBAU<br>FRONTALE</h2>
+                        <p class="text-slate-600 text-lg leading-relaxed mb-10 font-light" data-i18n="news1-d">
                             Join Pioneer Metal at FENSTERBAU FRONTALE in Nuremberg, Germany. Explore our cutting-edge
                             steel profile solutions for modern window and facade systems.
                         </p>
-                        <a href="contact.html"
-                            class="inline-flex items-center gap-3 text-black text-[11px] font-black uppercase tracking-widest hover:text-red-600 transition">
-                            <span data-i18n="btn-schedule">Schedule a Meeting</span> <i
-                                class="fas fa-chevron-right text-[10px]"></i>
-                        </a>
+
+                        <div class="pt-6 border-t border-gray-200 flex items-center justify-between">
+                            <div class="flex gap-2">
+                                <span
+                                    class="px-3 py-1 bg-black/5 rounded-full text-[10px] font-mono text-gray-500 uppercase">Germany</span>
+                            </div>
+                            <a href="contact.html"
+                                class="flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-gray-200 shadow-md text-gray-900 font-bold text-sm hover:scale-105 hover:bg-gray-50 transition-all duration-300 group-hover:border-[#DB2015]">
+                                <span data-i18n="btn-schedule">Schedule a Meeting</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 text-[#DB2015]"></i>
+                            </a>
+                        </div>
                     </div>
                 </article>
 
+                <!-- News 2 -->
                 <article
-                    class="news-card bg-white rounded-[2rem] overflow-hidden flex flex-col md:flex-row border border-slate-100 shadow-sm">
-                    <div class="md:w-1/2 relative h-80 md:h-auto overflow-hidden order-1 md:order-2">
+                    class="glass-card rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row group border-none shadow-xl cursor-pointer">
+                    <div class="card-corner-glow"></div>
+                    <div
+                        class="md:w-[45%] relative h-[400px] md:h-auto overflow-hidden card-content order-1 md:order-2">
                         <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/News_02.jpg"
-                            alt="Brazil Exhibition" class="w-full h-full object-cover">
-                        <div class="absolute top-6 right-6 bg-black text-white text-[10px] font-black px-4 py-2 rounded-full tracking-widest uppercase shadow-xl"
+                            alt="Brazil Exhibition"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-500">
+                        </div>
+                        <div class="absolute top-6 right-6 bg-black/40 backdrop-blur-md text-white text-xs font-bold border border-white/20 px-6 py-2 rounded-full tracking-widest uppercase shadow-xl"
                             data-i18n="tag-event">Global Event</div>
                     </div>
-                    <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center order-2 md:order-1">
-                        <time class="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-4"
-                            data-i18n="news2-date">SEP 9-12, 2026</time>
-                        <h2 class="text-3xl md:text-4xl font-black mb-6 uppercase tracking-tight leading-none text-red-600"
-                            data-i18n="news2-t">FESQUA BRAZIL 2026</h2>
-                        <p class="text-slate-500 text-sm md:text-base leading-relaxed mb-8 font-light"
-                            data-i18n="news2-d">
+                    <div
+                        class="md:w-[55%] p-10 md:p-16 flex flex-col justify-center card-content bg-white/70 order-2 md:order-1">
+                        <div class="flex items-center gap-4 mb-6">
+                            <span
+                                class="font-black text-4xl text-gray-200 group-hover:text-[#DB2015] transition-colors">02</span>
+                            <time class="text-gray-500 text-xs font-bold uppercase tracking-widest"
+                                data-i18n="news2-date">SEP 9-12, 2026</time>
+                        </div>
+
+                        <h2 class="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tighter leading-[1] text-gray-900 group-hover:text-[#DB2015] transition-colors duration-300"
+                            data-i18n="news2-t">FESQUA<br>BRAZIL 2026</h2>
+                        <p class="text-slate-600 text-lg leading-relaxed mb-10 font-light" data-i18n="news2-d">
                             Expanding our reach in South America! Pioneer Metal will showcase high-performance
                             cold-rolled steel technologies at FESQUA, São Paulo.
                         </p>
-                        <a href="contact.html"
-                            class="inline-flex items-center gap-3 text-black text-[11px] font-black uppercase tracking-widest hover:text-red-600 transition">
-                            <span data-i18n="btn-visit">Visit Our Booth</span> <i
-                                class="fas fa-chevron-right text-[10px]"></i>
-                        </a>
+
+                        <div class="pt-6 border-t border-gray-200 flex items-center justify-between">
+                            <div class="flex gap-2">
+                                <span
+                                    class="px-3 py-1 bg-black/5 rounded-full text-[10px] font-mono text-gray-500 uppercase">Brazil</span>
+                            </div>
+                            <a href="contact.html"
+                                class="flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-gray-200 shadow-md text-gray-900 font-bold text-sm hover:scale-105 hover:bg-gray-50 transition-all duration-300 group-hover:border-[#DB2015]">
+                                <span data-i18n="btn-visit">Visit Our Booth</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 text-[#DB2015]"></i>
+                            </a>
+                        </div>
                     </div>
                 </article>
 
@@ -242,20 +283,20 @@
         </div>
     </main>
 
-    <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
+    <footer class="bg-black text-slate-500 py-12 border-t border-white/5 relative z-30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 rtl:text-right">
                 <!-- Left Side: Copyright & Socials -->
                 <div class="flex flex-col items-center md:items-start space-y-6 flex-1 w-full">
                     <!-- Text Group -->
                     <div
-                        class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed">
+                        class="text-xs font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed text-gray-400">
                         <div data-i18n="footer-company">&copy; 2025 PIONEER METAL PRODUCTS FACTORY.</div>
-                        <div data-i18n="footer-rights" class="opacity-60">All Rights Reserved</div>
+                        <div data-i18n="footer-rights" class="opacity-60 mt-1">All Rights Reserved</div>
                     </div>
 
                     <!-- Social Links moved under copyright -->
-                    <div class="flex items-center space-x-6 rtl:space-x-reverse">
+                    <div class="flex items-center space-x-8 rtl:space-x-reverse pt-2">
                         <a href="javascript:void(0)" aria-label="Facebook"
                             class="hover:text-white transition-all transform hover:scale-125">
                             <i class="fab fa-facebook-f text-lg"></i>
@@ -277,13 +318,19 @@
 
                 <!-- Visit Count Widget (Right Side) -->
                 <div
-                    class="opacity-90 hover:opacity-100 transition-opacity flex-shrink-0 min-w-[250px] w-full md:w-auto flex justify-center md:justify-end">
+                    class="opacity-70 hover:opacity-100 transition-opacity flex-shrink-0 min-w-[250px] w-full md:w-auto flex justify-center md:justify-end">
                     <script type='text/javascript' id='mapmyvisitors'
                         src='https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=txzLrV8mr-0rE56zE39AOX9VT4za8nU7p7K3HwY0eS0'></script>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 
 </html>

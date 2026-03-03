@@ -32,7 +32,7 @@ body {
     height: 2px;
     bottom: -4px;
     left: 0;
-    background-color: #dc2626;
+    background-color: #DB2015;
     transition: width 0.3s ease;
 }
 
@@ -72,7 +72,7 @@ body {
     }
 }
 
-/* Map specific from Contact page (moved to shared allows usage elsewhere if needed, but primarily for Contact) */
+/* Map specific from Contact page */
 #map {
     height: 450px;
     border-radius: 1.5rem;
@@ -80,15 +80,13 @@ body {
     border: 1px solid #f3f4f6;
 }
 
-/* Carousel (from Index/About) */
+/* Carousel */
 .carousel-container {
     position: absolute;
     inset: 0;
     z-index: 0;
     overflow: hidden;
 }
-
-/* For About page the container is relative and styled differently, handled in page specific or overridden */
 
 .carousel-slide {
     position: absolute;
@@ -101,6 +99,7 @@ body {
 
 .carousel-slide.active {
     opacity: 1;
+    z-index: 1;
 }
 
 .slide-overlay {
@@ -119,23 +118,79 @@ body {
 }
 
 .dot.active {
-    background: #ef4444;
+    background: #DB2015;
     transform: scale(1.4);
-    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+    box-shadow: 0 0 10px rgba(219, 32, 21, 0.5);
 }
 
-/* Products Specific */
+/* Unified Glass Card (from ref) */
+.glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, box-shadow;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card-dark {
+    background: rgba(20, 20, 20, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, box-shadow;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card:hover {
+    border-color: #DB2015;
+    background: rgba(219, 32, 21, 0.02);
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 30px 60px -15px rgba(219, 32, 21, 0.15);
+    z-index: 20;
+}
+
+.glass-card-dark:hover {
+    border-color: #DB2015;
+    background: rgba(219, 32, 21, 0.05);
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 30px 60px -15px rgba(219, 32, 21, 0.2);
+    z-index: 20;
+}
+
+.card-corner-glow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle at 100% 0%, rgba(219, 32, 21, 0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.group:hover .card-corner-glow {
+    opacity: 1;
+}
+
+.card-content {
+    position: relative;
+    z-index: 10;
+}
+
+/* Products Specific - unified */
 .product-card {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .product-image {
-    height: 320px;
+    height: 280px;
     object-fit: cover;
     width: 100%;
     background-color: #f1f5f9;
@@ -161,62 +216,117 @@ body {
     left: 100%;
 }
 
-/* News Specific */
-.news-card {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.news-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
-}
-
-/* Coop Card (Index) */
-.coop-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.4s ease;
-}
-
-.coop-card:hover {
-    border-color: #ef4444;
-    background: rgba(239, 68, 68, 0.05);
-    transform: translateY(-5px);
-}
-
-/* No flashing text fix via CSS since JS handles it */
-/* Animation Classes */
-.fade-in-up, .fade-in-section {
+/* Animations */
+.fade-in-up,
+.fade-in-section {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 
-.fade-in-up.is-visible, .fade-in-section.is-visible {
+.fade-in-up.is-visible,
+.fade-in-section.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-.delay-100 { transition-delay: 100ms; }
-.delay-200 { transition-delay: 200ms; }
-.delay-300 { transition-delay: 300ms; }
-.delay-400 { transition-delay: 400ms; }
-.delay-500 { transition-delay: 500ms; }
+.delay-100 {
+    transition-delay: 100ms;
+}
 
-.fade-in-group > * {
+.delay-200 {
+    transition-delay: 200ms;
+}
+
+.delay-300 {
+    transition-delay: 300ms;
+}
+
+.delay-400 {
+    transition-delay: 400ms;
+}
+
+.delay-500 {
+    transition-delay: 500ms;
+}
+
+.fade-in-group>* {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.fade-in-group.is-visible > * {
+.fade-in-group.is-visible>* {
     opacity: 1;
     transform: translateY(0);
 }
 
-.fade-in-group.is-visible > *:nth-child(1) { transition-delay: 100ms; }
-.fade-in-group.is-visible > *:nth-child(2) { transition-delay: 200ms; }
-.fade-in-group.is-visible > *:nth-child(3) { transition-delay: 300ms; }
-.fade-in-group.is-visible > *:nth-child(4) { transition-delay: 400ms; }
+.fade-in-group.is-visible>*:nth-child(1) {
+    transition-delay: 100ms;
+}
+
+.fade-in-group.is-visible>*:nth-child(2) {
+    transition-delay: 200ms;
+}
+
+.fade-in-group.is-visible>*:nth-child(3) {
+    transition-delay: 300ms;
+}
+
+.fade-in-group.is-visible>*:nth-child(4) {
+    transition-delay: 400ms;
+}
+
+/* Form specifically */
+.input-field {
+    width: 100%;
+    padding: 1rem 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #e5e7eb;
+    color: #1e293b;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-field:focus {
+    border-color: #DB2015;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.input-container label {
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    color: #64748b;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.input-field:focus~label,
+.input-field:not(:placeholder-shown)~label {
+    top: -0.5rem;
+    font-size: 0.75rem;
+    color: #DB2015;
+    font-weight: 700;
+}
+
+.input-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #DB2015;
+    transition: width 0.3s ease;
+}
+
+.input-field:focus~.input-line {
+    width: 100%;
+}

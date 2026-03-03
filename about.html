@@ -24,7 +24,7 @@
                 document.documentElement.classList.add('i18n-loading');
             })();
     </script>
-        <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -49,45 +49,18 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&family=Playfair+Display:ital,wght@1,600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* About Page Specific Styles */
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            border-radius: 1rem;
-        }
-
-        .carousel-slide {
-            display: none;
-            opacity: 1;
-            animation: fadeEffect 1s forwards;
-        }
-
-        @keyframes fadeEffect {
-            from {
-                opacity: 0.4;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-    </style>
     <script src="main.js" defer></script>
 </head>
 
-<body class="bg-white text-slate-900">
+<body class="bg-[#F2F2F7] text-slate-900">
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <nav class="fixed w-full z-50 bg-white/90 nav-blur border-b border-gray-100 shadow-sm transition-all">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-20">
             <a href="index.html" class="flex items-center group">
                 <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
@@ -105,7 +78,7 @@
                     data-i18n="nav-contact">Contact</a>
             </div>
 
-            <!-- Language Selector (Custom) -->
+            <!-- Language Selector -->
             <div class="relative hidden md:block">
                 <button onclick="toggleLangDropdown(event)" aria-label="Select Language"
                     class="flex items-center space-x-3 bg-gray-50 hover:bg-gray-100 px-4 py-2.5 rounded-full border border-gray-200 transition-all cursor-pointer">
@@ -201,111 +174,146 @@
         </div>
     </nav>
 
-    <header class="pt-32 pb-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="mb-10 max-w-full rtl:text-right">
-                <p class="text-red-600 font-bold tracking-[0.2em] uppercase mb-4 text-sm fade-in-up" data-i18n="about-tag">About Pioneer Metal</p>
-                <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 leading-none whitespace-nowrap overflow-hidden text-ellipsis fade-in-up delay-100" data-i18n="about-header">Our Team & Passion</h1>
-                <p class="text-slate-700 text-base md:text-lg font-normal leading-relaxed mb-8 max-w-3xl rtl:ml-auto rtl:mr-0 fade-in-up delay-200" data-i18n="about-intro">
-                    Pioneer Metal Product Factory is a leading supplier of high-quality metal sections...
-                </p>
-            </div>
+    <!-- Header / Carousel -->
+    <header class="pt-20 bg-black min-h-screen flex flex-col relative">
+        <div class="p-8 md:p-16 flex-shrink-0 z-20 relative text-white">
+            <h1 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-4 fade-in-up"
+                data-i18n="about-header">Our Story</h1>
+            <p class="text-gray-400 text-lg font-light tracking-wide max-w-2xl fade-in-up delay-100"
+                data-i18n="about-subheader">Forging the future of construction with unyielding strength and precision.
+            </p>
+        </div>
 
-            <div class="carousel-container aspect-[21/9] shadow-2xl bg-slate-100">
+        <div class="flex-grow w-full relative">
+            <div class="carousel-container absolute inset-0">
                 <div class="carousel-slide h-full">
                     <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_01.jpg"
                         class="w-full h-full object-cover transition-all duration-700" alt="Team 1">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                 </div>
-                <div class="carousel-slide h-full">
+                <!-- Other slides remain same structure -->
+                <div class="carousel-slide h-full hidden">
                     <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_02.jpg"
                         class="w-full h-full object-cover transition-all duration-700" alt="Team 2">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                 </div>
-                <div class="carousel-slide h-full">
+                <div class="carousel-slide h-full hidden">
                     <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_03.jpg"
                         class="w-full h-full object-cover transition-all duration-700" alt="Team 3">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                 </div>
-                <div class="carousel-slide h-full">
+                <div class="carousel-slide h-full hidden">
                     <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_04.jpg"
                         class="w-full h-full object-cover transition-all duration-700" alt="Team 4">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                 </div>
 
                 <button onclick="plusSlides(-1)"
-                    class="absolute left-4 rtl:right-4 rtl:left-auto top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/90 text-black w-10 h-10 rounded-full flex items-center justify-center transition-all backdrop-blur-sm shadow-lg z-10">
-                    <i class="fas fa-chevron-left rtl:hidden"></i><i class="fas fa-chevron-right hidden rtl:block"></i>
+                    class="absolute left-4 rtl:right-4 rtl:left-auto top-1/2 -translate-y-1/2 bg-white/20 hover:bg-[#DB2015] text-white w-12 h-12 rounded-full flex items-center justify-center transition-all backdrop-blur-sm shadow-xl z-20">
+                    <i data-lucide="chevron-left" class="w-6 h-6 rtl:hidden"></i><i data-lucide="chevron-right"
+                        class="w-6 h-6 hidden rtl:block"></i>
                 </button>
                 <button onclick="plusSlides(1)"
-                    class="absolute right-4 rtl:left-4 rtl:right-auto top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/90 text-black w-10 h-10 rounded-full flex items-center justify-center transition-all backdrop-blur-sm shadow-lg z-10">
-                    <i class="fas fa-chevron-right rtl:hidden"></i><i class="fas fa-chevron-left hidden rtl:block"></i>
+                    class="absolute right-4 rtl:left-4 rtl:right-auto top-1/2 -translate-y-1/2 bg-white/20 hover:bg-[#DB2015] text-white w-12 h-12 rounded-full flex items-center justify-center transition-all backdrop-blur-sm shadow-xl z-20">
+                    <i data-lucide="chevron-right" class="w-6 h-6 rtl:hidden"></i><i data-lucide="chevron-left"
+                        class="w-6 h-6 hidden rtl:block"></i>
                 </button>
 
-                <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
-                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"
+                <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
+                    <span class="dot w-3 h-3 rounded-full bg-white/30 cursor-pointer transition-all hover:bg-white"
                         onclick="currentSlide(1)"></span>
-                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"
+                    <span class="dot w-3 h-3 rounded-full bg-white/30 cursor-pointer transition-all hover:bg-white"
                         onclick="currentSlide(2)"></span>
-                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"
+                    <span class="dot w-3 h-3 rounded-full bg-white/30 cursor-pointer transition-all hover:bg-white"
                         onclick="currentSlide(3)"></span>
-                    <span class="dot w-2 h-2 rounded-full bg-white/30 cursor-pointer transition-all"
+                    <span class="dot w-3 h-3 rounded-full bg-white/30 cursor-pointer transition-all hover:bg-white"
                         onclick="currentSlide(4)"></span>
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="py-32 bg-slate-50 fade-in-section">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <p class="text-3xl md:text-5xl font-serif italic text-slate-900 leading-tight md:leading-snug" data-i18n="about-quote">
+    <!-- Refined Quote Section with Massive Text Background -->
+    <section
+        class="py-32 md:py-48 bg-[#F2F2F7] fade-in-section relative overflow-hidden flex items-center justify-center min-h-[60vh] z-30">
+        <!-- Massive Background Text -->
+        <div
+            class="absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden mix-blend-color-burn opacity-5 pointer-events-none select-none z-0">
+            <span
+                class="text-[15rem] md:text-[25rem] font-black uppercase tracking-tighter text-slate-900 whitespace-nowrap leading-none"
+                data-i18n="bg-promise">PROMISE</span>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-4 text-center relative z-10 px-8">
+            <i data-lucide="quote" class="w-12 h-12 md:w-16 md:h-16 text-[#DB2015] mx-auto mb-10 opacity-80"></i>
+            <p class="text-4xl md:text-5xl lg:text-6xl font-serif italic text-slate-800 leading-tight md:leading-snug tracking-tight"
+                style="font-family: 'Playfair Display', serif;" data-i18n="about-quote">
                 "Precision is not just a standard, it's our promise."
             </p>
+            <div class="mt-12 flex items-center justify-center gap-4">
+                <div class="w-12 h-px bg-[#DB2015]"></div>
+                <span class="font-bold text-sm tracking-widest uppercase text-slate-500">Pioneer Metal Core Value</span>
+                <div class="w-12 h-px bg-[#DB2015]"></div>
+            </div>
         </div>
     </section>
 
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center fade-in-group">
-                <div class="space-y-6 rtl:text-right">
-                    <h3 class="text-3xl font-black uppercase italic tracking-tighter" data-i18n="story-t">Manufacturing
-                        <span class="text-red-600">Power</span>
+    <!-- Manufacturing Power -->
+    <section class="py-32 bg-white relative z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center fade-in-group">
+                <div class="space-y-8 rtl:text-right order-2 lg:order-1">
+                    <h3 class="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-none text-gray-900"
+                        data-i18n="story-t">Manufacturing
+                        <br><span class="text-[#DB2015]">Power</span>
                     </h3>
-                    <p class="text-slate-700 text-base leading-relaxed font-normal" data-i18n="story-d1">
-                        Our factory is equipped with advanced automated production lines.
+                    <p class="text-gray-500 text-lg leading-relaxed font-light" data-i18n="story-d1">
+                        Our factory is equipped with advanced automated production lines. We integrate precision
+                        engineering with rapid manufacturing to deliver cold-rolled steel solutions that define industry
+                        standards.
                     </p>
-                    <div class="flex gap-12 pt-4 rtl:justify-end">
+                    <div class="flex gap-16 pt-8 rtl:justify-end border-t border-gray-100">
                         <div>
-                            <div class="text-3xl font-black text-slate-900">18+</div>
-                            <div class="text-[10px] font-black text-red-600 uppercase tracking-widest mt-1"
+                            <div class="text-4xl md:text-5xl font-black text-slate-900 mb-2">18+</div>
+                            <div class="text-[11px] font-bold text-[#DB2015] uppercase tracking-[0.2em]"
                                 data-i18n="stat-exp">Years Experience</div>
                         </div>
                         <div>
-                            <div class="text-3xl font-black text-slate-900">9000t</div>
-                            <div class="text-[10px] font-black text-red-600 uppercase tracking-widest mt-1"
+                            <div class="text-4xl md:text-5xl font-black text-slate-900 mb-2">9000<span
+                                    class="text-3xl">t</span></div>
+                            <div class="text-[11px] font-bold text-[#DB2015] uppercase tracking-[0.2em]"
                                 data-i18n="stat-tons">Annual Tons</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="rounded-2xl overflow-hidden aspect-square lg:aspect-video shadow-xl">
+                <div
+                    class="rounded-[2.5rem] overflow-hidden aspect-square lg:aspect-[4/3] shadow-2xl order-1 lg:order-2 relative group">
                     <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200"
-                        alt="Workshop" class="w-full h-full object-cover">
+                        alt="Workshop"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-[#DB2015]/10 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
+    <footer class="bg-black text-slate-500 py-12 border-t border-white/5 relative z-30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 rtl:text-right">
                 <!-- Left Side: Copyright & Socials -->
                 <div class="flex flex-col items-center md:items-start space-y-6 flex-1 w-full">
                     <!-- Text Group -->
                     <div
-                        class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed">
+                        class="text-xs font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed text-gray-400">
                         <div data-i18n="footer-company">&copy; 2025 PIONEER METAL PRODUCTS FACTORY.</div>
-                        <div data-i18n="footer-rights" class="opacity-60">All Rights Reserved</div>
+                        <div data-i18n="footer-rights" class="opacity-60 mt-1">All Rights Reserved</div>
                     </div>
 
                     <!-- Social Links moved under copyright -->
-                    <div class="flex items-center space-x-6 rtl:space-x-reverse">
+                    <div class="flex items-center space-x-8 rtl:space-x-reverse pt-2">
                         <a href="javascript:void(0)" aria-label="Facebook"
                             class="hover:text-white transition-all transform hover:scale-125">
                             <i class="fab fa-facebook-f text-lg"></i>
@@ -327,13 +335,19 @@
 
                 <!-- Visit Count Widget (Right Side) -->
                 <div
-                    class="opacity-90 hover:opacity-100 transition-opacity flex-shrink-0 min-w-[250px] w-full md:w-auto flex justify-center md:justify-end">
+                    class="opacity-70 hover:opacity-100 transition-opacity flex-shrink-0 min-w-[250px] w-full md:w-auto flex justify-center md:justify-end">
                     <script type='text/javascript' id='mapmyvisitors'
                         src='https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=txzLrV8mr-0rE56zE39AOX9VT4za8nU7p7K3HwY0eS0'></script>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 
     <script>
         let slideIndex = 1;
@@ -346,17 +360,19 @@
             if (n > slides.length) { slideIndex = 1 }
             if (n < 1) { slideIndex = slides.length }
             for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
+                slides[i].classList.add("hidden");
+                slides[i].classList.remove("block");
             }
             for (i = 0; i < dots.length; i++) {
-                dots[i].classList.remove("bg-red-600");
+                dots[i].classList.remove("bg-white", "scale-125");
                 dots[i].classList.add("bg-white/30");
             }
-            slides[slideIndex - 1].style.display = "block";
+            slides[slideIndex - 1].classList.remove("hidden");
+            slides[slideIndex - 1].classList.add("block");
             dots[slideIndex - 1].classList.remove("bg-white/30");
-            dots[slideIndex - 1].classList.add("bg-red-600");
+            dots[slideIndex - 1].classList.add("bg-white", "scale-125");
 
-            // Fix: Clear timeout to prevent double jumps when clicking
+            // Clear timeout to prevent double jumps when clicking
             if (slideTimer) clearTimeout(slideTimer);
             slideTimer = setTimeout(() => plusSlides(1), 5000);
         }

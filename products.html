@@ -24,7 +24,7 @@
                 document.documentElement.classList.add('i18n-loading');
             })();
     </script>
-        <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -58,9 +58,9 @@
     <script src="main.js" defer></script>
 </head>
 
-<body class="bg-white text-slate-900">
+<body class="bg-[#F2F2F7] text-slate-900">
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <nav class="fixed w-full z-50 bg-white/90 nav-blur border-b border-gray-100 shadow-sm transition-all">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-20">
             <a href="index.html" class="flex items-center group">
                 <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
@@ -78,6 +78,7 @@
                     data-i18n="nav-contact">Contact</a>
             </div>
 
+            <!-- Language Selector (Custom) -->
             <div class="relative hidden md:block">
                 <button onclick="toggleLangDropdown(event)" aria-label="Select Language"
                     class="flex items-center space-x-3 bg-gray-50 hover:bg-gray-100 px-4 py-2.5 rounded-full border border-gray-200 transition-all cursor-pointer">
@@ -125,12 +126,14 @@
                 </div>
             </div>
 
+            <!-- Mobile Menu Button -->
             <button class="md:hidden text-black text-xl p-2" aria-label="Toggle Mobile Menu"
                 onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
 
+        <!-- Mobile Menu -->
         <div id="mobile-menu"
             class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex-col space-y-4">
             <a href="index.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
@@ -171,91 +174,102 @@
         </div>
     </nav>
 
-    <main class="pt-40 pb-24">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 leading-none text-red-600"
-                data-i18n="products-title">Industrial Steel Solutions</h1>
-            <p class="text-slate-500 max-w-2xl mx-auto text-lg font-light leading-relaxed" data-i18n="products-desc">
-                Pioneer Metal provides premium hot-rolled steel profiles with high precision and durability for global
-                construction standards.
+    <!-- Header -->
+    <header class="pt-40 pb-20 bg-[#F2F2F7] border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-[#DB2015] font-bold tracking-[0.2em] uppercase mb-4 text-sm mt-4 fade-in-up"
+                data-i18n="prod-tag">Our Products</p>
+            <h1 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-6 leading-none text-gray-900 fade-in-up delay-100"
+                data-i18n="prod-header">Precision Solutions</h1>
+            <p class="text-gray-500 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto fade-in-up delay-200"
+                data-i18n="prod-intro">
+                High-performance cold-rolled steel profiles engineered for durability and exact specifications.
             </p>
+        </div>
+    </header>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-20">
+    <main class="py-24 fade-in-section bg-[#F2F2F7] min-h-screen relative z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
                 <!-- Product 01 -->
-                <div
-                    class="product-card bg-white border border-slate-100 rounded-3xl overflow-hidden flex flex-col shadow-sm">
-                    <div class="relative group overflow-hidden">
-                        <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Products_01.jpg"
+                <div class="glass-card rounded-[2.5rem] overflow-hidden flex flex-col group p-2">
+                    <div class="card-corner-glow"></div>
+                    <div class="relative overflow-hidden rounded-[2rem] card-content">
+                        <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Products_01.jpeg"
                             alt="Steel Reinforcement"
-                            class="product-image transition-transform duration-700 group-hover:scale-110">
+                            class="product-image transition-transform duration-700 group-hover:scale-105">
                         <div
-                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                             <span
-                                class="text-white font-bold tracking-widest text-xs border border-white px-4 py-2 uppercase"
+                                class="text-white font-bold tracking-widest text-xs border border-white px-6 py-3 uppercase rounded-full backdrop-blur-md bg-white/10"
                                 data-i18n="p1-tag">Galvanized Steel</span>
                         </div>
                     </div>
-                    <div class="p-8 flex flex-col flex-grow text-center">
-                        <h3 class="text-2xl font-black mb-3 uppercase tracking-tight text-slate-900"
+                    <div class="p-8 flex flex-col flex-grow text-center card-content">
+                        <h3 class="text-3xl font-black mb-4 uppercase tracking-tighter text-slate-900"
                             data-i18n="p1-name">Steel Reinforcement</h3>
-                        <p class="text-slate-500 text-sm mb-8 leading-relaxed" data-i18n="p1-desc">High-strength
+                        <p class="text-slate-600 text-base mb-8 leading-relaxed font-light" data-i18n="p1-desc">
+                            High-strength
                             galvanized steel profiles for UPVC/Aluminum window and door systems.</p>
                         <a href="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Pioneer_2025_ReinforcementSteel.pdf"
                             target="_blank"
-                            class="btn-hover-effect mt-auto bg-red-600 text-white py-4 rounded-xl font-black text-xs tracking-widest hover:bg-black transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-100 uppercase">
+                            class="mt-auto bg-[#DB2015] text-white py-4 px-8 rounded-full font-bold text-sm tracking-widest hover:bg-gray-900 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-1 uppercase mx-auto max-w-[90%]">
                             <i class="fas fa-file-download"></i> <span data-i18n="btn-catalog">DOWNLOAD E-CATALOG</span>
                         </a>
                     </div>
                 </div>
 
                 <!-- Product 02 -->
-                <div
-                    class="product-card bg-white border border-slate-100 rounded-3xl overflow-hidden flex flex-col shadow-sm">
-                    <div class="relative group overflow-hidden">
+                <div class="glass-card rounded-[2.5rem] overflow-hidden flex flex-col group p-2">
+                    <div class="card-corner-glow"></div>
+                    <div class="relative overflow-hidden rounded-[2rem] card-content">
                         <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Products_02.jpeg"
                             alt="Light Gauge Steel"
-                            class="product-image transition-transform duration-700 group-hover:scale-110">
+                            class="product-image transition-transform duration-700 group-hover:scale-105">
                         <div
-                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                             <span
-                                class="text-white font-bold tracking-widest text-xs border border-white px-4 py-2 uppercase"
+                                class="text-white font-bold tracking-widest text-xs border border-white px-6 py-3 uppercase rounded-full backdrop-blur-md bg-white/10"
                                 data-i18n="p2-tag">Framing System</span>
                         </div>
                     </div>
-                    <div class="p-8 flex flex-col flex-grow text-center">
-                        <h3 class="text-2xl font-black mb-3 uppercase tracking-tight text-slate-900"
+                    <div class="p-8 flex flex-col flex-grow text-center card-content">
+                        <h3 class="text-3xl font-black mb-4 uppercase tracking-tighter text-slate-900"
                             data-i18n="p2-name">Drywall & Ceiling</h3>
-                        <p class="text-slate-500 text-sm mb-8 leading-relaxed" data-i18n="p2-desc">Lightweight steel
+                        <p class="text-slate-600 text-base mb-8 leading-relaxed font-light" data-i18n="p2-desc">
+                            Lightweight steel
                             framing systems for partition walls and architectural suspended ceilings.</p>
                         <a href="#"
-                            class="btn-hover-effect mt-auto bg-red-600 text-white py-4 rounded-xl font-black text-xs tracking-widest hover:bg-black transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-100 uppercase">
-                            <i class="fas fa-file-download"></i> <span data-i18n="btn-coming-soon">COMING SOON</span>
+                            class="mt-auto bg-gray-200 text-gray-400 py-4 px-8 rounded-full font-bold text-sm tracking-widest cursor-not-allowed transition-all flex items-center justify-center gap-3 uppercase mx-auto max-w-[90%] shadow-none">
+                            <i class="fas fa-clock"></i> <span data-i18n="btn-coming-soon">COMING SOON</span>
                         </a>
                     </div>
                 </div>
 
                 <!-- Product 03 -->
-                <div
-                    class="product-card bg-white border border-slate-100 rounded-3xl overflow-hidden flex flex-col shadow-sm">
-                    <div class="relative group overflow-hidden">
+                <div class="glass-card rounded-[2.5rem] overflow-hidden flex flex-col group p-2">
+                    <div class="card-corner-glow"></div>
+                    <div class="relative overflow-hidden rounded-[2rem] card-content">
                         <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Products_03.jpg"
                             alt="Custom Metal Fabrication"
-                            class="product-image transition-transform duration-700 group-hover:scale-110">
+                            class="product-image transition-transform duration-700 group-hover:scale-105">
                         <div
-                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                             <span
-                                class="text-white font-bold tracking-widest text-xs border border-white px-4 py-2 uppercase"
+                                class="text-white font-bold tracking-widest text-xs border border-white px-6 py-3 uppercase rounded-full backdrop-blur-md bg-white/10"
                                 data-i18n="p3-tag">Bespoke Design</span>
                         </div>
                     </div>
-                    <div class="p-8 flex flex-col flex-grow text-center">
-                        <h3 class="text-2xl font-black mb-3 uppercase tracking-tight text-slate-900"
+                    <div class="p-8 flex flex-col flex-grow text-center card-content">
+                        <h3 class="text-3xl font-black mb-4 uppercase tracking-tighter text-slate-900"
                             data-i18n="p3-name">Custom Fabrication</h3>
-                        <p class="text-slate-500 text-sm mb-8 leading-relaxed" data-i18n="p3-desc">Specialized
+                        <p class="text-slate-600 text-base mb-8 leading-relaxed font-light" data-i18n="p3-desc">
+                            Specialized
                             hot-rolling, punching, and CNC services tailored to your specific technical drawings.</p>
                         <a href="https://wa.me/8613656714278" target="_blank"
-                            class="btn-hover-effect mt-auto bg-red-600 text-white py-4 rounded-xl font-black text-xs tracking-widest hover:bg-black transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-100 uppercase">
-                            <i class="fab fa-whatsapp"></i> <span data-i18n="btn-inquiry">INQUIRY NOW</span>
+                            class="mt-auto bg-[#DB2015] text-white py-4 px-8 rounded-full font-bold text-sm tracking-widest hover:bg-gray-900 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-1 uppercase mx-auto max-w-[90%]">
+                            <i class="fab fa-whatsapp text-lg"></i> <span data-i18n="btn-inquiry">INQUIRY NOW</span>
                         </a>
                     </div>
                 </div>
@@ -263,20 +277,20 @@
         </div>
     </main>
 
-    <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
+    <footer class="bg-black text-slate-500 py-12 border-t border-white/5 relative z-30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 rtl:text-right">
                 <!-- Left Side: Copyright & Socials -->
                 <div class="flex flex-col items-center md:items-start space-y-6 flex-1 w-full">
                     <!-- Text Group -->
                     <div
-                        class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed">
+                        class="text-xs font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed text-gray-400">
                         <div data-i18n="footer-company">&copy; 2025 PIONEER METAL PRODUCTS FACTORY.</div>
-                        <div data-i18n="footer-rights" class="opacity-60">All Rights Reserved</div>
+                        <div data-i18n="footer-rights" class="opacity-60 mt-1">All Rights Reserved</div>
                     </div>
 
                     <!-- Social Links moved under copyright -->
-                    <div class="flex items-center space-x-6 rtl:space-x-reverse">
+                    <div class="flex items-center space-x-8 rtl:space-x-reverse pt-2">
                         <a href="javascript:void(0)" aria-label="Facebook"
                             class="hover:text-white transition-all transform hover:scale-125">
                             <i class="fab fa-facebook-f text-lg"></i>
@@ -298,7 +312,7 @@
 
                 <!-- Visit Count Widget (Right Side) -->
                 <div
-                    class="opacity-90 hover:opacity-100 transition-opacity flex-shrink-0 min-w-[250px] w-full md:w-auto flex justify-center md:justify-end">
+                    class="opacity-70 hover:opacity-100 transition-opacity flex-shrink-0 min-w-[250px] w-full md:w-auto flex justify-center md:justify-end">
                     <script type='text/javascript' id='mapmyvisitors'
                         src='https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=txzLrV8mr-0rE56zE39AOX9VT4za8nU7p7K3HwY0eS0'></script>
                 </div>

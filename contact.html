@@ -10,49 +10,21 @@
                     window.location.href = "/not-found";
                 }
             })
-
-        function checkLocation() {
-            const providers = [
-                'https://ipapi.co/json/',
-                'https://ipwho.is/json/'
-            ];
-
-            const fetchLocation = (url) => {
-                fetch(url)
-                    .then(response => {
-                        if (!response.ok) throw new Error('Network response was not ok');
-                        return response.json();
-                    })
-                    .then(data => {
-                        const code = data.country_code || data.country;
-                        if (code === 'CN') {
-                            window.location.href = "/not-found";
-                        }
-                    })
-                    .catch(err => {
-                        console.warn(`定位获取失败 (${url}):`, err);
-                        if (url === providers[0]) fetchLocation(providers[1]);
-                    });
-            };
-
-            fetchLocation(providers[0]);
-        }
-        checkLocation();
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | PIONEER METAL</title>
+    <title>Contact | PIONEER METAL</title>
 
     <script>
-        (function () {
-            var lang = localStorage.getItem('preferred-lang') || 'en';
-            document.documentElement.lang = lang;
-            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-            document.documentElement.classList.add('i18n-loading');
-        })();
+            (function () {
+                var lang = localStorage.getItem('preferred-lang') || 'en';
+                document.documentElement.lang = lang;
+                document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+                document.documentElement.classList.add('i18n-loading');
+            })();
     </script>
-        <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -76,32 +48,30 @@
         }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
-
-    <!-- Leaflet 地图库 -->
+    <!-- Leaflet CSS for Map -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="main.js" defer></script>
 </head>
 
-<body class="bg-gray-50 text-gray-900 overflow-x-hidden">
+<body class="bg-[#F2F2F7] text-slate-900">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <nav class="fixed w-full z-50 bg-white/90 nav-blur border-b border-gray-100 shadow-sm transition-all">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-20">
             <a href="index.html" class="flex items-center group">
                 <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
                     alt="Pioneer Metal Logo" class="h-12 w-auto transition-transform group-hover:scale-105">
             </a>
 
-            <!-- Desktop Menu -->
             <div
                 class="hidden md:flex items-center space-x-10 text-sm font-bold uppercase tracking-wider text-gray-600">
                 <a href="index.html" class="nav-link hover:text-red-600 transition-colors" data-i18n="nav-home">Home</a>
@@ -113,7 +83,7 @@
                 <a href="contact.html" class="nav-link text-red-600" data-i18n="nav-contact">Contact</a>
             </div>
 
-            <!-- Language Selector (Custom) -->
+            <!-- Language Selector -->
             <div class="relative hidden md:block">
                 <button onclick="toggleLangDropdown(event)" aria-label="Select Language"
                     class="flex items-center space-x-3 bg-gray-50 hover:bg-gray-100 px-4 py-2.5 rounded-full border border-gray-200 transition-all cursor-pointer">
@@ -161,6 +131,7 @@
                 </div>
             </div>
 
+            <!-- Mobile Menu Button -->
             <button class="md:hidden text-black text-xl p-2" aria-label="Toggle Mobile Menu"
                 onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
@@ -208,57 +179,56 @@
         </div>
     </nav>
 
-    <!-- 头部区域 -->
-    <header class="pt-36 pb-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <span class="text-red-600 font-bold text-sm uppercase tracking-widest mb-4 block"
-                data-i18n="nav-contact">Contact</span>
-            <h1 class="text-5xl md:text-6xl font-black mb-6 tracking-tight" data-i18n="contact-h">Let's Connect</h1>
-            <p class="text-gray-500 max-w-2xl text-lg leading-relaxed" data-i18n="contact-p">Partner with us for
-                world-class steel solutions. Our team is ready to support your engineering requirements globally.</p>
+    <header class="pt-40 pb-16 bg-[#F2F2F7] border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-[#DB2015] font-bold tracking-[0.2em] uppercase mb-4 text-sm mt-4 fade-in-up"
+                data-i18n="contact-tag">Get in Touch</p>
+            <h1 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-6 leading-none text-gray-900 fade-in-up delay-100"
+                data-i18n="contact-header">Let's connect</h1>
+            <p class="text-gray-500 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto fade-in-up delay-200"
+                data-i18n="contact-subheader">Ready to discuss your next project? Reach out to our global sales team
+                today.</p>
         </div>
     </header>
 
-    <!-- 主要区域 -->
-    <main class="max-w-7xl mx-auto px-6 lg:px-12 py-12">
-        <div class="grid lg:grid-cols-2 gap-16 items-start">
-            <!-- 联系表单 -->
-            <div
-                class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl shadow-gray-200/50 border border-gray-100 relative overflow-hidden group">
-                <div
-                    class="absolute top-0 right-0 w-40 h-40 bg-red-50 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-110">
-                </div>
+    <main class="py-24 bg-[#F2F2F7] relative z-30 min-h-[80vh] fade-in-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-start fade-in-group">
 
-                <h2 class="text-2xl font-bold mb-10 relative" data-i18n="form-title">Send a Message</h2>
-                <form id="contactForm" class="space-y-8 relative">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div class="space-y-2 relative">
-                            <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1"
-                                data-i18n="form-name">Full Name</label>
-                            <input type="text" id="formName" placeholder="John Doe"
-                                class="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-600 outline-none transition-all">
-                            <div id="nameFeedback" class="absolute -bottom-6 left-2 text-[11px] text-green-600 font-bold opacity-0 flex items-center gap-1.5 transition-opacity duration-300">
-                                <i class="fa-solid fa-check-circle"></i> <span>Thank you for your interest, <span id="feedbackNameText"></span>!</span>
-                            </div>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1"
-                                data-i18n="form-email">Email Address</label>
-                            <input type="email" id="formEmail" placeholder="john@example.com"
-                                class="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-600 outline-none transition-all">
+            <!-- 表单区域 -->
+            <div class="glass-card p-10 md:p-14 rounded-[2.5rem] shadow-xl border-none">
+                <div class="card-corner-glow"></div>
+                <h2 class="text-3xl font-black mb-10 tracking-tighter uppercase relative z-10 text-gray-900"
+                    data-i18n="form-title">Send Inquiry</h2>
+                <form id="contactForm" class="space-y-6 relative z-10">
+
+                    <div class="input-container">
+                        <input type="text" id="formName" required placeholder=" " class="input-field peer">
+                        <label for="formName" data-i18n="form-name">Your Name</label>
+                        <div class="input-line"></div>
+                        <div id="nameFeedback"
+                            class="opacity-0 transition-opacity absolute right-4 top-4 text-[#DB2015] font-bold text-sm tracking-widest uppercase">
+                            Hello, <span id="feedbackNameText"></span>!
                         </div>
                     </div>
-                    <div class="space-y-2">
-                        <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1"
-                            data-i18n="form-msg">Message</label>
-                        <textarea id="formMsg" rows="4"
-                            class="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-600 outline-none transition-all resize-none"></textarea>
+
+                    <div class="input-container mt-8">
+                        <input type="email" id="formEmail" required placeholder=" " class="input-field peer">
+                        <label for="formEmail" data-i18n="form-email">Email Address</label>
+                        <div class="input-line"></div>
                     </div>
-                    <button
-                        class="w-full bg-red-600 text-white font-black py-5 rounded-2xl hover:bg-red-700 hover:shadow-lg hover:shadow-red-600/30 transition-all flex items-center justify-center space-x-4 group">
+
+                    <div class="input-container mt-8">
+                        <textarea id="formMsg" rows="4" required placeholder=" " class="input-field peer resize-none"
+                            style="padding-top: 2rem;"></textarea>
+                        <label for="formMsg" data-i18n="form-msg">Message</label>
+                        <div class="input-line"></div>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-[#DB2015] text-white py-5 rounded-full font-bold text-sm tracking-widest hover:bg-gray-900 transition-all duration-300 flex items-center justify-center gap-3 group mt-12 shadow-lg hover:shadow-xl uppercase">
                         <span data-i18n="form-btn">SEND INQUIRY</span>
-                        <i
-                            class="fa-solid fa-paper-plane text-sm transition-transform group-hover:translate-x-2 group-hover:-translate-y-1"></i>
+                        <i data-lucide="send"
+                            class="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
                     </button>
                 </form>
             </div>
@@ -267,43 +237,49 @@
             <div class="space-y-10">
                 <div class="grid sm:grid-cols-2 gap-6">
                     <div
-                        class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                        class="glass-card p-8 rounded-[2rem] border-none shadow-md hover:shadow-lg transition-all group cursor-pointer">
+                        <div class="card-corner-glow"></div>
                         <div
-                            class="w-14 h-14 bg-red-600/10 rounded-2xl flex items-center justify-center mb-6 text-red-600">
-                            <i class="fa-solid fa-phone text-xl"></i>
+                            class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6 text-[#DB2015] group-hover:bg-[#DB2015] group-hover:text-white transition-colors duration-300 relative z-10">
+                            <i data-lucide="phone" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="font-bold text-lg mb-2" data-i18n="contact-phone">Phone Support</h3>
-                        <p class="text-gray-500 text-sm font-medium tracking-tight">+86 136 5671 4278</p>
+                        <h3 class="font-bold text-xl mb-2 relative z-10 text-gray-900 uppercase tracking-tight"
+                            data-i18n="contact-phone">Phone Support</h3>
+                        <p class="text-gray-500 text-sm font-medium tracking-widest relative z-10">+86 136 5671 4278</p>
                     </div>
+
                     <div
-                        class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                        class="glass-card p-8 rounded-[2rem] border-none shadow-md hover:shadow-lg transition-all group cursor-pointer">
+                        <div class="card-corner-glow"></div>
                         <div
-                            class="w-14 h-14 bg-red-600/10 rounded-2xl flex items-center justify-center mb-6 text-red-600">
-                            <i class="fa-solid fa-envelope text-xl"></i>
+                            class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6 text-[#DB2015] group-hover:bg-[#DB2015] group-hover:text-white transition-colors duration-300 relative z-10">
+                            <i data-lucide="mail" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="font-bold text-lg mb-2" data-i18n="contact-email">Email Inquiries</h3>
-                        <p class="text-gray-500 text-sm font-medium tracking-tight">pioneermetal@163.com</p>
+                        <h3 class="font-bold text-xl mb-2 relative z-10 text-gray-900 uppercase tracking-tight"
+                            data-i18n="contact-email">Email Inquiries</h3>
+                        <p class="text-gray-500 text-sm font-medium tracking-widest relative z-10">pioneermetal@163.com
+                        </p>
                     </div>
                 </div>
-                <div id="map"></div>
+                <div id="map" class="shadow-xl border-none"></div>
             </div>
         </div>
     </main>
 
-    <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
+    <footer class="bg-black text-slate-500 py-12 border-t border-white/5 relative z-30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 rtl:text-right">
                 <!-- Left Side: Copyright & Socials -->
                 <div class="flex flex-col items-center md:items-start space-y-6 flex-1 w-full">
                     <!-- Text Group -->
                     <div
-                        class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed">
+                        class="text-xs font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed text-gray-400">
                         <div data-i18n="footer-company">&copy; 2025 PIONEER METAL PRODUCTS FACTORY.</div>
-                        <div data-i18n="footer-rights" class="opacity-60">All Rights Reserved</div>
+                        <div data-i18n="footer-rights" class="opacity-60 mt-1">All Rights Reserved</div>
                     </div>
 
                     <!-- Social Links moved under copyright -->
-                    <div class="flex items-center space-x-6 rtl:space-x-reverse">
+                    <div class="flex items-center space-x-8 rtl:space-x-reverse pt-2">
                         <a href="javascript:void(0)" aria-label="Facebook"
                             class="hover:text-white transition-all transform hover:scale-125">
                             <i class="fab fa-facebook-f text-lg"></i>
@@ -325,13 +301,19 @@
 
                 <!-- Visit Count Widget (Right Side) -->
                 <div
-                    class="opacity-90 hover:opacity-100 transition-opacity flex-shrink-0 min-w-[250px] w-full md:w-auto flex justify-center md:justify-end">
+                    class="opacity-70 hover:opacity-100 transition-opacity flex-shrink-0 min-w-[250px] w-full md:w-auto flex justify-center md:justify-end">
                     <script type='text/javascript' id='mapmyvisitors'
                         src='https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=txzLrV8mr-0rE56zE39AOX9VT4za8nU7p7K3HwY0eS0'></script>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 
     <script>
         // 初始化地图
@@ -352,12 +334,12 @@
 
             const customIcon = L.divIcon({
                 className: 'custom-marker',
-                html: '<div class="w-4 h-4 bg-red-600 rounded-full border-2 border-white shadow-lg shadow-red-600/50"></div>',
+                html: '<div class="w-4 h-4 bg-[#DB2015] rounded-full border-2 border-white shadow-lg shadow-red-600/50"></div>',
                 iconSize: [16, 16]
             });
 
             L.marker([38.86, 116.48], { icon: customIcon }).addTo(map)
-                .bindPopup("<b class='font-bold text-red-600'>PIONEER METAL</b><br><span class='text-xs'>Headquarters & Factory</span>")
+                .bindPopup("<b class='font-black tracking-tight text-[#DB2015]'>PIONEER METAL</b><br><span class='font-mono text-[10px] tracking-widest text-gray-500'>HEADQUARTERS</span>")
                 .openPopup();
 
             L.control.zoom({ position: 'bottomright' }).addTo(map);
@@ -367,7 +349,7 @@
             initMap();
         });
 
-        
+
         // Name interaction
         const formNameInput = document.getElementById('formName');
         const nameFeedback = document.getElementById('nameFeedback');
@@ -380,13 +362,11 @@
                     feedbackNameText.textContent = val;
                     nameFeedback.classList.remove('opacity-0');
                     nameFeedback.classList.add('opacity-100');
-                    formNameInput.classList.remove('border-gray-100');
-                    formNameInput.classList.add('border-green-500');
+                    formNameInput.classList.add('border-[#DB2015]');
                 } else {
                     nameFeedback.classList.remove('opacity-100');
                     nameFeedback.classList.add('opacity-0');
-                    formNameInput.classList.remove('border-green-500');
-                    formNameInput.classList.add('border-gray-100');
+                    formNameInput.classList.remove('border-[#DB2015]');
                 }
             });
         }
@@ -407,15 +387,17 @@
             // Redirect to mail app
             window.location.href = mailtoUrl;
 
-            // Optional: Show success state visually
+            // Show success state visually
             const btn = this.querySelector('button');
             const originalContent = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-check"></i> <span>REDIRECTING...</span>';
-            btn.classList.replace('bg-red-600', 'bg-green-600');
+            btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> <span>REDIRECTING...</span>';
+            lucide.createIcons();
+            btn.classList.replace('bg-[#DB2015]', 'bg-green-600');
 
             setTimeout(() => {
                 btn.innerHTML = originalContent;
-                btn.classList.replace('bg-green-600', 'bg-red-600');
+                lucide.createIcons();
+                btn.classList.replace('bg-green-600', 'bg-[#DB2015]');
                 this.reset();
             }, 3000);
         });
