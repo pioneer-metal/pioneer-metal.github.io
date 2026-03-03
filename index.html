@@ -147,96 +147,87 @@
     <!-- Main Container -->
     <div class="max-w-[1600px] mx-auto shadow-2xl min-h-screen overflow-hidden relative bg-neutral-950">
 
-        <!-- Navigation (Floating Pill style) -->
-        <nav class="fixed top-8 left-0 right-0 z-[100] flex justify-center w-full px-6 pointer-events-none fade-in-up">
-            <div class="w-full max-w-[1600px] flex items-center justify-between pointer-events-auto mx-auto md:px-16">
-                <!-- Left: Logo & Brand -->
-                <div class="flex items-center gap-4 group">
-                    <a href="index.html" class="flex items-center group">
-                        <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
-                            alt="Pioneer Metal Logo" class="h-12 w-auto transition-transform group-hover:scale-105">
-                    </a>
-                </div>
+        <!-- Raycast Style Navigation Bar -->
+        <nav
+            class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-[1200px] bg-neutral-900/80 backdrop-blur-xl border border-white/10 rounded-[20px] px-4 py-3 flex items-center justify-between shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] fade-in-up">
 
-                <!-- Right: Navigation Pill & Lang -->
-                <div class="flex items-center gap-4">
-                    <!-- White Pill Menu (Desktop) -->
-                    <div
-                        class="hidden md:flex items-center bg-white/5 backdrop-blur-md border border-white/10 rounded-full pl-8 pr-10 py-3.5 shadow-2xl">
-                        <div class="flex items-center gap-8">
-                            <a href="index.html"
-                                class="text-xs font-bold text-white uppercase tracking-widest hover:text-red-500 transition-colors flex items-center gap-2 group"
-                                data-i18n="nav-home">
-                                <span class="text-white/40 group-hover:text-red-500 transition-colors">•</span> Home
-                            </a>
-                            <a href="about.html"
-                                class="text-xs font-bold text-white/70 uppercase tracking-widest hover:text-red-500 transition-colors flex items-center gap-2 group"
-                                data-i18n="nav-about">
-                                <span class="text-white/40 group-hover:text-red-500 transition-colors">•</span> About
-                            </a>
-                            <a href="products.html"
-                                class="text-xs font-bold text-white/70 uppercase tracking-widest hover:text-red-500 transition-colors flex items-center gap-2 group"
-                                data-i18n="nav-products">
-                                <span class="text-white/40 group-hover:text-red-500 transition-colors">•</span> Products
-                            </a>
-                            <a href="news.html"
-                                class="text-xs font-bold text-white/70 uppercase tracking-widest hover:text-red-500 transition-colors flex items-center gap-2 group"
-                                data-i18n="nav-news">
-                                <span class="text-white/40 group-hover:text-red-500 transition-colors">•</span> News
-                            </a>
-                            <a href="contact.html"
-                                class="text-xs font-bold text-white/70 uppercase tracking-widest hover:text-red-500 transition-colors flex items-center gap-2 group"
-                                data-i18n="nav-contact">
-                                <span class="text-white/40 group-hover:text-red-500 transition-colors">•</span> Contact
-                            </a>
+            <!-- Left: Logo & Brand -->
+            <a href="index.html" class="flex items-center group flex-shrink-0">
+                <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
+                    alt="Pioneer Metal Logo" class="h-8 md:h-10 w-auto transition-transform group-hover:scale-105">
+            </a>
+
+            <!-- Center: Navigation Links (Desktop) -->
+            <div class="hidden md:flex items-center space-x-1 lg:space-x-3 flex-1 justify-center">
+                <a href="index.html"
+                    class="text-[13px] font-semibold text-white px-4 py-2 bg-white/10 rounded-xl transition-colors"
+                    data-i18n="nav-home">Home</a>
+                <a href="about.html"
+                    class="text-[13px] font-medium text-white/60 hover:text-white px-4 py-2 hover:bg-white/5 rounded-xl transition-colors"
+                    data-i18n="nav-about">About</a>
+                <a href="products.html"
+                    class="text-[13px] font-medium text-white/60 hover:text-white px-4 py-2 hover:bg-white/5 rounded-xl transition-colors"
+                    data-i18n="nav-products">Products</a>
+                <a href="news.html"
+                    class="text-[13px] font-medium text-white/60 hover:text-white px-4 py-2 hover:bg-white/5 rounded-xl transition-colors"
+                    data-i18n="nav-news">News</a>
+            </div>
+
+            <!-- Right: Action Area -->
+            <div class="flex items-center gap-2">
+                <!-- Language Selector (Left of Contact) -->
+                <div class="relative hidden sm:block">
+                    <button onclick="toggleLangDropdown(event)" aria-label="Select Language"
+                        class="hover:bg-white/10 transition-all flex items-center justify-center gap-2 group text-white/80 hover:text-white bg-transparent rounded-xl px-3 py-2.5 border border-transparent hover:border-white/10">
+                        <div id="currentFlag" class="flex items-center">
+                            <span class="fi fi-us rounded-sm shadow-sm transition-opacity duration-300"></span>
                         </div>
-                    </div>
-
-                    <!-- Language Selector inside Red Pill -->
-                    <div class="relative hidden md:block">
-                        <button onclick="toggleLangDropdown(event)" aria-label="Select Language"
-                            class="hover:bg-red-700 transition-all flex items-center gap-3 hover:shadow-red-500/20 hover:-translate-y-0.5 group text-white bg-red-600 rounded-full px-6 py-3 shadow-xl">
-                            <div id="currentFlag" class="flex items-center">
-                                <span class="fi fi-us rounded-sm shadow-sm transition-opacity duration-300"></span>
-                            </div>
-                            <span class="text-xs font-bold uppercase tracking-widest" id="currentLangLabel">EN</span>
-                            <i class="fa-solid fa-chevron-down text-[10px] text-white/80 group-hover:translate-x-1 transition-transform"
-                                id="langChevron"></i>
-                        </button>
-                        <div id="langDropdown"
-                            class="lang-dropdown overflow-hidden absolute right-0 mt-4 bg-neutral-900 border border-white/10 shadow-2xl rounded-2xl hidden w-48 pointer-events-auto z-[200]">
-                            <div class="py-2 max-h-[400px] overflow-y-auto custom-scrollbar">
-                                <button onclick="changeLanguage('en', 'us')"
-                                    class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>ENGLISH</span></button>
-                                <button onclick="changeLanguage('es', 'es')"
-                                    class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>ESPAÑOL</span></button>
-                                <button onclick="changeLanguage('pt', 'pt')"
-                                    class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>PORTUGUÊS</span></button>
-                                <button onclick="changeLanguage('ru', 'ru')"
-                                    class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>РУССКИЙ</span></button>
-                                <button onclick="changeLanguage('ja', 'jp')"
-                                    class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>日本語</span></button>
-                                <button onclick="changeLanguage('ko', 'kr')"
-                                    class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>한국어</span></button>
-                                <button onclick="changeLanguage('ar', 'sa')"
-                                    class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>العربية</span></button>
-                                <button onclick="changeLanguage('fr', 'fr')"
-                                    class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>FRANÇAIS</span></button>
-                                <button onclick="changeLanguage('sq', 'al')"
-                                    class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>SHQIP</span></button>
-                                <button onclick="changeLanguage('sr', 'rs')"
-                                    class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>SRPSKI</span></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Mobile Menu Button -->
-                    <button
-                        class="md:hidden w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-                        onclick="toggleMobileMenu()" pointer-events="auto">
-                        <i class="fas fa-bars"></i>
+                        <span class="text-xs font-semibold uppercase tracking-wider" id="currentLangLabel">EN</span>
+                        <i class="fa-solid fa-chevron-down text-[9px] text-white/50 group-hover:text-white/80 transition-colors"
+                            id="langChevron"></i>
                     </button>
+                    <!-- specific langDropdown to remain consistent -->
+                    <div id="langDropdown"
+                        class="lang-dropdown overflow-hidden absolute right-0 mt-4 bg-neutral-900 border border-white/10 shadow-2xl rounded-2xl hidden w-48 pointer-events-auto z-[200]">
+                        <div class="py-2 max-h-[400px] overflow-y-auto custom-scrollbar">
+                            <button onclick="changeLanguage('en', 'us')"
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>ENGLISH</span></button>
+                            <button onclick="changeLanguage('es', 'es')"
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>ESPAÑOL</span></button>
+                            <button onclick="changeLanguage('pt', 'pt')"
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>PORTUGUÊS</span></button>
+                            <button onclick="changeLanguage('ru', 'ru')"
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>РУССКИЙ</span></button>
+                            <button onclick="changeLanguage('ja', 'jp')"
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>日本語</span></button>
+                            <button onclick="changeLanguage('ko', 'kr')"
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>한국어</span></button>
+                            <button onclick="changeLanguage('ar', 'sa')"
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>العربية</span></button>
+                            <button onclick="changeLanguage('fr', 'fr')"
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>FRANÇAIS</span></button>
+                            <button onclick="changeLanguage('sq', 'al')"
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>SHQIP</span></button>
+                            <button onclick="changeLanguage('sr', 'rs')"
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>SRPSKI</span></button>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Contact Button (Raycast style Download) -->
+                <a href="contact.html"
+                    class="hidden sm:flex bg-white text-black hover:bg-neutral-200 transition-colors shadow-lg px-5 py-2.5 rounded-xl text-[13px] font-bold items-center gap-2 group"
+                    data-i18n="nav-contact">
+                    Contact
+                    <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button
+                    class="md:hidden w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+                    onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </nav>
 
@@ -284,22 +275,23 @@
 
         <!-- Hero Section (SpartanRef Style) -->
         <header class="md:h-[900px] overflow-hidden group w-full h-[90vh] relative bg-neutral-900">
-            <div class="carousel-slide hidden"
+            <!-- Carousel Slides -->
+            <div class="carousel-slide active absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
+                style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_01.jpg');">
+                <div class="slide-overlay absolute inset-0 bg-black/40"></div>
+            </div>
+            <div class="carousel-slide hidden absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://pioneer-metal.com/en/inc/uploads/2023/10/a5dc62eab89ba763.jpg');">
                 <div class="slide-overlay absolute inset-0 bg-black/40"></div>
             </div>
-            <div class="carousel-slide hidden"
+            <div class="carousel-slide hidden absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://pioneer-metal.com/en/inc/uploads/2023/10/4b3c75e2f7b88aa0.jpg');">
                 <div class="slide-overlay absolute inset-0 bg-black/40"></div>
             </div>
-            <div class="carousel-slide hidden"
+            <div class="carousel-slide hidden absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://pioneer-metal.com/en/inc/uploads/2023/10/2c89f5c4db1f4769.jpg');">
                 <div class="slide-overlay absolute inset-0 bg-black/40"></div>
             </div>
-            <!-- Background Image -->
-            <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_01.jpg"
-                alt="Pioneer Metal Factory Background"
-                class="absolute inset-0 w-full h-full object-cover brightness-[0.6] group-hover:scale-105 transition-transform duration-[2s] ease-in-out">
 
             <!-- Gradient Overlays -->
             <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/50 to-transparent"></div>
@@ -337,13 +329,13 @@
             </div>
 
             <div class="absolute inset-x-0 bottom-10 z-[30] flex justify-center space-x-2">
-                <div class="dot active w-2 h-2 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
+                <div class="dot active w-1.5 h-1.5 bg-white rounded-full cursor-pointer hover:bg-white transition-colors"
                     onclick="goToSlide(0)"></div>
-                <div class="dot w-2 h-2 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
+                <div class="dot w-1.5 h-1.5 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
                     onclick="goToSlide(1)"></div>
-                <div class="dot w-2 h-2 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
+                <div class="dot w-1.5 h-1.5 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
                     onclick="goToSlide(2)"></div>
-                <div class="dot w-2 h-2 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
+                <div class="dot w-1.5 h-1.5 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
                     onclick="goToSlide(3)"></div>
             </div>
         </header>

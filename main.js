@@ -509,12 +509,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-section, .fade-in-group');
     animatedElements.forEach(el => scrollObserver.observe(el));
 
+    // Carousel Implementation
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+
+    window.goToSlide = function (index) {
+        if (slides.length === 0) return;
+        currentSlide = index;
+        slides.forEach((s, i) => {
+            if (i === index) {
+                s.classList.add('active');
+                s.classList.remove('hidden');
+            } else {
+                s.classList.remove('active');
+                s.classList.add('hidden');
+            }
+        });
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+        dots.forEach((d, i) => d.classList.toggle('bg-white', i === index));
+        dots.forEach((d, i) => d.classList.toggle('bg-white/50', i !== index));
+    };
+
+    if (slides.length > 0) {
+        window.goToSlide(0);
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            window.goToSlide(currentSlide);
+        }, 5000);
+    }
+
     // 2. Count Up implementation
     const counterElements = document.querySelectorAll('.count-up');
     let hasCounted = new Set();
-    
+
     const easeOutQuad = t => t * (2 - t);
-    
+
     const countUpObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !hasCounted.has(entry.target)) {
@@ -522,15 +552,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const targetStr = entry.target.getAttribute('data-target');
                 if (!targetStr) return;
                 const target = parseInt(targetStr.replace(/,/g, ''), 10);
-                const duration = 2000; 
+                const duration = 2000;
                 let startTime = null;
-                
+
                 const step = (currentTime) => {
                     if (!startTime) startTime = currentTime;
                     const progress = Math.min((currentTime - startTime) / duration, 1);
                     const currentVal = Math.floor(easeOutQuad(progress) * target);
                     entry.target.innerHTML = currentVal.toLocaleString();
-                    
+
                     if (progress < 1) {
                         window.requestAnimationFrame(step);
                     } else {
