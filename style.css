@@ -172,7 +172,7 @@ body {
 
 .glass-card:hover {
     border-color: #DB2015;
-    background: rgba(219, 32, 21, 0.05);
+    background: rgba(219, 32, 21, 0.1);
     transform: translateY(-8px) scale(1.01);
     box-shadow: 0 30px 60px -15px rgba(219, 32, 21, 0.2);
     z-index: 20;
