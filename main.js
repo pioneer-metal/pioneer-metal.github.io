@@ -519,11 +519,11 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSlide = index;
         slides.forEach((s, i) => {
             if (i === index) {
-                s.classList.add('active');
-                s.classList.remove('hidden');
+                s.classList.add('opacity-100');
+                s.classList.remove('opacity-0', 'pointer-events-none');
             } else {
-                s.classList.remove('active');
-                s.classList.add('hidden');
+                s.classList.remove('opacity-100');
+                s.classList.add('opacity-0', 'pointer-events-none');
             }
         });
         dots.forEach((d, i) => d.classList.toggle('active', i === index));

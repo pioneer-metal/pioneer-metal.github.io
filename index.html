@@ -148,17 +148,20 @@
     <div class="max-w-[1600px] mx-auto shadow-2xl min-h-screen overflow-hidden relative bg-neutral-950">
 
         <!-- Raycast Style Navigation Bar -->
+        <!-- Raycast Style Navigation Bar -->
         <nav
-            class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-[1200px] bg-neutral-900/80 backdrop-blur-xl border border-white/10 rounded-[20px] px-4 py-3 flex items-center justify-between shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] fade-in-up">
+            class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-[1200px] bg-neutral-900/80 backdrop-blur-xl border border-white/10 rounded-[20px] px-6 py-3 flex md:grid md:grid-cols-3 items-center justify-between shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] fade-in-up">
 
             <!-- Left: Logo & Brand -->
-            <a href="index.html" class="flex items-center group flex-shrink-0">
-                <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
-                    alt="Pioneer Metal Logo" class="h-8 md:h-10 w-auto transition-transform group-hover:scale-105">
-            </a>
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center group flex-shrink-0">
+                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
+                        alt="Pioneer Metal Logo" class="h-8 md:h-10 w-auto transition-transform group-hover:scale-105">
+                </a>
+            </div>
 
             <!-- Center: Navigation Links (Desktop) -->
-            <div class="hidden md:flex items-center space-x-1 lg:space-x-3 flex-1 justify-center">
+            <div class="hidden md:flex items-center justify-center space-x-1 lg:space-x-3">
                 <a href="index.html"
                     class="text-[13px] font-semibold text-white px-4 py-2 bg-white/10 rounded-xl transition-colors"
                     data-i18n="nav-home">Home</a>
@@ -174,7 +177,7 @@
             </div>
 
             <!-- Right: Action Area -->
-            <div class="flex items-center gap-2">
+            <div class="flex items-center justify-end gap-2">
                 <!-- Language Selector (Left of Contact) -->
                 <div class="relative hidden sm:block">
                     <button onclick="toggleLangDropdown(event)" aria-label="Select Language"
@@ -276,19 +279,19 @@
         <!-- Hero Section (SpartanRef Style) -->
         <header class="md:h-[900px] overflow-hidden group w-full h-[90vh] relative bg-neutral-900">
             <!-- Carousel Slides -->
-            <div class="carousel-slide active absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
+            <div class="carousel-slide opacity-100 absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_01.jpg');">
                 <div class="slide-overlay absolute inset-0 bg-black/40"></div>
             </div>
-            <div class="carousel-slide hidden absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
+            <div class="carousel-slide opacity-0 pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_02.jpg');">
                 <div class="slide-overlay absolute inset-0 bg-black/40"></div>
             </div>
-            <div class="carousel-slide hidden absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
+            <div class="carousel-slide opacity-0 pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_03.jpg');">
                 <div class="slide-overlay absolute inset-0 bg-black/40"></div>
             </div>
-            <div class="carousel-slide hidden absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
+            <div class="carousel-slide opacity-0 pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_04.jpg');">
                 <div class="slide-overlay absolute inset-0 bg-black/40"></div>
             </div>
@@ -503,16 +506,20 @@
             <div class="relative flex whitespace-nowrap">
                 <div class="flex items-center gap-8 animate-marquee">
                     <span class="text-2xl font-oswald font-bold uppercase italic tracking-tight text-black px-4">
-                        UNBREAKABLE DISCIPLINE • FORGE YOUR LEGACY • ELITE ENDURANCE • NO SURRENDER •
+                        PRECISION ENGINEERING • GLOBAL STEEL SOLUTIONS • INNOVATIVE MANUFACTURING • QUALITY YOU CAN
+                        TRUST • STRENGTH IN PRECISION • EXCELLENCE SINCE 2006 •
                     </span>
                     <span class="text-2xl font-oswald font-bold uppercase italic tracking-tight text-black px-4">
-                        UNBREAKABLE DISCIPLINE • FORGE YOUR LEGACY • ELITE ENDURANCE • NO SURRENDER •
+                        PRECISION ENGINEERING • GLOBAL STEEL SOLUTIONS • INNOVATIVE MANUFACTURING • QUALITY YOU CAN
+                        TRUST • STRENGTH IN PRECISION • EXCELLENCE SINCE 2006 •
                     </span>
                     <span class="text-2xl font-oswald font-bold uppercase italic tracking-tight text-black px-4">
-                        UNBREAKABLE DISCIPLINE • FORGE YOUR LEGACY • ELITE ENDURANCE • NO SURRENDER •
+                        PRECISION ENGINEERING • GLOBAL STEEL SOLUTIONS • INNOVATIVE MANUFACTURING • QUALITY YOU CAN
+                        TRUST • STRENGTH IN PRECISION • EXCELLENCE SINCE 2006 •
                     </span>
                     <span class="text-2xl font-oswald font-bold uppercase italic tracking-tight text-black px-4">
-                        UNBREAKABLE DISCIPLINE • FORGE YOUR LEGACY • ELITE ENDURANCE • NO SURRENDER •
+                        PRECISION ENGINEERING • GLOBAL STEEL SOLUTIONS • INNOVATIVE MANUFACTURING • QUALITY YOU CAN
+                        TRUST • STRENGTH IN PRECISION • EXCELLENCE SINCE 2006 •
                     </span>
                 </div>
             </div>
