@@ -24,7 +24,29 @@
                 document.documentElement.classList.add('i18n-loading');
             })();
     </script>
-    <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        red: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fca5a5',
+                            300: '#f87171',
+                            400: '#ef4444',
+                            500: '#DB2015',
+                            600: '#DB2015',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
 
@@ -182,12 +204,9 @@
     <header class="pt-32 pb-16 bg-white">
         <div class="max-w-7xl mx-auto px-4">
             <div class="mb-10 max-w-full rtl:text-right">
-                <h2 class="text-red-600 font-black tracking-[0.3em] uppercase mb-4 text-xs" data-i18n="about-tag">About
-                    Pioneer Metal</h2>
-                <h1 class="text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 leading-none whitespace-nowrap overflow-hidden text-ellipsis"
-                    data-i18n="about-header">Our Team & Passion</h1>
-                <p class="text-slate-500 text-sm md:text-base font-light leading-relaxed mb-8 max-w-3xl rtl:ml-auto rtl:mr-0"
-                    data-i18n="about-intro">
+                <p class="text-red-600 font-bold tracking-[0.2em] uppercase mb-4 text-sm fade-in-up" data-i18n="about-tag">About Pioneer Metal</p>
+                <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4 leading-none whitespace-nowrap overflow-hidden text-ellipsis fade-in-up delay-100" data-i18n="about-header">Our Team & Passion</h1>
+                <p class="text-slate-700 text-base md:text-lg font-normal leading-relaxed mb-8 max-w-3xl rtl:ml-auto rtl:mr-0 fade-in-up delay-200" data-i18n="about-intro">
                     Pioneer Metal Product Factory is a leading supplier of high-quality metal sections...
                 </p>
             </div>
@@ -233,9 +252,9 @@
         </div>
     </header>
 
-    <section class="py-20 bg-slate-50">
+    <section class="py-32 bg-slate-50 fade-in-section">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <p class="text-xl md:text-2xl font-light text-slate-600 leading-relaxed italic" data-i18n="about-quote">
+            <p class="text-3xl md:text-5xl font-serif italic text-slate-900 leading-tight md:leading-snug" data-i18n="about-quote">
                 "Precision is not just a standard, it's our promise."
             </p>
         </div>
@@ -243,12 +262,12 @@
 
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center fade-in-group">
                 <div class="space-y-6 rtl:text-right">
                     <h3 class="text-3xl font-black uppercase italic tracking-tighter" data-i18n="story-t">Manufacturing
                         <span class="text-red-600">Power</span>
                     </h3>
-                    <p class="text-slate-500 text-sm md:text-base leading-relaxed font-light" data-i18n="story-d1">
+                    <p class="text-slate-700 text-base leading-relaxed font-normal" data-i18n="story-d1">
                         Our factory is equipped with advanced automated production lines.
                     </p>
                     <div class="flex gap-12 pt-4 rtl:justify-end">

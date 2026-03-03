@@ -52,7 +52,29 @@
             document.documentElement.classList.add('i18n-loading');
         })();
     </script>
-    <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        red: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fca5a5',
+                            300: '#f87171',
+                            400: '#ef4444',
+                            500: '#DB2015',
+                            600: '#DB2015',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
 
@@ -210,11 +232,14 @@
                 <h2 class="text-2xl font-bold mb-10 relative" data-i18n="form-title">Send a Message</h2>
                 <form id="contactForm" class="space-y-8 relative">
                     <div class="grid md:grid-cols-2 gap-8">
-                        <div class="space-y-2">
+                        <div class="space-y-2 relative">
                             <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1"
                                 data-i18n="form-name">Full Name</label>
                             <input type="text" id="formName" placeholder="John Doe"
                                 class="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-600 outline-none transition-all">
+                            <div id="nameFeedback" class="absolute -bottom-6 left-2 text-[11px] text-green-600 font-bold opacity-0 flex items-center gap-1.5 transition-opacity duration-300">
+                                <i class="fa-solid fa-check-circle"></i> <span>Thank you for your interest, <span id="feedbackNameText"></span>!</span>
+                            </div>
                         </div>
                         <div class="space-y-2">
                             <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest ml-1"
@@ -341,6 +366,30 @@
         window.addEventListener('load', () => {
             initMap();
         });
+
+        
+        // Name interaction
+        const formNameInput = document.getElementById('formName');
+        const nameFeedback = document.getElementById('nameFeedback');
+        const feedbackNameText = document.getElementById('feedbackNameText');
+
+        if (formNameInput && nameFeedback) {
+            formNameInput.addEventListener('blur', () => {
+                const val = formNameInput.value.trim();
+                if (val.length > 0) {
+                    feedbackNameText.textContent = val;
+                    nameFeedback.classList.remove('opacity-0');
+                    nameFeedback.classList.add('opacity-100');
+                    formNameInput.classList.remove('border-gray-100');
+                    formNameInput.classList.add('border-green-500');
+                } else {
+                    nameFeedback.classList.remove('opacity-100');
+                    nameFeedback.classList.add('opacity-0');
+                    formNameInput.classList.remove('border-green-500');
+                    formNameInput.classList.add('border-gray-100');
+                }
+            });
+        }
 
         // Form Handling
         document.getElementById('contactForm').addEventListener('submit', function (e) {

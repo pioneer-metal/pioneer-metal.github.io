@@ -488,3 +488,59 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Bind Global Click to close dropdowns
     document.body.addEventListener('click', closeLangDropdown);
 });
+
+// Initialization of modern design effects
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Scroll Fade-Ins using IntersectionObserver
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, observerOptions);
+
+    const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-section, .fade-in-group');
+    animatedElements.forEach(el => scrollObserver.observe(el));
+
+    // 2. Count Up implementation
+    const counterElements = document.querySelectorAll('.count-up');
+    let hasCounted = new Set();
+    
+    const easeOutQuad = t => t * (2 - t);
+    
+    const countUpObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !hasCounted.has(entry.target)) {
+                hasCounted.add(entry.target);
+                const targetStr = entry.target.getAttribute('data-target');
+                if (!targetStr) return;
+                const target = parseInt(targetStr.replace(/,/g, ''), 10);
+                const duration = 2000; 
+                let startTime = null;
+                
+                const step = (currentTime) => {
+                    if (!startTime) startTime = currentTime;
+                    const progress = Math.min((currentTime - startTime) / duration, 1);
+                    const currentVal = Math.floor(easeOutQuad(progress) * target);
+                    entry.target.innerHTML = currentVal.toLocaleString();
+                    
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        entry.target.innerHTML = target.toLocaleString();
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counterElements.forEach(el => countUpObserver.observe(el));
+});
