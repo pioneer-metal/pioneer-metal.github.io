@@ -158,7 +158,7 @@
 
         <!-- Raycast Style Navigation Bar -->
         <nav
-            class="fixed top-6 inset-x-0 mx-auto z-[100] w-[95%] max-w-[1200px] bg-neutral-900/80 backdrop-blur-xl border border-white/10 rounded-[20px] px-6 py-3 flex md:grid md:grid-cols-3 items-center justify-between shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] fade-in-up">
+            class="fixed top-6 inset-x-0 mx-auto z-[100] w-[95%] max-w-[1200px] bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-[20px] px-6 py-3 flex md:grid md:grid-cols-3 items-center justify-between shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] fade-in-up">
 
             <!-- Left: Logo & Brand -->
             <div class="flex items-center">
@@ -171,16 +171,16 @@
             <!-- Center: Navigation Links (Desktop) -->
             <div class="hidden md:flex items-center justify-center space-x-1 lg:space-x-3">
                 <a href="index.html"
-                    class="text-[13px] font-semibold text-white px-4 py-2 bg-white/10 rounded-xl transition-colors"
+                    class="text-[13px] font-semibold text-neutral-900 dark:text-white px-4 py-2 bg-black/5 dark:bg-white/10 rounded-xl transition-colors"
                     data-i18n="nav-home">Home</a>
                 <a href="about.html"
-                    class="text-[13px] font-medium text-white/60 hover:text-white px-4 py-2 hover:bg-white/5 rounded-xl transition-colors"
+                    class="text-[13px] font-medium text-neutral-600 dark:text-white/60 hover:text-neutral-900 dark:text-white px-4 py-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors"
                     data-i18n="nav-about">About</a>
                 <a href="products.html"
-                    class="text-[13px] font-medium text-white/60 hover:text-white px-4 py-2 hover:bg-white/5 rounded-xl transition-colors"
+                    class="text-[13px] font-medium text-neutral-600 dark:text-white/60 hover:text-neutral-900 dark:text-white px-4 py-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors"
                     data-i18n="nav-products">Products</a>
                 <a href="news.html"
-                    class="text-[13px] font-medium text-white/60 hover:text-white px-4 py-2 hover:bg-white/5 rounded-xl transition-colors"
+                    class="text-[13px] font-medium text-neutral-600 dark:text-white/60 hover:text-neutral-900 dark:text-white px-4 py-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors"
                     data-i18n="nav-news">News</a>
             </div>
 
@@ -189,65 +189,65 @@
                 <!-- Language Selector (Left of Contact) -->
                 <div class="relative hidden sm:block">
                     <button onclick="toggleLangDropdown(event)" aria-label="Select Language"
-                        class="hover:bg-white/10 transition-all flex items-center justify-center gap-2 group text-white/80 hover:text-white bg-transparent rounded-xl px-3 py-2.5 border border-transparent hover:border-white/10">
+                        class="hover:bg-black/10 dark:hover:bg-white/10 transition-all flex items-center justify-center gap-2 group text-neutral-700 dark:text-white/80 hover:text-neutral-900 dark:text-white bg-transparent rounded-xl px-3 py-2.5 border border-transparent hover:border-black/10 dark:hover:border-white/10">
                         <div id="currentFlag" class="flex items-center">
                             <span class="fi fi-us rounded-sm shadow-sm transition-opacity duration-300"></span>
                         </div>
                         <span class="text-xs font-semibold uppercase tracking-wider" id="currentLangLabel">EN</span>
-                        <i class="fa-solid fa-chevron-down text-[9px] text-white/50 group-hover:text-white/80 transition-colors"
+                        <i class="fa-solid fa-chevron-down text-[9px] text-neutral-500 dark:text-white/50 group-hover:text-neutral-700 dark:text-white/80 transition-colors"
                             id="langChevron"></i>
                     </button>
                     <!-- specific langDropdown to remain consistent -->
                     <div id="langDropdown"
-                        class="lang-dropdown overflow-hidden absolute right-0 mt-4 bg-neutral-900 border border-white/10 shadow-2xl rounded-2xl hidden w-48 pointer-events-auto z-[200]">
+                        class="lang-dropdown overflow-hidden absolute right-0 mt-4 bg-white dark:bg-neutral-900 border border-black/10 dark:border-white/10 shadow-2xl rounded-2xl hidden w-48 pointer-events-auto z-[200]">
                         <div class="py-2 max-h-[400px] overflow-y-auto custom-scrollbar">
                             <button onclick="changeLanguage('en', 'us')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
                                 <span class="fi fi-us rounded-sm"></span>
                                 <span>ENGLISH</span>
                             </button>
                             <button onclick="changeLanguage('es', 'es')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
                                 <span class="fi fi-es rounded-sm"></span>
                                 <span>ESPAÑOL</span>
                             </button>
                             <button onclick="changeLanguage('pt', 'pt')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
                                 <span class="fi fi-pt rounded-sm"></span>
                                 <span>PORTUGUÊS</span>
                             </button>
                             <button onclick="changeLanguage('ru', 'ru')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
                                 <span class="fi fi-ru rounded-sm"></span>
                                 <span>РУССКИЙ</span>
                             </button>
                             <button onclick="changeLanguage('ja', 'jp')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
                                 <span class="fi fi-jp rounded-sm"></span>
                                 <span>日本語</span>
                             </button>
                             <button onclick="changeLanguage('ko', 'kr')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
                                 <span class="fi fi-kr rounded-sm"></span>
                                 <span>한국어</span>
                             </button>
                             <button onclick="changeLanguage('ar', 'sa')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
                                 <span class="fi fi-sa rounded-sm"></span>
                                 <span>العربية</span>
                             </button>
                             <button onclick="changeLanguage('fr', 'fr')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
                                 <span class="fi fi-fr rounded-sm"></span>
                                 <span>FRANÇAIS</span>
                             </button>
                             <button onclick="changeLanguage('sq', 'al')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
                                 <span class="fi fi-al rounded-sm"></span>
                                 <span>SHQIP</span>
                             </button>
                             <button onclick="changeLanguage('sr', 'rs')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
                                 <span class="fi fi-rs rounded-sm"></span>
                                 <span>SRPSKI</span>
                             </button>
@@ -263,7 +263,7 @@
 
                 <!-- Contact Button (Raycast style Download) -->
                 <a href="contact.html"
-                    class="hidden sm:flex bg-white text-black hover:bg-neutral-200 transition-colors shadow-lg px-5 py-2.5 rounded-xl text-[13px] font-bold items-center gap-2 group"
+                    class="hidden sm:flex bg-neutral-900 dark:bg-white text-white dark:text-black hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors shadow-lg px-5 py-2.5 rounded-xl text-[13px] font-bold items-center gap-2 group"
                     data-i18n="nav-contact">
                     Contact
                     <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
@@ -271,7 +271,7 @@
 
                 <!-- Mobile Menu Button -->
                 <button
-                    class="md:hidden w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+                    class="md:hidden w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center text-neutral-900 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
                     onclick="toggleMobileMenu()">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -497,7 +497,7 @@
 
                     <!-- Card 1 -->
                     <div
-                        class="glass-card p-10 rounded-none group min-h-[360px] cursor-pointer bg-black/5 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/5 hover:border-black/10 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                        class="glass-card p-10 rounded-none group min-h-[360px] cursor-pointer bg-neutral-50 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/5 hover:border-black/10 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
                         <div class="card-corner-glow"></div>
                         <div
                             class="card-content flex flex-col h-full justify-center items-center text-center relative z-10">
@@ -508,7 +508,7 @@
                             <h4 class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-neutral-900 dark:text-white group-hover:text-red-500 transition-colors leading-none"
                                 data-i18n="pillar-1-title">
                                 Lijialong<br>Sealing Strip</h4>
-                            <p class="text-neutral-600 dark:text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-neutral-900 dark:group-hover:text-white/90 transition-colors"
+                            <p class="text-neutral-600 dark:text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors"
                                 data-i18n="pillar-1-desc">
                                 Specialized manufacturer of high-resilience weather strips for advanced sealing
                                 solutions.
@@ -518,7 +518,7 @@
 
                     <!-- Card 2 -->
                     <div
-                        class="glass-card p-10 rounded-none group min-h-[360px] cursor-pointer bg-black/5 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                        class="glass-card p-10 rounded-none group min-h-[360px] cursor-pointer bg-neutral-50 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/5 hover:border-black/10 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
                         <div class="card-corner-glow"></div>
                         <div
                             class="card-content flex flex-col h-full justify-center items-center text-center relative z-10">
@@ -529,7 +529,7 @@
                             <h4 class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-neutral-900 dark:text-white group-hover:text-red-500 transition-colors leading-none"
                                 data-i18n="pillar-2-title">
                                 OEM &<br>Custom</h4>
-                            <p class="text-neutral-600 dark:text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-neutral-900 dark:group-hover:text-white/90 transition-colors"
+                            <p class="text-neutral-600 dark:text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors"
                                 data-i18n="pillar-2-desc">
                                 OEM customers assist us in achieving success, improving product quality, and achieving a
                                 win-win situation.
@@ -539,7 +539,7 @@
 
                     <!-- Card 3 -->
                     <div
-                        class="glass-card p-10 rounded-none group min-h-[360px] cursor-pointer bg-black/5 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                        class="glass-card p-10 rounded-none group min-h-[360px] cursor-pointer bg-neutral-50 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/5 hover:border-black/10 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
                         <div class="card-corner-glow"></div>
                         <div
                             class="card-content flex flex-col h-full justify-center items-center text-center relative z-10">
@@ -550,7 +550,7 @@
                             <h4 class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-neutral-900 dark:text-white group-hover:text-red-500 transition-colors leading-none"
                                 data-i18n="pillar-3-title">
                                 Melan<br>Trade</h4>
-                            <p class="text-neutral-600 dark:text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-neutral-900 dark:group-hover:text-white/90 transition-colors"
+                            <p class="text-neutral-600 dark:text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors"
                                 data-i18n="pillar-3-desc">
                                 Professional import & export services ensuring efficient global logistics and commerce.
                             </p>
@@ -617,7 +617,7 @@
                     <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Stat 1: Tons -->
                         <div
-                            class="glass-card md:col-span-2 p-12 rounded-none group min-h-[350px] flex flex-col md:flex-row items-center overflow-hidden border-black/5 dark:border-white/10 transition-all duration-700 cursor-default bg-black/5 dark:bg-neutral-900/30 hover:-translate-y-2">
+                            class="glass-card md:col-span-2 p-12 rounded-none group min-h-[350px] flex flex-col md:flex-row items-center overflow-hidden border-black/5 dark:border-white/10 transition-all duration-700 cursor-default bg-neutral-50 dark:bg-neutral-900/30 hover:-translate-y-2">
                             <div class="card-corner-glow"></div>
                             <div class="w-full md:w-1/2 relative z-10 flex flex-col h-full justify-center">
                                 <span class="text-xs font-mono text-red-500 mb-2 uppercase tracking-widest"
@@ -661,7 +661,7 @@
 
                         <!-- Stat 2: Customers -->
                         <div
-                            class="glass-card p-10 rounded-none group min-h-[250px] cursor-default bg-black/5 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                            class="glass-card p-10 rounded-none group min-h-[250px] cursor-default bg-neutral-50 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
                             <div class="card-corner-glow"></div>
                             <div class="card-content flex flex-col h-full justify-between relative z-10">
                                 <div
@@ -680,7 +680,7 @@
 
                         <!-- Stat 3: Countries -->
                         <div
-                            class="glass-card p-10 rounded-none group min-h-[250px] cursor-default bg-black/5 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                            class="glass-card p-10 rounded-none group min-h-[250px] cursor-default bg-neutral-50 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
                             <div class="card-corner-glow"></div>
                             <div class="card-content flex flex-col h-full justify-between relative z-10">
                                 <div
@@ -709,7 +709,7 @@
                 <div class="aspect-square relative overflow-hidden group">
                     <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Products_01.jpg"
                         alt="Product"
-                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-90 dark:brightness-50 group-hover:brightness-100 dark:group-hover:brightness-90 group-hover:grayscale-0 dark:grayscale">
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-100 dark:brightness-50 dark:group-hover:brightness-90 grayscale-0 dark:grayscale dark:group-hover:grayscale-0">
                     <div
                         class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-red-900/40 backdrop-blur-sm">
                         <span
@@ -721,7 +721,7 @@
                 <div class="aspect-square relative overflow-hidden group">
                     <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Products_02.jpg"
                         alt="Product"
-                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-90 dark:brightness-50 group-hover:brightness-100 dark:group-hover:brightness-90 group-hover:grayscale-0 dark:grayscale">
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-100 dark:brightness-50 dark:group-hover:brightness-90 grayscale-0 dark:grayscale dark:group-hover:grayscale-0">
                     <div
                         class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-red-900/40 backdrop-blur-sm">
                         <span
@@ -733,7 +733,7 @@
                 <div class="aspect-square relative overflow-hidden group">
                     <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Products_03.jpg"
                         alt="Product"
-                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-90 dark:brightness-50 group-hover:brightness-100 dark:group-hover:brightness-90 group-hover:grayscale-0 dark:grayscale">
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-100 dark:brightness-50 dark:group-hover:brightness-90 grayscale-0 dark:grayscale dark:group-hover:grayscale-0">
                     <div
                         class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-red-900/40 backdrop-blur-sm">
                         <span
