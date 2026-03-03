@@ -104,7 +104,8 @@
     </style>
 </head>
 
-<body class="bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 antialiased selection:bg-red-900 selection:text-red-200 font-normal">
+<body
+    class="bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 antialiased selection:bg-red-900 selection:text-red-200 font-normal">
     <!-- Gradient Blur from SpartanRef -->
     <div class="gradient-blur pointer-events-none fixed z-[90] inset-x-0 top-0 h-[15%]">
         <div></div>
@@ -339,7 +340,9 @@
             </div>
 
             <div class="pt-10 border-t border-black/10 dark:border-white/10 mt-10 w-full max-w-sm mx-auto">
-                <p class="text-xs font-bold text-neutral-500 dark:text-white/40 mb-4 uppercase tracking-widest text-center">Select Language
+                <p
+                    class="text-xs font-bold text-neutral-500 dark:text-white/40 mb-4 uppercase tracking-widest text-center">
+                    Select Language
                 </p>
                 <div class="flex flex-wrap justify-center gap-3">
                     <button onclick="changeLanguage('en')"
@@ -363,7 +366,7 @@
         <!-- Header -->
         <header
             class="pt-48 pb-24 bg-white dark:bg-neutral-900 border-b border-black/10 dark:border-white/10 relative overflow-hidden flex flex-col justify-center min-h-[50vh]">
-            <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-white/80 dark:from-white/80 dark:from-neutral-950 to-transparent"></div>
 
             <!-- Phone Shape Background Effect -->
             <div
@@ -371,7 +374,7 @@
             </div>
 
             <div
-                class="absolute inset-0 flex items-center justify-center opacity-[0.04] pointer-events-none select-none overflow-hidden">
+                class="absolute inset-0 flex items-center justify-center opacity-[0.05] dark:opacity-[0.04] pointer-events-none select-none overflow-hidden">
                 <i class="fa-solid fa-phone text-[30rem] text-red-600 -rotate-12 translate-x-10 translate-y-10"></i>
             </div>
 
@@ -395,7 +398,7 @@
 
                 <!-- 表单区域 -->
                 <div
-                    class="glass-card-dark p-10 md:p-14 rounded-none shadow-2xl border border-black/5 dark:border-white/5 bg-white dark:bg-neutral-900/30">
+                    class="glass-card p-10 md:p-14 rounded-none shadow-2xl border border-black/5 dark:border-white/5 bg-white dark:bg-neutral-900/30">
                     <div class="card-corner-glow"></div>
                     <h2 class="text-3xl font-black mb-10 tracking-tighter uppercase relative z-10 text-neutral-900 dark:text-white font-oswald"
                         data-i18n="form-title">Send Inquiry</h2>
@@ -453,7 +456,7 @@
                 <div class="space-y-10">
                     <div class="grid sm:grid-cols-2 gap-6">
                         <div onclick="copyTextToClipboard('+86 136 5671 4278', this)"
-                            class="glass-card-dark p-10 rounded-none group min-h-[360px] cursor-pointer bg-white dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/5 hover:border-black/10 dark:border-white/10 transition-all duration-700 hover:-translate-y-2 flex flex-col items-center justify-center text-center">
+                            class="glass-card p-10 rounded-none group min-h-[360px] cursor-pointer bg-white dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/5 hover:border-black/10 dark:border-white/10 transition-all duration-700 hover:-translate-y-2 flex flex-col items-center justify-center text-center">
                             <div class="card-corner-glow"></div>
                             <div
                                 class="text-red-500 mb-6 group-hover:scale-110 group-hover:text-neutral-900 dark:text-white transition-all duration-500 drop-shadow-sm relative z-10">
@@ -467,7 +470,7 @@
                         </div>
 
                         <div onclick="copyTextToClipboard('pioneermetal@163.com', this)"
-                            class="glass-card-dark p-10 rounded-none group min-h-[360px] cursor-pointer bg-white dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/5 hover:border-black/10 dark:border-white/10 transition-all duration-700 hover:-translate-y-2 flex flex-col items-center justify-center text-center">
+                            class="glass-card p-10 rounded-none group min-h-[360px] cursor-pointer bg-white dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/5 hover:border-black/10 dark:border-white/10 transition-all duration-700 hover:-translate-y-2 flex flex-col items-center justify-center text-center">
                             <div class="card-corner-glow"></div>
                             <div
                                 class="text-red-500 mb-6 group-hover:scale-110 group-hover:text-neutral-900 dark:text-white transition-all duration-500 drop-shadow-sm relative z-10">
@@ -481,7 +484,7 @@
                         </div>
                     </div>
                     <div
-                        class="glass-card-dark p-0 rounded-none shadow-2xl border-none bg-white dark:bg-neutral-900/30 overflow-hidden relative group">
+                        class="glass-card p-0 rounded-none shadow-2xl border-none bg-white dark:bg-neutral-900/30 overflow-hidden relative group">
                         <div class="card-corner-glow"></div>
                         <div id="map"
                             class="h-[432px] w-full rounded-none z-0 grayscale hover:grayscale-0 transition-all duration-700"
@@ -493,7 +496,8 @@
         </main>
 
         <!-- Footer -->
-        <footer class="bg-neutral-100 dark:bg-black text-neutral-500 dark:text-white/40 py-16 border-t border-black/10 dark:border-white/10 relative z-30">
+        <footer
+            class="bg-neutral-100 dark:bg-black text-neutral-500 dark:text-white/40 py-16 border-t border-black/10 dark:border-white/10 relative z-30">
             <div class="max-w-full mx-auto px-6 md:px-12 relative z-10 w-full">
                 <div class="flex flex-col md:flex-row justify-between items-center md:items-end gap-10">
                     <!-- Left Side: Copyright & Socials -->
@@ -507,7 +511,8 @@
                         <!-- Text Group -->
                         <div
                             class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed text-white/30">
-                            <div data-i18n="footer-company" class="text-neutral-500 dark:text-white/50">&copy; 2025 PIONEER METAL PRODUCTS
+                            <div data-i18n="footer-company" class="text-neutral-500 dark:text-white/50">&copy; 2025
+                                PIONEER METAL PRODUCTS
                                 FACTORY.</div>
                             <div data-i18n="footer-rights" class="mt-2">All Rights Reserved</div>
                         </div>

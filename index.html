@@ -83,7 +83,8 @@
     </style>
 </head>
 
-<body class="bg-white dark:bg-neutral-950 text-neutral-100 antialiased selection:bg-red-900 selection:text-red-200 font-normal">
+<body
+    class="bg-white dark:bg-neutral-950 text-neutral-100 antialiased selection:bg-red-900 selection:text-red-200 font-normal">
     <!-- Gradient Blur from SpartanRef -->
     <div class="gradient-blur pointer-events-none fixed z-[90] inset-x-0 top-0 h-[15%]">
         <div></div>
@@ -389,27 +390,30 @@
         </header>
 
         <!-- Story / Intro Section Grid (SpartanRef Style) -->
-        <section class="border-y grid grid-cols-1 md:grid-cols-4 border-white/10 relative z-20 bg-white dark:bg-neutral-950">
+        <section
+            class="border-y grid grid-cols-1 md:grid-cols-4 border-black/10 dark:border-white/10 relative z-20 bg-white dark:bg-neutral-950">
             <!-- Box 1 -->
             <div
-                class="flex flex-col group text-center bg-zinc-950 border-white/10 md:border-r border-b md:border-b-0 p-12 items-center justify-center transition-colors hover:bg-zinc-900/50">
+                class="flex flex-col group text-center bg-neutral-50 dark:bg-zinc-950 border-black/10 dark:border-white/10 md:border-r border-b md:border-b-0 p-12 items-center justify-center transition-colors hover:bg-neutral-100 dark:hover:bg-zinc-900/50">
                 <span
-                    class="text-7xl font-bold tracking-tighter transition-colors group-hover:text-red-500 text-white font-oswald">
+                    class="text-7xl font-bold tracking-tighter transition-colors group-hover:text-red-500 text-neutral-900 dark:text-white font-oswald">
                     <span data-i18n="stat-years-t">18</span><span class="text-3xl">+</span>
                 </span>
-                <span class="text-xs uppercase tracking-[0.25em] mt-4 text-white/50 font-bold" data-i18n="stat-years-d">
+                <span class="text-xs uppercase tracking-[0.25em] mt-4 text-neutral-500 dark:text-white/50 font-bold"
+                    data-i18n="stat-years-d">
                     Years of Excellence
                 </span>
             </div>
 
             <!-- Box 2 -->
             <div
-                class="flex flex-col text-center bg-zinc-950 border-white/10 md:border-r border-b md:border-b-0 p-12 items-center justify-center group hover:bg-zinc-900/50 transition-colors">
-                <span class="text-xs uppercase tracking-[0.25em] text-white/40 font-bold mb-3"
+                class="flex flex-col text-center bg-neutral-50 dark:bg-zinc-950 border-black/10 dark:border-white/10 md:border-r border-b md:border-b-0 p-12 items-center justify-center group hover:bg-neutral-100 dark:hover:bg-zinc-900/50 transition-colors">
+                <span class="text-xs uppercase tracking-[0.25em] text-neutral-400 dark:text-white/40 font-bold mb-3"
                     data-i18n="stat-supply-d">
                     Factory Operations
                 </span>
-                <span class="text-lg md:text-xl font-bold tracking-tight text-white flex items-center gap-3 font-mono"
+                <span
+                    class="text-lg md:text-xl font-bold tracking-tight text-neutral-900 dark:text-white flex items-center gap-3 font-mono"
                     data-i18n="stat-supply-t">
                     <span
                         class="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_10px_rgba(219,32,21,0.8)] animate-pulse"></span>
@@ -450,28 +454,31 @@
         </section>
 
         <!-- 01: Business Cooperation (Featured Style) -->
-        <section class="md:px-12 text-white bg-white dark:bg-neutral-950 pt-24 pb-24 px-6 relative z-10">
+        <section
+            class="md:px-12 text-neutral-900 dark:text-white bg-white dark:bg-neutral-950 pt-24 pb-24 px-6 relative z-10">
 
             <div class="max-w-full mx-auto">
                 <div
-                    class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-white/10 pb-10">
+                    class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-black/10 dark:border-white/10 pb-10">
                     <div class="flex flex-col gap-3 items-start fade-in-up">
                         <div class="flex items-center gap-4 mb-2">
                             <span class="w-10 h-[2px] bg-red-600"></span>
                             <span class="text-red-500 font-mono text-xl font-bold tracking-widest uppercase">01</span>
-                            <span class="text-xs font-bold uppercase tracking-[0.25em] text-white/50"
+                            <span
+                                class="text-xs font-bold uppercase tracking-[0.25em] text-neutral-500 dark:text-white/50"
                                 data-i18n="coop-subtitle">Partnership &
                                 Growth</span>
                         </div>
-                        <h2 class="md:text-8xl uppercase leading-[0.9] text-5xl font-black text-white tracking-tighter font-oswald text-shadow-sm"
+                        <h2 class="md:text-8xl uppercase leading-[0.9] text-5xl font-black text-neutral-900 dark:text-white tracking-tighter font-oswald text-shadow-sm"
                             data-i18n="coop-title">
-                            Business<br><span class="text-white/80">Cooperation</span>
+                            Business<br><span class="text-neutral-600 dark:text-white/80">Cooperation</span>
                         </h2>
                     </div>
 
                     <div
                         class="flex flex-col items-start md:items-end gap-6 max-w-sm fade-in-up delay-100 mt-8 md:mt-0">
-                        <p class="text-white/50 md:text-right text-sm leading-relaxed font-light" data-i18n="coop-desc">
+                        <p class="text-neutral-500 dark:text-white/50 md:text-right text-sm leading-relaxed font-light"
+                            data-i18n="coop-desc">
                             Collaborating with leading enterprises globally to provide tailored OEM solutions, superior
                             logistics, and high-resilience sealing integration.
                         </p>
@@ -490,18 +497,18 @@
 
                     <!-- Card 1 -->
                     <div
-                        class="glass-card-dark p-10 rounded-none group min-h-[360px] cursor-pointer bg-neutral-900/30 overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                        class="glass-card p-10 rounded-none group min-h-[360px] cursor-pointer bg-black/5 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/5 hover:border-black/10 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
                         <div class="card-corner-glow"></div>
                         <div
                             class="card-content flex flex-col h-full justify-center items-center text-center relative z-10">
                             <div
-                                class="text-red-500 text-[4rem] mb-6 group-hover:scale-110 group-hover:text-white transition-all duration-500 drop-shadow-sm">
+                                class="text-red-500 text-[4rem] mb-6 group-hover:scale-110 group-hover:text-neutral-900 dark:group-hover:text-white transition-all duration-500 drop-shadow-sm">
                                 <i class="fas fa-shield-alt"></i>
                             </div>
-                            <h4 class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-white group-hover:text-red-500 transition-colors leading-none"
+                            <h4 class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-neutral-900 dark:text-white group-hover:text-red-500 transition-colors leading-none"
                                 data-i18n="pillar-1-title">
                                 Lijialong<br>Sealing Strip</h4>
-                            <p class="text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-white/90 transition-colors"
+                            <p class="text-neutral-600 dark:text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-neutral-900 dark:group-hover:text-white/90 transition-colors"
                                 data-i18n="pillar-1-desc">
                                 Specialized manufacturer of high-resilience weather strips for advanced sealing
                                 solutions.
@@ -511,18 +518,18 @@
 
                     <!-- Card 2 -->
                     <div
-                        class="glass-card-dark p-10 rounded-none group min-h-[360px] cursor-pointer bg-neutral-900/30 overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                        class="glass-card p-10 rounded-none group min-h-[360px] cursor-pointer bg-black/5 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
                         <div class="card-corner-glow"></div>
                         <div
                             class="card-content flex flex-col h-full justify-center items-center text-center relative z-10">
                             <div
-                                class="text-red-500 text-[4rem] mb-6 group-hover:scale-110 group-hover:text-white transition-all duration-500 drop-shadow-sm">
+                                class="text-red-500 text-[4rem] mb-6 group-hover:scale-110 group-hover:text-neutral-900 dark:group-hover:text-white transition-all duration-500 drop-shadow-sm">
                                 <i class="fas fa-cogs"></i>
                             </div>
-                            <h4 class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-white group-hover:text-red-500 transition-colors leading-none"
+                            <h4 class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-neutral-900 dark:text-white group-hover:text-red-500 transition-colors leading-none"
                                 data-i18n="pillar-2-title">
                                 OEM &<br>Custom</h4>
-                            <p class="text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-white/90 transition-colors"
+                            <p class="text-neutral-600 dark:text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-neutral-900 dark:group-hover:text-white/90 transition-colors"
                                 data-i18n="pillar-2-desc">
                                 OEM customers assist us in achieving success, improving product quality, and achieving a
                                 win-win situation.
@@ -532,18 +539,18 @@
 
                     <!-- Card 3 -->
                     <div
-                        class="glass-card-dark p-10 rounded-none group min-h-[360px] cursor-pointer bg-neutral-900/30 overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                        class="glass-card p-10 rounded-none group min-h-[360px] cursor-pointer bg-black/5 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
                         <div class="card-corner-glow"></div>
                         <div
                             class="card-content flex flex-col h-full justify-center items-center text-center relative z-10">
                             <div
-                                class="text-red-500 text-[4rem] mb-6 group-hover:scale-110 group-hover:text-white transition-all duration-500 drop-shadow-sm">
+                                class="text-red-500 text-[4rem] mb-6 group-hover:scale-110 group-hover:text-neutral-900 dark:group-hover:text-white transition-all duration-500 drop-shadow-sm">
                                 <i class="fas fa-globe-americas"></i>
                             </div>
-                            <h4 class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-white group-hover:text-red-500 transition-colors leading-none"
+                            <h4 class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-neutral-900 dark:text-white group-hover:text-red-500 transition-colors leading-none"
                                 data-i18n="pillar-3-title">
                                 Melan<br>Trade</h4>
-                            <p class="text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-white/90 transition-colors"
+                            <p class="text-neutral-600 dark:text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-neutral-900 dark:group-hover:text-white/90 transition-colors"
                                 data-i18n="pillar-3-desc">
                                 Professional import & export services ensuring efficient global logistics and commerce.
                             </p>
@@ -578,26 +585,28 @@
         </div>
 
         <!-- 02: Global Scale Stats -->
-        <section class="md:px-12 text-white bg-[#0a0a0a] pt-24 pb-32 px-6 relative z-10">
+        <section
+            class="md:px-12 text-neutral-900 dark:text-white bg-neutral-50 dark:bg-[#0a0a0a] pt-24 pb-32 px-6 relative z-10">
 
             <div class="max-w-full mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 fade-in-group">
 
                     <!-- Left Column Title -->
                     <div
-                        class="lg:col-span-4 flex flex-col justify-start border-b lg:border-b-0 lg:border-r border-white/10 pb-12 lg:pb-0 lg:pr-12">
+                        class="lg:col-span-4 flex flex-col justify-start border-b lg:border-b-0 lg:border-r border-black/10 dark:border-white/10 pb-12 lg:pb-0 lg:pr-12">
                         <div class="flex items-center gap-4 mb-4">
                             <span class="w-10 h-[2px] bg-red-600"></span>
                             <span class="text-red-500 font-mono text-xl font-bold tracking-widest uppercase">02</span>
-                            <span class="text-xs font-bold uppercase tracking-[0.25em] text-white/50"
+                            <span
+                                class="text-xs font-bold uppercase tracking-[0.25em] text-neutral-500 dark:text-white/50"
                                 data-i18n="stat-worldwide-tag">Global
                                 Impact</span>
                         </div>
-                        <h2 class="text-5xl lg:text-7xl font-black tracking-tighter mb-8 uppercase leading-[0.9] text-white font-oswald fade-in-up delay-100"
+                        <h2 class="text-5xl lg:text-7xl font-black tracking-tighter mb-8 uppercase leading-[0.9] text-neutral-900 dark:text-white font-oswald fade-in-up delay-100"
                             data-i18n="stat-worldwide-title">
-                            Worldwide<br><span class="text-white/70">Scale</span>
+                            Worldwide<br><span class="text-neutral-600 dark:text-white/70">Scale</span>
                         </h2>
-                        <p class="text-sm text-white/50 font-light fade-in-up delay-200 leading-relaxed max-w-sm tracking-wide"
+                        <p class="text-sm text-neutral-500 dark:text-white/50 font-light fade-in-up delay-200 leading-relaxed max-w-sm tracking-wide"
                             data-i18n="stat-worldwide-desc">
                             Pioneer Metal's commitment to industrial excellence reaches every corner of the globe,
                             delivering precision engineering at scale.
@@ -608,20 +617,20 @@
                     <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Stat 1: Tons -->
                         <div
-                            class="glass-card-dark md:col-span-2 p-12 rounded-none group min-h-[350px] flex flex-col md:flex-row items-center overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 cursor-default bg-neutral-900/30 hover:-translate-y-2">
+                            class="glass-card md:col-span-2 p-12 rounded-none group min-h-[350px] flex flex-col md:flex-row items-center overflow-hidden border-black/5 dark:border-white/10 transition-all duration-700 cursor-default bg-black/5 dark:bg-neutral-900/30 hover:-translate-y-2">
                             <div class="card-corner-glow"></div>
                             <div class="w-full md:w-1/2 relative z-10 flex flex-col h-full justify-center">
                                 <span class="text-xs font-mono text-red-500 mb-2 uppercase tracking-widest"
                                     data-i18n="stat-capacity-tag">Global
                                     Capacity</span>
                                 <div
-                                    class="text-[5rem] sm:text-[7rem] md:text-[9rem] font-bold font-oswald tracking-tighter text-white leading-none mb-4 drop-shadow-sm group-hover:text-white transition-colors">
+                                    class="text-[5rem] sm:text-[7rem] md:text-[9rem] font-bold font-oswald tracking-tighter text-neutral-900 dark:text-white leading-none mb-4 drop-shadow-sm group-hover:text-red-500 transition-colors">
                                     <span class="count-up" data-target="9000">0</span><span
                                         class="text-red-500 font-light">+</span>
                                 </div>
-                                <h3 class="text-xl font-bold uppercase tracking-widest text-white/80"
+                                <h3 class="text-xl font-bold uppercase tracking-widest text-neutral-800 dark:text-white/80"
                                     data-i18n="stat-tons">Annual Tons</h3>
-                                <p class="text-white/40 text-xs mt-3 font-light leading-relaxed max-w-xs"
+                                <p class="text-neutral-500 dark:text-white/40 text-xs mt-3 font-light leading-relaxed max-w-xs"
                                     data-i18n="stat-tons-d">Massive global supply capacity ensures zero downtime for
                                     partner projects.</p>
                             </div>
@@ -652,17 +661,17 @@
 
                         <!-- Stat 2: Customers -->
                         <div
-                            class="glass-card-dark p-10 rounded-none group min-h-[250px] cursor-default bg-neutral-900/30 overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                            class="glass-card p-10 rounded-none group min-h-[250px] cursor-default bg-black/5 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
                             <div class="card-corner-glow"></div>
                             <div class="card-content flex flex-col h-full justify-between relative z-10">
                                 <div
-                                    class="text-[4rem] md:text-[5rem] font-bold font-oswald tracking-tighter text-white mb-6 leading-none drop-shadow-sm group-hover:text-red-500 transition-colors">
+                                    class="text-[4rem] md:text-[5rem] font-bold font-oswald tracking-tighter text-neutral-900 dark:text-white mb-6 leading-none drop-shadow-sm group-hover:text-red-500 transition-colors">
                                     <span class="count-up" data-target="280">0</span><span class="font-light">+</span>
                                 </div>
                                 <div>
-                                    <h3 class="text-sm font-bold uppercase tracking-widest text-white/90 mb-2"
+                                    <h3 class="text-sm font-bold uppercase tracking-widest text-neutral-800 dark:text-white/90 mb-2"
                                         data-i18n="stat-customers-t">Customers</h3>
-                                    <p class="text-white/40 text-xs leading-relaxed font-light"
+                                    <p class="text-neutral-500 dark:text-white/40 text-xs leading-relaxed font-light"
                                         data-i18n="stat-customers-d">Pioneer Metal serves 280+ customers all over the
                                         world with uncompromising quality.</p>
                                 </div>
@@ -671,17 +680,17 @@
 
                         <!-- Stat 3: Countries -->
                         <div
-                            class="glass-card-dark p-10 rounded-none group min-h-[250px] cursor-default bg-neutral-900/30 overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                            class="glass-card p-10 rounded-none group min-h-[250px] cursor-default bg-black/5 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
                             <div class="card-corner-glow"></div>
                             <div class="card-content flex flex-col h-full justify-between relative z-10">
                                 <div
-                                    class="text-[4rem] md:text-[5rem] font-bold font-oswald tracking-tighter text-white mb-6 leading-none drop-shadow-sm group-hover:text-red-500 transition-colors">
+                                    class="text-[4rem] md:text-[5rem] font-bold font-oswald tracking-tighter text-neutral-900 dark:text-white mb-6 leading-none drop-shadow-sm group-hover:text-red-500 transition-colors">
                                     <span class="count-up" data-target="30">0</span><span class="font-light">+</span>
                                 </div>
                                 <div>
-                                    <h3 class="text-sm font-bold uppercase tracking-widest text-white/90 mb-2"
+                                    <h3 class="text-sm font-bold uppercase tracking-widest text-neutral-800 dark:text-white/90 mb-2"
                                         data-i18n="stat-countries-t">Countries</h3>
-                                    <p class="text-white/40 text-xs leading-relaxed font-light"
+                                    <p class="text-neutral-500 dark:text-white/40 text-xs leading-relaxed font-light"
                                         data-i18n="stat-countries-d">Travelled to 30+ countries, successfully exporting
                                         to 24+ nations globally.</p>
                                 </div>
@@ -700,7 +709,7 @@
                 <div class="aspect-square relative overflow-hidden group">
                     <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Products_01.jpg"
                         alt="Product"
-                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-50 group-hover:brightness-90 grayscale">
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-90 dark:brightness-50 group-hover:brightness-100 dark:group-hover:brightness-90 group-hover:grayscale-0 dark:grayscale">
                     <div
                         class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-red-900/40 backdrop-blur-sm">
                         <span
@@ -712,7 +721,7 @@
                 <div class="aspect-square relative overflow-hidden group">
                     <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Products_02.jpg"
                         alt="Product"
-                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-50 group-hover:brightness-90 grayscale">
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-90 dark:brightness-50 group-hover:brightness-100 dark:group-hover:brightness-90 group-hover:grayscale-0 dark:grayscale">
                     <div
                         class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-red-900/40 backdrop-blur-sm">
                         <span
@@ -724,7 +733,7 @@
                 <div class="aspect-square relative overflow-hidden group">
                     <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Products_03.jpg"
                         alt="Product"
-                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-50 group-hover:brightness-90 grayscale">
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-90 dark:brightness-50 group-hover:brightness-100 dark:group-hover:brightness-90 group-hover:grayscale-0 dark:grayscale">
                     <div
                         class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-red-900/40 backdrop-blur-sm">
                         <span
@@ -734,16 +743,16 @@
                     </div>
                 </div>
                 <div
-                    class="aspect-square relative overflow-hidden group flex items-center justify-center bg-zinc-900 hover:bg-red-900 transition-colors duration-500 cursor-pointer p-10 text-center">
+                    class="aspect-square relative overflow-hidden group flex items-center justify-center bg-neutral-100 dark:bg-zinc-900 hover:bg-neutral-200 dark:hover:bg-red-900 transition-colors duration-500 cursor-pointer p-10 text-center">
                     <div class="flex flex-col items-center gap-4">
                         <span
-                            class="text-xs font-bold text-white/50 uppercase tracking-[0.3em] group-hover:text-red-200"
+                            class="text-xs font-bold text-neutral-500 dark:text-white/50 uppercase tracking-[0.3em] group-hover:text-red-600 dark:group-hover:text-red-200"
                             data-i18n="catalog">Catalog</span>
-                        <h3 class="text-3xl font-oswald font-black uppercase text-white tracking-tighter"
+                        <h3 class="text-3xl font-oswald font-black uppercase text-neutral-900 dark:text-white tracking-tighter"
                             data-i18n="btn-all-products">View
                             All<br>Products</h3>
                         <div
-                            class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white mt-4 group-hover:border-white transition-colors">
+                            class="w-10 h-10 rounded-full border border-black/10 dark:border-white/20 flex items-center justify-center text-neutral-900 dark:text-white mt-4 group-hover:border-black dark:group-hover:border-white transition-colors">
                             <i class="fa-solid fa-arrow-right"></i>
                         </div>
                     </div>
@@ -753,7 +762,8 @@
         </section>
 
         <!-- Footer -->
-        <footer class="bg-black text-white/40 py-16 border-t border-white/10 relative z-30">
+        <footer
+            class="bg-neutral-100 dark:bg-black text-neutral-500 dark:text-white/40 py-16 border-t border-black/10 dark:border-white/10 relative z-30">
             <div class="max-w-full mx-auto px-6 md:px-12 relative z-10 w-full">
                 <div class="flex flex-col md:flex-row justify-between items-center md:items-end gap-10">
                     <!-- Left Side: Copyright & Socials -->
@@ -767,7 +777,8 @@
                         <!-- Text Group -->
                         <div
                             class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed text-white/30">
-                            <div data-i18n="footer-company" class="text-white/50">&copy; 2025 PIONEER METAL PRODUCTS
+                            <div data-i18n="footer-company" class="text-neutral-500 dark:text-white/50">&copy; 2025
+                                PIONEER METAL PRODUCTS
                                 FACTORY.</div>
                             <div data-i18n="footer-rights" class="mt-2">All Rights Reserved</div>
                         </div>
