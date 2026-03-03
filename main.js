@@ -36,7 +36,7 @@ const i18nData = {
         "about-tag": "About Pioneer Metal", "about-header": "Our Story",
         "about-subheader": "Forging the future of construction with unyielding strength and precision.",
         "about-intro": "Pioneer Metal Product Factory is a leading supplier of high-quality metal sections, serving a wide range of industries across the China. With years of expertise, we specialize in manufacturing reinforcement steel of uPvc window and door, offering Drywall Steel Sections and others.",
-        "bg-promise": "PROMISE",
+        "bg-pioneer": "PIONEER",
         "about-quote": "\"Precision is not just a standard,<br><span class='font-bold text-red-500'>it's our promise.</span>\"",
         "about-core-value": "Pioneer Metal Core Value",
         "story-t": "Manufacturing<br><span class='text-white/70'>Power</span>",
