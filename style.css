@@ -336,12 +336,22 @@ body {
     color: #fff;
 }
 
-.input-field:focus {
-    border-color: #DB2015;
+.input-field:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #DB2015 !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
-.dark .input-field:focus {
-    border-color: #DB2015;
+.dark .input-field:focus,
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+    border-color: #DB2015 !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .input-container {
