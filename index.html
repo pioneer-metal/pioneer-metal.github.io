@@ -59,6 +59,39 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
+    <script>
+        function changeLanguage(lang, flagCode) {
+            localStorage.setItem('preferred-lang', lang);
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+            // Update flag
+            const flagSpan = document.querySelector('#currentFlag span');
+
+            if (flagSpan) {
+                flagSpan.className = `fi fi-$ {
+                    flagCode
+                }
+
+                rounded-sm`;
+            }
+
+            // Update main label
+            const labelSpan = document.getElementById('currentLangLabel');
+
+            if (labelSpan) {
+                labelSpan.innerText = lang.toUpperCase();
+            }
+
+            // Additional custom JS reload functionality if needed
+            if (typeof window.applyTranslations === 'function') {
+                window.applyTranslations(lang);
+            }
+
+            toggleLangDropdown(new Event('click'));
+        }
+
+    </script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -76,6 +109,73 @@
 </head>
 
 <body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-red-900 selection:text-red-200 font-normal">
+    <!-- Gradient Blur from SpartanRef -->
+    <div class="gradient-blur pointer-events-none fixed z-[90] inset-x-0 top-0 h-[15%]">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <style>
+        .gradient-blur>div,
+        .gradient-blur::before,
+        .gradient-blur::after {
+            position: absolute;
+            inset: 0;
+        }
+
+        .gradient-blur::before {
+            content: "";
+            z-index: 1;
+            backdrop-filter: blur(0.5px);
+            mask: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 37.5%);
+        }
+
+        .gradient-blur>div:nth-of-type(1) {
+            z-index: 2;
+            backdrop-filter: blur(1px);
+            mask: linear-gradient(to top, rgba(0, 0, 0, 0) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 0) 50%);
+        }
+
+        .gradient-blur>div:nth-of-type(2) {
+            z-index: 3;
+            backdrop-filter: blur(2px);
+            mask: linear-gradient(to top, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 62.5%);
+        }
+
+        .gradient-blur>div:nth-of-type(3) {
+            z-index: 4;
+            backdrop-filter: blur(4px);
+            mask: linear-gradient(to top, rgba(0, 0, 0, 0) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 0) 75%);
+        }
+
+        .gradient-blur>div:nth-of-type(4) {
+            z-index: 5;
+            backdrop-filter: blur(8px);
+            mask: linear-gradient(to top, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 87.5%);
+        }
+
+        .gradient-blur>div:nth-of-type(5) {
+            z-index: 6;
+            backdrop-filter: blur(16px);
+            mask: linear-gradient(to top, rgba(0, 0, 0, 0) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .gradient-blur>div:nth-of-type(6) {
+            z-index: 7;
+            backdrop-filter: blur(32px);
+            mask: linear-gradient(to top, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 1) 100%);
+        }
+
+        .gradient-blur::after {
+            content: "";
+            z-index: 8;
+            backdrop-filter: blur(64px);
+            mask: linear-gradient(to top, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 1) 100%);
+        }
+    </style>
 
     <!-- Main Container -->
     <div class="max-w-[1600px] mx-auto shadow-2xl min-h-screen overflow-hidden relative bg-neutral-950">
@@ -137,25 +237,25 @@
                         <div id="langDropdown"
                             class="lang-dropdown overflow-hidden absolute right-0 mt-4 bg-neutral-900 border border-white/10 shadow-2xl rounded-2xl hidden w-48 pointer-events-auto z-[200]">
                             <div class="py-2 max-h-[400px] overflow-y-auto custom-scrollbar">
-                                <button onclick="changeLanguage('en')"
+                                <button onclick="changeLanguage('en', 'us')"
                                     class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>ENGLISH</span></button>
-                                <button onclick="changeLanguage('es')"
+                                <button onclick="changeLanguage('es', 'es')"
                                     class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>ESPAÑOL</span></button>
-                                <button onclick="changeLanguage('pt')"
+                                <button onclick="changeLanguage('pt', 'pt')"
                                     class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>PORTUGUÊS</span></button>
-                                <button onclick="changeLanguage('ru')"
+                                <button onclick="changeLanguage('ru', 'ru')"
                                     class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>РУССКИЙ</span></button>
-                                <button onclick="changeLanguage('ja')"
+                                <button onclick="changeLanguage('ja', 'jp')"
                                     class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>日本語</span></button>
-                                <button onclick="changeLanguage('ko')"
+                                <button onclick="changeLanguage('ko', 'kr')"
                                     class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>한국어</span></button>
-                                <button onclick="changeLanguage('ar')"
+                                <button onclick="changeLanguage('ar', 'sa')"
                                     class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>العربية</span></button>
-                                <button onclick="changeLanguage('fr')"
+                                <button onclick="changeLanguage('fr', 'fr')"
                                     class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>FRANÇAIS</span></button>
-                                <button onclick="changeLanguage('sq')"
+                                <button onclick="changeLanguage('sq', 'al')"
                                     class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>SHQIP</span></button>
-                                <button onclick="changeLanguage('sr')"
+                                <button onclick="changeLanguage('sr', 'rs')"
                                     class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>SRPSKI</span></button>
                             </div>
                         </div>
@@ -215,6 +315,18 @@
 
         <!-- Hero Section (SpartanRef Style) -->
         <header class="md:h-[900px] overflow-hidden group w-full h-[90vh] relative bg-neutral-900">
+            <div class="carousel-slide hidden"
+                style="background-image: url('https://pioneer-metal.com/en/inc/uploads/2023/10/a5dc62eab89ba763.jpg');">
+                <div class="slide-overlay absolute inset-0 bg-black/40"></div>
+            </div>
+            <div class="carousel-slide hidden"
+                style="background-image: url('https://pioneer-metal.com/en/inc/uploads/2023/10/4b3c75e2f7b88aa0.jpg');">
+                <div class="slide-overlay absolute inset-0 bg-black/40"></div>
+            </div>
+            <div class="carousel-slide hidden"
+                style="background-image: url('https://pioneer-metal.com/en/inc/uploads/2023/10/2c89f5c4db1f4769.jpg');">
+                <div class="slide-overlay absolute inset-0 bg-black/40"></div>
+            </div>
             <!-- Background Image -->
             <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_01.jpg"
                 alt="Pioneer Metal Factory Background"
@@ -255,14 +367,14 @@
                 </div>
             </div>
 
-            <div class="absolute inset-x-0 bottom-10 z-[30] flex justify-center space-x-3">
-                <div class="dot active w-3 h-3 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
+            <div class="absolute inset-x-0 bottom-10 z-[30] flex justify-center space-x-2">
+                <div class="dot active w-2 h-2 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
                     onclick="goToSlide(0)"></div>
-                <div class="dot w-3 h-3 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
+                <div class="dot w-2 h-2 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
                     onclick="goToSlide(1)"></div>
-                <div class="dot w-3 h-3 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
+                <div class="dot w-2 h-2 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
                     onclick="goToSlide(2)"></div>
-                <div class="dot w-3 h-3 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
+                <div class="dot w-2 h-2 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
                     onclick="goToSlide(3)"></div>
             </div>
         </header>
@@ -327,8 +439,6 @@
 
         <!-- 01: Business Cooperation (Featured Style) -->
         <section class="md:px-12 text-white bg-neutral-950 pt-24 pb-24 px-6 relative z-10">
-            <!-- Red Separator -->
-            <div class="w-full h-1 bg-red-600 absolute top-0 left-0"></div>
 
             <div class="max-w-[1600px] mx-auto">
                 <div
@@ -366,7 +476,7 @@
 
                     <!-- Card 1 -->
                     <div
-                        class="glass-card-dark p-10 flex flex-col justify-between rounded-none group min-h-[360px] cursor-pointer hover:bg-neutral-900/80 transition-all duration-700 hover:-translate-y-4">
+                        class="glass-card-dark p-10 flex flex-col justify-between rounded-none group min-h-[360px] cursor-pointer bg-neutral-900/30 overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 hover:-translate-y-2">
                         <div class="card-corner-glow"></div>
                         <div class="card-content flex flex-col h-full relative z-10">
                             <div
@@ -388,7 +498,7 @@
 
                     <!-- Card 2 -->
                     <div
-                        class="glass-card-dark p-10 flex flex-col justify-between rounded-none group min-h-[360px] cursor-pointer bg-red-950/20 border-red-900/30 hover:bg-red-900/20 transition-all duration-700 shadow-[0_0_30px_rgba(219,32,21,0.05)] hover:-translate-y-4 hover:shadow-[0_20px_40px_rgba(219,32,21,0.15)]">
+                        class="glass-card-dark p-10 flex flex-col justify-between rounded-none group min-h-[360px] cursor-pointer bg-red-950/20 overflow-hidden border-red-900/30 hover:border-red-500/30 transition-all duration-700 shadow-[0_0_30px_rgba(219,32,21,0.05)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(219,32,21,0.15)]">
                         <div class="card-corner-glow"></div>
                         <div class="card-content flex flex-col h-full relative z-10">
                             <div
@@ -411,7 +521,7 @@
 
                     <!-- Card 3 -->
                     <div
-                        class="glass-card-dark p-10 flex flex-col justify-between rounded-none group min-h-[360px] cursor-pointer hover:bg-neutral-900/80 transition-all duration-700 hover:-translate-y-4">
+                        class="glass-card-dark p-10 flex flex-col justify-between rounded-none group min-h-[360px] cursor-pointer bg-neutral-900/30 overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 hover:-translate-y-2">
                         <div class="card-corner-glow"></div>
                         <div class="card-content flex flex-col h-full relative z-10">
                             <div
@@ -438,6 +548,11 @@
         <section class="md:px-12 text-white bg-[#0a0a0a] pt-24 pb-32 px-6 relative z-10 border-t border-white/5">
             <!-- Red Separator -->
             <div class="w-full h-1 bg-red-600 absolute top-0 left-0 opacity-50"></div>
+
+            <!-- Red Banner Spartan Style -->
+            <div
+                class="w-full max-w-[1600px] h-3 bg-gradient-to-r from-red-600 via-red-800 to-black mx-auto block mb-12">
+            </div>
 
             <div class="max-w-[1600px] mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 fade-in-group">
@@ -509,9 +624,9 @@
 
                         <!-- Stat 2: Customers -->
                         <div
-                            class="glass-card-dark p-10 rounded-none group min-h-[250px] border-white/5 hover:bg-neutral-900/50 transition-colors bg-neutral-900/30">
+                            class="glass-card-dark p-10 rounded-none group min-h-[250px] cursor-default bg-neutral-900/30 overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 hover:-translate-y-2">
                             <div class="card-corner-glow"></div>
-                            <div class="card-content flex flex-col h-full justify-between">
+                            <div class="card-content flex flex-col h-full justify-between relative z-10">
                                 <div
                                     class="text-[4rem] md:text-[5rem] font-bold font-oswald tracking-tighter text-white mb-6 leading-none drop-shadow-sm group-hover:text-red-500 transition-colors">
                                     <span class="count-up" data-target="280">0</span><span class="font-light">+</span>
@@ -528,9 +643,9 @@
 
                         <!-- Stat 3: Countries -->
                         <div
-                            class="glass-card-dark p-10 rounded-none group min-h-[250px] border-white/5 hover:bg-neutral-900/50 transition-colors bg-neutral-900/30">
+                            class="glass-card-dark p-10 rounded-none group min-h-[250px] cursor-default bg-neutral-900/30 overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 hover:-translate-y-2">
                             <div class="card-corner-glow"></div>
-                            <div class="card-content flex flex-col h-full justify-between">
+                            <div class="card-content flex flex-col h-full justify-between relative z-10">
                                 <div
                                     class="text-[4rem] md:text-[5rem] font-bold font-oswald tracking-tighter text-white mb-6 leading-none drop-shadow-sm group-hover:text-red-500 transition-colors">
                                     <span class="count-up" data-target="30">0</span><span class="font-light">+</span>
