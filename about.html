@@ -22,11 +22,19 @@
                 document.documentElement.lang = lang;
                 document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
                 document.documentElement.classList.add('i18n-loading');
+
+                var theme = localStorage.getItem('theme');
+                if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
             })();
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -75,7 +83,7 @@
     </style>
 </head>
 
-<body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-red-900 selection:text-red-200 font-normal">
+<body class="bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 antialiased selection:bg-red-900 selection:text-red-200 font-normal">
     <!-- Gradient Blur from SpartanRef -->
     <div class="gradient-blur pointer-events-none fixed z-[90] inset-x-0 top-0 h-[15%]">
         <div></div>
@@ -145,11 +153,11 @@
     </style>
 
     <!-- Main Container -->
-    <div class="max-w-full mx-auto shadow-2xl min-h-screen overflow-hidden relative bg-neutral-950">
+    <div class="max-w-full mx-auto shadow-2xl min-h-screen overflow-hidden relative bg-white dark:bg-neutral-950">
 
         <!-- Raycast Style Navigation Bar -->
         <nav
-            class="fixed top-6 inset-x-0 mx-auto z-[100] w-[95%] max-w-[1200px] bg-neutral-900/80 backdrop-blur-xl border border-white/10 rounded-[20px] px-6 py-3 flex md:grid md:grid-cols-3 items-center justify-between shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] fade-in-up">
+            class="fixed top-6 inset-x-0 mx-auto z-[100] w-[95%] max-w-[1200px] bg-white/80 dark:bg-white dark:bg-neutral-900/80 backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-[20px] px-6 py-3 flex md:grid md:grid-cols-3 items-center justify-between shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] fade-in-up">
 
             <!-- Left: Logo & Brand -->
             <div class="flex items-center">
@@ -162,16 +170,16 @@
             <!-- Center: Navigation Links (Desktop) -->
             <div class="hidden md:flex items-center justify-center space-x-1 lg:space-x-3">
                 <a href="index.html"
-                    class="text-[13px] font-medium text-white/60 hover:text-white px-4 py-2 hover:bg-white/5 rounded-xl transition-colors"
+                    class="text-[13px] font-medium text-neutral-600 dark:text-white/60 hover:text-neutral-900 dark:text-white px-4 py-2 hover:bg-black/5 dark:bg-white/5 rounded-xl transition-colors"
                     data-i18n="nav-home">Home</a>
                 <a href="about.html"
-                    class="text-[13px] font-semibold text-white px-4 py-2 bg-white/10 rounded-xl transition-colors"
+                    class="text-[13px] font-semibold text-neutral-900 dark:text-white px-4 py-2 bg-black/5 dark:bg-white/10 rounded-xl transition-colors"
                     data-i18n="nav-about">About</a>
                 <a href="products.html"
-                    class="text-[13px] font-medium text-white/60 hover:text-white px-4 py-2 hover:bg-white/5 rounded-xl transition-colors"
+                    class="text-[13px] font-medium text-neutral-600 dark:text-white/60 hover:text-neutral-900 dark:text-white px-4 py-2 hover:bg-black/5 dark:bg-white/5 rounded-xl transition-colors"
                     data-i18n="nav-products">Products</a>
                 <a href="news.html"
-                    class="text-[13px] font-medium text-white/60 hover:text-white px-4 py-2 hover:bg-white/5 rounded-xl transition-colors"
+                    class="text-[13px] font-medium text-neutral-600 dark:text-white/60 hover:text-neutral-900 dark:text-white px-4 py-2 hover:bg-black/5 dark:bg-white/5 rounded-xl transition-colors"
                     data-i18n="nav-news">News</a>
             </div>
 
@@ -180,71 +188,78 @@
                 <!-- Language Selector (Left of Contact) -->
                 <div class="relative hidden sm:block">
                     <button onclick="toggleLangDropdown(event)" aria-label="Select Language"
-                        class="hover:bg-white/10 transition-all flex items-center justify-center gap-2 group text-white/80 hover:text-white bg-transparent rounded-xl px-3 py-2.5 border border-transparent hover:border-white/10">
+                        class="hover:bg-black/5 dark:bg-white/10 transition-all flex items-center justify-center gap-2 group text-neutral-700 dark:text-white/80 hover:text-neutral-900 dark:text-white bg-transparent rounded-xl px-3 py-2.5 border border-transparent hover:border-black/10 dark:border-white/10">
                         <div id="currentFlag" class="flex items-center">
                             <span class="fi fi-us rounded-sm shadow-sm transition-opacity duration-300"></span>
                         </div>
                         <span class="text-xs font-semibold uppercase tracking-wider" id="currentLangLabel">EN</span>
-                        <i class="fa-solid fa-chevron-down text-[9px] text-white/50 group-hover:text-white/80 transition-colors"
+                        <i class="fa-solid fa-chevron-down text-[9px] text-neutral-500 dark:text-white/50 group-hover:text-neutral-700 dark:text-white/80 transition-colors"
                             id="langChevron"></i>
                     </button>
                     <!-- specific langDropdown to remain consistent -->
                     <div id="langDropdown"
-                        class="lang-dropdown overflow-hidden absolute right-0 mt-4 bg-neutral-900 border border-white/10 shadow-2xl rounded-2xl hidden w-48 pointer-events-auto z-[200]">
+                        class="lang-dropdown overflow-hidden absolute right-0 mt-4 bg-white dark:bg-neutral-900 border border-black/10 dark:border-white/10 shadow-2xl rounded-2xl hidden w-48 pointer-events-auto z-[200]">
                         <div class="py-2 max-h-[400px] overflow-y-auto custom-scrollbar">
                             <button onclick="changeLanguage('en', 'us')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-neutral-900 dark:text-white transition-colors">
                                 <span class="fi fi-us rounded-sm"></span>
                                 <span>ENGLISH</span>
                             </button>
                             <button onclick="changeLanguage('es', 'es')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-neutral-900 dark:text-white transition-colors">
                                 <span class="fi fi-es rounded-sm"></span>
                                 <span>ESPAÑOL</span>
                             </button>
                             <button onclick="changeLanguage('pt', 'pt')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-neutral-900 dark:text-white transition-colors">
                                 <span class="fi fi-pt rounded-sm"></span>
                                 <span>PORTUGUÊS</span>
                             </button>
                             <button onclick="changeLanguage('ru', 'ru')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-neutral-900 dark:text-white transition-colors">
                                 <span class="fi fi-ru rounded-sm"></span>
                                 <span>РУССКИЙ</span>
                             </button>
                             <button onclick="changeLanguage('ja', 'jp')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-neutral-900 dark:text-white transition-colors">
                                 <span class="fi fi-jp rounded-sm"></span>
                                 <span>日本語</span>
                             </button>
                             <button onclick="changeLanguage('ko', 'kr')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-neutral-900 dark:text-white transition-colors">
                                 <span class="fi fi-kr rounded-sm"></span>
                                 <span>한국어</span>
                             </button>
                             <button onclick="changeLanguage('ar', 'sa')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-neutral-900 dark:text-white transition-colors">
                                 <span class="fi fi-sa rounded-sm"></span>
                                 <span>العربية</span>
                             </button>
                             <button onclick="changeLanguage('fr', 'fr')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-neutral-900 dark:text-white transition-colors">
                                 <span class="fi fi-fr rounded-sm"></span>
                                 <span>FRANÇAIS</span>
                             </button>
                             <button onclick="changeLanguage('sq', 'al')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-neutral-900 dark:text-white transition-colors">
                                 <span class="fi fi-al rounded-sm"></span>
                                 <span>SHQIP</span>
                             </button>
                             <button onclick="changeLanguage('sr', 'rs')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-neutral-900 dark:text-white transition-colors">
                                 <span class="fi fi-rs rounded-sm"></span>
                                 <span>SRPSKI</span>
                             </button>
                         </div>
                     </div>
                 </div>
+
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" aria-label="Toggle Theme"
+                    class="hidden sm:flex w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 items-center justify-center text-neutral-900 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                    <i class="fas fa-sun dark:hidden"></i>
+                    <i class="fas fa-moon hidden dark:block"></i>
+                </button>
 
                 <!-- Contact Button (Raycast style Download) -->
                 <a href="contact.html"
@@ -256,7 +271,7 @@
 
                 <!-- Mobile Menu Button -->
                 <button
-                    class="md:hidden w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+                    class="md:hidden w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center text-neutral-900 dark:text-white hover:bg-black/5 dark:bg-white/10 transition-colors"
                     onclick="toggleMobileMenu()">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -265,49 +280,49 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu"
-            class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-neutral-950/95 backdrop-blur-xl z-[90] p-6 flex-col justify-center space-y-8 pointer-events-auto">
+            class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-white dark:bg-neutral-950/95 backdrop-blur-xl z-[90] p-6 flex-col justify-center space-y-8 pointer-events-auto">
             <button onclick="toggleMobileMenu()"
-                class="absolute top-10 right-8 text-white/50 hover:text-white text-3xl">
+                class="absolute top-10 right-8 text-neutral-500 dark:text-white/50 hover:text-neutral-900 dark:text-white text-3xl">
                 <i class="fas fa-times"></i>
             </button>
             <div class="flex flex-col items-center gap-6 text-2xl font-oswald font-bold tracking-widest uppercase">
-                <a href="index.html" class="text-white hover:text-red-400 transition-colors"
+                <a href="index.html" class="text-neutral-900 dark:text-white hover:text-red-400 transition-colors"
                     data-i18n="nav-home">Home</a>
                 <a href="about.html" class="text-red-500 hover:text-red-400 transition-colors"
                     data-i18n="nav-about">About</a>
-                <a href="products.html" class="text-white hover:text-red-400 transition-colors"
+                <a href="products.html" class="text-neutral-900 dark:text-white hover:text-red-400 transition-colors"
                     data-i18n="nav-products">Products</a>
-                <a href="news.html" class="text-white hover:text-red-400 transition-colors"
+                <a href="news.html" class="text-neutral-900 dark:text-white hover:text-red-400 transition-colors"
                     data-i18n="nav-news">News</a>
-                <a href="contact.html" class="text-white hover:text-red-400 transition-colors"
+                <a href="contact.html" class="text-neutral-900 dark:text-white hover:text-red-400 transition-colors"
                     data-i18n="nav-contact">Contact</a>
             </div>
 
-            <div class="pt-10 border-t border-white/10 mt-10 w-full max-w-sm mx-auto">
-                <p class="text-xs font-bold text-white/40 mb-4 uppercase tracking-widest text-center">Select Language
+            <div class="pt-10 border-t border-black/10 dark:border-white/10 mt-10 w-full max-w-sm mx-auto">
+                <p class="text-xs font-bold text-neutral-500 dark:text-white/40 mb-4 uppercase tracking-widest text-center">Select Language
                 </p>
                 <div class="flex flex-wrap justify-center gap-3">
                     <button onclick="changeLanguage('en')"
-                        class="px-4 py-2 bg-white/5 rounded-full text-xs font-bold text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-white/10">EN</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-neutral-900 dark:text-white transition-colors border border-black/10 dark:border-white/10">EN</button>
                     <button onclick="changeLanguage('es')"
-                        class="px-4 py-2 bg-white/5 rounded-full text-xs font-bold text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-white/10">ES</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-neutral-900 dark:text-white transition-colors border border-black/10 dark:border-white/10">ES</button>
                     <button onclick="changeLanguage('pt')"
-                        class="px-4 py-2 bg-white/5 rounded-full text-xs font-bold text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-white/10">PT</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-neutral-900 dark:text-white transition-colors border border-black/10 dark:border-white/10">PT</button>
                     <button onclick="changeLanguage('ru')"
-                        class="px-4 py-2 bg-white/5 rounded-full text-xs font-bold text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-white/10">RU</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-neutral-900 dark:text-white transition-colors border border-black/10 dark:border-white/10">RU</button>
                     <button onclick="changeLanguage('ja')"
-                        class="px-4 py-2 bg-white/5 rounded-full text-xs font-bold text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-white/10">JA</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-neutral-900 dark:text-white transition-colors border border-black/10 dark:border-white/10">JA</button>
                     <button onclick="changeLanguage('ar')"
-                        class="px-4 py-2 bg-white/5 rounded-full text-xs font-bold text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-white/10">AR</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-neutral-900 dark:text-white transition-colors border border-black/10 dark:border-white/10">AR</button>
                     <button onclick="changeLanguage('fr')"
-                        class="px-4 py-2 bg-white/5 rounded-full text-xs font-bold text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-white/10">FR</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-neutral-900 dark:text-white transition-colors border border-black/10 dark:border-white/10">FR</button>
                 </div>
             </div>
         </div>
 
         <!-- Hero Section (SpartanRef Style) -->
         <header
-            class="min-h-screen overflow-hidden group w-full relative bg-neutral-900 border-b border-white/10 flex flex-col justify-center">
+            class="min-h-screen overflow-hidden group w-full relative bg-white dark:bg-neutral-900 border-b border-black/10 dark:border-white/10 flex flex-col justify-center">
             <!-- Carousel Slides -->
             <div class="carousel-slide opacity-100 pointer-events-auto absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/AboutUs_01.jpg'); filter: brightness(0.6) contrast(1.1);">
@@ -329,20 +344,20 @@
 
             <!-- Hero Content -->
             <div class="flex flex-col text-center absolute inset-0 items-center justify-center z-10 pt-20">
-                <h1 class="text-[12vw] leading-[0.8] md:text-8xl font-black text-white tracking-tighter mix-blend-overlay font-oswald text-outline fade-in-up drop-shadow-2xl uppercase relative z-10"
+                <h1 class="text-[12vw] leading-[0.8] md:text-8xl font-black text-neutral-900 dark:text-white tracking-tighter mix-blend-overlay font-oswald text-outline fade-in-up drop-shadow-2xl uppercase relative z-10"
                     data-i18n="about-header">Our Story</h1>
-                <p class="text-white/90 text-sm md:text-xl font-light max-w-2xl mt-8 px-6 leading-relaxed fade-in-up delay-100 tracking-wide relative z-10"
+                <p class="text-neutral-800 dark:text-white/90 text-sm md:text-xl font-light max-w-2xl mt-8 px-6 leading-relaxed fade-in-up delay-100 tracking-wide relative z-10"
                     data-i18n="about-subheader">Forging the future of construction with unyielding strength and
                     precision.</p>
             </div>
 
             <!-- Custom Navigation Arrows -->
             <button onclick="plusSlides(-1)"
-                class="absolute left-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 border border-white/20 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all backdrop-blur-md z-20 hover:scale-105">
+                class="absolute left-6 top-1/2 -translate-y-1/2 bg-black/5 dark:bg-white/10 hover:bg-white/20 border border-black/20 dark:border-white/20 text-neutral-900 dark:text-white w-12 h-12 rounded-full flex items-center justify-center transition-all backdrop-blur-md z-20 hover:scale-105">
                 <i class="fa-solid fa-chevron-left text-sm"></i>
             </button>
             <button onclick="plusSlides(1)"
-                class="absolute right-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 border border-white/20 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all backdrop-blur-md z-20 hover:scale-105">
+                class="absolute right-6 top-1/2 -translate-y-1/2 bg-black/5 dark:bg-white/10 hover:bg-white/20 border border-black/20 dark:border-white/20 text-neutral-900 dark:text-white w-12 h-12 rounded-full flex items-center justify-center transition-all backdrop-blur-md z-20 hover:scale-105">
                 <i class="fa-solid fa-chevron-right text-sm"></i>
             </button>
 
@@ -350,35 +365,35 @@
             <div class="absolute inset-x-0 bottom-10 z-[30] flex justify-center space-x-2">
                 <div class="dot active w-1.5 h-1.5 bg-white rounded-full cursor-pointer transition-colors"
                     onclick="currentSlide(1)"></div>
-                <div class="dot w-1.5 h-1.5 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
+                <div class="dot w-1.5 h-1.5 bg-black/5 dark:bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
                     onclick="currentSlide(2)"></div>
-                <div class="dot w-1.5 h-1.5 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
+                <div class="dot w-1.5 h-1.5 bg-black/5 dark:bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
                     onclick="currentSlide(3)"></div>
-                <div class="dot w-1.5 h-1.5 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
+                <div class="dot w-1.5 h-1.5 bg-black/5 dark:bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
                     onclick="currentSlide(4)"></div>
             </div>
         </header>
 
         <!-- Refined Quote Section with Massive Text Background -->
         <section
-            class="py-32 md:py-48 bg-neutral-950 fade-in-section relative overflow-hidden flex items-center justify-center min-h-[60vh] z-30 border-b border-white/10">
+            class="py-32 md:py-48 bg-white dark:bg-neutral-950 fade-in-section relative overflow-hidden flex items-center justify-center min-h-[60vh] z-30 border-b border-black/10 dark:border-white/10">
             <!-- Massive Background Text -->
             <div
                 class="absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden mix-blend-overlay opacity-10 pointer-events-none select-none z-0">
                 <span
-                    class="text-[15rem] md:text-[35rem] font-black uppercase tracking-tighter text-white whitespace-nowrap leading-none font-oswald transform scale-x-[0.3] inline-block"
+                    class="text-[15rem] md:text-[35rem] font-black uppercase tracking-tighter text-neutral-900 dark:text-white whitespace-nowrap leading-none font-oswald transform scale-x-[0.3] inline-block"
                     data-i18n="bg-pioneer">PIONEER</span>
             </div>
 
             <div class="max-w-5xl mx-auto px-4 text-center relative z-10 px-8">
                 <i class="fa-solid fa-quote-left text-4xl md:text-6xl text-red-600 mx-auto mb-10 opacity-80"></i>
-                <p class="text-4xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter uppercase font-oswald drop-shadow-2xl"
+                <p class="text-4xl md:text-7xl font-black text-neutral-900 dark:text-white leading-[0.9] tracking-tighter uppercase font-oswald drop-shadow-2xl"
                     data-i18n="about-quote">
                     "Precision is not just a standard,<br><span class="text-red-500">it's our promise.</span>"
                 </p>
                 <div class="mt-12 flex items-center justify-center gap-4">
                     <div class="w-12 h-px bg-red-600"></div>
-                    <span class="font-bold text-xs tracking-widest uppercase text-white/50"
+                    <span class="font-bold text-xs tracking-widest uppercase text-neutral-500 dark:text-white/50"
                         data-i18n="about-core-value">Pioneer Metal Core
                         Value</span>
                     <div class="w-12 h-px bg-red-600"></div>
@@ -387,23 +402,23 @@
         </section>
 
         <!-- Manufacturing Power -->
-        <section class="py-32 bg-neutral-950 relative z-30">
+        <section class="py-32 bg-white dark:bg-neutral-950 relative z-30">
             <div class="max-w-full mx-auto px-6 md:px-12 fade-in-group">
                 <div class="flex items-center gap-4 mb-16 justify-center">
                     <span class="w-10 h-[2px] bg-red-600"></span>
-                    <span class="text-xs font-bold uppercase tracking-[0.25em] text-white/50"
+                    <span class="text-xs font-bold uppercase tracking-[0.25em] text-neutral-500 dark:text-white/50"
                         data-i18n="about-tag">About Pioneer Metal</span>
                     <span class="w-10 h-[2px] bg-red-600"></span>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
                     <div
-                        class="lg:col-span-12 xl:col-span-4 flex flex-col justify-center lg:border-r border-white/10 pb-12 lg:pb-0 lg:pr-16 lg:mr-8 xl:mr-0">
-                        <h3 class="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] text-white font-oswald mb-6"
+                        class="lg:col-span-12 xl:col-span-4 flex flex-col justify-center lg:border-r border-black/10 dark:border-white/10 pb-12 lg:pb-0 lg:pr-16 lg:mr-8 xl:mr-0">
+                        <h3 class="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] text-neutral-900 dark:text-white font-oswald mb-6"
                             data-i18n="story-t">
-                            Manufacturing<br><span class="text-white/70">Power</span>
+                            Manufacturing<br><span class="text-neutral-600 dark:text-white/70">Power</span>
                         </h3>
-                        <p class="text-white/50 text-base md:text-lg leading-relaxed font-light" data-i18n="story-d1">
+                        <p class="text-neutral-500 dark:text-white/50 text-base md:text-lg leading-relaxed font-light" data-i18n="story-d1">
                             Our factory is equipped with advanced automated production lines. We integrate precision
                             engineering with rapid manufacturing to deliver cold-rolled steel solutions that define
                             industry standards.
@@ -413,40 +428,40 @@
                     <div class="lg:col-span-12 xl:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-6">
                         <!-- Stat 1: Exp -->
                         <div
-                            class="glass-card-dark p-10 rounded-none group min-h-[300px] flex flex-col justify-center overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 cursor-default bg-neutral-900/30 hover:-translate-y-2">
+                            class="glass-card-dark p-10 rounded-none group min-h-[300px] flex flex-col justify-center overflow-hidden border-black/5 dark:border-white/5 hover:border-black/10 dark:border-white/10 transition-all duration-700 cursor-default bg-white dark:bg-neutral-900/30 hover:-translate-y-2">
                             <div class="card-corner-glow"></div>
                             <div class="relative z-10">
                                 <span class="text-xs font-mono text-red-500 mb-2 uppercase tracking-widest block"
                                     data-i18n="stat-history-tag">History</span>
                                 <div
-                                    class="text-[5rem] sm:text-[6rem] font-bold font-oswald tracking-tighter text-white leading-none mb-4 drop-shadow-sm group-hover:text-red-500 transition-colors">
+                                    class="text-[5rem] sm:text-[6rem] font-bold font-oswald tracking-tighter text-neutral-900 dark:text-white leading-none mb-4 drop-shadow-sm group-hover:text-red-500 transition-colors">
                                     <span class="count-up" data-target="18">0</span><span class="font-light">+</span>
                                 </div>
-                                <h3 class="text-sm font-bold uppercase tracking-widest text-white/90"
+                                <h3 class="text-sm font-bold uppercase tracking-widest text-neutral-800 dark:text-white/90"
                                     data-i18n="stat-exp">Years Experience</h3>
                             </div>
                         </div>
 
                         <!-- Stat 2: Tons -->
                         <div
-                            class="glass-card-dark p-10 rounded-none group min-h-[300px] flex flex-col justify-center overflow-hidden border-white/5 hover:border-white/10 transition-all duration-700 cursor-default bg-neutral-900/30 hover:-translate-y-2">
+                            class="glass-card-dark p-10 rounded-none group min-h-[300px] flex flex-col justify-center overflow-hidden border-black/5 dark:border-white/5 hover:border-black/10 dark:border-white/10 transition-all duration-700 cursor-default bg-white dark:bg-neutral-900/30 hover:-translate-y-2">
                             <div class="card-corner-glow"></div>
                             <div class="relative z-10">
                                 <span class="text-xs font-mono text-red-500 mb-2 uppercase tracking-widest block"
                                     data-i18n="stat-capacity-tag">Capacity</span>
                                 <div
-                                    class="text-[5rem] sm:text-[6rem] font-bold font-oswald tracking-tighter text-white leading-none mb-4 drop-shadow-sm group-hover:text-red-500 transition-colors">
+                                    class="text-[5rem] sm:text-[6rem] font-bold font-oswald tracking-tighter text-neutral-900 dark:text-white leading-none mb-4 drop-shadow-sm group-hover:text-red-500 transition-colors">
                                     <span class="count-up" data-target="9000">0</span><span
                                         class="font-light text-red-500">t</span>
                                 </div>
-                                <h3 class="text-sm font-bold uppercase tracking-widest text-white/90"
+                                <h3 class="text-sm font-bold uppercase tracking-widest text-neutral-800 dark:text-white/90"
                                     data-i18n="stat-tons">Annual Tons</h3>
                             </div>
                         </div>
 
                         <!-- NEW: Decorative Card -->
                         <div
-                            class="glass-card-dark p-10 rounded-none group min-h-[300px] flex flex-col items-center justify-center overflow-hidden border-white/5 bg-red-600/5 relative">
+                            class="glass-card-dark p-10 rounded-none group min-h-[300px] flex flex-col items-center justify-center overflow-hidden border-black/5 dark:border-white/5 bg-red-600/5 relative">
                             <div class="card-corner-glow"></div>
                             <div class="absolute inset-0 bg-red-600/5 blur-3xl rounded-full scale-50"></div>
                             <i
@@ -463,7 +478,7 @@
         </section>
 
         <!-- Footer -->
-        <footer class="bg-black text-white/40 py-16 border-t border-white/10 relative z-30">
+        <footer class="bg-neutral-100 dark:bg-black text-neutral-500 dark:text-white/40 py-16 border-t border-black/10 dark:border-white/10 relative z-30">
             <div class="max-w-full mx-auto px-6 md:px-12 relative z-10 w-full">
                 <div class="flex flex-col md:flex-row justify-between items-center md:items-end gap-10">
                     <!-- Left Side: Copyright & Socials -->
@@ -477,7 +492,7 @@
                         <!-- Text Group -->
                         <div
                             class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed text-white/30">
-                            <div data-i18n="footer-company" class="text-white/50">&copy; 2025 PIONEER METAL PRODUCTS
+                            <div data-i18n="footer-company" class="text-neutral-500 dark:text-white/50">&copy; 2025 PIONEER METAL PRODUCTS
                                 FACTORY.</div>
                             <div data-i18n="footer-rights" class="mt-2">All Rights Reserved</div>
                         </div>
@@ -485,19 +500,19 @@
                         <!-- Social Links -->
                         <div class="flex items-center space-x-6 pt-2">
                             <a href="javascript:void(0)" aria-label="Facebook"
-                                class="hover:text-white transition-all transform hover:-translate-y-1 hover:scale-110">
+                                class="hover:text-neutral-900 dark:text-white transition-all transform hover:-translate-y-1 hover:scale-110">
                                 <i class="fab fa-facebook-f text-base"></i>
                             </a>
                             <a href="javascript:void(0)" aria-label="X (Twitter)"
-                                class="hover:text-white transition-all transform hover:-translate-y-1 hover:scale-110">
+                                class="hover:text-neutral-900 dark:text-white transition-all transform hover:-translate-y-1 hover:scale-110">
                                 <i class="fab fa-x-twitter text-base"></i>
                             </a>
                             <a href="javascript:void(0)" aria-label="Instagram"
-                                class="hover:text-white transition-all transform hover:-translate-y-1 hover:scale-110">
+                                class="hover:text-neutral-900 dark:text-white transition-all transform hover:-translate-y-1 hover:scale-110">
                                 <i class="fab fa-instagram text-base"></i>
                             </a>
                             <a href="javascript:void(0)" aria-label="LinkedIn"
-                                class="hover:text-white transition-all transform hover:-translate-y-1 hover:scale-110">
+                                class="hover:text-neutral-900 dark:text-white transition-all transform hover:-translate-y-1 hover:scale-110">
                                 <i class="fab fa-linkedin-in text-base"></i>
                             </a>
                         </div>
@@ -533,11 +548,11 @@
             }
             for (i = 0; i < dots.length; i++) {
                 dots[i].classList.remove("bg-white", "active");
-                dots[i].classList.add("bg-white/50");
+                dots[i].classList.add("bg-black/5 dark:bg-white/50");
             }
             slides[slideIndex - 1].classList.remove("opacity-0", "pointer-events-none");
             slides[slideIndex - 1].classList.add("opacity-100");
-            dots[slideIndex - 1].classList.remove("bg-white/50");
+            dots[slideIndex - 1].classList.remove("bg-black/5 dark:bg-white/50");
             dots[slideIndex - 1].classList.add("bg-white", "active");
 
             // Clear timeout to prevent double jumps when clicking
