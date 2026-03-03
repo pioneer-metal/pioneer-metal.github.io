@@ -282,40 +282,51 @@
         <div id="mobile-menu"
             class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-white dark:bg-neutral-950/95 backdrop-blur-xl z-[90] p-6 flex-col justify-center space-y-8 pointer-events-auto">
             <button onclick="toggleMobileMenu()"
-                class="absolute top-10 right-8 text-white/50 hover:text-white text-3xl">
+                class="absolute top-10 right-8 text-neutral-400 dark:text-white/50 hover:text-neutral-900 dark:hover:text-white text-3xl transition-colors">
                 <i class="fas fa-times"></i>
             </button>
             <div class="flex flex-col items-center gap-6 text-2xl font-oswald font-bold tracking-widest uppercase">
                 <a href="index.html" class="text-red-500 hover:text-red-400 transition-colors"
                     data-i18n="nav-home">Home</a>
-                <a href="about.html" class="text-white hover:text-red-400 transition-colors"
+                <a href="about.html" class="text-neutral-900 dark:text-white hover:text-red-400 transition-colors"
                     data-i18n="nav-about">About</a>
-                <a href="products.html" class="text-white hover:text-red-400 transition-colors"
+                <a href="products.html" class="text-neutral-900 dark:text-white hover:text-red-400 transition-colors"
                     data-i18n="nav-products">Products</a>
-                <a href="news.html" class="text-white hover:text-red-400 transition-colors"
+                <a href="news.html" class="text-neutral-900 dark:text-white hover:text-red-400 transition-colors"
                     data-i18n="nav-news">News</a>
-                <a href="contact.html" class="text-white hover:text-red-400 transition-colors"
+                <a href="contact.html" class="text-neutral-900 dark:text-white hover:text-red-400 transition-colors"
                     data-i18n="nav-contact">Contact</a>
             </div>
 
-            <div class="pt-10 border-t border-white/10 mt-10 w-full max-w-sm mx-auto">
-                <p class="text-xs font-bold text-white/40 mb-4 uppercase tracking-widest text-center">Select Language
+            <!-- Mobile Theme Toggle -->
+            <div class="flex justify-center py-4">
+                <button onclick="toggleTheme()"
+                    class="w-12 h-12 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center text-neutral-900 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+            </div>
+
+            <div class="pt-6 border-t border-black/10 dark:border-white/10 mt-6 w-full max-w-sm mx-auto">
+                <p
+                    class="text-xs font-bold text-neutral-400 dark:text-white/40 mb-4 uppercase tracking-widest text-center">
+                    Select Language
                 </p>
                 <div class="flex flex-wrap justify-center gap-3">
                     <button onclick="changeLanguage('en')"
-                        class="px-4 py-2 bg-white/5 rounded-full text-xs font-bold text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-white/10">EN</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-black/10 dark:border-white/10">EN</button>
                     <button onclick="changeLanguage('es')"
-                        class="px-4 py-2 bg-white/5 rounded-full text-xs font-bold text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-white/10">ES</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-black/10 dark:border-white/10">ES</button>
                     <button onclick="changeLanguage('pt')"
-                        class="px-4 py-2 bg-white/5 rounded-full text-xs font-bold text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-white/10">PT</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-black/10 dark:border-white/10">PT</button>
                     <button onclick="changeLanguage('ru')"
-                        class="px-4 py-2 bg-white/5 rounded-full text-xs font-bold text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-white/10">RU</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-black/10 dark:border-white/10">RU</button>
                     <button onclick="changeLanguage('ja')"
-                        class="px-4 py-2 bg-white/5 rounded-full text-xs font-bold text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-white/10">JA</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-black/10 dark:border-white/10">JA</button>
                     <button onclick="changeLanguage('ar')"
-                        class="px-4 py-2 bg-white/5 rounded-full text-xs font-bold text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-white/10">AR</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-black/10 dark:border-white/10">AR</button>
                     <button onclick="changeLanguage('fr')"
-                        class="px-4 py-2 bg-white/5 rounded-full text-xs font-bold text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-white/10">FR</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-black/10 dark:border-white/10">FR</button>
                 </div>
             </div>
         </div>
@@ -394,7 +405,7 @@
             class="border-y grid grid-cols-1 md:grid-cols-4 border-black/10 dark:border-white/10 relative z-20 bg-white dark:bg-neutral-950">
             <!-- Box 1 -->
             <div
-                class="flex flex-col group text-center bg-neutral-50 dark:bg-zinc-950 border-black/10 dark:border-white/10 md:border-r border-b md:border-b-0 p-12 items-center justify-center transition-colors hover:bg-neutral-100 dark:hover:bg-zinc-900/50">
+                class="flex flex-col group text-center bg-neutral-50 dark:bg-zinc-950 border-black/10 dark:border-white/10 md:border-r border-b md:border-b-0 p-12 items-center justify-center transition-colors hover:bg-neutral-200 dark:hover:bg-zinc-900/50">
                 <span
                     class="text-7xl font-bold tracking-tighter transition-colors group-hover:text-red-500 text-neutral-900 dark:text-white font-oswald">
                     <span data-i18n="stat-years-t">18</span><span class="text-3xl">+</span>
@@ -407,7 +418,7 @@
 
             <!-- Box 2 -->
             <div
-                class="flex flex-col text-center bg-neutral-50 dark:bg-zinc-950 border-black/10 dark:border-white/10 md:border-r border-b md:border-b-0 p-12 items-center justify-center group hover:bg-neutral-100 dark:hover:bg-zinc-900/50 transition-colors">
+                class="flex flex-col text-center bg-neutral-50 dark:bg-zinc-950 border-black/10 dark:border-white/10 md:border-r border-b md:border-b-0 p-12 items-center justify-center group hover:bg-neutral-200 dark:hover:bg-zinc-900/50 transition-colors">
                 <span class="text-xs uppercase tracking-[0.25em] text-neutral-400 dark:text-white/40 font-bold mb-3"
                     data-i18n="stat-supply-d">
                     Factory Operations
@@ -471,7 +482,7 @@
                         </div>
                         <h2 class="md:text-8xl uppercase leading-[0.9] text-5xl font-black text-neutral-900 dark:text-white tracking-tighter font-oswald text-shadow-sm"
                             data-i18n="coop-title">
-                            Business<br><span class="text-neutral-600 dark:text-white/80">Cooperation</span>
+                            Business<br><span class="text-neutral-900 dark:text-white/80">Cooperation</span>
                         </h2>
                     </div>
 
@@ -604,7 +615,7 @@
                         </div>
                         <h2 class="text-5xl lg:text-7xl font-black tracking-tighter mb-8 uppercase leading-[0.9] text-neutral-900 dark:text-white font-oswald fade-in-up delay-100"
                             data-i18n="stat-worldwide-title">
-                            Worldwide<br><span class="text-neutral-600 dark:text-white/70">Scale</span>
+                            Worldwide<br><span class="text-neutral-900 dark:text-white/70">Scale</span>
                         </h2>
                         <p class="text-sm text-neutral-500 dark:text-white/50 font-light fade-in-up delay-200 leading-relaxed max-w-sm tracking-wide"
                             data-i18n="stat-worldwide-desc">
@@ -743,7 +754,7 @@
                     </div>
                 </div>
                 <div
-                    class="aspect-square relative overflow-hidden group flex items-center justify-center bg-neutral-100 dark:bg-zinc-900 hover:bg-red-50 dark:hover:bg-red-900/40 transition-colors duration-500 cursor-pointer p-10 text-center">
+                    class="aspect-square relative overflow-hidden group flex items-center justify-center bg-neutral-100 dark:bg-zinc-900 hover:bg-red-100 dark:hover:bg-red-900/40 transition-colors duration-500 cursor-pointer p-10 text-center">
                     <div class="flex flex-col items-center gap-4">
                         <span
                             class="text-xs font-bold text-neutral-500 dark:text-white/50 uppercase tracking-[0.3em] group-hover:text-red-600 dark:group-hover:text-red-200"
@@ -776,11 +787,12 @@
 
                         <!-- Text Group -->
                         <div
-                            class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed text-white/30">
+                            class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed text-neutral-500/50 dark:text-white/30">
                             <div data-i18n="footer-company" class="text-neutral-500 dark:text-white/50">&copy; 2025
                                 PIONEER METAL PRODUCTS
                                 FACTORY.</div>
-                            <div data-i18n="footer-rights" class="mt-2">All Rights Reserved</div>
+                            <div data-i18n="footer-rights" class="mt-2 text-neutral-500 dark:text-white/50">All Rights
+                                Reserved</div>
                         </div>
 
                         <!-- Social Links -->

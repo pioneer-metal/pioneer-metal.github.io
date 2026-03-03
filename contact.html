@@ -202,7 +202,11 @@
             <div class="flex items-center">
                 <a href="index.html" class="flex items-center group flex-shrink-0">
                     <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
-                        alt="Pioneer Metal Logo" class="h-8 md:h-10 w-auto transition-transform group-hover:scale-105">
+                        alt="Pioneer Metal Logo"
+                        class="h-8 md:h-10 w-auto transition-transform group-hover:scale-105 dark:hidden">
+                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo_white.png"
+                        alt="Pioneer Metal Logo"
+                        class="h-8 md:h-10 w-auto transition-transform group-hover:scale-105 hidden dark:block">
                 </a>
             </div>
 
@@ -321,7 +325,7 @@
         <div id="mobile-menu"
             class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-white dark:bg-neutral-950/95 backdrop-blur-xl z-[90] p-6 flex-col justify-center space-y-8 pointer-events-auto">
             <button onclick="toggleMobileMenu()"
-                class="absolute top-10 right-8 text-neutral-500 dark:text-white/50 hover:text-neutral-900 dark:text-white text-3xl">
+                class="absolute top-10 right-8 text-neutral-400 dark:text-white/50 hover:text-neutral-900 dark:hover:text-white text-3xl transition-colors">
                 <i class="fas fa-times"></i>
             </button>
             <div class="flex flex-col items-center gap-6 text-2xl font-oswald font-bold tracking-widest uppercase">
@@ -335,6 +339,15 @@
                     data-i18n="nav-news">News</a>
                 <a href="contact.html" class="text-red-500 hover:text-red-400 transition-colors"
                     data-i18n="nav-contact">Contact</a>
+            </div>
+
+            <!-- Mobile Theme Toggle -->
+            <div class="flex justify-center py-4">
+                <button onclick="toggleTheme()"
+                    class="w-12 h-12 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center text-neutral-900 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
             </div>
 
             <div
@@ -504,18 +517,24 @@
                     <!-- Left Side: Copyright & Socials -->
                     <div class="flex flex-col items-center md:items-start space-y-8 flex-1 w-full">
                         <div class="flex items-center gap-2">
-                            <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
-                                alt="Pioneer Metal Logo"
-                                class="h-8 w-auto opacity-50 grayscale-0 dark:grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+                            <a href="index.html">
+                                <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
+                                    alt="Pioneer Metal Logo"
+                                    class="h-8 w-auto opacity-50 grayscale-0 dark:grayscale hover:grayscale-0 hover:opacity-100 transition-all dark:hidden">
+                                <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo_white.png"
+                                    alt="Pioneer Metal Logo"
+                                    class="h-8 w-auto opacity-50 grayscale-0 dark:grayscale hover:grayscale-0 hover:opacity-100 transition-all hidden dark:block">
+                            </a>
                         </div>
 
                         <!-- Text Group -->
                         <div
-                            class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed text-white/30">
+                            class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed text-neutral-500/50 dark:text-white/30">
                             <div data-i18n="footer-company" class="text-neutral-500 dark:text-white/50">&copy; 2025
                                 PIONEER METAL PRODUCTS
                                 FACTORY.</div>
-                            <div data-i18n="footer-rights" class="mt-2">All Rights Reserved</div>
+                            <div data-i18n="footer-rights" class="mt-2 text-neutral-500 dark:text-white/50">All Rights
+                                Reserved</div>
                         </div>
 
                         <!-- Social Links -->

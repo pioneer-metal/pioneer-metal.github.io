@@ -164,7 +164,11 @@
             <div class="flex items-center">
                 <a href="index.html" class="flex items-center group flex-shrink-0">
                     <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
-                        alt="Pioneer Metal Logo" class="h-8 md:h-10 w-auto transition-transform group-hover:scale-105">
+                        alt="Pioneer Metal Logo"
+                        class="h-8 md:h-10 w-auto transition-transform group-hover:scale-105 dark:hidden">
+                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo_white.png"
+                        alt="Pioneer Metal Logo"
+                        class="h-8 md:h-10 w-auto transition-transform group-hover:scale-105 hidden dark:block">
                 </a>
             </div>
 
@@ -299,6 +303,15 @@
                     data-i18n="nav-contact">Contact</a>
             </div>
 
+            <!-- Mobile Theme Toggle -->
+            <div class="flex justify-center py-4">
+                <button onclick="toggleTheme()"
+                    class="w-12 h-12 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center text-neutral-900 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+            </div>
+
             <div
                 class="pt-10 border-t border-black/10 dark:border-black/10 dark:border-white/10 mt-10 w-full max-w-sm mx-auto">
                 <p
@@ -377,7 +390,7 @@
                             class="md:w-[55%] p-10 md:p-16 flex flex-col justify-center card-content relative z-10 w-full h-full">
                             <div class="flex items-center gap-4 mb-6">
                                 <span
-                                    class="font-black text-4xl text-black/5 dark:text-white/20 group-hover:text-red-500 transition-colors font-oswald">01</span>
+                                    class="font-black text-4xl text-black/15 dark:text-white/20 group-hover:text-red-500 transition-colors font-oswald">01</span>
                                 <time
                                     class="text-neutral-600 dark:text-neutral-600 dark:text-white/60 text-xs font-bold uppercase tracking-widest"
                                     data-i18n="news1-date">MAR 24-27, 2026</time>
@@ -427,7 +440,7 @@
                             class="md:w-[55%] p-10 md:p-16 flex flex-col justify-center card-content relative z-10 w-full h-full order-2 md:order-1">
                             <div class="flex items-center gap-4 mb-6">
                                 <span
-                                    class="font-black text-4xl text-black/5 dark:text-white/20 group-hover:text-red-500 transition-colors font-oswald">02</span>
+                                    class="font-black text-4xl text-black/15 dark:text-white/20 group-hover:text-red-500 transition-colors font-oswald">02</span>
                                 <time
                                     class="text-neutral-600 dark:text-neutral-600 dark:text-white/60 text-xs font-bold uppercase tracking-widest"
                                     data-i18n="news2-date">SEP 9-12, 2026</time>
@@ -469,18 +482,24 @@
                     <!-- Left Side: Copyright & Socials -->
                     <div class="flex flex-col items-center md:items-start space-y-8 flex-1 w-full">
                         <div class="flex items-center gap-2">
-                            <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
-                                alt="Pioneer Metal Logo"
-                                class="h-8 w-auto opacity-50 grayscale-0 dark:grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+                            <a href="index.html">
+                                <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
+                                    alt="Pioneer Metal Logo"
+                                    class="h-8 w-auto opacity-50 grayscale-0 dark:grayscale hover:grayscale-0 hover:opacity-100 transition-all dark:hidden">
+                                <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo_white.png"
+                                    alt="Pioneer Metal Logo"
+                                    class="h-8 w-auto opacity-50 grayscale-0 dark:grayscale hover:grayscale-0 hover:opacity-100 transition-all hidden dark:block">
+                            </a>
                         </div>
 
                         <!-- Text Group -->
                         <div
-                            class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed text-white/30">
+                            class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed text-neutral-500/50 dark:text-white/30">
                             <div data-i18n="footer-company" class="text-neutral-500 dark:text-white/50">&copy; 2025
                                 PIONEER METAL PRODUCTS
                                 FACTORY.</div>
-                            <div data-i18n="footer-rights" class="mt-2">All Rights Reserved</div>
+                            <div data-i18n="footer-rights" class="mt-2 text-neutral-500 dark:text-white/50">All Rights
+                                Reserved</div>
                         </div>
 
                         <!-- Social Links -->
