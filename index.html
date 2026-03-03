@@ -193,25 +193,55 @@
                         class="lang-dropdown overflow-hidden absolute right-0 mt-4 bg-neutral-900 border border-white/10 shadow-2xl rounded-2xl hidden w-48 pointer-events-auto z-[200]">
                         <div class="py-2 max-h-[400px] overflow-y-auto custom-scrollbar">
                             <button onclick="changeLanguage('en', 'us')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>ENGLISH</span></button>
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                <span class="fi fi-us rounded-sm"></span>
+                                <span>ENGLISH</span>
+                            </button>
                             <button onclick="changeLanguage('es', 'es')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>ESPAÑOL</span></button>
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                <span class="fi fi-es rounded-sm"></span>
+                                <span>ESPAÑOL</span>
+                            </button>
                             <button onclick="changeLanguage('pt', 'pt')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>PORTUGUÊS</span></button>
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                <span class="fi fi-pt rounded-sm"></span>
+                                <span>PORTUGUÊS</span>
+                            </button>
                             <button onclick="changeLanguage('ru', 'ru')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>РУССКИЙ</span></button>
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                <span class="fi fi-ru rounded-sm"></span>
+                                <span>РУССКИЙ</span>
+                            </button>
                             <button onclick="changeLanguage('ja', 'jp')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>日本語</span></button>
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                <span class="fi fi-jp rounded-sm"></span>
+                                <span>日本語</span>
+                            </button>
                             <button onclick="changeLanguage('ko', 'kr')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>한국어</span></button>
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                <span class="fi fi-kr rounded-sm"></span>
+                                <span>한국어</span>
+                            </button>
                             <button onclick="changeLanguage('ar', 'sa')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>العربية</span></button>
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                <span class="fi fi-sa rounded-sm"></span>
+                                <span>العربية</span>
+                            </button>
                             <button onclick="changeLanguage('fr', 'fr')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>FRANÇAIS</span></button>
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                <span class="fi fi-fr rounded-sm"></span>
+                                <span>FRANÇAIS</span>
+                            </button>
                             <button onclick="changeLanguage('sq', 'al')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>SHQIP</span></button>
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                <span class="fi fi-al rounded-sm"></span>
+                                <span>SHQIP</span>
+                            </button>
                             <button onclick="changeLanguage('sr', 'rs')"
-                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors"><span>SRPSKI</span></button>
+                                class="w-full px-4 py-3 text-left text-xs text-white/70 font-bold flex items-center space-x-3 hover:bg-neutral-800 hover:text-white transition-colors">
+                                <span class="fi fi-rs rounded-sm"></span>
+                                <span>SRPSKI</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -280,19 +310,19 @@
             <!-- Carousel Slides -->
             <div class="carousel-slide opacity-100 absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_01.jpg');">
-                <div class="slide-overlay absolute inset-0 bg-black/40"></div>
+                <div class="slide-overlay absolute inset-0 bg-black/20"></div>
             </div>
             <div class="carousel-slide opacity-0 pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_02.jpg');">
-                <div class="slide-overlay absolute inset-0 bg-black/40"></div>
+                <div class="slide-overlay absolute inset-0 bg-black/20"></div>
             </div>
             <div class="carousel-slide opacity-0 pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_03.jpg');">
-                <div class="slide-overlay absolute inset-0 bg-black/40"></div>
+                <div class="slide-overlay absolute inset-0 bg-black/20"></div>
             </div>
             <div class="carousel-slide opacity-0 pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_04.jpg');">
-                <div class="slide-overlay absolute inset-0 bg-black/40"></div>
+                <div class="slide-overlay absolute inset-0 bg-black/20"></div>
             </div>
 
             <!-- Gradient Overlays -->
