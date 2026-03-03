@@ -11,6 +11,7 @@ const i18nData = {
         "footer-company": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY.",
         "footer-rights": "All Rights Reserved",
         "btn-copied": "COPIED!", "btn-copy-failed": "Copy failed", "form-redirecting": "REDIRECTING...",
+        "feedback-name": "✔️ Hello, ", "feedback-email": "✔️ Thanks for your interest", "feedback-msg": "✔️ We will review it seriously",
 
         // Home Page
         "hero-tag": "Industrial Excellence Since 2006",
@@ -69,6 +70,7 @@ const i18nData = {
         "footer-company": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY.",
         "footer-rights": "Todos los derechos reservados",
         "btn-copied": "¡COPIADO!", "btn-copy-failed": "Error al copiar", "form-redirecting": "REDIRECCIONANDO...",
+        "feedback-name": "✔️ Hola, ", "feedback-email": "✔️ Gracias por su interés", "feedback-msg": "✔️ Lo revisaremos seriamente",
         "hero-tag": "Excelencia Industrial desde 2006", "hero-title": "PRECISION", "hero-desc": "Líder mundial en la fabricación de soluciones de acero laminado en frío para sistemas de ventanas e infraestructura industrial.", "hero-btn": "Descubrir Pioneer",
         "stat-years-t": "18", "stat-years-d": "Años de Excelencia",
         "stat-supply-t": "SUMINISTRO ACTIVO", "stat-supply-d": "Operaciones de Fábrica",
@@ -109,6 +111,7 @@ const i18nData = {
         "footer-company": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY.",
         "footer-rights": "Todos os direitos reservados",
         "btn-copied": "COPIADO!", "btn-copy-failed": "Falha ao copiar", "form-redirecting": "REDIRECIONANDO...",
+        "feedback-name": "✔️ Olá, ", "feedback-email": "✔️ Obrigado pelo seu interesse", "feedback-msg": "✔️ Analisaremos seriamente",
         "hero-tag": "Excelência Industrial desde 2006", "hero-title": "PRECISION", "hero-desc": "Líder global na fabricação de soluções de aço laminado a frio para sistemas de janelas e infraestrutura industrial.", "hero-btn": "Descobrir Pioneer",
         "stat-years-t": "18", "stat-years-d": "Anos de Excelência",
         "stat-supply-t": "SUPRIMENTO ATIVO", "stat-supply-d": "Operações de Fábrica",
@@ -149,6 +152,7 @@ const i18nData = {
         "footer-company": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY.",
         "footer-rights": "Все права защищены",
         "btn-copied": "СКОПИРОВАНО!", "btn-copy-failed": "Ошибка копирования", "form-redirecting": "ПЕРЕНАПРАВЛЕНИЕ...",
+        "feedback-name": "✔️ Здравствуйте, ", "feedback-email": "✔️ Спасибо за ваш интерес", "feedback-msg": "✔️ Мы серьезно это рассмотрим",
         "hero-tag": "Промышленное совершенство с 2006 года", "hero-title": "PRECISION", "hero-desc": "Мировой лидер в производстве холоднокатаных стальных решений для оконных систем и промышленной инфраструктуры.", "hero-btn": "Узнать больше",
         "stat-years-t": "18", "stat-years-d": "Лет Совершенства",
         "stat-supply-t": "АКТИВНЫЕ ПОСТАВКИ", "stat-supply-d": "Заводские Операции",
@@ -189,6 +193,7 @@ const i18nData = {
         "footer-company": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY.",
         "footer-rights": "無断転載を禁じます",
         "btn-copied": "コピーしました！", "btn-copy-failed": "コピーに失敗しました", "form-redirecting": "リダイレクト中...",
+        "feedback-name": "✔️ こんにちは、", "feedback-email": "✔️ ご関心をお寄せいただきありがとうございます", "feedback-msg": "✔️ 真剣に検討させていただきます",
         "hero-tag": "2006年創業以来の卓越した産業", "hero-title": "PRECISION", "hero-desc": "窓システムおよび産業インフラ向けの冷間圧延鋼ソリューションの製造におけるグローバルリーダー。", "hero-btn": "パイオニアを発見する",
         "stat-years-t": "18", "stat-years-d": "卓越した歳月",
         "stat-supply-t": "稼働中の供給", "stat-supply-d": "工場の運営",
@@ -229,6 +234,7 @@ const i18nData = {
         "footer-company": "&copy; 2025 PIONEER METAL PRODUCTS FACTORY.",
         "footer-rights": "모든 권리 보유",
         "btn-copied": "복사되었습니다!", "btn-copy-failed": "복사 실패", "form-redirecting": "리다이렉트 중...",
+        "feedback-name": "✔️ 안녕하세요, ", "feedback-email": "✔️ 관심을 가져주셔서 감사합니다", "feedback-msg": "✔️ 진지하게 검토하겠습니다",
         "hero-tag": "2006년부터 시작된 산업적 탁월함", "hero-title": "PRECISION", "hero-desc": "창호 시스템 및 산업 인프라를 위한 냉간 압연 강철 솔루션 제조 분야의 글로벌 리더.", "hero-btn": "파이오니아 알아보기",
         "stat-years-t": "18", "stat-years-d": "탁월함의 시간",
         "stat-supply-t": "활발한 공급", "stat-supply-d": "공장 운영",
@@ -269,6 +275,7 @@ const i18nData = {
         "footer-company": "&copy; 2025 مصنع بايونير للمنتجات المعدنية.",
         "footer-rights": "جميع الحقوق محفوظة",
         "btn-copied": "تم النسخ!", "btn-copy-failed": "فشل النسخ", "form-redirecting": "جاري التحويل...",
+        "feedback-name": "✔️ مرحبًا، ", "feedback-email": "✔️ شكرًا لاهتمامك", "feedback-msg": "✔️ سنقوم بمراجعتها بجدية",
         "hero-tag": "التميز الصناعي منذ 2006", "hero-title": "PRECISION", "hero-desc": "الرائد العالمي في تصنيع حلول الصلب المدرفل على البارد لأنظمة النوافذ والبنية التحتية الصناعية.", "hero-btn": "اكتشف بايونير",
         "stat-years-t": "18", "stat-years-d": "عاماً من التميز",
         "stat-supply-t": "توريد نشط", "stat-supply-d": "عمليات المصنع",
@@ -309,6 +316,7 @@ const i18nData = {
         "footer-company": "&copy; 2025 USINE DE PRODUITS MÉTALLIQUES PIONEER.",
         "footer-rights": "Tous droits réservés",
         "btn-copied": "COPIÉ !", "btn-copy-failed": "Échec de la copie", "form-redirecting": "REDIRECTION...",
+        "feedback-name": "✔️ Bonjour, ", "feedback-email": "✔️ Merci pour votre intérêt", "feedback-msg": "✔️ Nous l'examinerons sérieusement",
         "hero-tag": "Excellence Industrielle depuis 2006", "hero-title": "PRECISION", "hero-desc": "Leader mondial dans la fabrication de solutions en acier laminé à froid pour systèmes de fenêtres et infrastructures industrielles.", "hero-btn": "Découvrir Pioneer",
         "stat-years-t": "18", "stat-years-d": "Années d'Excellence",
         "stat-supply-t": "APPROVISIONNEMENT ACTIF", "stat-supply-d": "Opérations d'Usine",
@@ -349,6 +357,7 @@ const i18nData = {
         "footer-company": "&copy; 2025 FABRIKA E PRODUKTEVE METALTIKE PIONEER.",
         "footer-rights": "Të gjitha të drejtat e rezervuara",
         "btn-copied": "U KOPJUA!", "btn-copy-failed": "Kopjimi dështoi", "form-redirecting": "DUKE RIDREJTUAR...",
+        "feedback-name": "✔️ Përshëndetje, ", "feedback-email": "✔️ Faleminderit për interesimin tuaj", "feedback-msg": "✔️ Ne do ta shqyrtojmë atë me seriozitet",
         "hero-tag": "Përsosmëri Industriale që nga viti 2006", "hero-title": "PRECISION", "hero-desc": "Lider global në prodhimin e zgjidhjeve të çelikut të mbështjellë në të ftohtë për sisteme dritaresh dhe infrastrukturë industriale.", "hero-btn": "Zbuloni Pioneer",
         "stat-years-t": "18", "stat-years-d": "Vite Përsosmërie",
         "stat-supply-t": "FURNIZIM AKTIV", "stat-supply-d": "Operacionet e Fabrikës",
@@ -422,7 +431,8 @@ const i18nData = {
         "contact-tag": "Kontaktirajte nas", "contact-header": "Povežimo se", "contact-subheader": "Spremni za razgovor o vašem sledećem projektu? Kontaktirajte naš globalni prodajni tim već danas.",
         "form-title": "Pošaljite upit", "form-name": "Vaše ime", "form-email": "E-mail adresa", "form-msg": "Poruka", "form-btn": "POŠALJITE UPIT",
         "contact-phone": "Telefonska podrška", "contact-email": "Upiti putem e-maila",
-        "btn-copied": "KOPIRANO!", "btn-copy-failed": "Kopiranje nije uspelo", "form-redirecting": "PREUSMERAVANJE..."
+        "btn-copied": "KOPIRANO!", "btn-copy-failed": "Kopiranje nije uspelo", "form-redirecting": "PREUSMERAVANJE...",
+        "feedback-name": "✔️ Zdravo, ", "feedback-email": "✔️ Hvala na interesovanju", "feedback-msg": "✔️ Ozbiljno ćemo to pregledati",
     }
 };
 

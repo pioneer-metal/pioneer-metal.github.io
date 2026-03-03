@@ -81,10 +81,8 @@
             background-color: transparent !important;
             color: white !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-        }
-
-        .input-field:focus {
-            border-bottom-color: #DB2015 !important;
+            outline: none !important;
+            box-shadow: none !important;
         }
 
         .input-container label {
@@ -393,8 +391,8 @@
                             <label for="formName" data-i18n="form-name">Your Name</label>
                             <div class="input-line"></div>
                             <div id="nameFeedback"
-                                class="opacity-0 transition-opacity absolute right-4 top-4 text-red-500 font-bold text-xs tracking-widest uppercase">
-                                Hello, <span id="feedbackNameText"></span>!
+                                class="opacity-0 transition-opacity mt-2 text-green-500 font-medium text-sm tracking-wide">
+                                <span data-i18n="feedback-name">✔️ Hello, </span><span id="feedbackNameText"></span>
                             </div>
                         </div>
 
@@ -402,6 +400,11 @@
                             <input type="email" id="formEmail" required placeholder=" " class="input-field peer">
                             <label for="formEmail" data-i18n="form-email">Email Address</label>
                             <div class="input-line"></div>
+                            <div id="emailFeedback"
+                                class="opacity-0 transition-opacity mt-2 text-green-500 font-medium text-sm tracking-wide"
+                                data-i18n="feedback-email">
+                                ✔️ Thanks for your interest
+                            </div>
                         </div>
 
                         <div class="input-container mt-8">
@@ -409,6 +412,11 @@
                                 class="input-field peer resize-none" style="padding-top: 2rem;"></textarea>
                             <label for="formMsg" data-i18n="form-msg">Message</label>
                             <div class="input-line"></div>
+                            <div id="msgFeedback"
+                                class="opacity-0 transition-opacity mt-2 text-green-500 font-medium text-sm tracking-wide"
+                                data-i18n="feedback-msg">
+                                ✔️ We will review it seriously
+                            </div>
                         </div>
 
                         <button type="submit"
@@ -452,10 +460,10 @@
                         </div>
                     </div>
                     <div
-                        class="glass-card-dark p-6 md:p-10 rounded-none shadow-2xl border border-white/5 bg-neutral-900/30 overflow-hidden relative group">
+                        class="glass-card-dark p-0 rounded-none shadow-2xl border border-white/5 bg-neutral-900/30 overflow-hidden relative group">
                         <div class="card-corner-glow"></div>
                         <div id="map"
-                            class="h-[400px] w-full rounded-none z-0 grayscale hover:grayscale-0 transition-all duration-700">
+                            class="h-[432px] w-full rounded-none z-0 grayscale hover:grayscale-0 transition-all duration-700">
                         </div>
                     </div>
                 </div>
@@ -578,26 +586,36 @@
         });
 
 
-        // Name interaction
+        // Form interactions
         const formNameInput = document.getElementById('formName');
-        const nameFeedback = document.getElementById('nameFeedback');
-        const feedbackNameText = document.getElementById('feedbackNameText');
+        const formEmailInput = document.getElementById('formEmail');
+        const formMsgInput = document.getElementById('formMsg');
 
-        if (formNameInput && nameFeedback) {
-            formNameInput.addEventListener('blur', () => {
-                const val = formNameInput.value.trim();
+        function setupFeedback(input, feedbackId, customProcess = null) {
+            const feedback = document.getElementById(feedbackId);
+            if (!input || !feedback) return;
+
+            input.addEventListener('blur', () => {
+                const val = input.value.trim();
                 if (val.length > 0) {
-                    feedbackNameText.textContent = val;
-                    nameFeedback.classList.remove('opacity-0');
-                    nameFeedback.classList.add('opacity-100');
-                    formNameInput.style.borderBottomColor = '#DB2015';
+                    if (customProcess) customProcess(val);
+                    feedback.classList.remove('opacity-0');
+                    feedback.classList.add('opacity-100');
+                    input.style.borderBottomColor = '#DB2015';
                 } else {
-                    nameFeedback.classList.remove('opacity-100');
-                    nameFeedback.classList.add('opacity-0');
-                    formNameInput.style.borderBottomColor = 'rgba(255,255,255,0.2)';
+                    feedback.classList.remove('opacity-100');
+                    feedback.classList.add('opacity-0');
+                    input.style.borderBottomColor = 'rgba(255,255,255,0.2)';
                 }
             });
         }
+
+        setupFeedback(formNameInput, 'nameFeedback', (val) => {
+            const feedbackNameText = document.getElementById('feedbackNameText');
+            if (feedbackNameText) feedbackNameText.textContent = val;
+        });
+        setupFeedback(formEmailInput, 'emailFeedback');
+        setupFeedback(formMsgInput, 'msgFeedback');
 
         // Form Handling
         document.getElementById('contactForm').addEventListener('submit', function (e) {
