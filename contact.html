@@ -386,20 +386,24 @@
                         data-i18n="form-title">Send Inquiry</h2>
                     <form id="contactForm" class="space-y-6 relative z-10">
 
-                        <div class="input-container">
-                            <input type="text" id="formName" required placeholder=" " class="input-field peer">
-                            <label for="formName" data-i18n="form-name">Your Name</label>
-                            <div class="input-line"></div>
+                        <div class="mb-10">
+                            <div class="input-container mb-0">
+                                <input type="text" id="formName" required placeholder=" " class="input-field peer">
+                                <label for="formName" data-i18n="form-name">Your Name</label>
+                                <div class="input-line"></div>
+                            </div>
                             <div id="nameFeedback"
                                 class="opacity-0 transition-opacity mt-2 text-green-500 font-medium text-sm tracking-wide">
                                 <span data-i18n="feedback-name">✔️ Hello, </span><span id="feedbackNameText"></span>
                             </div>
                         </div>
 
-                        <div class="input-container mt-8">
-                            <input type="email" id="formEmail" required placeholder=" " class="input-field peer">
-                            <label for="formEmail" data-i18n="form-email">Email Address</label>
-                            <div class="input-line"></div>
+                        <div class="mb-10">
+                            <div class="input-container mb-0">
+                                <input type="email" id="formEmail" required placeholder=" " class="input-field peer">
+                                <label for="formEmail" data-i18n="form-email">Email Address</label>
+                                <div class="input-line"></div>
+                            </div>
                             <div id="emailFeedback"
                                 class="opacity-0 transition-opacity mt-2 text-green-500 font-medium text-sm tracking-wide"
                                 data-i18n="feedback-email">
@@ -407,11 +411,13 @@
                             </div>
                         </div>
 
-                        <div class="input-container mt-8">
-                            <textarea id="formMsg" rows="4" required placeholder=" "
-                                class="input-field peer resize-none" style="padding-top: 2rem;"></textarea>
-                            <label for="formMsg" data-i18n="form-msg">Message</label>
-                            <div class="input-line"></div>
+                        <div class="mb-10">
+                            <div class="input-container mb-0">
+                                <textarea id="formMsg" rows="4" required placeholder=" "
+                                    class="input-field peer resize-none" style="padding-top: 2rem;"></textarea>
+                                <label for="formMsg" data-i18n="form-msg">Message</label>
+                                <div class="input-line"></div>
+                            </div>
                             <div id="msgFeedback"
                                 class="opacity-0 transition-opacity mt-2 text-green-500 font-medium text-sm tracking-wide"
                                 data-i18n="feedback-msg">
@@ -460,10 +466,11 @@
                         </div>
                     </div>
                     <div
-                        class="glass-card-dark p-0 rounded-none shadow-2xl border border-white/5 bg-neutral-900/30 overflow-hidden relative group">
+                        class="glass-card-dark p-0 rounded-none shadow-2xl border-none bg-neutral-900/30 overflow-hidden relative group">
                         <div class="card-corner-glow"></div>
                         <div id="map"
-                            class="h-[432px] w-full rounded-none z-0 grayscale hover:grayscale-0 transition-all duration-700">
+                            class="h-[432px] w-full rounded-none z-0 grayscale hover:grayscale-0 transition-all duration-700"
+                            style="border-radius: 0 !important;">
                         </div>
                     </div>
                 </div>
