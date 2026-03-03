@@ -158,6 +158,7 @@ body {
     overflow: hidden;
 }
 
+.dark .glass-card,
 .glass-card-dark {
     background: rgba(20, 20, 20, 0.3);
     backdrop-filter: blur(20px);
@@ -171,12 +172,13 @@ body {
 
 .glass-card:hover {
     border-color: #DB2015;
-    background: rgba(219, 32, 21, 0.05);
+    background: rgba(219, 32, 21, 0.1);
     transform: translateY(-8px) scale(1.01);
     box-shadow: 0 30px 60px -15px rgba(219, 32, 21, 0.2);
     z-index: 20;
 }
 
+.dark .glass-card:hover,
 .glass-card-dark:hover {
     border-color: #DB2015;
     background: rgba(219, 32, 21, 0.05);
@@ -329,8 +331,27 @@ body {
     transition: border-color 0.3s;
 }
 
-.input-field:focus {
-    border-color: #DB2015;
+.dark .input-field {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.input-field:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #DB2015 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.dark .input-field:focus,
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+    border-color: #DB2015 !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .input-container {
@@ -348,12 +369,21 @@ body {
     pointer-events: none;
 }
 
+.dark .input-container label {
+    color: rgba(255, 255, 255, 0.5);
+}
+
 .input-field:focus~label,
 .input-field:not(:placeholder-shown)~label {
     top: -0.5rem;
     font-size: 0.75rem;
     color: #DB2015;
     font-weight: 700;
+}
+
+.dark .input-field:focus~label,
+.dark .input-field:not(:placeholder-shown)~label {
+    color: #DB2015;
 }
 
 .input-line {
