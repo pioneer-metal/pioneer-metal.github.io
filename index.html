@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <script>
@@ -17,330 +17,816 @@
     <title>PIONEER METAL | Leading Manufacturer of Steel Profiles</title>
 
     <script>
-            // Set language synchronously to prevent text-flash jumping
             (function () {
                 var lang = localStorage.getItem('preferred-lang') || 'en';
                 document.documentElement.lang = lang;
                 document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
                 document.documentElement.classList.add('i18n-loading');
+
+                var theme = localStorage.getItem('theme');
+                if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
             })();
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        red: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fca5a5',
+                            300: '#f87171',
+                            400: '#ef4444',
+                            500: '#DB2015',
+                            600: '#DB2015',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Oswald:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-oswald {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .text-outline {
+            -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);
+            color: transparent;
+        }
+    </style>
 </head>
 
-<body class="bg-gray-50 text-slate-900">
+<body
+    class="bg-white dark:bg-neutral-950 text-neutral-100 antialiased selection:bg-red-900 selection:text-red-200 font-normal">
+    <!-- Gradient Blur from SpartanRef -->
+    <div class="gradient-blur pointer-events-none fixed z-[90] inset-x-0 top-0 h-[15%]">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <style>
+        .gradient-blur>div,
+        .gradient-blur::before,
+        .gradient-blur::after {
+            position: absolute;
+            inset: 0;
+        }
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-20">
-            <a href="index.html" class="flex items-center group">
-                <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
-                    alt="Pioneer Metal Logo" class="h-12 w-auto transition-transform group-hover:scale-105">
-            </a>
+        .gradient-blur::before {
+            content: "";
+            z-index: 1;
+            backdrop-filter: blur(0.5px);
+            mask: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 37.5%);
+        }
 
-            <!-- Desktop Menu -->
-            <div
-                class="hidden md:flex items-center space-x-10 text-sm font-bold uppercase tracking-wider text-gray-600">
-                <a href="index.html" class="nav-link text-red-600" data-i18n="nav-home">Home</a>
-                <a href="about.html" class="nav-link hover:text-red-600 transition-colors"
-                    data-i18n="nav-about">About</a>
-                <a href="products.html" class="nav-link hover:text-red-600 transition-colors"
-                    data-i18n="nav-products">Products</a>
-                <a href="news.html" class="nav-link hover:text-red-600 transition-colors" data-i18n="nav-news">News</a>
-                <a href="contact.html" class="nav-link hover:text-red-600 transition-colors"
-                    data-i18n="nav-contact">Contact</a>
+        .gradient-blur>div:nth-of-type(1) {
+            z-index: 2;
+            backdrop-filter: blur(1px);
+            mask: linear-gradient(to top, rgba(0, 0, 0, 0) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 0) 50%);
+        }
+
+        .gradient-blur>div:nth-of-type(2) {
+            z-index: 3;
+            backdrop-filter: blur(2px);
+            mask: linear-gradient(to top, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 62.5%);
+        }
+
+        .gradient-blur>div:nth-of-type(3) {
+            z-index: 4;
+            backdrop-filter: blur(4px);
+            mask: linear-gradient(to top, rgba(0, 0, 0, 0) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 0) 75%);
+        }
+
+        .gradient-blur>div:nth-of-type(4) {
+            z-index: 5;
+            backdrop-filter: blur(8px);
+            mask: linear-gradient(to top, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 87.5%);
+        }
+
+        .gradient-blur>div:nth-of-type(5) {
+            z-index: 6;
+            backdrop-filter: blur(16px);
+            mask: linear-gradient(to top, rgba(0, 0, 0, 0) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .gradient-blur>div:nth-of-type(6) {
+            z-index: 7;
+            backdrop-filter: blur(32px);
+            mask: linear-gradient(to top, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 1) 100%);
+        }
+
+        .gradient-blur::after {
+            content: "";
+            z-index: 8;
+            backdrop-filter: blur(64px);
+            mask: linear-gradient(to top, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 1) 100%);
+        }
+    </style>
+
+    <!-- Main Container -->
+    <div class="max-w-full mx-auto shadow-2xl min-h-screen overflow-hidden relative bg-white dark:bg-neutral-950">
+
+        <!-- Raycast Style Navigation Bar -->
+        <nav
+            class="fixed top-6 inset-x-0 mx-auto z-[100] w-[95%] max-w-[1200px] bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-[20px] px-6 py-3 flex md:grid md:grid-cols-3 items-center justify-between shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] fade-in-up">
+
+            <!-- Left: Logo & Brand -->
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center group flex-shrink-0">
+                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
+                        alt="Pioneer Metal Logo" class="h-8 md:h-10 w-auto transition-transform group-hover:scale-105">
+                </a>
             </div>
 
-            <!-- Language Selector -->
-            <div class="relative hidden md:block">
-                <button onclick="toggleLangDropdown(event)" aria-label="Select Language"
-                    class="flex items-center space-x-3 bg-gray-50 hover:bg-gray-100 px-4 py-2.5 rounded-full border border-gray-200 transition-all cursor-pointer">
-                    <div id="currentFlag" class="flex items-center">
-                        <span class="fi fi-us rounded-sm"></span>
-                    </div>
-                    <span id="currentLangLabel" class="text-xs font-bold uppercase tracking-tighter">English</span>
-                    <i class="fa-solid fa-chevron-down text-[10px] text-gray-400 transition-transform duration-300"
-                        id="langChevron"></i>
-                </button>
-                <div id="langDropdown"
-                    class="lang-dropdown overflow-hidden absolute right-0 mt-2 bg-white shadow-xl rounded-xl hidden">
-                    <div class="py-1 max-h-[400px] overflow-y-auto">
-                        <button onclick="changeLanguage('en')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-us"></span><span>ENGLISH</span></button>
-                        <button onclick="changeLanguage('es')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-es"></span><span>ESPAÑOL</span></button>
-                        <button onclick="changeLanguage('pt')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-pt"></span><span>PORTUGUÊS</span></button>
-                        <button onclick="changeLanguage('ru')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-ru"></span><span>РУССКИЙ</span></button>
-                        <button onclick="changeLanguage('ja')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-jp"></span><span>日本語</span></button>
-                        <button onclick="changeLanguage('ko')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-kr"></span><span>한국어</span></button>
-                        <button onclick="changeLanguage('ar')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-sa"></span><span>العربية</span></button>
-                        <button onclick="changeLanguage('fr')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-fr"></span><span>FRANÇAIS</span></button>
-                        <button onclick="changeLanguage('sq')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-al"></span><span>SHQIP</span></button>
-                        <button onclick="changeLanguage('sr')"
-                            class="w-full px-4 py-3 text-left text-[11px] font-bold flex items-center space-x-3 hover:bg-red-50 transition-colors"><span
-                                class="fi fi-rs"></span><span>SRPSKI</span></button>
+            <!-- Center: Navigation Links (Desktop) -->
+            <div class="hidden md:flex items-center justify-center space-x-1 lg:space-x-3">
+                <a href="index.html"
+                    class="text-[13px] font-semibold text-neutral-900 dark:text-white px-4 py-2 bg-black/5 dark:bg-white/10 rounded-xl transition-colors"
+                    data-i18n="nav-home">Home</a>
+                <a href="about.html"
+                    class="text-[13px] font-medium text-neutral-600 dark:text-white/60 hover:text-neutral-900 dark:text-white px-4 py-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors"
+                    data-i18n="nav-about">About</a>
+                <a href="products.html"
+                    class="text-[13px] font-medium text-neutral-600 dark:text-white/60 hover:text-neutral-900 dark:text-white px-4 py-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors"
+                    data-i18n="nav-products">Products</a>
+                <a href="news.html"
+                    class="text-[13px] font-medium text-neutral-600 dark:text-white/60 hover:text-neutral-900 dark:text-white px-4 py-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors"
+                    data-i18n="nav-news">News</a>
+            </div>
+
+            <!-- Right: Action Area -->
+            <div class="flex items-center justify-end gap-2">
+                <!-- Language Selector (Left of Contact) -->
+                <div class="relative hidden sm:block">
+                    <button onclick="toggleLangDropdown(event)" aria-label="Select Language"
+                        class="hover:bg-black/10 dark:hover:bg-white/10 transition-all flex items-center justify-center gap-2 group text-neutral-700 dark:text-white/80 hover:text-neutral-900 dark:text-white bg-transparent rounded-xl px-3 py-2.5 border border-transparent hover:border-black/10 dark:hover:border-white/10">
+                        <div id="currentFlag" class="flex items-center">
+                            <span class="fi fi-us rounded-sm shadow-sm transition-opacity duration-300"></span>
+                        </div>
+                        <span class="text-xs font-semibold uppercase tracking-wider" id="currentLangLabel">EN</span>
+                        <i class="fa-solid fa-chevron-down text-[9px] text-neutral-500 dark:text-white/50 group-hover:text-neutral-700 dark:text-white/80 transition-colors"
+                            id="langChevron"></i>
+                    </button>
+                    <!-- specific langDropdown to remain consistent -->
+                    <div id="langDropdown"
+                        class="lang-dropdown overflow-hidden absolute right-0 mt-4 bg-white dark:bg-neutral-900 border border-black/10 dark:border-white/10 shadow-2xl rounded-2xl hidden w-48 pointer-events-auto z-[200]">
+                        <div class="py-2 max-h-[400px] overflow-y-auto custom-scrollbar">
+                            <button onclick="changeLanguage('en', 'us')"
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                <span class="fi fi-us rounded-sm"></span>
+                                <span>ENGLISH</span>
+                            </button>
+                            <button onclick="changeLanguage('es', 'es')"
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                <span class="fi fi-es rounded-sm"></span>
+                                <span>ESPAÑOL</span>
+                            </button>
+                            <button onclick="changeLanguage('pt', 'pt')"
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                <span class="fi fi-pt rounded-sm"></span>
+                                <span>PORTUGUÊS</span>
+                            </button>
+                            <button onclick="changeLanguage('ru', 'ru')"
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                <span class="fi fi-ru rounded-sm"></span>
+                                <span>РУССКИЙ</span>
+                            </button>
+                            <button onclick="changeLanguage('ja', 'jp')"
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                <span class="fi fi-jp rounded-sm"></span>
+                                <span>日本語</span>
+                            </button>
+                            <button onclick="changeLanguage('ko', 'kr')"
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                <span class="fi fi-kr rounded-sm"></span>
+                                <span>한국어</span>
+                            </button>
+                            <button onclick="changeLanguage('ar', 'sa')"
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                <span class="fi fi-sa rounded-sm"></span>
+                                <span>العربية</span>
+                            </button>
+                            <button onclick="changeLanguage('fr', 'fr')"
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                <span class="fi fi-fr rounded-sm"></span>
+                                <span>FRANÇAIS</span>
+                            </button>
+                            <button onclick="changeLanguage('sq', 'al')"
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                <span class="fi fi-al rounded-sm"></span>
+                                <span>SHQIP</span>
+                            </button>
+                            <button onclick="changeLanguage('sr', 'rs')"
+                                class="w-full px-4 py-3 text-left text-xs text-neutral-600 dark:text-white/70 font-bold flex items-center space-x-3 hover:bg-black/5 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                <span class="fi fi-rs rounded-sm"></span>
+                                <span>SRPSKI</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" aria-label="Toggle Theme"
+                    class="hidden sm:flex w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 items-center justify-center text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                    <i class="fas fa-sun dark:hidden"></i>
+                    <i class="fas fa-moon hidden dark:block"></i>
+                </button>
 
-            <button class="md:hidden text-black text-xl p-2" aria-label="Toggle Mobile Menu"
-                onclick="toggleMobileMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
+                <!-- Contact Button (Raycast style Download) -->
+                <a href="contact.html"
+                    class="hidden sm:flex bg-neutral-900 dark:bg-white text-white dark:text-black hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors shadow-lg px-5 py-2.5 rounded-xl text-[13px] font-bold items-center gap-2 group"
+                    data-i18n="nav-contact">
+                    Contact
+                    <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button
+                    class="md:hidden w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center text-neutral-900 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+                    onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
 
         <!-- Mobile Menu -->
         <div id="mobile-menu"
-            class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex-col space-y-4">
-            <a href="index.html" class="block text-sm font-bold text-red-600" data-i18n="nav-home">Home</a>
-            <a href="about.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
-                data-i18n="nav-about">About</a>
-            <a href="products.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
-                data-i18n="nav-products">Products</a>
-            <a href="news.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
-                data-i18n="nav-news">News</a>
-            <a href="contact.html" class="block text-sm font-bold text-slate-600 hover:text-red-600"
-                data-i18n="nav-contact">Contact</a>
+            class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-white dark:bg-neutral-950/95 backdrop-blur-xl z-[90] p-6 flex-col justify-center space-y-8 pointer-events-auto">
+            <button onclick="toggleMobileMenu()"
+                class="absolute top-10 right-8 text-neutral-400 dark:text-white/50 hover:text-neutral-900 dark:hover:text-white text-3xl transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="flex flex-col items-center gap-6 text-2xl font-oswald font-bold tracking-widest uppercase">
+                <a href="index.html" class="text-red-500 hover:text-red-400 transition-colors"
+                    data-i18n="nav-home">Home</a>
+                <a href="about.html" class="text-neutral-900 dark:text-white hover:text-red-400 transition-colors"
+                    data-i18n="nav-about">About</a>
+                <a href="products.html" class="text-neutral-900 dark:text-white hover:text-red-400 transition-colors"
+                    data-i18n="nav-products">Products</a>
+                <a href="news.html" class="text-neutral-900 dark:text-white hover:text-red-400 transition-colors"
+                    data-i18n="nav-news">News</a>
+                <a href="contact.html" class="text-neutral-900 dark:text-white hover:text-red-400 transition-colors"
+                    data-i18n="nav-contact">Contact</a>
+            </div>
 
-            <div class="pt-4 border-t border-slate-100">
-                <p class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">Language</p>
-                <!-- Added missing languages to keep consistency with desktop menu -->
-                <div class="flex flex-wrap gap-2">
+            <!-- Mobile Theme Toggle -->
+            <div class="flex justify-center py-4">
+                <button onclick="toggleTheme()"
+                    class="w-12 h-12 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center text-neutral-900 dark:text-white hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+            </div>
+
+            <div class="pt-6 border-t border-black/10 dark:border-white/10 mt-6 w-full max-w-sm mx-auto">
+                <p
+                    class="text-xs font-bold text-neutral-400 dark:text-white/40 mb-4 uppercase tracking-widest text-center">
+                    Select Language
+                </p>
+                <div class="flex flex-wrap justify-center gap-3">
                     <button onclick="changeLanguage('en')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">EN</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-black/10 dark:border-white/10">EN</button>
                     <button onclick="changeLanguage('es')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">ES</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-black/10 dark:border-white/10">ES</button>
                     <button onclick="changeLanguage('pt')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">PT</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-black/10 dark:border-white/10">PT</button>
                     <button onclick="changeLanguage('ru')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">RU</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-black/10 dark:border-white/10">RU</button>
                     <button onclick="changeLanguage('ja')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">JA</button>
-                    <button onclick="changeLanguage('ko')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">KO</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-black/10 dark:border-white/10">JA</button>
                     <button onclick="changeLanguage('ar')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">AR</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-black/10 dark:border-white/10">AR</button>
                     <button onclick="changeLanguage('fr')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">FR</button>
-                    <button onclick="changeLanguage('sq')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">SQ</button>
-                    <button onclick="changeLanguage('sr')"
-                        class="px-3 py-1 bg-slate-100 rounded text-xs font-bold hover:bg-red-600 hover:text-white">SR</button>
+                        class="px-4 py-2 bg-black/5 dark:bg-white/5 rounded-full text-xs font-bold text-neutral-600 dark:text-white/70 hover:bg-red-600 hover:text-white transition-colors border border-black/10 dark:border-white/10">FR</button>
                 </div>
             </div>
         </div>
-    </nav>
 
-    <!-- Hero Carousel -->
-    <section id="home" class="h-[60vh] flex items-center text-white relative overflow-hidden pt-20">
-        <div class="carousel-container" id="carousel">
-            <div class="carousel-slide active"
+        <!-- Hero Section (SpartanRef Style) -->
+        <header class="md:h-[900px] overflow-hidden group w-full h-[90vh] relative bg-neutral-900">
+            <!-- Carousel Slides -->
+            <div class="carousel-slide opacity-100 absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_01.jpg');">
-                <div class="slide-overlay absolute inset-0 bg-black/40"></div>
+                <div class="slide-overlay absolute inset-0 bg-black/1"></div>
             </div>
-            <div class="carousel-slide hidden"
+            <div class="carousel-slide opacity-0 pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_02.jpg');">
-                <div class="slide-overlay absolute inset-0 bg-black/40"></div>
+                <div class="slide-overlay absolute inset-0 bg-black/1"></div>
             </div>
-            <div class="carousel-slide hidden"
+            <div class="carousel-slide opacity-0 pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_03.jpg');">
-                <div class="slide-overlay absolute inset-0 bg-black/40"></div>
+                <div class="slide-overlay absolute inset-0 bg-black/1"></div>
             </div>
-            <div class="carousel-slide hidden"
+            <div class="carousel-slide opacity-0 pointer-events-none absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
                 style="background-image: url('https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_04.jpg');">
-                <div class="slide-overlay absolute inset-0 bg-black/40"></div>
+                <div class="slide-overlay absolute inset-0 bg-black/1"></div>
             </div>
-        </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-            <div class="max-w-4xl">
-                <h2 class="text-red-500 font-black tracking-[0.4em] uppercase mb-4 text-xs" data-i18n="hero-tag">
-                    Industrial Excellence Since 2006</h2>
-                <h1 class="text-4xl md:text-7xl font-black leading-none mb-6 tracking-tighter uppercase"
-                    data-i18n="hero-title">Precision Steel Profiles</h1>
-                <p class="text-base text-slate-300 mb-8 max-w-xl leading-relaxed font-light" data-i18n="hero-desc">
+            <!-- Gradient Overlays -->
+            <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/50 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-neutral-950/80 via-transparent to-transparent h-48">
+            </div> <!-- Dark top for nav visibility -->
+
+            <!-- Hero Content -->
+            <div
+                class="flex flex-col md:pb-24 text-center pb-16 absolute top-0 right-0 bottom-0 left-0 items-center justify-end z-10">
+                <div class="mb-6 md:mb-8 fade-in-up">
+                    <span
+                        class="backdrop-blur border px-5 py-2 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest bg-red-900/60 border-red-500/50 text-red-100 font-mono shadow-[0_0_20px_rgba(219,32,21,0.3)]"
+                        data-i18n="hero-tag">
+                        Industrial Excellence Since 2006
+                    </span>
+                </div>
+                <!-- Giant Text -->
+                <h1 class="text-[18vw] leading-[0.8] font-bold text-white tracking-tighter mix-blend-overlay font-oswald text-outline fade-in-up delay-100 drop-shadow-2xl"
+                    data-i18n="hero-title">
+                    PRECISION
+                </h1>
+                <p class="text-white/90 dark:text-white/90 text-sm md:text-xl font-light max-w-2xl mt-8 px-6 leading-relaxed fade-in-up delay-200"
+                    data-i18n="hero-desc">
                     Global leader in manufacturing cold-rolled steel solutions for window systems and industrial
-                    infrastructure.</p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="products.html"
-                        class="bg-red-600 text-white px-8 py-3 rounded font-bold hover:bg-white hover:text-black transition-all transform hover:scale-105 text-sm"
-                        data-i18n="btn-view">VIEW PRODUCTS</a>
-                </div>
-            </div>
-        </div>
+                    infrastructure.
+                </p>
 
-        <div class="absolute right-10 bottom-10 z-20 flex space-x-3">
-            <div class="dot active w-3 h-3 bg-white/50 rounded-full cursor-pointer hover:bg-white"
-                onclick="goToSlide(0)"></div>
-            <div class="dot w-3 h-3 bg-white/50 rounded-full cursor-pointer hover:bg-white" onclick="goToSlide(1)">
-            </div>
-            <div class="dot w-3 h-3 bg-white/50 rounded-full cursor-pointer hover:bg-white" onclick="goToSlide(2)">
-            </div>
-            <div class="dot w-3 h-3 bg-white/50 rounded-full cursor-pointer hover:bg-white" onclick="goToSlide(3)">
-            </div>
-        </div>
-    </section>
-
-    <!-- Strategic Business Cooperation -->
-    <section id="about" class="bg-[#0a0a0a] py-32 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-20">
-                <h2 class="text-red-500 font-black tracking-[0.4em] uppercase mb-4 text-xs" data-i18n="coop-subtitle">
-                    Partnership & Growth</h2>
-                <h3 class="text-4xl md:text-7xl font-black tracking-tighter mb-8 uppercase" data-i18n="coop-title">
-                    Strategic Business Cooperation</h3>
-                <div class="w-20 h-1 bg-red-600"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-                <div class="coop-card p-10 rounded-2xl bg-[#111]">
-                    <div class="text-red-600 text-4xl mb-6"><i class="fas fa-shield-alt"></i></div>
-                    <h4 class="text-xl font-bold mb-4" data-i18n="pillar-1-title">Lijialong Sealing Strip</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="pillar-1-desc">Specialized manufacturer
-                        of high-resilience weather strips for advanced sealing solutions.</p>
-                </div>
-                <div class="coop-card p-10 rounded-2xl border border-red-600/30 bg-red-600/5">
-                    <div class="text-red-600 text-4xl mb-6"><i class="fas fa-cogs"></i></div>
-                    <h4 class="text-xl font-bold mb-4" data-i18n="pillar-2-title">OEM & Custom</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="pillar-2-desc">OEM customers assist us
-                        in achieving success, improving product quality, and achieving a win-win situation.</p>
-                </div>
-                <div class="coop-card p-10 rounded-2xl bg-[#111]">
-                    <div class="text-red-600 text-4xl mb-6"><i class="fas fa-globe-americas"></i></div>
-                    <h4 class="text-xl font-bold mb-4" data-i18n="pillar-3-title">Melan Trade</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="pillar-3-desc">Professional import &
-                        export services ensuring efficient global logistics and commerce.</p>
+                <div class="mt-12 fade-in-up delay-300">
+                    <a href="about.html"
+                        class="inline-flex items-center gap-3 text-white border border-white/20 hover:border-white/60 hover:bg-white/10 px-8 py-3.5 rounded-full transition-all text-xs font-bold uppercase tracking-widest shadow-2xl backdrop-blur-md group"
+                        data-i18n="hero-btn">
+                        Discover Pioneer
+                        <i
+                            class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform text-red-500"></i>
+                    </a>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-16">
-                <div>
-                    <div class="text-4xl font-black mb-1">30+</div>
-                    <div class="text-[10px] uppercase tracking-widest text-red-600 font-black mb-2"
-                        data-i18n="stat-countries-t">Countries</div>
-                    <p class="text-slate-500 text-[10px] leading-tight font-medium uppercase tracking-wider"
-                        data-i18n="stat-countries-d">Pioneer Metal, travelled 30+ countries</p>
-                </div>
-                <div>
-                    <div class="text-4xl font-black mb-1">24+</div>
-                    <div class="text-[10px] uppercase tracking-widest text-red-600 font-black mb-2"
-                        data-i18n="stat-nations-t">Nations</div>
-                    <p class="text-slate-500 text-[10px] leading-tight font-medium uppercase tracking-wider"
-                        data-i18n="stat-nations-d">Pioneer Metal, export to 24+ nations</p>
-                </div>
-                <div>
-                    <div class="text-4xl font-black mb-1">280+</div>
-                    <div class="text-[10px] uppercase tracking-widest text-red-600 font-black mb-2"
-                        data-i18n="stat-customers-t">Customer</div>
-                    <p class="text-slate-500 text-[10px] font-medium uppercase tracking-wider leading-tight"
-                        data-i18n="stat-customers-d">Pioneer Metal, 280+ customer all over the world.</p>
-                </div>
-                <div>
-                    <div class="text-4xl font-black mb-1">9000+</div>
-                    <div class="text-[10px] uppercase tracking-widest text-red-600 font-black mb-2"
-                        data-i18n="stat-tons">Annual Tons</div>
-                    <p class="text-slate-500 text-[10px] leading-tight font-medium uppercase tracking-wider"
-                        data-i18n="stat-tons-d">Pioneer Metal, global supply capacity.</p>
-                </div>
+            <div class="absolute inset-x-0 bottom-10 z-[30] flex justify-center space-x-2">
+                <div class="dot active w-1.5 h-1.5 bg-white rounded-full cursor-pointer hover:bg-white transition-colors"
+                    onclick="goToSlide(0)"></div>
+                <div class="dot w-1.5 h-1.5 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
+                    onclick="goToSlide(1)"></div>
+                <div class="dot w-1.5 h-1.5 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
+                    onclick="goToSlide(2)"></div>
+                <div class="dot w-1.5 h-1.5 bg-white/50 rounded-full cursor-pointer hover:bg-white transition-colors"
+                    onclick="goToSlide(3)"></div>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- Footer -->
-    <footer class="bg-black text-slate-500 py-10 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 rtl:text-right">
-                <!-- Left Side: Copyright & Socials -->
-                <div class="flex flex-col items-center md:items-start space-y-6 flex-1 w-full">
-                    <!-- Text Group -->
-                    <div
-                        class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed">
-                        <div data-i18n="footer-company">&copy; 2025 PIONEER METAL PRODUCTS FACTORY.</div>
-                        <div data-i18n="footer-rights" class="opacity-60">All Rights Reserved</div>
-                    </div>
+        <!-- Story / Intro Section Grid (SpartanRef Style) -->
+        <section
+            class="border-y grid grid-cols-1 md:grid-cols-4 border-black/10 dark:border-white/10 relative z-20 bg-white dark:bg-neutral-950">
+            <!-- Box 1 -->
+            <div
+                class="flex flex-col group text-center bg-neutral-50 dark:bg-zinc-950 border-black/10 dark:border-white/10 md:border-r border-b md:border-b-0 p-12 items-center justify-center transition-colors hover:bg-neutral-200 dark:hover:bg-zinc-900/50">
+                <span
+                    class="text-7xl font-bold tracking-tighter transition-colors group-hover:text-red-500 text-neutral-900 dark:text-white font-oswald">
+                    <span data-i18n="stat-years-t">18</span><span class="text-3xl">+</span>
+                </span>
+                <span class="text-xs uppercase tracking-[0.25em] mt-4 text-neutral-500 dark:text-white/50 font-bold"
+                    data-i18n="stat-years-d">
+                    Years of Excellence
+                </span>
+            </div>
 
-                    <!-- Social Links moved under copyright -->
-                    <div class="flex items-center space-x-6 rtl:space-x-reverse">
-                        <a href="javascript:void(0)" aria-label="Facebook"
-                            class="hover:text-white transition-all transform hover:scale-125">
-                            <i class="fab fa-facebook-f text-lg"></i>
-                        </a>
-                        <a href="javascript:void(0)" aria-label="X (Twitter)"
-                            class="hover:text-white transition-all transform hover:scale-125">
-                            <i class="fab fa-x-twitter text-lg"></i>
-                        </a>
-                        <a href="javascript:void(0)" aria-label="Instagram"
-                            class="hover:text-white transition-all transform hover:scale-125">
-                            <i class="fab fa-instagram text-lg"></i>
-                        </a>
-                        <a href="javascript:void(0)" aria-label="LinkedIn"
-                            class="hover:text-white transition-all transform hover:scale-125">
-                            <i class="fab fa-linkedin-in text-lg"></i>
-                        </a>
-                    </div>
-                </div>
+            <!-- Box 2 -->
+            <div
+                class="flex flex-col text-center bg-neutral-50 dark:bg-zinc-950 border-black/10 dark:border-white/10 md:border-r border-b md:border-b-0 p-12 items-center justify-center group hover:bg-neutral-200 dark:hover:bg-zinc-900/50 transition-colors">
+                <span class="text-xs uppercase tracking-[0.25em] text-neutral-400 dark:text-white/40 font-bold mb-3"
+                    data-i18n="stat-supply-d">
+                    Factory Operations
+                </span>
+                <span
+                    class="text-lg md:text-xl font-bold tracking-tight text-neutral-900 dark:text-white flex items-center gap-3 font-mono"
+                    data-i18n="stat-supply-t">
+                    <span
+                        class="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_10px_rgba(219,32,21,0.8)] animate-pulse"></span>
+                    ACTIVE SUPPLY
+                </span>
+            </div>
 
-                <!-- Visit Count Widget (Right Side) -->
+            <!-- Box 3 (Image & Text) -->
+            <div
+                class="p-12 border-white/10 md:col-span-2 relative overflow-hidden flex items-end group min-h-[300px] md:min-h-0 bg-neutral-900">
+                <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Home_02.jpg"
+                    class="contrast-125 transition-transform duration-[1.5s] group-hover:scale-110 w-full h-full object-cover absolute top-0 right-0 bottom-0 left-0 brightness-[0.4] opacity-80"
+                    alt="Pioneer Metal Operations">
                 <div
-                    class="opacity-90 hover:opacity-100 transition-opacity flex-shrink-0 min-w-[250px] w-full md:w-auto flex justify-center md:justify-end">
-                    <script type='text/javascript' id='mapmyvisitors'
-                        src='https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=txzLrV8mr-0rE56zE39AOX9VT4za8nU7p7K3HwY0eS0'></script>
+                    class="bg-gradient-to-t from-neutral-950 via-neutral-950/80 to-transparent absolute top-0 right-0 bottom-0 left-0">
+                </div>
+
+                <div
+                    class="relative z-10 w-full transform transition-transform duration-700 group-hover:-translate-y-2">
+                    <div
+                        class="flex items-center gap-3 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
+                        <span class="w-6 h-[1px] bg-red-500"></span>
+                        <span class="text-[10px] text-red-500 font-bold tracking-[0.3em] uppercase"
+                            data-i18n="stat-scale-tag">Scale &
+                            Precision</span>
+                    </div>
+                    <div class="text-3xl md:text-4xl font-black tracking-tighter uppercase text-white font-oswald"
+                        data-i18n="stat-scale-title">
+                        GLOBAL CAPABILITY
+                    </div>
+                    <p class="text-sm md:text-base text-white/70 max-w-md mt-4 font-light leading-relaxed"
+                        data-i18n="stat-scale-desc">
+                        Optimizing the threshold between high yield production, pristine finishing, and structural
+                        integrity.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 01: Business Cooperation (Featured Style) -->
+        <section
+            class="md:px-12 text-neutral-900 dark:text-white bg-white dark:bg-neutral-950 pt-24 pb-24 px-6 relative z-10">
+
+            <div class="max-w-full mx-auto">
+                <div
+                    class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-black/10 dark:border-white/10 pb-10">
+                    <div class="flex flex-col gap-3 items-start fade-in-up">
+                        <div class="flex items-center gap-4 mb-2">
+                            <span class="w-10 h-[2px] bg-red-600"></span>
+                            <span class="text-red-500 font-mono text-xl font-bold tracking-widest uppercase">01</span>
+                            <span
+                                class="text-xs font-bold uppercase tracking-[0.25em] text-neutral-500 dark:text-white/50"
+                                data-i18n="coop-subtitle">Partnership &
+                                Growth</span>
+                        </div>
+                        <h2 class="md:text-8xl uppercase leading-[0.9] text-5xl font-black text-neutral-900 dark:text-white tracking-tighter font-oswald text-shadow-sm"
+                            data-i18n="coop-title">
+                            Business<br><span class="text-neutral-900 dark:text-white/80">Cooperation</span>
+                        </h2>
+                    </div>
+
+                    <div
+                        class="flex flex-col items-start md:items-end gap-6 max-w-sm fade-in-up delay-100 mt-8 md:mt-0">
+                        <p class="text-neutral-500 dark:text-white/50 md:text-right text-sm leading-relaxed font-light"
+                            data-i18n="coop-desc">
+                            Collaborating with leading enterprises globally to provide tailored OEM solutions, superior
+                            logistics, and high-resilience sealing integration.
+                        </p>
+                        <a href="contact.html"
+                            class="flex items-center gap-2 text-xs font-bold text-red-500 hover:text-white transition-colors uppercase tracking-widest group"
+                            data-i18n="btn-partner">
+                            Partner With Us <i
+                                class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hover Cards from staff website, adapted for Pioneer -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative fade-in-group z-20">
+                    <!-- Global Hover Bug Fix: we removed .group from body/header, now .group is safely on the cards. -->
+
+                    <!-- Card 1 -->
+                    <div
+                        class="glass-card p-10 rounded-none group min-h-[360px] cursor-pointer bg-neutral-50 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/5 hover:border-black/10 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                        <div class="card-corner-glow"></div>
+                        <div
+                            class="card-content flex flex-col h-full justify-center items-center text-center relative z-10">
+                            <div
+                                class="text-red-500 text-[4rem] mb-6 group-hover:scale-110 group-hover:text-neutral-900 dark:group-hover:text-white transition-all duration-500 drop-shadow-sm">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4 class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-neutral-900 dark:text-white group-hover:text-red-500 transition-colors leading-none"
+                                data-i18n="pillar-1-title">
+                                Lijialong<br>Sealing Strip</h4>
+                            <p class="text-neutral-600 dark:text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors"
+                                data-i18n="pillar-1-desc">
+                                Specialized manufacturer of high-resilience weather strips for advanced sealing
+                                solutions.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div
+                        class="glass-card p-10 rounded-none group min-h-[360px] cursor-pointer bg-neutral-50 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/5 hover:border-black/10 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                        <div class="card-corner-glow"></div>
+                        <div
+                            class="card-content flex flex-col h-full justify-center items-center text-center relative z-10">
+                            <div
+                                class="text-red-500 text-[4rem] mb-6 group-hover:scale-110 group-hover:text-neutral-900 dark:group-hover:text-white transition-all duration-500 drop-shadow-sm">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h4 class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-neutral-900 dark:text-white group-hover:text-red-500 transition-colors leading-none"
+                                data-i18n="pillar-2-title">
+                                OEM &<br>Custom</h4>
+                            <p class="text-neutral-600 dark:text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors"
+                                data-i18n="pillar-2-desc">
+                                OEM customers assist us in achieving success, improving product quality, and achieving a
+                                win-win situation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div
+                        class="glass-card p-10 rounded-none group min-h-[360px] cursor-pointer bg-neutral-50 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/5 hover:border-black/10 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                        <div class="card-corner-glow"></div>
+                        <div
+                            class="card-content flex flex-col h-full justify-center items-center text-center relative z-10">
+                            <div
+                                class="text-red-500 text-[4rem] mb-6 group-hover:scale-110 group-hover:text-neutral-900 dark:group-hover:text-white transition-all duration-500 drop-shadow-sm">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                            <h4 class="text-3xl font-black mb-4 tracking-tighter uppercase font-oswald text-neutral-900 dark:text-white group-hover:text-red-500 transition-colors leading-none"
+                                data-i18n="pillar-3-title">
+                                Melan<br>Trade</h4>
+                            <p class="text-neutral-600 dark:text-white/60 text-sm leading-relaxed font-light mt-2 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors"
+                                data-i18n="pillar-3-desc">
+                                Professional import & export services ensuring efficient global logistics and commerce.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spartan Marquee Banner -->
+        <div class="overflow-hidden border-y border-white/5 bg-red-600 relative z-20 py-3">
+            <div class="relative flex whitespace-nowrap">
+                <div class="flex items-center gap-8 animate-marquee">
+                    <span class="text-2xl font-oswald font-bold uppercase italic tracking-tight text-black px-4">
+                        PRECISION ENGINEERING • GLOBAL STEEL SOLUTIONS • INNOVATIVE MANUFACTURING • QUALITY YOU CAN
+                        TRUST • STRENGTH IN PRECISION • EXCELLENCE SINCE 2006 •
+                    </span>
+                    <span class="text-2xl font-oswald font-bold uppercase italic tracking-tight text-black px-4">
+                        PRECISION ENGINEERING • GLOBAL STEEL SOLUTIONS • INNOVATIVE MANUFACTURING • QUALITY YOU CAN
+                        TRUST • STRENGTH IN PRECISION • EXCELLENCE SINCE 2006 •
+                    </span>
+                    <span class="text-2xl font-oswald font-bold uppercase italic tracking-tight text-black px-4">
+                        PRECISION ENGINEERING • GLOBAL STEEL SOLUTIONS • INNOVATIVE MANUFACTURING • QUALITY YOU CAN
+                        TRUST • STRENGTH IN PRECISION • EXCELLENCE SINCE 2006 •
+                    </span>
+                    <span class="text-2xl font-oswald font-bold uppercase italic tracking-tight text-black px-4">
+                        PRECISION ENGINEERING • GLOBAL STEEL SOLUTIONS • INNOVATIVE MANUFACTURING • QUALITY YOU CAN
+                        TRUST • STRENGTH IN PRECISION • EXCELLENCE SINCE 2006 •
+                    </span>
                 </div>
             </div>
         </div>
-    </footer>
 
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.dot');
-        function goToSlide(index) {
-            if (slides.length === 0) return; // Safeguard
-            currentSlide = index;
-            slides.forEach((s, i) => {
-                if (i === index) {
-                    s.classList.add('active');
-                    s.classList.remove('hidden');
-                } else {
-                    s.classList.remove('active');
-                    s.classList.add('hidden');
-                }
-            });
-            dots.forEach((d, i) => d.classList.toggle('active', i === index));
-            dots.forEach((d, i) => d.classList.toggle('bg-white', i === index));
-            dots.forEach((d, i) => d.classList.toggle('bg-white/50', i !== index));
-        }
-        setInterval(() => {
-            if (slides.length === 0) return;
-            currentSlide = (currentSlide + 1) % slides.length;
-            goToSlide(currentSlide);
-        }, 5000);
-    </script>
+        <!-- 02: Global Scale Stats -->
+        <section
+            class="md:px-12 text-neutral-900 dark:text-white bg-neutral-50 dark:bg-[#0a0a0a] pt-24 pb-32 px-6 relative z-10">
+
+            <div class="max-w-full mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 fade-in-group">
+
+                    <!-- Left Column Title -->
+                    <div
+                        class="lg:col-span-4 flex flex-col justify-start border-b lg:border-b-0 lg:border-r border-black/10 dark:border-white/10 pb-12 lg:pb-0 lg:pr-12">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="w-10 h-[2px] bg-red-600"></span>
+                            <span class="text-red-500 font-mono text-xl font-bold tracking-widest uppercase">02</span>
+                            <span
+                                class="text-xs font-bold uppercase tracking-[0.25em] text-neutral-500 dark:text-white/50"
+                                data-i18n="stat-worldwide-tag">Global
+                                Impact</span>
+                        </div>
+                        <h2 class="text-5xl lg:text-7xl font-black tracking-tighter mb-8 uppercase leading-[0.9] text-neutral-900 dark:text-white font-oswald fade-in-up delay-100"
+                            data-i18n="stat-worldwide-title">
+                            Worldwide<br><span class="text-neutral-900 dark:text-white/70">Scale</span>
+                        </h2>
+                        <p class="text-sm text-neutral-500 dark:text-white/50 font-light fade-in-up delay-200 leading-relaxed max-w-sm tracking-wide"
+                            data-i18n="stat-worldwide-desc">
+                            Pioneer Metal's commitment to industrial excellence reaches every corner of the globe,
+                            delivering precision engineering at scale.
+                        </p>
+                    </div>
+
+                    <!-- Right Column Stats Grid -->
+                    <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Stat 1: Tons -->
+                        <div
+                            class="glass-card md:col-span-2 p-12 rounded-none group min-h-[350px] flex flex-col md:flex-row items-center overflow-hidden border-black/5 dark:border-white/10 transition-all duration-700 cursor-default bg-neutral-50 dark:bg-neutral-900/30 hover:-translate-y-2">
+                            <div class="card-corner-glow"></div>
+                            <div class="w-full md:w-1/2 relative z-10 flex flex-col h-full justify-center">
+                                <span class="text-xs font-mono text-red-500 mb-2 uppercase tracking-widest"
+                                    data-i18n="stat-capacity-tag">Global
+                                    Capacity</span>
+                                <div
+                                    class="text-[5rem] sm:text-[7rem] md:text-[9rem] font-bold font-oswald tracking-tighter text-neutral-900 dark:text-white leading-none mb-4 drop-shadow-sm group-hover:text-red-500 transition-colors">
+                                    <span class="count-up" data-target="9000">0</span><span
+                                        class="text-red-500 font-light">+</span>
+                                </div>
+                                <h3 class="text-xl font-bold uppercase tracking-widest text-neutral-800 dark:text-white/80"
+                                    data-i18n="stat-tons">Annual Tons</h3>
+                                <p class="text-neutral-500 dark:text-white/40 text-xs mt-3 font-light leading-relaxed max-w-xs"
+                                    data-i18n="stat-tons-d">Massive global supply capacity ensures zero downtime for
+                                    partner projects.</p>
+                            </div>
+
+                            <!-- Minimal lined steel graphic from my earlier edit -->
+                            <div
+                                class="w-full md:w-1/2 mt-8 md:mt-0 relative h-32 md:h-full flex items-center justify-end z-10 opacity-30 group-hover:opacity-100 transition-opacity duration-1000">
+                                <div class="flex gap-3 h-full w-full justify-end max-w-[200px]"
+                                    style="transform: skewX(-15deg);">
+                                    <div
+                                        class="w-6 h-[100%] bg-gradient-to-b from-red-600 via-red-900 to-transparent rounded-sm shadow-xl transition-all duration-700 group-hover:h-[105%] group-hover:-translate-y-2">
+                                    </div>
+                                    <div
+                                        class="w-6 h-[85%] mt-auto bg-gradient-to-b from-red-800 via-red-950 to-transparent rounded-sm shadow-xl transition-all duration-700 delay-75 group-hover:h-[95%]">
+                                    </div>
+                                    <div
+                                        class="w-6 h-[75%] mt-auto bg-gradient-to-b from-red-900 to-transparent rounded-sm shadow-xl transition-all duration-700 delay-100 group-hover:h-[80%]">
+                                    </div>
+                                    <div
+                                        class="w-6 h-[90%] mt-auto bg-gradient-to-b from-red-700 via-red-950 to-transparent rounded-sm shadow-xl transition-all duration-700 delay-150 group-hover:h-[95%]">
+                                    </div>
+                                    <div
+                                        class="w-6 h-[100%] bg-gradient-to-b from-red-800 to-transparent rounded-sm shadow-xl transition-all duration-700 delay-200 group-hover:h-[105%] group-hover:-translate-y-2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stat 2: Customers -->
+                        <div
+                            class="glass-card p-10 rounded-none group min-h-[250px] cursor-default bg-neutral-50 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                            <div class="card-corner-glow"></div>
+                            <div class="card-content flex flex-col h-full justify-between relative z-10">
+                                <div
+                                    class="text-[4rem] md:text-[5rem] font-bold font-oswald tracking-tighter text-neutral-900 dark:text-white mb-6 leading-none drop-shadow-sm group-hover:text-red-500 transition-colors">
+                                    <span class="count-up" data-target="280">0</span><span class="font-light">+</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-bold uppercase tracking-widest text-neutral-800 dark:text-white/90 mb-2"
+                                        data-i18n="stat-customers-t">Customers</h3>
+                                    <p class="text-neutral-500 dark:text-white/40 text-xs leading-relaxed font-light"
+                                        data-i18n="stat-customers-d">Pioneer Metal serves 280+ customers all over the
+                                        world with uncompromising quality.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stat 3: Countries -->
+                        <div
+                            class="glass-card p-10 rounded-none group min-h-[250px] cursor-default bg-neutral-50 dark:bg-neutral-900/30 overflow-hidden border-black/5 dark:border-white/10 transition-all duration-700 hover:-translate-y-2">
+                            <div class="card-corner-glow"></div>
+                            <div class="card-content flex flex-col h-full justify-between relative z-10">
+                                <div
+                                    class="text-[4rem] md:text-[5rem] font-bold font-oswald tracking-tighter text-neutral-900 dark:text-white mb-6 leading-none drop-shadow-sm group-hover:text-red-500 transition-colors">
+                                    <span class="count-up" data-target="30">0</span><span class="font-light">+</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-bold uppercase tracking-widest text-neutral-800 dark:text-white/90 mb-2"
+                                        data-i18n="stat-countries-t">Countries</h3>
+                                    <p class="text-neutral-500 dark:text-white/40 text-xs leading-relaxed font-light"
+                                        data-i18n="stat-countries-d">Travelled to 30+ countries, successfully exporting
+                                        to 24+ nations globally.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Preview or "03 Photos" Gallery (SpartanRef Style) -->
+        <!-- Added back to show full layout like the Spartan template -->
+        <section class="border-t border-white/5 relative z-10 bg-white dark:bg-neutral-950">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                <div class="aspect-square relative overflow-hidden group">
+                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Products_01.jpg"
+                        alt="Product"
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-100 dark:brightness-50 dark:group-hover:brightness-90 grayscale-0 dark:grayscale dark:group-hover:grayscale-0">
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-red-600/10 dark:bg-red-900/40 backdrop-blur-sm">
+                        <span
+                            class="dark:text-white font-bold tracking-[0.2em] text-sm uppercase font-oswald mix-blend-overlay"
+                            data-i18n="prod-core">Core
+                            Profiles</span>
+                    </div>
+                </div>
+                <div class="aspect-square relative overflow-hidden group">
+                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Products_02.jpg"
+                        alt="Product"
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-100 dark:brightness-50 dark:group-hover:brightness-90 grayscale-0 dark:grayscale dark:group-hover:grayscale-0">
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-red-600/10 dark:bg-red-900/40 backdrop-blur-sm">
+                        <span
+                            class="dark:text-white font-bold tracking-[0.2em] text-sm uppercase font-oswald mix-blend-overlay"
+                            data-i18n="prod-square">Square
+                            Steel</span>
+                    </div>
+                </div>
+                <div class="aspect-square relative overflow-hidden group">
+                    <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/Products_03.jpg"
+                        alt="Product"
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 brightness-100 dark:brightness-50 dark:group-hover:brightness-90 grayscale-0 dark:grayscale dark:group-hover:grayscale-0">
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-red-600/10 dark:bg-red-900/40 backdrop-blur-sm">
+                        <span
+                            class="dark:text-white font-bold tracking-[0.2em] text-sm uppercase font-oswald mix-blend-overlay"
+                            data-i18n="prod-flat">Flat
+                            Bars</span>
+                    </div>
+                </div>
+                <div
+                    class="aspect-square relative overflow-hidden group flex items-center justify-center bg-neutral-100 dark:bg-zinc-900 hover:bg-red-100 dark:hover:bg-red-900/40 transition-colors duration-500 cursor-pointer p-10 text-center">
+                    <div class="flex flex-col items-center gap-4">
+                        <span
+                            class="text-xs font-bold text-neutral-500 dark:text-white/50 uppercase tracking-[0.3em] group-hover:text-red-600 dark:group-hover:text-red-200"
+                            data-i18n="catalog">Catalog</span>
+                        <h3 class="text-3xl font-oswald font-black uppercase text-neutral-900 dark:text-white tracking-tighter"
+                            data-i18n="btn-all-products">View
+                            All<br>Products</h3>
+                        <div
+                            class="w-10 h-10 rounded-full border border-black/10 dark:border-white/20 flex items-center justify-center text-neutral-900 dark:text-white mt-4 group-hover:border-black dark:group-hover:border-white transition-colors">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <a href="products.html" class="absolute inset-0"></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer
+            class="bg-neutral-100 dark:bg-black text-neutral-500 dark:text-white/40 py-16 border-t border-black/10 dark:border-white/10 relative z-30">
+            <div class="max-w-full mx-auto px-6 md:px-12 relative z-10 w-full">
+                <div class="flex flex-col md:flex-row justify-between items-center md:items-end gap-10">
+                    <!-- Left Side: Copyright & Socials -->
+                    <div class="flex flex-col items-center md:items-start space-y-8 flex-1 w-full">
+                        <div class="flex items-center gap-2">
+                            <img src="https://raw.githubusercontent.com/pioneer-metal/pioneer-metal.github.io/refs/heads/main/resources/logo.png"
+                                alt="Pioneer Metal Logo"
+                                class="h-8 w-auto opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+                        </div>
+
+                        <!-- Text Group -->
+                        <div
+                            class="text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left leading-relaxed text-neutral-500/50 dark:text-white/30">
+                            <div data-i18n="footer-company" class="text-neutral-500 dark:text-white/50">&copy; 2025
+                                PIONEER METAL PRODUCTS
+                                FACTORY.</div>
+                            <div data-i18n="footer-rights" class="mt-2 text-neutral-500 dark:text-white/50">All Rights
+                                Reserved</div>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="flex items-center space-x-6 pt-2">
+                            <a href="javascript:void(0)" aria-label="Facebook"
+                                class="hover:text-white transition-all transform hover:-translate-y-1 hover:scale-110">
+                                <i class="fab fa-facebook-f text-base"></i>
+                            </a>
+                            <a href="javascript:void(0)" aria-label="X (Twitter)"
+                                class="hover:text-white transition-all transform hover:-translate-y-1 hover:scale-110">
+                                <i class="fab fa-x-twitter text-base"></i>
+                            </a>
+                            <a href="javascript:void(0)" aria-label="Instagram"
+                                class="hover:text-white transition-all transform hover:-translate-y-1 hover:scale-110">
+                                <i class="fab fa-instagram text-base"></i>
+                            </a>
+                            <a href="javascript:void(0)" aria-label="LinkedIn"
+                                class="hover:text-white transition-all transform hover:-translate-y-1 hover:scale-110">
+                                <i class="fab fa-linkedin-in text-base"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Visit Count Widget (Right Side) -->
+                    <div
+                        class="opacity-30 hover:opacity-100 transition-opacity flex-shrink-0 min-w-[200px] w-full md:w-auto flex justify-center md:justify-end filter grayscale hover:grayscale-0">
+                        <script type='text/javascript' id='mapmyvisitors'
+                            src='https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=txzLrV8mr-0rE56zE39AOX9VT4za8nU7p7K3HwY0eS0'></script>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div> <!-- End Main Container Wrapper -->
 </body>
 
 </html>
