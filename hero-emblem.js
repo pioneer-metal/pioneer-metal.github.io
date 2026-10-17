@@ -68,7 +68,8 @@ async function initEmblem(stage) {
         const back = extrude(points, .045, .008, silver, -.23);
         back.scale.x = -1;
     });
-    emblem.rotation.set(-.12, -.40, -.06);
+    emblem.rotation.set(0, -.40, 0);
+    emblem.scale.z = 2.00;
     let paused = reduced.matches;
     let visible = true;
     let dragging = false;
