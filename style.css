@@ -144,7 +144,7 @@ html:not(.enhanced) .header-tools { display: none; }
 .partner-list p { max-width: 54ch; }
 .partnerships > .text-link { margin-left: 34%; margin-top: 32px; }
 .inquiry-band { display: flex; position: relative; flex-direction: column; justify-content: space-between; min-height: 55svh; background: var(--accent); color: var(--accent-ink); padding: 32px var(--margin) 0; transition: background-color var(--t-ui), color var(--t-ui); }
-.inquiry-band:hover { background: var(--ink); color: var(--bg); }
+.inquiry-band:hover { background: var(--light); color: var(--deep); }
 .inquiry-band > [data-i18n='inquiry_prompt'] { align-self: flex-end; max-width: 33ch; padding-bottom: 32px; }
 .inquiry-word { display: block; font-family: var(--font-display); font-size: var(--name-size); line-height: .93; letter-spacing: -.06em; padding-bottom: .16em; }
 .cta-arrow { position: absolute; right: var(--margin); top: 24px; font-size: var(--step-head); }

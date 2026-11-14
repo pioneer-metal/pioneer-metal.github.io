@@ -24,11 +24,16 @@
         element.querySelectorAll('span').forEach(span => span.replaceWith(...span.childNodes));
     };
     const bindImageFallback = image => {
-        image.addEventListener('error', () => {
+        const fallbackImage = () => {
             const fallback = image.dataset.local;
-            if (fallback && image.getAttribute('src') !== fallback) image.src = fallback;
-        });
-        if (image.complete && image.naturalWidth === 0 && image.dataset.local) image.src = image.dataset.local;
+            if (fallback && image.getAttribute('src') !== fallback) {
+                image.closest('figure')?.querySelector('[data-cover-credit]')?.setAttribute('hidden', '');
+                if (image.dataset.fallbackAlt) image.alt = image.dataset.fallbackAlt;
+                image.src = fallback;
+            }
+        };
+        image.addEventListener('error', fallbackImage);
+        if (image.complete && image.currentSrc && image.naturalWidth === 0) fallbackImage();
     };
     document.querySelectorAll('img[data-local]').forEach(bindImageFallback);
 
@@ -38,9 +43,20 @@
         const profile = profiles[selectedProfile];
         const image = selector.querySelector('.profile-preview');
         if (changeImage) {
-            image.dataset.local = `resources/${profile.image}`;
-            image.src = assetRoot + profile.image;
-            if (!reduceMotion.matches) image.animate([{ opacity: .3 }, { opacity: 1 }], { duration: 450, easing: 'ease-out' });
+            const requestedProfile = selectedProfile;
+            const pending = new Image();
+            const local = `resources/${profile.image}`;
+            pending.onload = () => {
+                if (selectedProfile !== requestedProfile) return;
+                image.dataset.local = local;
+                image.src = pending.src;
+                updateProfile(false);
+            };
+            pending.onerror = () => {
+                if (pending.getAttribute('src') !== local) pending.src = local;
+            };
+            pending.src = assetRoot + profile.image;
+            return;
         }
         image.alt = translate(profile.title);
         selector.querySelector('.profile-photo-caption').textContent = translate(profile.title);

@@ -74,18 +74,4 @@
             if (delay > 0 && delay < 2147483647) setTimeout(update, delay + 50);
         }
     });
-    // Keep the supplied artwork visible while the organizer's CDN loads; never show a broken cover.
-    const enhanceCovers = () => document.querySelectorAll('[data-event-cover]').forEach(image => {
-        const cover = new Image();
-        cover.onload = () => {
-            image.src = cover.src;
-            image.alt = image.dataset.eventCoverAlt;
-            image.classList.add('is-official-cover');
-            const credit = image.closest('figure')?.querySelector('[data-cover-credit]');
-            if (credit) credit.hidden = false;
-        };
-        cover.src = image.dataset.eventCover;
-    });
-    if (document.readyState === 'complete') enhanceCovers();
-    else window.addEventListener('load', enhanceCovers, { once: true });
 })();
