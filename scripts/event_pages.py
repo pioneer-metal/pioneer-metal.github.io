@@ -20,7 +20,7 @@ def dates(event):
 def story(event):
     e = {key: escape(str(value), quote=True) for key, value in event.items() if not isinstance(value, dict)}
     return f'''<article class="news-story event-news wrap" id="{e['id']}">
- <figure data-reveal><a href="{event_path(event)}"><img src="{e['poster']}" data-event-cover="{e['cover']}" data-event-cover-alt="{e['name']} official event image" alt="{e['name']} exhibition artwork" loading="eager" decoding="async"></a></figure>
+ <figure data-reveal><a href="{event_path(event)}"><img src="{e['cover']}" data-local="{e['poster']}" data-fallback-alt="{e['name']} exhibition poster" alt="{e['name']} official event image" loading="eager" decoding="async"></a></figure>
  <div class="news-copy">
   <h2 data-reveal>{e['name']}</h2>
   <p class="event-status" data-event-status="{e['id']}" hidden></p>
@@ -42,8 +42,8 @@ def detail(event):
   <p class="event-status" data-event-status="{e['id']}" hidden></p>
  </header>
  <figure class="event-cover wrap" data-reveal>
-  <img src="{e['poster']}" data-event-cover="{e['cover']}" data-event-cover-alt="{e['name']} official event image" alt="{e['name']} exhibition artwork" loading="eager" decoding="async">
-  <figcaption data-cover-credit hidden><span data-i18n="event_image_credit">Event photography:</span> <a class="text-link" href="{e['coverSource']}" target="_blank" rel="noopener">{e['coverCredit']}</a></figcaption>
+  <img src="{e['cover']}" data-local="{e['poster']}" data-fallback-alt="{e['name']} exhibition poster" alt="{e['name']} official event image" loading="eager" decoding="async">
+  <figcaption data-cover-credit><span data-i18n="event_image_credit">Event photography:</span> <a class="text-link" href="{e['coverSource']}" target="_blank" rel="noopener">{e['coverCredit']}</a></figcaption>
  </figure>
  <section class="event-information wrap section-space">
   <div>

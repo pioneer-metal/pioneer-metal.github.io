@@ -28,7 +28,7 @@ PAGES.update({name: ('news', event['name']) for name, event in EVENT_PAGES.items
 (ROOT / 'events.js').write_text('/* Generated from site/events.json. */\nconst siteEvents = ' + json.dumps(EVENTS, ensure_ascii=False, indent=2) + ';\n')
 COPY = json.loads((ROOT / 'site/strings.json').read_text())
 (ROOT / 'translations.js').write_text('/* Generated from site/strings.json by scripts/build_site.py. */\nconst i18nData = ' + json.dumps(COPY, ensure_ascii=False, indent=2) + ';\n')
-VERSION = hashlib.sha256(b''.join((ROOT / name).read_bytes() for name in ['style.css', 'main.js', 'translations.js', 'hero-emblem.js', 'resources/emblem-shapes.json', 'event-banner.js', 'events.js'])).hexdigest()[:10]
+VERSION = hashlib.sha256(b''.join((ROOT / name).read_bytes() for name in ['style.css', 'main.js', 'translations.js', 'hero-emblem.js', 'resources/Favicon.svg', 'event-banner.js', 'events.js'])).hexdigest()[:10]
 FAVICON_VERSION = hashlib.sha256((ROOT / 'resources/Favicon.png').read_bytes()).hexdigest()[:10]
 
 for filename, (page, title) in PAGES.items():
@@ -70,6 +70,18 @@ for filename, (page, title) in PAGES.items():
 </html>
 '''
     html = re.sub(r'\{\{asset:([^}]+)\}\}', lambda m: ASSETS + m[1], html)
+    # Prefer locally compressed photos, retaining the original main-branch src and fallback.
+    def optimize_image(match):
+        tag = match.group(0)
+        local = re.search(r'data-local="resources/(?:events/)?([^"/]+\.(?:jpe?g|png))"', tag, re.I) or re.search(r'src="resources/(?:events/)?([^"/]+\.(?:jpe?g|png))"', tag, re.I)
+        if not local or 'data-fallback-alt' in tag:
+            return tag
+        optimized = ROOT / 'resources/optimized' / (local[1] + '.webp')
+        if not optimized.is_file():
+            return tag
+        return f'<picture class="optimized-image"><source type="image/webp" srcset="resources/optimized/{local[1]}.webp">{tag}</picture>'
+    html = re.sub(r'<img\b[^>]*>', optimize_image, html)
+
     for key, copy in COPY['en'].items():
         pattern = r'(<[a-zA-Z][^>]*)(>\s*)' + re.escape(copy) + r'(\s*</[a-zA-Z][^>]*>)'
         def annotate(match):

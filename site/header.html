@@ -58,17 +58,13 @@
     </option>
    </select>
   </label>
-  <button aria-label="Switch colour theme" class="theme-switch" type="button">
-   <span class="theme-label" data-i18n="dark">
-    Dark
-   </span>
-   <svg aria-hidden="true" class="theme-symbol" height="20" viewbox="0 0 24 24" width="20">
-    <circle cx="12" cy="12" fill="none" r="8" stroke="currentColor" stroke-width="1.6">
-    </circle>
-    <path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor">
-    </path>
-   </svg>
-  </button>
+  <label class="theme-control"><span class="visually-hidden" data-i18n="theme_label">Theme</span>
+   <select class="theme-select" aria-label="Theme">
+    <option value="system" data-i18n="theme_system">System</option>
+    <option value="light" data-i18n="theme_light">Light</option>
+    <option value="dark" data-i18n="theme_dark">Dark</option>
+   </select>
+  </label>
   <button aria-controls="site-nav" aria-expanded="false" class="menu-switch" type="button">
    <span class="menu-label" data-i18n="menu">
     Menu

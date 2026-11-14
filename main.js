@@ -24,11 +24,17 @@
         element.querySelectorAll('span').forEach(span => span.replaceWith(...span.childNodes));
     };
     const bindImageFallback = image => {
-        image.addEventListener('error', () => {
+        const fallbackImage = () => {
             const fallback = image.dataset.local;
-            if (fallback && image.getAttribute('src') !== fallback) image.src = fallback;
-        });
-        if (image.complete && image.naturalWidth === 0 && image.dataset.local) image.src = image.dataset.local;
+            if (fallback && image.getAttribute('src') !== fallback) {
+                image.closest('figure')?.querySelector('[data-cover-credit]')?.setAttribute('hidden', '');
+                image.closest('picture')?.querySelectorAll('source').forEach(source => source.remove());
+                if (image.dataset.fallbackAlt) image.alt = image.dataset.fallbackAlt;
+                image.src = fallback;
+            }
+        };
+        image.addEventListener('error', fallbackImage);
+        if (image.complete && image.currentSrc && image.naturalWidth === 0) fallbackImage();
     };
     document.querySelectorAll('img[data-local]').forEach(bindImageFallback);
 
@@ -38,9 +44,43 @@
         const profile = profiles[selectedProfile];
         const image = selector.querySelector('.profile-preview');
         if (changeImage) {
-            image.dataset.local = `resources/${profile.image}`;
-            image.src = assetRoot + profile.image;
-            if (!reduceMotion.matches) image.animate([{ opacity: .3 }, { opacity: 1 }], { duration: 450, easing: 'ease-out' });
+            const requestedProfile = selectedProfile;
+            const pending = new Image();
+            const local = `resources/${profile.image}`;
+            const original = assetRoot + profile.image;
+            const optimized = `resources/optimized/${profile.image}.webp`;
+            let candidate = optimized;
+            pending.onload = () => {
+                if (selectedProfile !== requestedProfile) return;
+                image.getAnimations().forEach(animation => animation.cancel());
+                image.dataset.local = local;
+                const picture = image.closest('picture');
+                if (picture && candidate === optimized) {
+                    let source = picture.querySelector('source');
+                    if (!source) {
+                        source = document.createElement('source');
+                        source.type = 'image/webp';
+                        picture.prepend(source);
+                    }
+                    source.srcset = optimized;
+                    image.src = original;
+                } else {
+                    picture?.querySelectorAll('source').forEach(source => source.remove());
+                    image.src = pending.src;
+                }
+                updateProfile(false);
+                if (!reduceMotion.matches) {
+                    image.animate([{ opacity: .3 }, { opacity: 1 }], { duration: 450, easing: 'ease-out' });
+                }
+            };
+            pending.onerror = () => {
+                if (candidate === optimized) candidate = original;
+                else if (candidate === original) candidate = local;
+                else return;
+                pending.src = candidate;
+            };
+            pending.src = candidate;
+            return;
         }
         image.alt = translate(profile.title);
         selector.querySelector('.profile-photo-caption').textContent = translate(profile.title);
@@ -80,19 +120,25 @@
         });
     });
 
-    const themeButton = document.querySelector('.theme-switch');
+    const themeSelect = document.querySelector('.theme-select');
+    const deviceTheme = matchMedia('(prefers-color-scheme: dark)');
     const updateThemeButton = () => {
-        const dark = root.dataset.theme === 'dark';
-        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#191d19' : '#f4f4f0');
-        themeButton.querySelector('.theme-label').textContent = copy(dark ? 'light' : 'dark');
-        themeButton.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
-        themeButton.setAttribute('aria-pressed', String(dark));
+        const preference = storage.get('theme');
+        const selected = preference === 'dark' || preference === 'light' ? preference : 'system';
+        root.dataset.theme = selected === 'system' ? (deviceTheme.matches ? 'dark' : 'light') : selected;
+        if (themeSelect) {
+            themeSelect.value = selected;
+            themeSelect.setAttribute('aria-label', copy('theme_label'));
+        }
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', root.dataset.theme === 'dark' ? '#191d19' : '#f4f4f0');
     };
-    themeButton?.addEventListener('click', () => {
-        root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-        storage.set('theme', root.dataset.theme);
+    themeSelect?.addEventListener('change', () => {
+        if (themeSelect.value === 'system') {
+            try { localStorage.removeItem('theme'); } catch { /* Device preference applies for this page. */ }
+        } else storage.set('theme', themeSelect.value);
         updateThemeButton();
     });
+    deviceTheme.addEventListener('change', updateThemeButton);
     updateThemeButton();
 
     const menuButton = document.querySelector('.menu-switch');
