@@ -74,13 +74,16 @@ html:not(.enhanced) .header-tools { display: none; }
 .theme-symbol { display: none; }
 .menu-switch { display: none; }
 .menu-switch svg { display: none; }
-.monument-hero { background: var(--bg); color: var(--ink); min-height: calc(100svh - 88px - var(--event-banner-height)); display: flex; flex-direction: column; padding-top: 24px; padding-bottom: 32px; }
+.monument-hero { position: relative; isolation: isolate; background: var(--deep); color: var(--light); min-height: calc(100svh - 88px - var(--event-banner-height)); display: flex; flex-direction: column; padding-top: 24px; padding-bottom: 32px; }
 .hero-composition { display: grid; grid-template-columns: 1fr 1fr; align-items: center; flex: 1; min-width: 0; }
 .monument { font-family: var(--font-display); font-size: clamp(64px, 9.2vw, 148px); line-height: .98; letter-spacing: -.045em; font-weight: 400; }
 .name-line { display: block; }
 .hero-introduction { min-width: 0; }
-.hero-factory { width: min(78%, 520px); height: clamp(140px, 22svh, 220px); margin-top: clamp(28px, 5svh, 48px); overflow: hidden; }
+.hero-factory { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
 .hero-factory img { object-position: 42% 58%; }
+.monument-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(9, 13, 11, .60); }
+.monument-hero .button { background: var(--light); color: var(--deep); }
+.monument-hero :focus-visible { outline-color: var(--light); }
 .hero-bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--gap); margin-top: 24px; }
 .hero-bottom p { max-width: 33ch; }
 .emblem-stage { position: relative; height: min(66svh, 680px); min-width: 0; }
@@ -328,8 +331,8 @@ html[dir='rtl'] .profile-option:hover, html[dir='rtl'] .profile-option.is-active
     .hero-bottom { flex-direction: column-reverse; align-items: flex-start; gap: 24px; margin-top: 24px; }
     .monument-hero { padding-top: 32px; padding-bottom: 24px; }
     .hero-composition { grid-template-columns: 1fr; }
-    .hero-factory { width: 100%; height: clamp(100px, 15svh, 150px); margin-top: 20px; }
-    .emblem-stage { height: clamp(160px, 23svh, 230px); }
+    .hero-factory img { object-position: 38% center; }
+    .emblem-stage { height: clamp(220px, 36svh, 340px); }
     .hero-bottom p { max-width: 32ch; }
     .monument { font-size: 16vw; line-height: .98; }
     .showcase-heading { grid-template-columns: 1fr; gap: 24px; margin-bottom: 40px; }
