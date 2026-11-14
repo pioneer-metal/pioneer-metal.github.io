@@ -151,7 +151,7 @@ html:not(.enhanced) .header-tools { display: none; }
 :root:not([data-theme='dark']) .inquiry-band:hover { background: #c9cfca; color: var(--deep); }
 .inquiry-band > [data-i18n='inquiry_prompt'] { align-self: flex-end; max-width: 33ch; padding-bottom: 32px; }
 .inquiry-word { display: block; font-family: var(--font-display); font-size: var(--name-size); line-height: .93; letter-spacing: -.06em; padding-bottom: .16em; }
-.cta-arrow { position: absolute; right: var(--margin); top: 24px; font-size: var(--step-head); }
+.cta-arrow { position: absolute; right: var(--margin); top: 24px; width: var(--step-head); height: var(--step-head); }
 .site-footer { background: var(--deep); color: var(--light); overflow: hidden; padding: 80px var(--margin) 0; }
 .traffic-counter { position: fixed; inset: 0 auto auto 0; width: 300px; height: 150px; overflow: hidden; clip-path: inset(50%); pointer-events: none; }
 .footer-top { display: flex; justify-content: space-between; gap: var(--gap); }
