@@ -69,9 +69,12 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .header-tools { display: flex; gap: 16px; align-items: center; }
 html:not(.enhanced) .header-tools { display: none; }
 .header-tools button, .language select { background: transparent; min-height: 44px; padding: 8px 0; border: 0; }
-.language select { width: 110px; text-align: end; }
+.language, .theme-control { position: relative; }
+.language::after, .theme-control::after { content: ''; position: absolute; inset-inline-end: 3px; top: 50%; width: 7px; height: 7px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: translateY(-70%) rotate(45deg); pointer-events: none; }
+.language select, .theme-select { appearance: none; padding-inline-end: 20px; }
+.language select { width: 118px; text-align: end; }
 .language option { color: var(--ink); background: var(--bg); }
-.theme-select { min-height: 44px; max-width: 110px; padding: 8px 0; border: 0; background: transparent; }
+.theme-select { min-height: 44px; max-width: 118px; padding-block: 8px; padding-inline-start: 0; border: 0; background: transparent; }
 .theme-symbol { display: none; }
 .menu-switch { display: none; }
 .menu-switch svg { display: none; }
@@ -322,9 +325,9 @@ html[dir='rtl'] .profile-option:hover, html[dir='rtl'] .profile-option.is-active
 @media (max-width: 600px) {
     :root { --step-lead: 24px; --margin: 20px; }
     .brand { width: clamp(90px, 30vw, 135px); }
-    .theme-select { max-width: 72px; }
+    .theme-select { max-width: 80px; }
     .header-tools { gap: 10px; font-size: var(--step-small); }
-    .language select { width: 92px; }
+    .language select { width: 100px; }
     .menu-switch { min-width: 44px; display: grid; place-items: center; }
     .menu-label { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; }
     .theme-symbol, .menu-switch svg { display: block; }
