@@ -129,6 +129,7 @@ html:not(.enhanced) .header-tools { display: none; }
 .profile-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 8%; background: var(--deep); color: var(--light); }
 .profile-photo { position: sticky; top: 32px; align-self: start; }
 .profile-photo img { aspect-ratio: 4/5; }
+.profile-photo .profile-transition { position: absolute; inset: 0 auto auto 0; pointer-events: none; }
 .profile-photo-caption { display: block; padding-top: 16px; font-size: var(--step-small); }
 .profile-content h2 { margin-bottom: 32px; }
 .profile-options { display: grid; gap: 12px; margin-top: 48px; }
@@ -145,6 +146,7 @@ html:not(.enhanced) .header-tools { display: none; }
 .partnerships > .text-link { margin-left: 34%; margin-top: 32px; }
 .inquiry-band { display: flex; position: relative; flex-direction: column; justify-content: space-between; min-height: 55svh; background: var(--accent); color: var(--accent-ink); padding: 32px var(--margin) 0; transition: background-color var(--t-ui), color var(--t-ui); }
 .inquiry-band:hover { background: var(--light); color: var(--deep); }
+:root:not([data-theme='dark']) .inquiry-band:hover { background: #c9cfca; color: var(--deep); }
 .inquiry-band > [data-i18n='inquiry_prompt'] { align-self: flex-end; max-width: 33ch; padding-bottom: 32px; }
 .inquiry-word { display: block; font-family: var(--font-display); font-size: var(--name-size); line-height: .93; letter-spacing: -.06em; padding-bottom: .16em; }
 .cta-arrow { position: absolute; right: var(--margin); top: 24px; font-size: var(--step-head); }
@@ -341,7 +343,7 @@ html[dir='rtl'] .profile-option:hover, html[dir='rtl'] .profile-option.is-active
     .capacity-image { width: 64%; margin-left: auto; }
     .capacity h2 { margin-bottom: 40px; }
     .profile-selector { display: flex; flex-direction: column-reverse; gap: 48px; }
-    .profile-photo { position: static; width: 100%; }
+    .profile-photo { position: relative; width: 100%; }
     .profile-photo img { aspect-ratio: 1/1; }
     .profile-options { margin-top: 32px; }
     .profile-option { font-size: var(--step-lead); }
