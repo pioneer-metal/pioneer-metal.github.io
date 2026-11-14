@@ -69,9 +69,12 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .header-tools { display: flex; gap: 16px; align-items: center; }
 html:not(.enhanced) .header-tools { display: none; }
 .header-tools button, .language select { background: transparent; min-height: 44px; padding: 8px 0; border: 0; }
-.language select { width: 58px; }
+.language, .theme-control, .form-select { position: relative; }
+.language::after, .theme-control::after, .form-select::after { content: ''; position: absolute; inset-inline-end: 3px; top: 50%; width: 7px; height: 7px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: translateY(-70%) rotate(45deg); pointer-events: none; }
+.language select, .theme-select { appearance: none; padding-inline-end: 20px; }
+.language select { width: 118px; text-align: end; }
 .language option { color: var(--ink); background: var(--bg); }
-.theme-select { min-height: 44px; max-width: 110px; padding: 8px 0; border: 0; background: transparent; }
+.theme-select { min-height: 44px; max-width: 118px; padding-block: 8px; padding-inline-start: 0; border: 0; background: transparent; }
 .theme-symbol { display: none; }
 .menu-switch { display: none; }
 .menu-switch svg { display: none; }
@@ -151,7 +154,7 @@ html:not(.enhanced) .header-tools { display: none; }
 :root:not([data-theme='dark']) .inquiry-band:hover { background: #c9cfca; color: var(--deep); }
 .inquiry-band > [data-i18n='inquiry_prompt'] { align-self: flex-end; max-width: 33ch; padding-bottom: 32px; }
 .inquiry-word { display: block; font-family: var(--font-display); font-size: var(--name-size); line-height: .93; letter-spacing: -.06em; padding-bottom: .16em; }
-.cta-arrow { position: absolute; right: var(--margin); top: 24px; font-size: var(--step-head); }
+.cta-arrow { position: absolute; right: var(--margin); top: 24px; width: var(--step-head); height: var(--step-head); }
 .site-footer { background: var(--deep); color: var(--light); overflow: hidden; padding: 80px var(--margin) 0; }
 .traffic-counter { position: fixed; inset: 0 auto auto 0; width: 300px; height: 150px; overflow: hidden; clip-path: inset(50%); pointer-events: none; }
 .footer-top { display: flex; justify-content: space-between; gap: var(--gap); }
@@ -262,6 +265,8 @@ blockquote { margin: 64px 0 0; font-size: var(--step-lead); line-height: 1.4; ma
 .form-intro .small { margin-top: 32px; }
 .form-row { display: grid; gap: 10px; margin-bottom: 28px; }
 .form-row input, .form-row textarea, .form-row select { width: 100%; padding: 16px; background: var(--bg); border: 0; border-radius: 0; }
+.form-select::after { inset-inline-end: 20px; }
+.form-row .form-select select { appearance: none; padding-inline-end: 44px; }
 .form-row textarea { resize: vertical; min-height: 160px; }
 .form-status { margin-top: 24px; }
 .location-section { display: grid; grid-template-columns: 1fr 2fr; gap: var(--gap); }
@@ -322,9 +327,9 @@ html[dir='rtl'] .profile-option:hover, html[dir='rtl'] .profile-option.is-active
 @media (max-width: 600px) {
     :root { --step-lead: 24px; --margin: 20px; }
     .brand { width: clamp(90px, 30vw, 135px); }
-    .theme-select { max-width: 72px; }
+    .theme-select { max-width: 80px; }
     .header-tools { gap: 10px; font-size: var(--step-small); }
-    .language select { width: 45px; }
+    .language select { width: 100px; }
     .menu-switch { min-width: 44px; display: grid; place-items: center; }
     .menu-label { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; }
     .theme-symbol, .menu-switch svg { display: block; }

@@ -103,7 +103,9 @@
             const copy = translate(element.dataset.i18n);
             if (copy) setCopy(element, copy);
         });
-        document.querySelector('#language').value = currentLanguage;
+        const languageSelect = document.querySelector('#language');
+        languageSelect.value = currentLanguage;
+        languageSelect.setAttribute('aria-label', copy('language_label'));
         storage.set('preferred-lang', currentLanguage);
         updateProfile(false);
         updateThemeButton();
