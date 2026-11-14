@@ -127,7 +127,11 @@
     "event_live": "Live",
     "event_past": "Past event",
     "eurasia_summary": "Reinforcement steel for uPVC window systems, with Pioneer Metal and Tonish UPVC at Eurasia Window Fair.",
-    "eurasia_partner": "Our partnership brings Pioneer Metal’s reinforcement steel and Tonish UPVC’s profile, window and door solutions together in Istanbul."
+    "eurasia_partner": "Our partnership brings Pioneer Metal’s reinforcement steel and Tonish UPVC’s profile, window and door solutions together in Istanbul.",
+    "theme_label": "Theme",
+    "theme_system": "System",
+    "theme_light": "Light",
+    "theme_dark": "Dark"
   },
   "es": {
     "nav-home": "Inicio",
@@ -257,7 +261,11 @@
     "event_live": "En curso",
     "event_past": "Evento finalizado",
     "eurasia_summary": "Acero de refuerzo para ventanas de uPVC, con Pioneer Metal y Tonish UPVC en Eurasia Window Fair.",
-    "eurasia_partner": "Nuestra colaboración reúne el acero de refuerzo de Pioneer Metal y las soluciones de perfiles, ventanas y puertas de Tonish UPVC en Estambul."
+    "eurasia_partner": "Nuestra colaboración reúne el acero de refuerzo de Pioneer Metal y las soluciones de perfiles, ventanas y puertas de Tonish UPVC en Estambul.",
+    "theme_label": "Tema",
+    "theme_system": "Sistema",
+    "theme_light": "Claro",
+    "theme_dark": "Oscuro"
   },
   "pt": {
     "nav-home": "Início",
@@ -387,7 +395,11 @@
     "event_live": "Em andamento",
     "event_past": "Evento encerrado",
     "eurasia_summary": "Aço de reforço para janelas de uPVC, com Pioneer Metal e Tonish UPVC na Eurasia Window Fair.",
-    "eurasia_partner": "Nossa parceria reúne o aço de reforço da Pioneer Metal e as soluções de perfis, janelas e portas da Tonish UPVC em Istambul."
+    "eurasia_partner": "Nossa parceria reúne o aço de reforço da Pioneer Metal e as soluções de perfis, janelas e portas da Tonish UPVC em Istambul.",
+    "theme_label": "Tema",
+    "theme_system": "Sistema",
+    "theme_light": "Claro",
+    "theme_dark": "Escuro"
   },
   "ru": {
     "nav-home": "Главная",
@@ -517,7 +529,11 @@
     "event_live": "Идёт сейчас",
     "event_past": "Выставка завершена",
     "eurasia_summary": "Армирующие стальные профили для окон из ПВХ: Pioneer Metal и Tonish UPVC на Eurasia Window Fair.",
-    "eurasia_partner": "Наше партнёрство объединяет армирующую сталь Pioneer Metal и профильные, оконные и дверные решения Tonish UPVC в Стамбуле."
+    "eurasia_partner": "Наше партнёрство объединяет армирующую сталь Pioneer Metal и профильные, оконные и дверные решения Tonish UPVC в Стамбуле.",
+    "theme_label": "Тема",
+    "theme_system": "Системная",
+    "theme_light": "Светлая",
+    "theme_dark": "Тёмная"
   },
   "ja": {
     "nav-home": "ホーム",
@@ -647,7 +663,11 @@
     "event_live": "開催中",
     "event_past": "終了",
     "eurasia_summary": "Eurasia Window Fairで、Pioneer MetalとTonish UPVCがuPVC窓用補強鋼材をご紹介します。",
-    "eurasia_partner": "Pioneer Metalの補強鋼材とTonish UPVCの形材・窓・ドアのソリューションをイスタンブールでご紹介します。"
+    "eurasia_partner": "Pioneer Metalの補強鋼材とTonish UPVCの形材・窓・ドアのソリューションをイスタンブールでご紹介します。",
+    "theme_label": "テーマ",
+    "theme_system": "システム",
+    "theme_light": "ライト",
+    "theme_dark": "ダーク"
   },
   "ko": {
     "nav-home": "홈",
@@ -777,7 +797,11 @@
     "event_live": "진행 중",
     "event_past": "종료된 행사",
     "eurasia_summary": "Eurasia Window Fair에서 Pioneer Metal과 Tonish UPVC가 선보이는 uPVC 창호용 보강 철강.",
-    "eurasia_partner": "Pioneer Metal의 보강 철강과 Tonish UPVC의 프로파일, 창호 및 도어 솔루션을 이스탄불에서 함께 선보입니다."
+    "eurasia_partner": "Pioneer Metal의 보강 철강과 Tonish UPVC의 프로파일, 창호 및 도어 솔루션을 이스탄불에서 함께 선보입니다.",
+    "theme_label": "테마",
+    "theme_system": "시스템",
+    "theme_light": "라이트",
+    "theme_dark": "다크"
   },
   "ar": {
     "nav-home": "الرئيسية",
@@ -907,7 +931,11 @@
     "event_live": "جارٍ الآن",
     "event_past": "معرض سابق",
     "eurasia_summary": "فولاذ تدعيم لأنظمة نوافذ uPVC مع Pioneer Metal وTonish UPVC في Eurasia Window Fair.",
-    "eurasia_partner": "تجمع شراكتنا فولاذ التدعيم من Pioneer Metal مع حلول المقاطع والنوافذ والأبواب من Tonish UPVC في إسطنبول."
+    "eurasia_partner": "تجمع شراكتنا فولاذ التدعيم من Pioneer Metal مع حلول المقاطع والنوافذ والأبواب من Tonish UPVC في إسطنبول.",
+    "theme_label": "المظهر",
+    "theme_system": "النظام",
+    "theme_light": "فاتح",
+    "theme_dark": "داكن"
   },
   "fr": {
     "nav-home": "Accueil",
@@ -1037,7 +1065,11 @@
     "event_live": "En cours",
     "event_past": "Salon terminé",
     "eurasia_summary": "Des renforts en acier pour fenêtres en PVC, avec Pioneer Metal et Tonish UPVC à Eurasia Window Fair.",
-    "eurasia_partner": "Notre partenariat réunit à Istanbul les renforts en acier de Pioneer Metal et les solutions de profilés, fenêtres et portes de Tonish UPVC."
+    "eurasia_partner": "Notre partenariat réunit à Istanbul les renforts en acier de Pioneer Metal et les solutions de profilés, fenêtres et portes de Tonish UPVC.",
+    "theme_label": "Thème",
+    "theme_system": "Système",
+    "theme_light": "Clair",
+    "theme_dark": "Sombre"
   },
   "sq": {
     "nav-home": "Ballina",
@@ -1167,7 +1199,11 @@
     "event_live": "Në zhvillim",
     "event_past": "Panair i përfunduar",
     "eurasia_summary": "Çelik përforcues për dritare uPVC, me Pioneer Metal dhe Tonish UPVC në Eurasia Window Fair.",
-    "eurasia_partner": "Partneriteti ynë bashkon çelikun përforcues të Pioneer Metal me zgjidhjet e profileve, dritareve dhe dyerve të Tonish UPVC në Stamboll."
+    "eurasia_partner": "Partneriteti ynë bashkon çelikun përforcues të Pioneer Metal me zgjidhjet e profileve, dritareve dhe dyerve të Tonish UPVC në Stamboll.",
+    "theme_label": "Tema",
+    "theme_system": "Sistemi",
+    "theme_light": "E çelët",
+    "theme_dark": "E errët"
   },
   "sr": {
     "nav-home": "Početna",
@@ -1297,6 +1333,10 @@
     "event_live": "U toku",
     "event_past": "Završen sajam",
     "eurasia_summary": "Čelična ojačanja za uPVC prozore, uz Pioneer Metal i Tonish UPVC na Eurasia Window Fair.",
-    "eurasia_partner": "Naše partnerstvo u Istanbulu spaja čelična ojačanja kompanije Pioneer Metal i rešenja za profile, prozore i vrata kompanije Tonish UPVC."
+    "eurasia_partner": "Naše partnerstvo u Istanbulu spaja čelična ojačanja kompanije Pioneer Metal i rešenja za profile, prozore i vrata kompanije Tonish UPVC.",
+    "theme_label": "Tema",
+    "theme_system": "Sistem",
+    "theme_light": "Svetla",
+    "theme_dark": "Tamna"
   }
 }

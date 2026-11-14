@@ -49,7 +49,7 @@
             pending.onload = () => {
                 if (selectedProfile !== requestedProfile) return;
                 const previous = !reduceMotion.matches && image.currentSrc ? image.cloneNode() : null;
-                selector.querySelector('.profile-photo .profile-transition')?.remove();
+                selector.querySelector('.profile-media .profile-transition')?.remove();
                 if (previous) {
                     previous.classList.add('profile-transition');
                     previous.removeAttribute('id');
@@ -111,19 +111,25 @@
         });
     });
 
-    const themeButton = document.querySelector('.theme-switch');
+    const themeSelect = document.querySelector('.theme-select');
+    const deviceTheme = matchMedia('(prefers-color-scheme: dark)');
     const updateThemeButton = () => {
-        const dark = root.dataset.theme === 'dark';
-        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#191d19' : '#f4f4f0');
-        themeButton.querySelector('.theme-label').textContent = copy(dark ? 'light' : 'dark');
-        themeButton.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
-        themeButton.setAttribute('aria-pressed', String(dark));
+        const preference = storage.get('theme');
+        const selected = preference === 'dark' || preference === 'light' ? preference : 'system';
+        root.dataset.theme = selected === 'system' ? (deviceTheme.matches ? 'dark' : 'light') : selected;
+        if (themeSelect) {
+            themeSelect.value = selected;
+            themeSelect.setAttribute('aria-label', copy('theme_label'));
+        }
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', root.dataset.theme === 'dark' ? '#191d19' : '#f4f4f0');
     };
-    themeButton?.addEventListener('click', () => {
-        root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-        storage.set('theme', root.dataset.theme);
+    themeSelect?.addEventListener('change', () => {
+        if (themeSelect.value === 'system') {
+            try { localStorage.removeItem('theme'); } catch { /* Device preference applies for this page. */ }
+        } else storage.set('theme', themeSelect.value);
         updateThemeButton();
     });
+    deviceTheme.addEventListener('change', updateThemeButton);
     updateThemeButton();
 
     const menuButton = document.querySelector('.menu-switch');

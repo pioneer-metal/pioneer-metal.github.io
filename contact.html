@@ -10,12 +10,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Manrope:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=734272968e">
+    <link rel="stylesheet" href="style.css?v=6d3df3da09">
     <script>try{document.documentElement.dataset.theme=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
-    <script src="translations.js?v=734272968e" defer></script>
-    <script src="events.js?v=734272968e" defer></script>
-    <script src="main.js?v=734272968e" defer></script>
-    <script src="event-banner.js?v=734272968e" defer></script>
+    <script src="translations.js?v=6d3df3da09" defer></script>
+    <script src="events.js?v=6d3df3da09" defer></script>
+    <script src="main.js?v=6d3df3da09" defer></script>
+    <script src="event-banner.js?v=6d3df3da09" defer></script>
 
 </head>
 <body class="contact" id="top">
@@ -73,15 +73,13 @@
     </option>
    </select>
   </label>
-  <button aria-label="Switch colour theme" class="theme-switch" type="button">
-   <span class="theme-label" data-i18n="dark">Dark</span>
-   <svg aria-hidden="true" class="theme-symbol" height="20" viewbox="0 0 24 24" width="20">
-    <circle cx="12" cy="12" fill="none" r="8" stroke="currentColor" stroke-width="1.6">
-    </circle>
-    <path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor">
-    </path>
-   </svg>
-  </button>
+  <label class="theme-control"><span class="visually-hidden" data-i18n="theme_label">Theme</span>
+   <select class="theme-select" aria-label="Theme">
+    <option value="system" data-i18n="theme_system">System</option>
+    <option value="light" data-i18n="theme_light">Light</option>
+    <option value="dark" data-i18n="theme_dark">Dark</option>
+   </select>
+  </label>
   <button aria-controls="site-nav" aria-expanded="false" class="menu-switch" type="button">
    <span class="menu-label" data-i18n="menu">Menu</span>
    <svg aria-hidden="true" height="20" viewbox="0 0 24 24" width="20">

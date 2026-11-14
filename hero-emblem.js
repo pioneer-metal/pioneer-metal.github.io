@@ -9,7 +9,6 @@ async function initEmblem(stage) {
     if (!response.ok) throw new Error('Emblem geometry unavailable');
     const outlines = await response.json();
     const canvas = stage.querySelector('canvas');
-    const toggle = stage.querySelector('[data-emblem-toggle]');
     const reduced = matchMedia('(prefers-reduced-motion: reduce)');
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'low-power' });
     renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
@@ -77,15 +76,6 @@ async function initEmblem(stage) {
     let lastTime = 0;
     let frame = 0;
     let disposed = false;
-    function syncToggle() {
-        toggle.setAttribute('aria-pressed', String(paused));
-        stage.classList.toggle('is-paused', paused);
-        const label = toggle.querySelector('[data-i18n]');
-        const key = paused ? 'resume_rotation' : 'pause_rotation';
-        label.dataset.i18n = key;
-        const language = document.documentElement.lang || 'en';
-        if (typeof i18nData !== 'undefined') label.textContent = (i18nData[language] || i18nData.en)[key];
-    }
     function draw(time = 0) {
         frame = 0;
         if (disposed) return;
@@ -111,8 +101,7 @@ async function initEmblem(stage) {
     const visibility = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; resume(); });
     visibility.observe(stage);
     document.addEventListener('visibilitychange', resume);
-    reduced.addEventListener('change', () => { paused = reduced.matches; syncToggle(); resume(); });
-    toggle.addEventListener('click', () => { paused = !paused; syncToggle(); resume(); });
+    reduced.addEventListener('change', () => { paused = reduced.matches; resume(); });
     canvas.addEventListener('pointerdown', event => {
         if (reduced.matches || (event.pointerType === 'mouse' && event.button !== 0)) return;
         dragging = true; previousX = event.clientX;
@@ -142,7 +131,6 @@ async function initEmblem(stage) {
         red.dispose(); silver.dispose(); reflection.dispose(); renderer.dispose();
     });
     window.addEventListener('pageshow', resume);
-    new MutationObserver(syncToggle).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
     renderer.render(scene, camera);
-    stage.classList.add('is-ready'); syncToggle(); resume();
+    stage.classList.add('is-ready'); resume();
 }
