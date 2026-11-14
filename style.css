@@ -125,7 +125,6 @@ html:not(.enhanced) .header-tools { display: none; }
 .profile-photo { position: sticky; top: 32px; align-self: start; }
 .profile-media { position: relative; aspect-ratio: 4/5; overflow: hidden; }
 .profile-media img { width: 100%; height: 100%; object-fit: cover; }
-.profile-photo .profile-transition { position: absolute; inset: 0 auto auto 0; pointer-events: none; }
 .profile-photo-caption { display: block; padding-top: 16px; font-size: var(--step-small); }
 .profile-content h2 { margin-bottom: 32px; }
 .profile-options { display: grid; gap: 12px; margin-top: 48px; }

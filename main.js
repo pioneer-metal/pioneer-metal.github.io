@@ -48,23 +48,12 @@
             const local = `resources/${profile.image}`;
             pending.onload = () => {
                 if (selectedProfile !== requestedProfile) return;
-                const previous = !reduceMotion.matches && image.currentSrc ? image.cloneNode() : null;
-                selector.querySelector('.profile-media .profile-transition')?.remove();
-                if (previous) {
-                    previous.classList.add('profile-transition');
-                    previous.removeAttribute('id');
-                    previous.alt = '';
-                    previous.setAttribute('aria-hidden', 'true');
-                    image.parentElement.append(previous);
-                }
+                image.getAnimations().forEach(animation => animation.cancel());
                 image.dataset.local = local;
                 image.src = pending.src;
                 updateProfile(false);
-                if (previous) {
-                    const transition = previous.animate([{ opacity: 1 }, { opacity: 0 }], {
-                        duration: 350, easing: 'ease-out', fill: 'forwards'
-                    });
-                    transition.finished.then(() => previous.remove(), () => previous.remove());
+                if (!reduceMotion.matches) {
+                    image.animate([{ opacity: .3 }, { opacity: 1 }], { duration: 450, easing: 'ease-out' });
                 }
             };
             pending.onerror = () => {
