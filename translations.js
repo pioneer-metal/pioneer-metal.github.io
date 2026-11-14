@@ -132,7 +132,8 @@ const i18nData = {
     "theme_label": "Theme",
     "theme_system": "System",
     "theme_light": "Light",
-    "theme_dark": "Dark"
+    "theme_dark": "Dark",
+    "language_label": "Language"
   },
   "es": {
     "nav-home": "Inicio",
@@ -266,7 +267,8 @@ const i18nData = {
     "theme_label": "Tema",
     "theme_system": "Sistema",
     "theme_light": "Claro",
-    "theme_dark": "Oscuro"
+    "theme_dark": "Oscuro",
+    "language_label": "Idioma"
   },
   "pt": {
     "nav-home": "Início",
@@ -400,7 +402,8 @@ const i18nData = {
     "theme_label": "Tema",
     "theme_system": "Sistema",
     "theme_light": "Claro",
-    "theme_dark": "Escuro"
+    "theme_dark": "Escuro",
+    "language_label": "Idioma"
   },
   "ru": {
     "nav-home": "Главная",
@@ -534,7 +537,8 @@ const i18nData = {
     "theme_label": "Тема",
     "theme_system": "Системная",
     "theme_light": "Светлая",
-    "theme_dark": "Тёмная"
+    "theme_dark": "Тёмная",
+    "language_label": "Язык"
   },
   "ja": {
     "nav-home": "ホーム",
@@ -668,7 +672,8 @@ const i18nData = {
     "theme_label": "テーマ",
     "theme_system": "システム",
     "theme_light": "ライト",
-    "theme_dark": "ダーク"
+    "theme_dark": "ダーク",
+    "language_label": "言語"
   },
   "ko": {
     "nav-home": "홈",
@@ -802,7 +807,8 @@ const i18nData = {
     "theme_label": "테마",
     "theme_system": "시스템",
     "theme_light": "라이트",
-    "theme_dark": "다크"
+    "theme_dark": "다크",
+    "language_label": "언어"
   },
   "ar": {
     "nav-home": "الرئيسية",
@@ -936,7 +942,8 @@ const i18nData = {
     "theme_label": "المظهر",
     "theme_system": "النظام",
     "theme_light": "فاتح",
-    "theme_dark": "داكن"
+    "theme_dark": "داكن",
+    "language_label": "اللغة"
   },
   "fr": {
     "nav-home": "Accueil",
@@ -1070,7 +1077,8 @@ const i18nData = {
     "theme_label": "Thème",
     "theme_system": "Système",
     "theme_light": "Clair",
-    "theme_dark": "Sombre"
+    "theme_dark": "Sombre",
+    "language_label": "Langue"
   },
   "sq": {
     "nav-home": "Ballina",
@@ -1204,7 +1212,8 @@ const i18nData = {
     "theme_label": "Tema",
     "theme_system": "Sistemi",
     "theme_light": "E çelët",
-    "theme_dark": "E errët"
+    "theme_dark": "E errët",
+    "language_label": "Gjuha"
   },
   "sr": {
     "nav-home": "Početna",
@@ -1338,6 +1347,7 @@ const i18nData = {
     "theme_label": "Tema",
     "theme_system": "Sistem",
     "theme_light": "Svetla",
-    "theme_dark": "Tamna"
+    "theme_dark": "Tamna",
+    "language_label": "Језик"
   }
 };
