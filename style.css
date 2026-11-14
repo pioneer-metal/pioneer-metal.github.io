@@ -69,7 +69,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .header-tools { display: flex; gap: 16px; align-items: center; }
 html:not(.enhanced) .header-tools { display: none; }
 .header-tools button, .language select { background: transparent; min-height: 44px; padding: 8px 0; border: 0; }
-.language select { width: 110px; }
+.language select { width: 110px; text-align: end; }
 .language option { color: var(--ink); background: var(--bg); }
 .theme-select { min-height: 44px; max-width: 110px; padding: 8px 0; border: 0; background: transparent; }
 .theme-symbol { display: none; }
