@@ -110,7 +110,7 @@ The old five-page source lint reported 97 FAIL and 95 WARN. The old homepage bro
 
 The client requested a rotating Pioneer mark inspired by https://www.q-industrial.com/. This is a hero refinement, so the existing direction and page structure are retained rather than redrawn. On this page, Pioneer's octagonal seal becomes a metal object, tying its brand to the steel it manufactures. The name remains the headline; the existing product description and Explore products action retain the first-screen claim and destination.
 
-The emblem's five white shapes are traced from the supplied Favicon.png, then extruded over an octagonal red metal body with silver detailing on both faces. Three.js 0.180.0 is bundled locally with its MIT license; there is no runtime dependency on a 3D CDN. The reference site's models, code and imagery are not reused. The original favicon remains the fallback if modules, geometry loading or WebGL fail.
+The emblem's five white shapes follow the curves in the supplied Favicon.svg, then are extruded over an octagonal red metal body with silver detailing on both faces. Three.js 0.180.0 is bundled locally with its MIT license; there is no runtime dependency on a 3D CDN. The reference site's models, code and imagery are not reused. The original favicon remains the fallback if modules, geometry loading or WebGL fail.
 
 The live object rotates slowly, supports horizontal dragging, and has a translated pause/resume control in all ten locales. Reduced motion starts it paused. Rendering stops when the emblem is outside the viewport or the document is hidden; pixel ratio is capped at 1.75. The module is loaded only on Home.
 
@@ -127,3 +127,10 @@ The modular banner uses explicit timezone offsets for its Upcoming / Live / hidd
 The client-supplied poster and Tonish logo are preserved. The organizer cover is loaded from the client-supplied URL and credited when shown; client artwork is the stable local fallback. The product photograph is Pioneer's own existing Products_01.jpg. No claims about a booth number, visitor statistics or attendance outcomes were added.
 
 Visual self-review: design 8.1, usability 8.5, creativity 7.0, content 8.4; overall 8.0/10. The details page, News and banner-bearing Home passed inspection at desktop, tablet and mobile widths. The details page's 13 moving elements are sufficient for an information-focused announcement; no extra motion or unrelated footage was added solely to satisfy a count. Local references and anchors across all six pages pass, including Git's exact filename casing. Date boundary comparisons were reviewed in source; no browser clock emulation was performed.
+
+
+## Image delivery
+
+Original asset URLs and images are retained. The build adds local WebP sources for production photographs and supplied event artwork; browsers that do not support WebP use the original image sources. Profile selections preload the optimized version and fall back to the original remote and local images. Generate variants with `scripts/optimize_images.py` (Pillow required); variants are capped at 2400 pixels and saved at quality 84. The homepage hero is 518 KiB instead of 6151 KiB.
+
+The rotating emblem reads the supplied SVG paths as cubic Bézier curves and extrudes those paths in Three.js; the static PNG remains the WebGL fallback. The SVG is versioned with the shared build assets.

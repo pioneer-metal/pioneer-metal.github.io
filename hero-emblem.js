@@ -5,9 +5,39 @@ const stage = document.querySelector('[data-emblem-stage]');
 if (stage) initEmblem(stage).catch(() => { /* The original emblem stays visible if WebGL is unavailable. */ });
 
 async function initEmblem(stage) {
-    const response = await fetch(new URL('./resources/emblem-shapes.json', import.meta.url));
+    const geometryUrl = new URL('./resources/Favicon.svg', import.meta.url);
+    geometryUrl.search = new URL(import.meta.url).search;
+    const response = await fetch(geometryUrl);
     if (!response.ok) throw new Error('Emblem geometry unavailable');
-    const outlines = await response.json();
+    const svg = new DOMParser().parseFromString(await response.text(), 'image/svg+xml');
+    const paths = [...svg.querySelectorAll('path')].slice(1);
+    if (svg.querySelector('parsererror') || paths.length !== 5) throw new Error('Invalid emblem geometry');
+    // The source uses absolute SVG move, line and cubic Bézier commands.
+    const toShape = path => {
+        const tokens = path.getAttribute('d').match(/[MLCZ]|-?(?:\d*\.)?\d+(?:e[-+]?\d+)?/gi);
+        const shape = new THREE.Shape();
+        const coordinate = (value, invert = false) => (invert ? 308.5 - value : value - 308.5) * 4 / 617;
+        let i = 0;
+        while (i < tokens.length) {
+            const command = tokens[i++];
+            if (command === 'M' || command === 'L') {
+                const x = coordinate(Number(tokens[i++]));
+                const y = coordinate(Number(tokens[i++]), true);
+                if (command === 'M') shape.moveTo(x, y); else shape.lineTo(x, y);
+            } else if (command === 'C') {
+                const x1 = coordinate(Number(tokens[i++]));
+                const y1 = coordinate(Number(tokens[i++]), true);
+                const x2 = coordinate(Number(tokens[i++]));
+                const y2 = coordinate(Number(tokens[i++]), true);
+                const x = coordinate(Number(tokens[i++]));
+                const y = coordinate(Number(tokens[i++]), true);
+                shape.bezierCurveTo(x1, y1, x2, y2, x, y);
+            } else if (command === 'Z') shape.closePath();
+            else throw new Error('Unsupported SVG path command');
+        }
+        return shape;
+    };
+    const outlines = paths.map(toShape);
     const canvas = stage.querySelector('canvas');
     const reduced = matchMedia('(prefers-reduced-motion: reduce)');
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'low-power' });
@@ -45,18 +75,18 @@ async function initEmblem(stage) {
     const silver = new THREE.MeshStandardMaterial({ color: 0xf4f4f0, metalness: .9, roughness: .24 });
     const emblem = new THREE.Group();
     scene.add(emblem);
-    function extrude(points, depth, bevel, material, z) {
-        const shape = new THREE.Shape(points.map(([x, y]) => new THREE.Vector2(x, y)));
+    function extrude(outline, depth, bevel, material, z) {
+        const shape = outline instanceof THREE.Shape ? outline : new THREE.Shape(outline.map(([x, y]) => new THREE.Vector2(x, y)));
         const geometry = new THREE.ExtrudeGeometry(shape, {
             depth, bevelEnabled: true, bevelSegments: 3, steps: 1,
-            bevelSize: bevel, bevelThickness: bevel, curveSegments: 32
+            bevelSize: bevel, bevelThickness: bevel, curveSegments: 64
         });
         const mesh = new THREE.Mesh(geometry, material);
         mesh.position.z = z;
         emblem.add(mesh);
         return mesh;
     }
-    // The octagonal seal and five white forms come from Pioneer's own Favicon.png.
+    // The seal is extruded with the original SVG curves for its five white forms.
     const octagon = Array.from({ length: 8 }, (_, i) => {
         const angle = Math.PI / 2 + i * Math.PI / 4;
         return [Math.cos(angle) * 2, Math.sin(angle) * 2];

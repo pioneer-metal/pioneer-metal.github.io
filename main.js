@@ -28,6 +28,7 @@
             const fallback = image.dataset.local;
             if (fallback && image.getAttribute('src') !== fallback) {
                 image.closest('figure')?.querySelector('[data-cover-credit]')?.setAttribute('hidden', '');
+                image.closest('picture')?.querySelectorAll('source').forEach(source => source.remove());
                 if (image.dataset.fallbackAlt) image.alt = image.dataset.fallbackAlt;
                 image.src = fallback;
             }
@@ -46,20 +47,39 @@
             const requestedProfile = selectedProfile;
             const pending = new Image();
             const local = `resources/${profile.image}`;
+            const original = assetRoot + profile.image;
+            const optimized = `resources/optimized/${profile.image}.webp`;
+            let candidate = optimized;
             pending.onload = () => {
                 if (selectedProfile !== requestedProfile) return;
                 image.getAnimations().forEach(animation => animation.cancel());
                 image.dataset.local = local;
-                image.src = pending.src;
+                const picture = image.closest('picture');
+                if (picture && candidate === optimized) {
+                    let source = picture.querySelector('source');
+                    if (!source) {
+                        source = document.createElement('source');
+                        source.type = 'image/webp';
+                        picture.prepend(source);
+                    }
+                    source.srcset = optimized;
+                    image.src = original;
+                } else {
+                    picture?.querySelectorAll('source').forEach(source => source.remove());
+                    image.src = pending.src;
+                }
                 updateProfile(false);
                 if (!reduceMotion.matches) {
                     image.animate([{ opacity: .3 }, { opacity: 1 }], { duration: 450, easing: 'ease-out' });
                 }
             };
             pending.onerror = () => {
-                if (pending.getAttribute('src') !== local) pending.src = local;
+                if (candidate === optimized) candidate = original;
+                else if (candidate === original) candidate = local;
+                else return;
+                pending.src = candidate;
             };
-            pending.src = assetRoot + profile.image;
+            pending.src = candidate;
             return;
         }
         image.alt = translate(profile.title);

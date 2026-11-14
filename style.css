@@ -38,6 +38,7 @@ body { margin: 0; background: var(--bg); color: var(--ink); font: 400 var(--step
 ::selection { background: var(--accent); color: var(--accent-ink); }
 img { display: block; max-width: 100%; width: 100%; height: 100%; object-fit: cover; }
 figure { margin: 0; min-width: 0; }
+picture.optimized-image { display: contents; }
 p { margin: 0; max-width: 62ch; text-wrap: pretty; }
 p + p { margin-top: 24px; }
 h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 500; letter-spacing: -0.035em; line-height: 1.02; text-wrap: balance; }
