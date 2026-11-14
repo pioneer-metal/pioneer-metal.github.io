@@ -394,3 +394,17 @@ html[dir='rtl'] .profile-option:hover, html[dir='rtl'] .profile-option.is-active
 .event-product img { aspect-ratio: 4/3; object-fit: cover; }
 .event-product figcaption { margin-top: 16px; }
 .event-return { padding-block: 40px; }
+
+/* Let the homepage navigation share the photograph's darkened surface. */
+.home .site-header { position: absolute; top: var(--event-banner-height); left: 0; right: 0; background: transparent; color: var(--light); }
+.home .logo-light { display: none; }
+.home .logo-dark { display: block; }
+.home .site-header :focus-visible { outline-color: var(--light); }
+.home .theme-select option { background: var(--bg); color: var(--ink); }
+.home .monument-hero { min-height: calc(100svh - var(--event-banner-height)); padding-top: 112px; }
+html:not(.enhanced) .home .site-header { position: relative; top: auto; background: var(--deep); }
+html:not(.enhanced) .home .monument-hero { min-height: calc(100svh - 88px - var(--event-banner-height)); padding-top: 24px; }
+@media (max-width: 900px) {
+    .home .monument-hero { padding-top: 100px; }
+    .home .site-nav :focus-visible { outline-color: var(--accent); }
+}
